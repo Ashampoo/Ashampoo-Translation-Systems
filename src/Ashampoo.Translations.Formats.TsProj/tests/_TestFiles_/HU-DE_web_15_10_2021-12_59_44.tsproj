@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="website" version="1.0" tsversion="4" author="László Koncz" mail="koncz.l@digikabel.hu"
+         source_language="de-DE" target_language="hu-HU" creation_tool="Ashampoo CMS"
+         pluginguid="DDEFCE2A-C9E8-4C6E-B604-9B6468BDCFC4">
+    <properties>
+        <property name="project.id">1</property>
+        <property name="translator.id">2</property>
+        <property name="translator.web.id">4</property>
+    </properties>
+
+    <translation id="textids.content.T_0574_SUBMIT_2000">
+        <target></target>
+        <source>Ashampoo PDF Pro 3 kann PDF-Dateien erstellen, bearbeiten, zusammenfügen und konvertieren. Mit dieser
+            PDF Software kann jeder flexibel PDFs editieren und wie ein Word-Dokument nutzen. Ergänzungen, Kommentare,
+            Änderungen am Layout und den verwendeten Grafiken gehen ebenso einfach von der Hand. Ashampoo PDF Pro 3
+            konvertiert dabei bequem in zahlreiche, beliebte Formate (Microsoft Word, RTF, HTML, EPUB, JPEG, etc.), so
+            sind die Inhalte universell nutzbar, z.B. auch in Excel. Innerhalb des PDFs können über den PDF Editor
+            Grafiken und Farben beliebig ausgetauscht werden, auch Wörter und Schriftarten werden schnell ersetzt. Das
+            Zusammenfügen mehrerer Dateien über Drag &amp; Drop und das Erstellen ganzer Portfolios oder Fotoalben
+            erleichtern die Nutzung mehrerer Dateien gleichzeitig. Durch die automatische Texterkennung (OCR) werden
+            alle Dokumente inhaltlich erfasst und zur Verarbeitung nutzbar. PDF Pro 3 ermöglicht auch Textumfluss,
+            Rechtschreibprüfung und Silbentrennung. Sensible Inhalte werden bei Bedarf geschwärzt und erzeugte
+            PDF-Dokumente mit AES sicher verschlüsselt. Die Erstellung kann über den integrierten PDF-Drucker praktisch
+            aus jedem Windows Programm gestartet werden. Neu in Version 3 sind die praktische Ribbon Oberfläche mit dem
+            augenschonenden Dark Mode. Eine individuelle Zugriffsleiste mit allen wichtigen Befehlen und neue
+            Aufklappelemente erleichtern das Arbeiten massiv. Zur dauerhaften Archivierung wurde der PDF/A-Export
+            hinzugefügt, digitale Signaturen machen wichtige PDF-Dateien besonders vertrauenswürdig und
+            fälschungssicher. In der Statuszeile findet sich ein praktischer Zoom, die verschiedenen Arbeitsmodi können
+            mit einem Klick gewechselt werden. Und der wichtige Abgleich zweier PDF-Dokumente erfolgt mit einer neuen
+            Methode schneller und dabei genauer denn je.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_SUBMIT_250">
+        <target></target>
+        <source>Ashampoo PDF Pro 3 ist ein PDF Editor zum Erzeugen, Konvertieren, Bearbeiten und Signieren von
+            PDF-Dokumenten. PDF können auch zusammengefügt, neu angeordnet oder im Layout verändert werden.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_SUBMIT_80">
+        <target></target>
+        <source>PDF-Editor zum Bearbeiten, Konvertieren, Zusammenfügen und Erzeugen von PDF</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_SUBMIT_45">
+        <target></target>
+        <source>Umfangreiche PDF Software</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_10">
+        <target></target>
+        <source>Hi-Res Audio superschnell</source>
+        Hi-Res Audio superschnell
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_10">
+        <target></target>
+        <source>Speichern Sie Musik bequem in hochauflösender Hifi-Qualität ab. Bauen Sie mühelos in bis zu 30-facher
+            Echtzeitgeschwindigkeit Ihre Musiksammlung in Studioqualität auf. Mit Audials One 2022 erhalten Sie dank
+            optimierter Liedtrennung mühelos stets absolut exakt geschnittene Musikstücke. Der überarbeitete
+            Aufnahmekern und Encoder sorgt für perfekte, verlustfreie Qualität in bis zu 96KHz und 24bit.
+        </source>
+        Speichern Sie Musik bequem in hochauflösender Hifi-Qualität ab. Baue Sie mühelos in bis zu 30-facher
+        Echtzeitgeschwindigkeit Deine Musiksammlung in Studioqualität auf.
+        Mit Audials One 2022 erhalten Sie dank optimierter Liedtrennung mühelos stets absolut exakt geschnittene
+        Musikstücke. Der überarbeitete Aufnahmekern und Encoder sorgt für perfekte, verlustfreie Qualität in bis zu
+        96KHz und 24bit.
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_11">
+        <target></target>
+        <source>Entdecken Sie Genres, Styles und Top-Charts in der neuen Übersicht</source>
+        Entdecke Genres, Styles und Top-Charts in der neuen Übersicht.
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_10">
+        <target></target>
+        <source>Legen Sie ein beliebiges Schema für die Benennung Ihrer Musikdateien fest und übertragen Sie Ihre Regeln
+            mühelos auf die gesamte Musiksammlung
+        </source>
+        Lege ein beliebiges Schema für die Benennung Deiner Muiskdateien fest und übertrage Deine Regeln mühelos auf die
+        gesamte Musiksammlung
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_9">
+        <target></target>
+        <source>Ihr Spotify-Konto wurde kürzlich geblockt? Audials verhindert das in Zukunft und zeigt Ihnen, welche
+            Dienste Aufnahmen identifizieren
+        </source>
+        Dein Spotify-Konto wurde kürzlich geblockt? Audials verhindert das in Zukunft und zeigt Dir, welche Dienste
+        Aufnahmen identifizieren
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_8">
+        <target></target>
+        <source>Im Bereich &quot;Musik Laden&quot; steuern Sie direkt, aus welchen Quellen Musik angezeigt werden soll
+            und definieren Ihre Priorität
+        </source>
+        Im Bereich &quot;Musik Laden&quot; steuersn Sie direkt, aus welchen Quellen Musik angezeigt werden soll und
+        definierst deine Priorität
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_7">
+        <target></target>
+        <source>Ein komplett neuer Musikmanager zeigt Ihnen Ihre Musik klarer und übersichtlicher dank oben angeordneter
+            Top-Hits, Alben zum Ausklappen, passender Playlisten und ähnlicher Künstler zum direkten Abspielen
+        </source>
+        Ein komplett neuer Musikmanager zeigt Dir Deine Musik klarer und übersichtlicher dank oben angeordneter
+        Top-Hits, Alben zum Ausklappen, passender Playlisten und ähnlicher Künstler zum direkten Abspielen
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_8">
+        <target></target>
+        <source>Ziehen Sie Musikstücke, Alben und Playlisten aus allen wichtigen Musikstreaming-Diensten - jetzt neu:
+            auch Tidal - in Audials, um sie bequem und schnell wie nie zuvor in hochauflösender HiRes Audio-Qualität
+            aufzunehmen, oder nutzen Sie die optimierte high-speed Hintergrundaufnahme.
+        </source>
+        Ziehe Musikstücke, Alben und Playlisten aus allen wichtigen Musikstreaming-Diensten - jetzt neu: auch Tidal - in
+        Audials, um sie bequem und schnell wie nie zuvor in hochauflösender HiRes Audio-Qualität aufzunehmen, oder nutze
+        die optimierte high-speed Hintergrundaufnahme.
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_9">
+        <target></target>
+        <source>Musikgenuss Pur</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_8">
+        <target></target>
+        <source>Musik präzise und sicher aufnehmen</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_SUB_2">
+        <target></target>
+        <source>Spotify, Amazon Music, Tidal, Deezer &amp; mehr sicher und in bester Qualität aufnehmen</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_INTRO">
+        <target></target>
+        <source>Audials One 2022 nimmt genial einfach und legal Filme und Musik aus dem Internet und beim Streamen für
+            Sie auf! Genießen Sie einfachste Bedienung und hervorragende Aufnahmen ohne Qualitätsverlust! Nehmen Sie
+            auf, was auch immer Sie wollen, schneiden Sie die Ergebnisse bei Bedarf oder fügen Sie Untertitel hinzu!
+            Natürlich läuft Audials One 2022 auch problemlos auf Windows 11!
+        </source>
+        Audials one 2022 nimmt genial einfach und legal Filme und Musik aus dem Internet und beim Streamen für Sie auf!
+        Genießen Sie einfachste Bedienung und hervorragende Aufnahmen ohne Qualitätsverlust! Nehmen Sie auf, was auch
+        immer Sie wollen, schneiden Sie die Ergebnisse bei Bedarf oder fügen Sie Untertitel hinzu! Natürlich läuft
+        Audials one 2022 auch problemlos auf Windows 11!
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_INTRO">
+        <target></target>
+        <source>Audials One 2022 nimmt genial einfach und legal Filme und Musik aus dem Internet und beim Streamen für
+            Sie auf! Genießen Sie einfachste Bedienung und hervorragende Aufnahmen ohne Qualitätsverlust! Nehmen Sie
+            auf, was auch immer Sie wollen, schneiden Sie die Ergebnisse bei Bedarf oder fügen Sie Untertitel hinzu!
+            Natürlich läuft Audials One 2022 auch problemlos auf Windows 11!
+        </source>
+        Audials one 2022 nimmt genial einfach und legal Filme und Musik aus dem Internet und beim Streamen für Sie auf!
+        Genießen Sie einfachste Bedienung und hervorragende Aufnahmen ohne Qualitätsverlust! Nehmen Sie auf, was auch
+        immer Sie wollen, schneiden Sie die Ergebnisse bei Bedarf oder fügen Sie Untertitel hinzu! Natürlich läuft
+        Audials one 2022 auch problemlos auf Windows 11!
+    </translation>
+
+    <translation id="textids.content.T_1904_SUBMIT_2000">
+        <target></target>
+        <source>Windows 11 wird standardmäßig nur auf Computern installiert, die den Systemvoraussetzungen des
+            Betriebssystems entsprechen. Im ersten Schritt von Ashampoo® Windows 11 Check &amp; Enable testet das
+            Programm, ob ein PC oder Laptop kompatibel ist und meldet mögliche Probleme. Im zweiten Schritt schaut die
+            Software, ob Windows 11 in Frage kommt, auch wenn nicht alle Systemvoraussetzungen erfüllt werden. Wird z.B.
+            nur der Prozessor nicht unterstützt oder TPM-2.0 nicht gefunden, kann Check &amp; Enable dennoch eine
+            Installation ermöglichen. Hier reicht z.B. der weit verbreitete, ältere TPM-1.20 Standard aus. Das Programm
+            setzt per Klick zwei Registry-Werte und Windows 11 kann installiert werden. Wichtig: Microsoft lehnt aus
+            Haftungsgründen für diesen Fall jede Gewähr ab und behält sich einen Updatestopp vor. Der Win11-Test selbst
+            umfasst sowohl die komplexe Trusted Platform Module Thematik, wie auch die verbaute oder angeschlossene
+            Hardware und wichtige Konfigurationen. Folgende Hardware und Konfigurationen werden dabei untersucht: CPU,
+            Arbeitsspeicher, Festplatte, Bildschirmauflösung, Grafikkarte, DirectX12, WDDM2, TPM2.0, UEFI, SecureBoot.
+            Werden die Systemvoraussetzungen von Windows 11 nicht erfüllt, erfolgt sofort eine Meldung. Der Nutzer
+            erfährt so detailliert, welche Problematiken bestehen und ob man sie durch geänderte Einstellungen oder
+            andere Hardware beseitigen kann. Obwohl die Windows 11-Installation über Check &amp; Enable legal und sicher
+            ist, empfehlen wir (wie vor jedem größeren Upgrade!) ein Backup des Systems, z.B. mit Ashampoo® Backup Pro
+            16. Damit werden jegliche Risiken, die generell mit jedem großen Upgrade einher gehen können,
+            ausgeschlossen.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_SUBMIT_250">
+        <target></target>
+        <source>Ashampoo® Windows 11 Check &amp; Enable testet zuerst, ob ein Computer Windows 11-kompatibel ist. Selbst
+            wenn der PC nicht alle Anforderungen erfüllt, ermöglicht das Programm die Win 11-Installation auf vielen
+            Systemen.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_SUBMIT_80">
+        <target></target>
+        <source>Auf Windows 11 Systemvoraussetzungen testen und Installation ermöglichen</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_SUBMIT_45">
+        <target></target>
+        <source>Für Windows 11 testen und installieren</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_TEXT_5">
+        <target></target>
+        <source>Microsoft setzt gewisse Grenzen. So kann man Windows 11 auch auf Systemen ohne TPM-2.0 oder kompatible
+            CPU installieren, bei den anderen Einstellungen und Systemkomponenten hingegen ist Windows 11
+            kompromissloser. Nutzen Sie daher Windows 11 Check &amp; Enable, um alle Voraussetzungen blitzschnell
+            abzugleichen! Wird Windows 11 auf Ihrem Rechner installierbar sein und laufen? Probieren Sie es aus!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_HL_5">
+        <target></target>
+        <source>Kann man damit Windows 11 auf jedem Rechner installieren?</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_TEXT_4">
+        <target></target>
+        <source>Komplett. Microsoft selbst hat auf die Möglichkeit hingewiesen, dass Windows 11 auch auf Rechnern
+            installierbar sind, die nicht sämtliche Systemvoraussetzungen erfüllen. Auch auf zahlreichen (Test-)Systemen
+            erfolgte die Installation ohne Probleme. Aus Haftungsgründen betont Microsoft dennoch, dass es theoretische
+            Risiken gebe und Updates nicht garantiert seien. Wir empfehlen (wie vor jedem größeren Upgrade!) ein Backup
+            Ihres Systems mit Ashampoo® Backup Pro 16. Nach einer kompletten Sicherung können Sie komplett relaxt testen
+            und risikolos ausprobieren, was auch immer Sie wollen.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_HL_4">
+        <target></target>
+        <source>Ist die Windows 11-Installation über Check &amp; Enable legal und sicher?</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_TEXT_3">
+        <target></target>
+        <source>Der Test umfasst sowohl die komplexe Trusted Platform Module Thematik, wie auch die verbaute oder
+            angeschlossene Hardware und wichtige Konfigurationen. Folgende Hardware und Konfigurationen werden dabei
+            untersucht: CPU, Arbeitsspeicher, Festplatte, Bildschirmauflösung, Grafikkarte, DirectX12, WDDM2, TPM2.0,
+            UEFI, SecureBoot. Werden die Systemvoraussetzungen von Windows 11 nicht erfüllt, erfolgt sofort eine
+            Meldung. Der Nutzer erfährt so detailliert, welche Problematiken bestehen und ob man sie durch geänderte
+            Einstellungen oder andere Hardware beseitigen kann.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_HL_3">
+        <target></target>
+        <source>Was testet Windows 11 Check &amp; Enable überhaupt?</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_TEXT_2">
+        <target></target>
+        <source>Doch auch für einige inkompatible Systeme gibt es eine Hintertür! Wird „nur“ der Prozessor nicht
+            unterstützt oder wird TPM-2.0 nicht gefunden, kann Check &amp; Enable dennoch eine Installation ermöglichen!
+            Hier reicht z.B. der weit verbreitete, ältere TPM-1.20 Standard aus. Das Programm setzt per Klick 2
+            Registry-Werte und Sie können Windows 11 problemlos installieren. Bitte beachten Sie, dass Microsoft für
+            diesen Fall jede Gewähr ablehnt und sich einen Updatestopp vorbehält.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_HL_2">
+        <target></target>
+        <source>Ihre Chance auf Windows 11</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_TEXT_1">
+        <target></target>
+        <source>Windows 11 wird standardmäßig nur auf Computern installiert, die den Systemvoraussetzungen des
+            Betriebssystems entsprechen. Windows 11 Check &amp; Enable testet schnell und einfach, ob ein PC oder Laptop
+            kompatibel ist und meldet mögliche Probleme.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_HL_SUBCLAIM">
+        <target></target>
+        <source>Ist der PC bereit für Windows 11? Und wenn nicht: Möchten Sie dennoch installieren?</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_HL_CLAIM">
+        <target></target>
+        <source>Windows 11 Systemvoraussetzung testen und Installation ermöglichen</source>
+
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_FIRST_PRIZE">
+        <target></target>
+        <source>Hauptgewinn</source>
+
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_BURNING">
+        <target></target>
+        <source>Das neue Ashampoo® Burning Studio 22 kann auch Ihre Daten bequem und sicher brennen, kopiert CDs, DVDs
+            und Blu-ray-Discs problemlos und verfügt über erstklassige Multimedia-Funktionen!
+        </source>
+        Das neue Ashampoo® Burning Studio 22 kann auch Ihre Daten bequem und sicher brennen, kopiert CDs, DVDs und
+        Blu-ray-Discs problemlos und verfügt über erstklassigen Multimedia-Funktionen!
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_SHIRTS_2">
+        <target></target>
+        <source>Offizielle Ashampoo Shirts gibt es nicht im Handel, sondern nur zu besonderen Anlässen von uns! Sichern
+            Sie sich ein seltenes Exemplar von unseren kultigen Baumwoll-Shirts!
+        </source>
+        Offizielle Ashampoo Shirts gibt es nicht im Handel, sondern nur zu besonderen Anlässen von uns! Sichern sie sich
+        ein seltenes Exemplar von unseren kultigen Baumwoll-Shirts!
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_HOODIES_2">
+        <target></target>
+        <source>Freuen Sie sich über coole Sammlerstücke! Unsere Ashampoo-Hoodies sind ebenso rar wie flauschig und sind
+            eigentlich nur für uns selbst und Partner. Und vielleicht bald für Sie!
+        </source>
+        Freuen Sie sich über coole Sammlerstücke! Unser Ashampoo-Hoodies sind ebenso rar wie flauschig und sind
+        eigentlich nur für uns selbst und Partner. Und vielleicht bald für Sie!
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_WO">
+        <target></target>
+        <source>Machen Sie Windows schneller, schlanker und produktiver! Holen Sie das Letzte aus Ihrem Rechner heraus,
+            stoppen Sie Datenschnüffelei und lassen Sie ihn laufen wie frisch installiert!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_BACKUP">
+        <target></target>
+        <source>Die brandneue Version unseres bewährten Backup-Programms für Sie! Bleiben Sie sicher vor Viren,
+            Windows-Problemen und Hardware-Fehlern! Läuft natürlich auch unter Windows 11.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_SHIRTS">
+        <target></target>
+        <source>Ashampoo Shirts</source>
+
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_HOODIES">
+        <target></target>
+        <source>Ashampoo Hoodies</source>
+
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_AIR_PODS_2">
+        <target></target>
+        <source>Die AirPods Pro sind extrem leichte Noise Cancelling Kopfhörer. Sie blenden Ihre Umgebung aus, sodass
+            Sie sich ganz auf das konzentrieren können, was Sie hören. Genießen Sie ausschließlich nur Ihre Musik,
+            Podcasts oder Anrufe!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_LP_HL_22ANNIVERSARY_ANSWER2">
+        <target></target>
+        <source>22 Monate</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_7">
+        <target></target>
+        <source>Das kommende Windows enthält eine Reihe wichtiger Verbesserungen insbesondere im Grafik- und
+            Sound-System. Mit dem dafür optimierten Audials one 2022 wird die Leistung Ihres PCs noch optimaler
+            ausgenutzt, um perfekte Musik- und Videoaufnahmen für Dich zu erstellen. Audials one 2022 ist aber natürlich
+            auch auf Windows 10 voll funktionsfähig!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_7">
+        <target></target>
+        <source>Bereit für Windows 11</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_2">
+        <target></target>
+        <source>Audials als Webbrowser verwenden und mit dem brandneuen Aufnahmeplaner im Hintergrund supereinfach
+            dutzende Filme speichern
+        </source>
+        Audials als Webbrowser verwenden und mit dem brandneuen Aufnahmeplaner im
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_6">
+        <target></target>
+        <source>Kommen auch Sie in den Genuss unvergleichlicher Soundqualität. Bei vielen Titeln unterstützen die
+            Anbieter Streaming in 5.1 Mehrkanal-Audio. Mit Audials 2022 machen Sie sich das zunutze und nehmen in
+            Kinoqualität auf, selbst wenn Ihr PC dies nicht unterstützt.
+        </source>
+        Kommen auch Sie in den Genuss unvergleichlicher Soundqualität. Bei vielen Titeln unterstützen die Anbieter
+        Streaming in 5.1 Mehrkanal-Audio. Mit Audials 2022 machen Sie sich das zunutze und nimmen in Kinoqualität auf,
+        selbst wenn Ihr PC dies nicht unterstützt.
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_SUB">
+        <target></target>
+        <source>Mit Netflix, Amazon Video, Disney+, YouTube &amp; mehr in perfekter Qualität aufnehmen</source>
+        Mit Netflix, Amazon Video, Disney+, Youtube &amp; mehr in perfekter Qualität aufnehmen
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_6">
+        <target></target>
+        <source>Neuer Videoplayer mit Untertitel, Zeitlupe, Schnellvorlauf &amp; mehr!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_5">
+        <target></target>
+        <source>Großartigen Netflix 5.1 Surround-Sound erleben</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_4">
+        <target></target>
+        <source>Schwarze Balken in aufgenommenen Filmen pixelgenau ausschneiden</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_1">
+        <target></target>
+        <source>Streaming-Dienste, Mediatheken und TV alle auf einmal durchsuchen</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_DETAILS">
+        <target></target>
+        <source>Videos in Spitzenqualität speichern</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_6">
+        <target></target>
+        <source>Großartiger Netflix 5.1 Surround-Sound</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_5">
+        <target></target>
+        <source>Finden Sie Untertitel zu allen Filmen in allen Sprachen und fügen Sie sie ohne Mühe zeitlich exakt Ihren
+            Aufnahmen hinzu. Einfaches Anklicken genügt, Audials fügt sie für Sie automatisch ein.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_5">
+        <target></target>
+        <source>Untertitel-Suchmaschine</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_4">
+        <target></target>
+        <source>Für mit Audials aufgenommene Videos gilt: Die Software erkennt vollautomatisch, über welche Bereiche
+            sich Trailer oder Werbung erstrecken und färbt sie gut erkennbar im Videoschnitt-Editor ein. So können Sie
+            sie leicht entfernen!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_4">
+        <target></target>
+        <source>Werbung automatisch erkennen &amp; entfernen</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_3">
+        <target></target>
+        <source>Schneiden Sie Werbung, Trailer und Zusammenfassungen präzise aus. Bearbeiten Sie Ihre Videos wie ein
+            Profi! Zoomen Sie beliebig bis hin zu Einzelbildern, und entfernen Sie bequem und präzise unerwünschte
+            Sequenzen.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_3">
+        <target></target>
+        <source>Videoschnitt-Editor</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_2">
+        <target></target>
+        <source>Für das automatische Speichern mehrerer Filme nacheinander können Sie den neuen Webbrowser ebenfalls
+            verwenden. Suchen Sie in Audials nach Videos und füge sie der Film-Liste hinzu. Der Aufnahmeplaner wird sie
+            dann direkt in Audials im Hintergrund abspielen. Speichern Sie über Nacht eine riesige Sammlung an Filmen!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_2">
+        <target></target>
+        <source>Schneller &amp; einfacher Aufnahmeplaner</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_1">
+        <target></target>
+        <source>Spielen Sie Videostreaming aller Anbieter direkt in Audials ab und nehmen Sie alles auf, doppelt so
+            schnell, dutzende Filme auf einmal! Diese Weltneuheit ermöglicht Ihnen Aufnahmen in unvergleichlicher
+            Qualität.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_1">
+        <target></target>
+        <source>Genial: Aufnahme viel einfacher &amp; schneller</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING">
+        <target></target>
+        <source>Der beste Streaming-Rekorder - Audials one 2022!</source>
+
+    </translation>
+</project>

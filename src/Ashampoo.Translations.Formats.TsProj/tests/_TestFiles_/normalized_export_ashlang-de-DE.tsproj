@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project tsversion="7" target_language="de-DE" author="Ashampoo" mail="translations@ashampoo.com" name="peru" comment=""
+         version="1.0.0.204" source_language="en-US" country_name="Deutschland"
+         creation_tool="Ashampoo Translation Studio" creation_tool_version="1.8.20.41">
+    <component pluginguid="{F0D8F625-2EE3-4C84-96EC-BFBDD4946878}">
+        <translation id="peru.CLocale.sign.negative">
+            <comment>Sign for negative numbers. E.g. "-" in english as in "-12".</comment>
+            <source>-</source>
+            <target>-</target>
+        </translation>
+        <translation id="peru.CSystem.CreateUniqueFileFailed">
+            <source>Error creating unique file name.</source>
+            <target>Fehler beim Erzeugen eines eindeutigen Dateinamens</target>
+        </translation>
+        <translation id="peru.dataSize.MB">
+            <source>MB</source>
+            <target>MB</target>
+        </translation>
+        <translation id="peru.CFileSystem.shellDeleteUndoable">
+            <source>Error deleting the file '%FILE%' (%MSG%).</source>
+            <target>Fehler beim Löschen von Datei '%FILE%' (%MSG%).</target>
+        </translation>
+        <translation id="peru.CFileNotFoundError.GeneralDesc">
+            <source>The file was not found.</source>
+            <target>Die Datei wurde nicht gefunden.</target>
+        </translation>
+        <translation id="peru.CLocale.currencyDigitGroupSize">
+            <comment>Number of characters in a digit group of a large money value. E.g. in english it would be 3 because
+                large money values are divided into groups of 3 as in "964,452,776 $". You can translate this with an
+                empty text if grouping is not used in your language.
+            </comment>
+            <source>3</source>
+            <target>3</target>
+        </translation>
+        <translation id="peru.CLocale.timeFormat.hoursMinutesSecondsMillis">
+            <comment>time format containing hours, minutes, seconds and milliseconds. Possible place holders:
+                i - hours (0-11)
+                ii - hours (00-11), padded with leading zero if necessary
+                h - hours (0-23)
+                hh - hours (00-23), padded with leading zero if necessary
+                m - minutes (0-59)
+                mm - minutes (00-59), padded with leading zero if necessary
+                s - seconds (0-59)
+                ss - seconds (00-59), padded with leading zero if necessary
+                l - milliseconds (0-999)
+                ll - milliseconds (000-999), padded with leading zeros if necessary
+                a - american-style "am" or "pm" (or equivalent), depending on whether it is morning or afternoon
+            </comment>
+            <source>hh:mm:ss.ll</source>
+            <target>hh:mm:ss.ll</target>
+        </translation>
+        <translation id="peru.CLocale.dateFormat.mid">
+            <comment>Medium-sized date format. Possible place holders:
+                D - day of the month (1-31)
+                DD - day of the month (00-31), padded with leading zero if necessary
+                DDD - day of the month as short word (abbreviated). E.g. "Mon" for "Monday"
+                DDDD - day of the month as normal word. E.g. "Monday"
+                M - month (1-12)
+                MM - month (01-12), padded with leading zero if necessary
+                MMM - month as short word (abbreviated). E.g. "Jan" for "January"
+                MMMM - month as normal word. E.g. "January"
+                YY - 2-digit year. E.g. "78" for "1978"
+                YYYY - 4-digit year. E.g. "1978"
+            </comment>
+            <source>D MMM, YYYY</source>
+            <target>D MMM, YYYY</target>
+        </translation>
+        <translation id="peru.gui.CImageConversionError.Desc">
+            <source>Error converting image data (%DETAILS%).</source>
+            <target>Fehler beim konvertieren der Bilddaten (%DETAILS%).</target>
+        </translation>
+        <translation id="peru.CLocale.decimalSeparator">
+            <comment>Decimal separator for numbers. E.g. for english it would be "." as in "107.23"</comment>
+            <source>.</source>
+            <target>.</target>
+        </translation>
+        <translation id="peru.CLocale.timeFormat.timeOfDay.pm">
+            <comment>Included in time strings when the time is in the afternoon/evening. E.g. in US english it is "pm"
+                as in "5 pm" (five o'clock in the afternoon). You can translate this with an empty text if such a word
+                is not used in your language.
+            </comment>
+            <source>pm</source>
+            <target>pm</target>
+        </translation>
+        <translation id="peru.CLocale.digitGroupSeparator">
+            <comment>Used to separate the digits of large numbers into groups. E.g. in english it would be "," as in
+                "964,452,776". You can translate this with an empty text if grouping is not used in your language.
+            </comment>
+            <source>,</source>
+            <target>,</target>
+        </translation>
+        <translation id="peru.filesystem.smart.Documents">
+            <source>Document files</source>
+            <target>Dokumentdateien</target>
+        </translation>
+        <translation id="peru.dataSize.TB">
+            <source>TB</source>
+            <target>TB</target>
+        </translation>
+        <translation id="peru.dataSize.Bytes">
+            <source>Bytes</source>
+            <target>Bytes</target>
+        </translation>
+        <translation id="peru.CFileSystem.DeleteFolderFailed">
+            <source>Error deleting the folder '%FOLDER%' (%MSG%).</source>
+            <target>Fehler beim Löschen von Order '%FOLDER%' (%MSG%).</target>
+        </translation>
+        <translation id="peru.CFileSystem.CreateFolderFailed">
+            <source>Error creating the folder '%DIR%' (%MSG%).</source>
+            <target>Fehler beim Erstellen des Ordners '%DIR%' (%MSG%).</target>
+        </translation>
+        <translation id="peru.CFileSystem.CopyFileFailed">
+            <source>Error copying file '%SRC%' to '%DEST%' (%MSG%).</source>
+            <target>Fehler beim Kopieren der Datei '%SRC%' nach '%DEST%' (%MSG%)</target>
+        </translation>
+        <translation id="peru.CSystem.MoveFileFailed">
+            <source>Error moving file '%SRC%' to '%DEST%'.</source>
+            <target>Fehler beim Verschieben der Datei '%SRC%' nach '%DEST%'.</target>
+        </translation>
+        <translation id="peru.CLocale.sign.positive">
+            <comment>Sign for positive numbers. E.g. "+" in english as in "+12".</comment>
+            <source>+</source>
+            <target>+</target>
+        </translation>
+        <translation id="peru.CFileAccessDeniedError.Desc">
+            <source>The access of the file '%FILE%' was denied.</source>
+            <target>Der Zugriff auf die Datei '%FILE%' wurde nicht erlaubt.</target>
+        </translation>
+        <translation id="peru.CFileTypesManager.ImageFiles">
+            <source>Image Files</source>
+            <target>Bild Dataien</target>
+        </translation>
+        <translation id="peru.gui.CImageConversionError.Desc.NoDetails">
+            <source>Error converting image data.</source>
+            <target>Fehler beim konvertieren der Bilddaten</target>
+        </translation>
+        <translation id="peru.error.hostNotFound">
+            <source>Host not found</source>
+            <target>Host nicht gefunden</target>
+        </translation>
+        <translation id="peru.CLocale.timeFormat.hoursMinutesSeconds">
+            <comment>time format containing hours, minutes and seconds. Possible place holders:
+                i - hours (0-11)
+                ii - hours (00-11), padded with leading zero if necessary
+                h - hours (0-23)
+                hh - hours (00-23), padded with leading zero if necessary
+                m - minutes (0-59)
+                mm - minutes (00-59), padded with leading zero if necessary
+                s - seconds (0-59)
+                ss - seconds (00-59), padded with leading zero if necessary
+                l - milliseconds (0-999)
+                ll - milliseconds (000-999), padded with leading zeros if necessary
+                a - american-style "am" or "pm" (or equivalent), depending on whether it is morning or afternoon
+            </comment>
+            <source>hh:mm:ss</source>
+            <target>hh:mm:ss</target>
+        </translation>
+        <translation id="peru.CFileSystemManager.MoveFolderFailed.FolderExists">
+            <source>Error moving folder '%SRC%' to '%DEST%'. The folder already exists.</source>
+            <target>Fehler beim Verschieben von Ordner '%SRC%' nach '%DEST%'. Der Ordner ist bereits vorhanden.</target>
+        </translation>
+        <translation id="peru.CFileTypesManager.SystemFiles">
+            <source>System Files</source>
+            <target>System Dateien</target>
+        </translation>
+        <translation id="peru.CLocale.digitGroupSize">
+            <comment>Number of characters in a digit group of a large number. E.g. in english it would be 3 because
+                large numbers are divided into groups of 3 as in "964,452,776". You can translate this with an empty
+                text if grouping is not used in your language.
+            </comment>
+            <source>3</source>
+            <target>3</target>
+        </translation>
+        <translation id="peru.CFileSystemManager.CopyFile.Error.FileExists">
+            <source>Error copying file '%SRC%' to '%DEST%'. The file already exists.</source>
+            <target>Fehler beim Kopieren von Datei '%SRC%' nach '%DEST%'. Die ist bereits vorhanden.</target>
+        </translation>
+        <translation id="peru.CLocale.dateFormat.short">
+            <comment>Short date format. Possible place holders:
+                D - day of the month (1-31)
+                DD - day of the month (00-31), padded with leading zero if necessary
+                DDD - day of the month as short word (abbreviated). E.g. "Mon" for "Monday"
+                DDDD - day of the month as normal word. E.g. "Monday"
+                M - month (1-12)
+                MM - month (01-12), padded with leading zero if necessary
+                MMM - month as short word (abbreviated). E.g. "Jan" for "January"
+                MMMM - month as normal word. E.g. "January"
+                YY - 2-digit year. E.g. "78" for "1978"
+                YYYY - 4-digit year. E.g. "1978"
+            </comment>
+            <source>MM/DD/YYYY</source>
+            <target>MM/DD/YYYY</target>
+        </translation>
+        <translation id="peru.filesystem.smart.Unknown">
+            <source>Unknown</source>
+            <target>Unbekannt</target>
+        </translation>
+        <translation id="peru.filesystem.smart.Movies">
+            <source>Movie files</source>
+            <target>Filmdateien</target>
+        </translation>
+        <translation id="peru.CDisplayInformation.MonitorHeight.Message">
+            <source>%APPNAME% is designed for a minimum vertical screen resolution of %YRES% pixels at a scaling of
+                %DPISCALE% DPI. To avoid graphical problems please switch to a higher resolution.
+            </source>
+            <target>%APPNAME% ist für eine minimale vertikale Bildschirmauflösung von %YRES% Pixel bei einer Skalierung
+                von %DPISCALE% DPI ausgelegt. Wechseln Sie bitte auf eine höhere Auflösung, um Probleme zu vermeiden.
+            </target>
+        </translation>
+        <translation id="peru.CFileTypesManager.VideoFiles">
+            <source>Video Files</source>
+            <target>Video Dateien</target>
+        </translation>
+        <translation id="peru.CLocale.timeFormat.hoursMinutes">
+            <comment>time format containing hours and minutes. Possible place holders:
+                i - hours (0-11)
+                ii - hours (00-11), padded with leading zero if necessary
+                h - hours (0-23)
+                hh - hours (00-23), padded with leading zero if necessary
+                m - minutes (0-59)
+                mm - minutes (00-59), padded with leading zero if necessary
+                s - seconds (0-59)
+                ss - seconds (00-59), padded with leading zero if necessary
+                l - milliseconds (0-999)
+                ll - milliseconds (000-999), padded with leading zeros if necessary
+                a - american-style "am" or "pm" (or equivalent), depending on whether it morning or afternoon
+            </comment>
+            <source>hh:mm</source>
+            <target>hh:mm</target>
+        </translation>
+        <translation id="peru.CLocale.currencyDigitGroupSeparator">
+            <comment>Used to separate the digits of large money values into groups. E.g. in english it would be "," as
+                in "964,452,776 $". You can translate this with an empty text if grouping is not used in your language.
+            </comment>
+            <source>,</source>
+            <target>,</target>
+        </translation>
+        <translation id="peru.CSystem.MoveFolderFailed">
+            <source>Error moving folder '%SRC%' to '%DEST%'.</source>
+            <target>Fehler beim Verschieben des Ordners '%SRC%' nach '%DEST%'.</target>
+        </translation>
+        <translation id="peru.filesystem.smart.win32.CWindowedProcessListener.AbortButton">
+            <source>Abort</source>
+            <target>Abbrechen</target>
+        </translation>
+        <translation id="peru.CFileSystem.CreateFolderFailed.FolderExists">
+            <source>Error creating the folder '%DIR%' (%MSG%).</source>
+            <target>Fehler beim Erstellen des Ordners '%DIR%' (%MSG%).</target>
+        </translation>
+        <translation id="peru.CFileTypesManager.CompressedFiles">
+            <source>Compressed Files</source>
+            <target>Komprimierte Dateien</target>
+        </translation>
+        <translation id="peru.CDNSNameResolver.UnsupportedNamingScheme">
+            <source>The network name '%URI%' could not be resolved to an address because the naming scheme is not
+                supported.
+            </source>
+            <target>Der Netzwerkname '%URI%' konnte nicht aufgelöst werden, da das Schema nicht unterstützt wird.
+            </target>
+        </translation>
+        <translation id="peru.CFileAccessDeniedError.GeneralDesc">
+            <source>The access of the file was denied.</source>
+            <target>Der Zugriff auf die Datei wurde nicht erlaubt.</target>
+        </translation>
+        <translation id="peru.CFileFormatNotSupportedError.Desc">
+            <source>The format of file '%FILE%' is not supported.</source>
+            <target>Das Format der Datei '%FILE%' ist nicht unterstützt.</target>
+        </translation>
+        <translation id="peru.CLocale.dateFormat.long">
+            <comment>Long date format. Possible place holders:
+                D - day of the month (1-31)
+                DD - day of the month (00-31), padded with leading zero if necessary
+                DDD - day of the month as short word (abbreviated). E.g. "Mon" for "Monday"
+                DDDD - day of the month as normal word. E.g. "Monday"
+                M - month (1-12)
+                MM - month (01-12), padded with leading zero if necessary
+                MMM - month as short word (abbreviated). E.g. "Jan" for "January"
+                MMMM - month as normal word. E.g. "January"
+                YY - 2-digit year. E.g. "78" for "1978"
+                YYYY - 4-digit year. E.g. "1978"
+            </comment>
+            <source>MMMM D, YYYY</source>
+            <target>MMMM D, YYYY</target>
+        </translation>
+        <translation id="peru.CDisplayInformation.MonitorWidth.Message">
+            <source>%APPNAME% is designed for a minimum horizontal screen resolution of %XRES% pixels at a scaling of
+                %DPISCALE% DPI. To avoid graphical problems please switch to a higher resolution.
+            </source>
+            <target>%APPNAME% ist für eine minimale horizontale Bildschirmauflösung von %XRES% Pixel bei einer
+                Skalierung von %DPISCALE% DPI ausgelegt. Wechseln Sie bitte auf eine höhere Auflösung, um Probleme zu
+                vermeiden.
+            </target>
+        </translation>
+        <translation id="peru.CLocale.dateTimeFormat">
+            <comment>Specified how date and time are combined. For example, if date should precede time and both should
+                be separated by "," then you would write "E, T". The result will look like this: "08/01/2003, 15:45".
+                Possible place holders:
+                E - date
+                T - time
+            </comment>
+            <source>E, T</source>
+            <target>E, T</target>
+        </translation>
+        <translation id="peru.CLocale.timeFormat.timeOfDay.am">
+            <comment>Included in time strings when the time is in the morning. E.g. in US english it is "am" as in "10
+                am" (ten in the morning). You can translate this with an empty text if such a word is not used in your
+                language.
+            </comment>
+            <source>am</source>
+            <target>am</target>
+        </translation>
+        <translation id="peru.CLocale.currencyFormat.positive">
+            <comment>Format of positive money strings. N is replaced with the number, C is replaced with the currency
+                symbol. E.g. if 9 dollars and 12 cents is represented like this "9.12$" then the string would be "NC".
+                For "9.12 $" (with space) it would be "N C", For "$9.12" it would be "CN"
+            </comment>
+            <source>NC</source>
+            <target>NC</target>
+        </translation>
+        <translation id="peru.CFileTypesManager.AudioFiles">
+            <source>Audio Files</source>
+            <target>Audio Dateien</target>
+        </translation>
+        <translation id="peru.CLocale.currencyDecimalSeparator">
+            <comment>Decimal separator for money values. E.g. for english it would be "." as in "9.23 $"</comment>
+            <source>.</source>
+            <target>.</target>
+        </translation>
+        <translation id="peru.CDisplayInformation.MonitorSize.Caption">
+            <source>Screen resolution not supported</source>
+            <target>Bildschirmauflösung nicht unterstützt</target>
+        </translation>
+        <translation id="pop.digitalCameraFolderLabel">
+            <source>Camera</source>
+            <target>Kamera</target>
+        </translation>
+        <translation id="peru.CFileSystem.DeleteFileFailed">
+            <source>Error deleting the file '%FILE%' (%MSG%).</source>
+            <target>Fehler beim Löschen von Datei '%FILE%' (%MSG%).</target>
+        </translation>
+        <translation id="peru.CVolumeManager.GetStoragePropertiesFailed">
+            <source>Error getting the storage properties for drive letter '%DRIVE%' (%MSG%).</source>
+            <target>Fehler beim Lesen der Speicher Eigenschaften für Laufwerksbuchstaben '%DRIVE%' (%MSG%).</target>
+        </translation>
+        <translation id="peru.filesystem.smart.Images">
+            <source>Image files</source>
+            <target>Bilddateien</target>
+        </translation>
+        <translation id="peru.CFileSystemManager.MoveFolderFailed">
+            <source>Error moving folder '%SRC%' to '%DEST%'.</source>
+            <target>Fehler beim Verschieben von Ordner '%SRC%' nach '%DEST%'.</target>
+        </translation>
+        <translation id="peru.dataSize.KB">
+            <source>KB</source>
+            <target>KB</target>
+        </translation>
+        <translation id="peru.CLocale.currencyFormat.negative">
+            <comment>Format of negativemoney strings. N is replaced with the number, C is replaced with the currency
+                symbol. E.g. if minus 9 dollars and 12 cents is represented like this "-9.12$" then the string would be
+                "-NC". For "-9.12 $" (with space) it would be "-N C", For "- $9.12" it would be "- CN"
+            </comment>
+            <source>-NC</source>
+            <target>-NC</target>
+        </translation>
+        <translation id="peru.CFileSystem.CreateFolderFailed.FolderIsFile">
+            <source>Error creating the folder '%DIR%' - given uri is not a folder.</source>
+            <target>Fehler beim Erstellen des Ordners '%DIR%' - die URI ist kein Verzeichnis.</target>
+        </translation>
+        <translation id="peru.CFileSystemManager.MoveFolderFailed.CreateFolder">
+            <source>Error moving folder '%SRC%' to '%DEST%'. Could not create the folder.</source>
+            <target>Fehler beim Verschieben von Ordner '%SRC%' nach '%DEST%''. Konnte Ordner nicht erstellen.</target>
+        </translation>
+        <translation id="peru.CDisplayInformation.MonitorSize.Message">
+            <source>%APPNAME% is designed for a minimum screen resolution of %XRES% x %YRES% at a scaling of %DPISCALE%
+                DPI. To avoid graphical problems please switch to a higher resolution.
+            </source>
+            <target>%APPNAME% ist für eine Bildschirmauflösung von mindestens %XRES% x %YRES% bei einer Skalierung von
+                %DPISCALE% DPI ausgelegt. Wechseln Sie bitte auf eine höhere Auflösung, um Probleme zu vermeiden.
+            </target>
+        </translation>
+        <translation id="peru.CFileTypesManager.TextFiles">
+            <source>Text Files</source>
+            <target>Text Dateien</target>
+        </translation>
+        <translation id="peru.dataSize.GB">
+            <source>GB</source>
+            <target>GB</target>
+        </translation>
+        <translation id="peru.filesystem.smart.Music">
+            <source>Music files</source>
+            <target>Musikdateien</target>
+        </translation>
+        <translation id="peru.filesystem.smart.win32.CWindowedProcessListener.SmartScan">
+            <source>Performing Smart Scan on Directories:</source>
+            <target>Führe Smart-Scan auf Verzeichnisse aus:</target>
+        </translation>
+        <translation id="peru.CFileFormatNotSupportedError.Desc.FileUnknown">
+            <source>The file format is not supported.</source>
+            <target>Das Dateiformat ist nicht unterstützt.</target>
+        </translation>
+        <translation id="peru.CFileNotFoundError.Desc">
+            <source>The file '%FILE%' was not found.</source>
+            <target>Die Datei '%FILE%' wurde nicht gefunden.</target>
+        </translation>
+    </component>
+    <properties/>
+</project>

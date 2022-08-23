@@ -1,0 +1,399 @@
+{
+  "label": "",
+  "settings": {
+    "save": "",
+    "cancel": "",
+    "help": "",
+    "tabs": {
+      "general": {
+        "title": "",
+        "application": "",
+        "autostart": "",
+        "splashScreen": "",
+        "crashReports": "",
+        "crashReportsAutomatic": "",
+        "monitorBrowsers": "",
+        "monitorBrowsersText": "",
+        "browsers": {
+          "edge": "",
+          "firefox": "",
+          "chrome": ""
+        },
+        "service": "",
+        "serviceSettings": "",
+        "myAshampoo": "",
+        "supportVersion": "",
+        "defaultSettings": "",
+        "restoreDefaultSettings": ""
+      },
+      "language": {
+        "title": "",
+        "search": ""
+      },
+      "screenshot": {
+        "title": "",
+        "capture": "",
+        "captureSound": "",
+        "zoom": "",
+        "output": "",
+        "outputFormat": "",
+        "outputFormats": {
+          "png": "",
+          "jpg": "",
+          "pdf": "",
+          "psd": ""
+        },
+        "outputDir": "",
+        "outputFilename": "",
+        "outputFilenamePlaceholders": {
+          "dateShort": "",
+          "dateLong": "",
+          "time": "",
+          "sessionCount": "",
+          "screenshotCount": "",
+          "windowName": ""
+        },
+        "outputType": "",
+        "outputApp": "",
+        "outputAppNotSupported": "",
+        "outputTypes": {
+          "editor": "",
+          "save": "",
+          "clipbopard": "",
+          "app": ""
+        }
+      },
+      "hotkeys": {
+        "title": "",
+        "monitorKeys": "",
+        "printKey": "",
+        "videoInfo": "",
+        "inUse": "",
+        "notAllowed": "",
+        "hotkeys": {
+          "scan": "",
+          "fixedSize": "",
+          "rectSelect": "",
+          "ocr": ""
+        },
+        "modificators": {
+          "ctrl": "",
+          "shift": "",
+          "alt": "",
+          "altGr": ""
+        },
+        "reset": ""
+      },
+      "toolbar": {
+        "title": "",
+        "appearance": "",
+        "showToolbar": "",
+        "showTouch": "",
+        "showTooltips": "",
+        "position": "",
+        "positions": {
+          "top": "",
+          "left": "",
+          "right": "",
+          "bottom": ""
+        }
+      },
+      "editor": {
+        "title": "",
+        "chooseDisplay": "",
+        "chooseDisplayInfo": "",
+        "editorDisplay": "",
+        "alwayOnTop": "",
+        "displays": {
+          "main": "",
+          "screenshot": "",
+          "specific": ""
+        }
+      },
+      "share": {
+        "title": "",
+        "export": "",
+        "remove": "",
+        "openPsd": "",
+        "openPsdApp": "",
+        "openPsdAppNotSupported": ""
+      }
+    }
+  },
+  "tray": {
+    "SCREENSHOT_EVERYTHING": "",
+    "SCAN_SCREENS": "",
+    "FREE_SELECT": "",
+    "RECT_SELECT": "",
+    "DROPPER": "",
+    "RECORD_VIDEO": "",
+    "TIMER_INTERVAL": "",
+    "SETTINGS": "",
+    "HELP": "",
+    "SERVICE": "",
+    "SERVICE_DEALS": "",
+    "SERVICE_REGISTER": "",
+    "SERVICE_MORE": "",
+    "EXIT": ""
+  },
+  "misc": {
+    "cancel": ""
+  },
+  "tooltip": {
+    "scan": "",
+    "record": "",
+    "settings": "",
+    "editor": "",
+    "more": "",
+    "back": "",
+    "free": "",
+    "dropper": "",
+    "timer": "",
+    "ocr": "",
+    "fixed": "",
+    "outputFolder": "",
+    "exit": ""
+  },
+  "scanOverlay": {
+    "fullscreen": "",
+    "selectRect": "",
+    "repeat": "",
+    "reset": ""
+  },
+  "rectOverlay": {
+    "recordStarting": "",
+    "editScrollArea": ""
+  },
+  "detailOverlay": {
+    "mode": {
+      "size": {
+        "title": "",
+        "description": "",
+        "presetPlaceholder": "",
+        "start": ""
+      },
+      "timer": {
+        "title": "",
+        "start": "",
+        "single": "",
+        "interval": "",
+        "countdown": "",
+        "cancel": ""
+      }
+    }
+  },
+  "editor": {
+    "settings": "",
+    "exit": "",
+    "sendEmail": "",
+    "export": "",
+    "exportSuccess": "",
+    "print": "",
+    "toClipboard": "",
+    "toClipboardSuccess": "",
+    "imageFromClipboard": "",
+    "layerFromClipboard": "",
+    "imageFromHardDrive": "",
+    "selectNextLayer": "",
+    "selectPreviousLayer": "",
+    "layerUp": "",
+    "layerDown": "",
+    "layerToTop": "",
+    "layerToBottom": "",
+    "layerCopy": "",
+    "layerCut": "",
+    "layerRemove": "",
+    "saveProject": "",
+    "saveProjectSuccess": "",
+    "loadProject": "",
+    "discardProject": "",
+    "unsavedProgress": "",
+    "addToCanvas": "",
+    "undo": "",
+    "redo": "",
+    "selectLayer": "",
+    "menu": {
+      "file": "",
+      "edit": "",
+      "tools": "",
+      "help": ""
+    },
+    "dialogs": {
+      "unsavedProgress": {
+        "title": "",
+        "content": "",
+        "exit": "",
+        "saveExit": "",
+        "cancel": ""
+      },
+      "discardProject": {
+        "title": "",
+        "content": "",
+        "remove": "",
+        "cancel": ""
+      },
+      "discardMultipleProjects": {
+        "title": "",
+        "content": "",
+        "remove": "",
+        "cancel": ""
+      }
+    },
+    "tools": {
+      "group_general": "",
+      "group_most_used": "",
+      "group_transformations": "",
+      "group_pencils": "",
+      "group_shapes": "",
+      "group_arrows": "",
+      "group_text": "",
+      "group_documentation": "",
+      "group_single": "",
+      "group_back": "",
+      "select": "",
+      "move": "",
+      "crop": "",
+      "scale": "",
+      "expandWorkspace": "",
+      "draw": "",
+      "rectangle": "",
+      "ellipse": "",
+      "straight_line": "",
+      "curved_line": "",
+      "straight_arrow": "",
+      "curved_arrow": "",
+      "text": "",
+      "note": "",
+      "multi_point_line": "",
+      "blur": "",
+      "erase": "",
+      "image": "",
+      "graphic": "",
+      "marker_pencil": "",
+      "marker_area": "",
+      "paint_bucket": "",
+      "numeration": ""
+    },
+    "toolAdditionals": {
+      "text": {
+        "typeNow": ""
+      }
+    },
+    "toolSettingsGroup": {
+      "general": "",
+      "stroke": "",
+      "fill": "",
+      "arrow": "",
+      "text": "",
+      "outline": "",
+      "graphic": "",
+      "highlight": "",
+      "nodes": "",
+      "more": ""
+    },
+    "toolSettings": {
+      "STROKE": "",
+      "STROKE_COLOR": "",
+      "STROKE_THICKNESS": "",
+      "STROKE_STYLE": "",
+      "FILL": "",
+      "FILL_COLOR": "",
+      "FILL_TOLERANCE": "",
+      "BORDER_RADIUS": "",
+      "SHADOW": "",
+      "ARROW_TYPE": "",
+      "BLUR_TYPE": "",
+      "BLUR_RADIUS": "",
+      "BLUR_THICKNESS": "",
+      "PATH_TYPE": "",
+      "TEXT_COLOR": "",
+      "FONT_SIZE": "",
+      "FONT": "",
+      "TEXT_ALIGNMENT": "",
+      "FONT_STYLE": "",
+      "OUTLINE": "",
+      "OUTLINE_THICKNESS": "",
+      "OUTLINE_COLOR": "",
+      "OUTLINE_GRADIENT": "",
+      "OUTLINE_GRADIENT_COLOR": "",
+      "ERASE_THICKNESS": "",
+      "ERASE_WITH_COLOR": "",
+      "ERASE_COLOR": "",
+      "MARKER_COLOR": "",
+      "MARKER_THICKNESS": "",
+      "MARKER_HIGHLIGHT": "",
+      "MARKER_HIGHLIGHT_COLOR": "",
+      "PAINT_BUCKET_MODE": "",
+      "GRADIENT_COLOR": "",
+      "NODE_IMAGE": "",
+      "NUMERATION_TYPE": "",
+      "NUMERATION_COUNT": "",
+      "OPACITY": "",
+      "NOTE_IMAGE": "",
+      "MIRROR_HORIZONTAL": "",
+      "MIRROR_VERTICAL": ""
+    },
+    "toolSettingsOptions": {
+      "STROKE_STYLE": {
+        "NORMAL": "",
+        "DASHED": "",
+        "DOTTED": "",
+        "DASH_DOT": "",
+        "DASH_DOT_DOT": "",
+        "OUTLINE": ""
+      },
+      "ARROW_TYPE": {
+        "FRONT": "",
+        "BACK": "",
+        "BOTH": ""
+      },
+      "TEXT_ALIGNMENT": {
+        "LEFT": "",
+        "CENTER": "",
+        "RIGHT": ""
+      },
+      "FONT_STYLE": {
+        "BOLD": "",
+        "ITALIC": "",
+        "UNDERLINE": ""
+      },
+      "BLUR_TYPE": {
+        "NORMAL": "",
+        "PIXELATE": ""
+      },
+      "PATH_TYPE_ID": {
+        "LINE": "",
+        "FREE": ""
+      },
+      "GRAPHIC_CATEGORY": {
+        "ALL": "",
+        "ARROWS": "",
+        "BUSINESS": "",
+        "FLAGS": "",
+        "FOOD": "",
+        "GARDENING_HOUSEWORK": "",
+        "HOLIDAYS": "",
+        "SMILEYS": "",
+        "SOCIAL": "",
+        "SYMBOLS": "",
+        "WEATHER": ""
+      },
+      "MARKER_COLOR": {
+        "GREEN": "",
+        "YELLOW": "",
+        "RED": "",
+        "BLUE": "",
+        "PINK": ""
+      },
+      "PAINT_BUCKET_MODE": {
+        "TRANSPARENT": "",
+        "FILL": "",
+        "GRADIENT": ""
+      },
+      "NUMERATION_TYPE": {
+        "NUMBERS": "",
+        "LETTERS": ""
+      }
+    }
+  }
+}

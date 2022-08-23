@@ -1,0 +1,399 @@
+{
+  "label": "English (English)",
+  "settings": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "help": "Help",
+    "tabs": {
+      "general": {
+        "title": "General",
+        "application": "Application",
+        "autostart": "Start with Windows",
+        "splashScreen": "Show splash screen on startup",
+        "crashReports": "Crash reports",
+        "crashReportsAutomatic": "Show error log on crashes",
+        "monitorBrowsers": "Monitor browsers",
+        "monitorBrowsersText": "Monitor browsers for images copied to memory and open them with Snap 14 automatically. You can set the way Snap 14 opens screenshots/images under the 'Screenshot' tab.",
+        "browsers": {
+          "edge": "Microsoft Edge",
+          "firefox": "Mozilla Firefox",
+          "chrome": "Google Chrome"
+        },
+        "service": "Service",
+        "serviceSettings": "Configure News",
+        "myAshampoo": "Show MyAshampoo",
+        "supportVersion": "Support/version",
+        "defaultSettings": "Default settings",
+        "restoreDefaultSettings": "Restore default settings"
+      },
+      "language": {
+        "title": "Language",
+        "search": "Search"
+      },
+      "screenshot": {
+        "title": "Screenshot",
+        "capture": "Capture",
+        "captureSound": "Play shutter sound when taking a screenshot",
+        "zoom": "Show zoom window at cursor position",
+        "output": "Output",
+        "outputFormat": "Output format",
+        "outputFormats": {
+          "png": "PNG image (.png)",
+          "jpg": "JPG image (.jpeg)",
+          "pdf": "PDF document (.pdf)",
+          "psd": "PSD Photoshop document (.psd)"
+        },
+        "outputDir": "Output directory",
+        "outputFilename": "Output file name",
+        "outputFilenamePlaceholders": {
+          "dateShort": "Date (short)",
+          "dateLong": "Date (long)",
+          "time": "Time",
+          "sessionCount": "Session counter",
+          "screenshotCount": "Screenshot counter",
+          "windowName": "Window name"
+        },
+        "outputType": "What should happen after taking a new screenshot or video?",
+        "outputApp": "Default system app",
+        "outputAppNotSupported": "Please select an executable file (.exe)",
+        "outputTypes": {
+          "editor": "Open in Editor",
+          "save": "Save to output directory",
+          "clipbopard": "Copy to clipboard",
+          "app": "Open with other app"
+        }
+      },
+      "hotkeys": {
+        "title": "Hotkeys",
+        "monitorKeys": "Monitor keys",
+        "printKey": "Take a screenshot of all displays, when the print key is pressed",
+        "videoInfo": "You can set hotkeys to manage video recordings after selecting the video recording function.",
+        "inUse": "Hotkey already in use.",
+        "notAllowed": "Hotkey is not allowed.",
+        "hotkeys": {
+          "scan": "Scan screens",
+          "fixedSize": "Fixed size",
+          "rectSelect": "Rectangular selection",
+          "ocr": "Extract text from screenshot (OCR)"
+        },
+        "modificators": {
+          "ctrl": "Ctrl",
+          "shift": "Shift",
+          "alt": "Alt",
+          "altGr": "AltGr"
+        },
+        "reset": "Restore default hotkeys"
+      },
+      "toolbar": {
+        "title": "Toolbar",
+        "appearance": "Appearance",
+        "showToolbar": "Show a toolbar at the edge of your screen",
+        "showTouch": "Show touch gripper",
+        "showTooltips": "Show tooltips",
+        "position": "Position of the toolbar",
+        "positions": {
+          "top": "Top",
+          "left": "Left",
+          "right": "Right",
+          "bottom": "Bottom"
+        }
+      },
+      "editor": {
+        "title": "Editor",
+        "chooseDisplay": "Editor display",
+        "chooseDisplayInfo": "Choose the display to open the editor window on. If the selected display is not connected, the editor window will open on the main display.",
+        "editorDisplay": "Editor display",
+        "alwayOnTop": "Keep always in the foreground",
+        "displays": {
+          "main": "Main display",
+          "screenshot": "The display, that the screenshot was taken on",
+          "specific": "Open on display"
+        }
+      },
+      "share": {
+        "title": "Share",
+        "export": "Export",
+        "remove": "Remove saved screenshot file after copying it to the clipboard or email",
+        "openPsd": "Open exported PSD files",
+        "openPsdApp": "Select app to open PSD files",
+        "openPsdAppNotSupported": "Please select an executable file (.exe)"
+      }
+    }
+  },
+  "tray": {
+    "SCREENSHOT_EVERYTHING": "Screenshot all screens",
+    "SCAN_SCREENS": "Scan screens",
+    "FREE_SELECT": "Free selection",
+    "RECT_SELECT": "Rectangular selection",
+    "DROPPER": "Select color from screen",
+    "RECORD_VIDEO": "Record video",
+    "TIMER_INTERVAL": "Timer/interval screenshots",
+    "SETTINGS": "Settings",
+    "HELP": "Help",
+    "SERVICE": "Service",
+    "SERVICE_DEALS": "Ashampoo Software Deals",
+    "SERVICE_REGISTER": "Register application",
+    "SERVICE_MORE": "Discover more products",
+    "EXIT": "Exit"
+  },
+  "misc": {
+    "cancel": "Cancel"
+  },
+  "tooltip": {
+    "scan": "Scan screen",
+    "record": "Record screen",
+    "settings": "Settings",
+    "editor": "Open editor",
+    "more": "More",
+    "back": "Back",
+    "free": "Free selection",
+    "dropper": "Dropper",
+    "timer": "Countdown / interval",
+    "ocr": "Text recognition",
+    "fixed": "Selection with fixed size",
+    "outputFolder": "Open output folder",
+    "exit": "Exit application"
+  },
+  "scanOverlay": {
+    "fullscreen": "Select fullscreen",
+    "selectRect": "Rectangular selection",
+    "repeat": "Repeat last selection",
+    "reset": "Reset"
+  },
+  "rectOverlay": {
+    "recordStarting": "Starting record...",
+    "editScrollArea": "Edit the selected area"
+  },
+  "detailOverlay": {
+    "mode": {
+      "size": {
+        "title": "Rectangular selection",
+        "description": "Create a rectangular selection by entering its dimensions. Your selection can be adjusted afterwards.",
+        "presetPlaceholder": "Select preset",
+        "start": "Create selection"
+      },
+      "timer": {
+        "title": "Timer",
+        "start": "Start",
+        "single": "Single screenshot",
+        "interval": "Interval",
+        "countdown": "Start / interval (seconds)",
+        "cancel": "Press [ESC] to quit interval capturings. Your screenshots will be opened in the editor."
+      }
+    }
+  },
+  "editor": {
+    "settings": "Settings",
+    "exit": "Exit",
+    "sendEmail": "Share screenshot via email",
+    "export": "Export image",
+    "exportSuccess": "Image exported.",
+    "print": "Print",
+    "toClipboard": "Copy to clipboard",
+    "toClipboardSuccess": "Copied to clipboard.",
+    "imageFromClipboard": "Insert image from clipboard",
+    "layerFromClipboard": "Insert object from clipboard",
+    "imageFromHardDrive": "Insert from hard drive",
+    "selectNextLayer": "Select next layer",
+    "selectPreviousLayer": "Select previous layer",
+    "layerUp": "Object one layer up",
+    "layerDown": "Object one layer down",
+    "layerToTop": "Object to foreground",
+    "layerToBottom": "Obejct to background",
+    "layerCopy": "Copy object",
+    "layerCut": "Cut object",
+    "layerRemove": "Remove object",
+    "saveProject": "Save project",
+    "saveProjectSuccess": "Project saved.",
+    "loadProject": "Load project",
+    "discardProject": "Remove project(s)",
+    "unsavedProgress": "Unsaved progress",
+    "addToCanvas": "Add to current canvas",
+    "undo": "Undo",
+    "redo": "Redo",
+    "selectLayer": "Select layer",
+    "menu": {
+      "file": "File",
+      "edit": "Edit",
+      "tools": "Tools",
+      "help": "Help"
+    },
+    "dialogs": {
+      "unsavedProgress": {
+        "title": "Close without saving?",
+        "content": "There are unsaved projects. Do you want to exit without saving?",
+        "exit": "Exit",
+        "saveExit": "Save and exit",
+        "cancel": "Cancel"
+      },
+      "discardProject": {
+        "title": "Remove project?",
+        "content": "You are about to remove the current project. All project files and the screenshot will be deleted. Do you want to continue?",
+        "remove": "Remove project",
+        "cancel": "Cancel"
+      },
+      "discardMultipleProjects": {
+        "title": "Remove %COUNT% projects?",
+        "content": "You are about to remove %COUNT% projects. Project files and the screenshots will be permanently deleted. Do you want to continue?",
+        "remove": "Remove projects",
+        "cancel": "Cancel"
+      }
+    },
+    "tools": {
+      "group_general": "General",
+      "group_most_used": "Most used",
+      "group_transformations": "Transformations",
+      "group_pencils": "Pencils and markers",
+      "group_shapes": "Shapes",
+      "group_arrows": "Arrows",
+      "group_text": "Text tools",
+      "group_documentation": "Documentation",
+      "group_single": "Single tool",
+      "group_back": "Back",
+      "select": "Select",
+      "move": "Move",
+      "crop": "Crop",
+      "scale": "Scale screenshot",
+      "expandWorkspace": "Expand workspace",
+      "draw": "Draw",
+      "rectangle": "Rectangle",
+      "ellipse": "Ellipse",
+      "straight_line": "Straight line",
+      "curved_line": "Curved line",
+      "straight_arrow": "Straight arrow",
+      "curved_arrow": "Curved arrow",
+      "text": "Text",
+      "note": "Note",
+      "multi_point_line": "Multi point line",
+      "blur": "Blur pencil",
+      "erase": "Erase",
+      "image": "Image",
+      "graphic": "Graphic",
+      "marker_pencil": "Marker pencil",
+      "marker_area": "Mark area",
+      "paint_bucket": "Fill area",
+      "numeration": "Numeration"
+    },
+    "toolAdditionals": {
+      "text": {
+        "typeNow": "Start typing now..."
+      }
+    },
+    "toolSettingsGroup": {
+      "general": "General",
+      "stroke": "Stroke",
+      "fill": "Fill",
+      "arrow": "Arrow",
+      "text": "Text",
+      "outline": "Outline",
+      "graphic": "Graphic",
+      "highlight": "Highlight",
+      "nodes": "Nodes",
+      "more": "More"
+    },
+    "toolSettings": {
+      "STROKE": "Stroke",
+      "STROKE_COLOR": "Color",
+      "STROKE_THICKNESS": "Thickness",
+      "STROKE_STYLE": "Stroke style",
+      "FILL": "Fill",
+      "FILL_COLOR": "Fill color",
+      "FILL_TOLERANCE": "Tolerance",
+      "BORDER_RADIUS": "Rounded corners",
+      "SHADOW": "Shadow",
+      "ARROW_TYPE": "Arrow type",
+      "BLUR_TYPE": "Type",
+      "BLUR_RADIUS": "Strength",
+      "BLUR_THICKNESS": "Thickness",
+      "PATH_TYPE": "Line type",
+      "TEXT_COLOR": "Color",
+      "FONT_SIZE": "Font size",
+      "FONT": "Font",
+      "TEXT_ALIGNMENT": "Alignment",
+      "FONT_STYLE": "Style",
+      "OUTLINE": "Outline",
+      "OUTLINE_THICKNESS": "Thickness",
+      "OUTLINE_COLOR": "Color",
+      "OUTLINE_GRADIENT": "Gradient",
+      "OUTLINE_GRADIENT_COLOR": "Gradient color",
+      "ERASE_THICKNESS": "Thickness",
+      "ERASE_WITH_COLOR": "Erase with color",
+      "ERASE_COLOR": "Color",
+      "MARKER_COLOR": "Color",
+      "MARKER_THICKNESS": "Thickness",
+      "MARKER_HIGHLIGHT": "Highlight",
+      "MARKER_HIGHLIGHT_COLOR": "Color",
+      "PAINT_BUCKET_MODE": "Mode",
+      "GRADIENT_COLOR": "Gradient color",
+      "NODE_IMAGE": "Background",
+      "NUMERATION_TYPE": "Numeration type",
+      "NUMERATION_COUNT": "Current counter",
+      "OPACITY": "OPACITY",
+      "NOTE_IMAGE": "Note image",
+      "MIRROR_HORIZONTAL": "Mirror horizontally",
+      "MIRROR_VERTICAL": "Mirror vertically"
+    },
+    "toolSettingsOptions": {
+      "STROKE_STYLE": {
+        "NORMAL": "Normal",
+        "DASHED": "Dashed",
+        "DOTTED": "Dotted",
+        "DASH_DOT": "Dash Dot",
+        "DASH_DOT_DOT": "Dash Dot Dot",
+        "OUTLINE": "Outline"
+      },
+      "ARROW_TYPE": {
+        "FRONT": "Front",
+        "BACK": "Back",
+        "BOTH": "Both"
+      },
+      "TEXT_ALIGNMENT": {
+        "LEFT": "Left",
+        "CENTER": "Center",
+        "RIGHT": "Right"
+      },
+      "FONT_STYLE": {
+        "BOLD": "Bold",
+        "ITALIC": "Italic",
+        "UNDERLINE": "Underline"
+      },
+      "BLUR_TYPE": {
+        "NORMAL": "Blur",
+        "PIXELATE": "Pixelate"
+      },
+      "PATH_TYPE_ID": {
+        "LINE": "Straight line",
+        "FREE": "Free"
+      },
+      "GRAPHIC_CATEGORY": {
+        "ALL": "All",
+        "ARROWS": "Arrows",
+        "BUSINESS": "Business",
+        "FLAGS": "Flags",
+        "FOOD": "Food",
+        "GARDENING_HOUSEWORK": "Gardening and housework",
+        "HOLIDAYS": "Holidays",
+        "SMILEYS": "Smileys",
+        "SOCIAL": "Social",
+        "SYMBOLS": "Symbols",
+        "WEATHER": "Weather"
+      },
+      "MARKER_COLOR": {
+        "GREEN": "Green",
+        "YELLOW": "Yellow",
+        "RED": "Red",
+        "BLUE": "Blue",
+        "PINK": "Pink"
+      },
+      "PAINT_BUCKET_MODE": {
+        "TRANSPARENT": "Transparent",
+        "FILL": "Fill",
+        "GRADIENT": "Gradient"
+      },
+      "NUMERATION_TYPE": {
+        "NUMBERS": "Numbers",
+        "LETTERS": "Letters"
+      }
+    }
+  }
+}

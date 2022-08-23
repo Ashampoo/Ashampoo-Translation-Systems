@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+      Microsoft ResX Schema 
+      
+      Version 2.0
+      
+      The primary goals of this format is to allow a simple XML format 
+      that is mostly human readable. The generation and parsing of the 
+      various data types are done through the TypeConverter classes 
+      associated with the data types.
+      
+      Example:
+      
+      ... ado.net/XML headers & schema ...
+      <resheader name="resmimetype">text/microsoft-resx</resheader>
+      <resheader name="version">2.0</resheader>
+      <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+      <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+      <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+      <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+      <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+          <value>[base64 mime encoded serialized .NET Framework object]</value>
+      </data>
+      <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+          <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+          <comment>This is a comment</comment>
+      </data>
+                  
+      There are any number of "resheader" rows that contain simple 
+      name/value pairs.
+      
+      Each data row contains a name, and value. The row also contains a 
+      type or mimetype. Type corresponds to a .NET class that support 
+      text/value conversion through the TypeConverter architecture. 
+      Classes that don't support this are serialized and stored with the 
+      mimetype set.
+      
+      The mimetype is used for serialized objects, and tells the 
+      ResXResourceReader how to depersist the object. This is currently not 
+      extensible. For a given mimetype the value must be set accordingly:
+      
+      Note - application/x-microsoft.net.object.binary.base64 is the format 
+      that the ResXResourceWriter will generate, however the reader can 
+      read any of the formats listed below.
+      
+      mimetype: application/x-microsoft.net.object.binary.base64
+      value   : The object must be serialized with 
+              : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+              : and then encoded with base64 encoding.
+      
+      mimetype: application/x-microsoft.net.object.soap.base64
+      value   : The object must be serialized with 
+              : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+              : and then encoded with base64 encoding.
+  
+      mimetype: application/x-microsoft.net.object.bytearray.base64
+      value   : The object must be serialized into a byte array 
+              : using a System.ComponentModel.TypeConverter
+              : and then encoded with base64 encoding.
+      -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string"/>
+                            <xsd:attribute name="type" type="xsd:string"/>
+                            <xsd:attribute name="mimetype" type="xsd:string"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string"/>
+                            <xsd:attribute name="name" type="xsd:string"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="Button_RemoveAll" xml:space="preserve">
+    <value>Remove All</value>
+  </data>
+    <data name="MessageBoxes And Toast Notifications" xml:space="preserve">
+    <value/>
+        <comment>Hier beginnen die Mitteilungen und Nachrichten</comment>
+  </data>
+    <data name="Message_AccessToFolderFileRefused" xml:space="preserve">
+    <value>Failed to Access Directory or File</value>
+  </data>
+    <data name="Message_AddItemsToList" xml:space="preserve">
+    <value>Please Add something to the Destination list</value>
+  </data>
+    <data name="Message_BigSize" xml:space="preserve">
+    <value>$Attention: The size of one of the added file ({0}) is very large ({1}). Therefore the copying process takes longer. Do you still want to add this file?</value>
+  </data>
+    <data name="Message_BigSizeTitle" xml:space="preserve">
+    <value>Large file discovered</value>
+  </data>
+    <data name="Message_CantCreateTemplateDir" xml:space="preserve">
+    <value>Failed to Create Template Directory. Unexpected Error.</value>
+  </data>
+    <data name="Message_CopyProcessFinished" xml:space="preserve">
+    <value>Finished Copy Process</value>
+  </data>
+    <data name="Message_CopyProcessFinishedWithError" xml:space="preserve">
+    <value>Finished Copy Process with Errors. Click here to Show them.</value>
+  </data>
+    <data name="Message_CreatedShortcut" xml:space="preserve">
+    <value>Shortcut created!</value>
+  </data>
+    <data name="Message_DeleteTemplate" xml:space="preserve">
+    <value>Do you really want to Delete this Template?</value>
+  </data>
+    <data name="Message_ErrorAccessDenied" xml:space="preserve">
+    <value>Access to Folder/File was rejected:</value>
+  </data>
+    <data name="Message_ErrorAccessDeniedSolution" xml:space="preserve">
+    <value>Please Check that you are allowed to Access these Paths and Files</value>
+  </data>
+    <data name="Message_ErrorAdminCheckDenied" xml:space="preserve">
+    <value>Process Aborted. Process need to be run as an Administrator!</value>
+  </data>
+    <data name="Message_ErrorCopyProcess" xml:space="preserve">
+    <value>There was an Error in the Copy Process. Please retry or contact support</value>
+  </data>
+    <data name="Message_ErrorFileNotFound" xml:space="preserve">
+    <value>File to Copy not found</value>
+  </data>
+    <data name="Message_ErrorFolderAlreadyExist" xml:space="preserve">
+    <value>The copied folder and the folder in the destination folder are exactly the same.</value>
+  </data>
+    <data name="Message_ErrorFolderAlreadyExistSolution" xml:space="preserve">
+    <value>Delete the folder in the destination folder, activate the overwrite function in the settings or make a change to the folder to be copied.</value>
+  </data>
+    <data name="Message_ErrorFolderNotFound" xml:space="preserve">
+    <value>Folder to Copy not found</value>
+  </data>
+    <data name="Message_ErrorItemExistInTarget" xml:space="preserve">
+    <value>Failed to Copy to {Path}. The same file exists in Target Directory and will not be overwritten.</value>
+  </data>
+    <data name="Message_ErrorLocatingTemplate" xml:space="preserve">
+    <value>There was an Error locating your Standard Template. Please check that you´ll have a standard Template selected.</value>
+  </data>
+    <data name="Message_ErrorNoRightsToCheckReg" xml:space="preserve">
+    <value>You dont have the rights to do this! Please run as Administrator.</value>
+  </data>
+    <data name="Message_ErrorProcessFailed" xml:space="preserve">
+    <value>Process Aborted. Please retry or contact Support</value>
+  </data>
+    <data name="Message_ErrorTargetFolderNotFound" xml:space="preserve">
+    <value>Target Folder does not exist</value>
+  </data>
+    <data name="Message_ErrorUnexpectedError" xml:space="preserve">
+    <value>Unexpected error occured</value>
+  </data>
+    <data name="Message_FailedToRename" xml:space="preserve">
+    <value>Failed to Rename/Save Template</value>
+  </data>
+    <data name="Message_NoError" xml:space="preserve">
+    <value>No error occured</value>
+  </data>
+    <data name="Message_NoStandardTemplate" xml:space="preserve">
+    <value>You do not have a Standard Template!</value>
+  </data>
+    <data name="Message_NoTemplates" xml:space="preserve">
+    <value>No Templates Found</value>
+  </data>
+    <data name="Message_NotEnoughRights" xml:space="preserve">
+    <value>Failed to create the Template Directory. You dont have enough rights.</value>
+  </data>
+    <data name="Message_PathExist" xml:space="preserve">
+    <value>Path has already been Added!</value>
+  </data>
+    <data name="Message_RegShortcutExist" xml:space="preserve">
+    <value>Shortcut Already Exist</value>
+  </data>
+    <data name="Message_Reminder" xml:space="preserve">
+    <value>Reminder: The setting: Overwrite all files and directories, is enabled. If you want to disable this, click here or change it in the settings.</value>
+  </data>
+    <data name="Message_ResetSettings" xml:space="preserve">
+    <value>Do you really want to reset all Settings? The Application will Restart after all Settings has been reset.</value>
+  </data>
+    <data name="Message_SetStandardTemplate" xml:space="preserve">
+    <value>Set Standard Template</value>
+  </data>
+    <data name="Message_SettingsSaved" xml:space="preserve">
+    <value>Settings Saved</value>
+  </data>
+    <data name="Message_TemplateExist" xml:space="preserve">
+    <value>Template exist. Do you want to override it?</value>
+  </data>
+    <data name="Message_TemplateSaved" xml:space="preserve">
+    <value>Template has been Saved!</value>
+  </data>
+    <data name="Message_UnexpectedError" xml:space="preserve">
+    <value>An Unexpected Error has occured whith failure code: CWC49. Please contact support!</value>
+  </data>
+    <data name="Message_UnsavedChanges" xml:space="preserve">
+    <value>Unsaved changes detected. Do you really want to quit? This will cause to lose your changes</value>
+  </data>
+    <data name="Message_UnsetStandardTemplate" xml:space="preserve">
+    <value>Unset Standard Template</value>
+  </data>
+    <data name="Message_WarnOverwriteFiles" xml:space="preserve">
+    <value>Activating this function overwrites files and folder during copying if they exist in the target Directory. Do you want to continue?</value>
+  </data>
+    <data name="Text_AddedItems" xml:space="preserve">
+    <value>Added Files and Folders:</value>
+  </data>
+    <data name="Text_AutoInfo" xml:space="preserve">
+    <value>Automatic Copy Active</value>
+  </data>
+    <data name="Text_AutomaticCopy" xml:space="preserve">
+    <value>Automatic Copy active</value>
+  </data>
+    <data name="Text_ButtonAbort" xml:space="preserve">
+    <value>Abort</value>
+  </data>
+    <data name="Text_ButtonApply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+    <data name="Text_ButtonBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+    <data name="Text_ButtonChange" xml:space="preserve">
+    <value>Change</value>
+  </data>
+    <data name="Text_ButtonClose" xml:space="preserve">
+    <value>Back</value>
+  </data>
+    <data name="Text_ButtonCopy" xml:space="preserve">
+    <value>Copy!</value>
+  </data>
+    <data name="Text_ButtonCopyCount" xml:space="preserve">
+    <value>+ Copycount</value>
+  </data>
+    <data name="Text_ButtonDateTime" xml:space="preserve">
+    <value>+ Datetime</value>
+  </data>
+    <data name="Text_ButtonDesktopShortcut" xml:space="preserve">
+    <value>Create</value>
+  </data>
+    <data name="Text_ButtonEasyMode" xml:space="preserve">
+    <value>Easy-Mode</value>
+  </data>
+    <data name="Text_ButtonExplorerShortcutFinished" xml:space="preserve">
+    <value>Already Created</value>
+  </data>
+    <data name="Text_ButtonLoadTemplate" xml:space="preserve">
+    <value>Load</value>
+  </data>
+    <data name="Text_ButtonReCopyFiles" xml:space="preserve">
+    <value>Re-Copy files with Overwrite option</value>
+  </data>
+    <data name="Text_ButtonResetSettings" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+    <data name="Text_ButtonSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+    <data name="Text_ButtonShowErrors" xml:space="preserve">
+    <value>Click to Show Errors.</value>
+  </data>
+    <data name="Text_ChangeLanguage" xml:space="preserve">
+    <value>Change Language: Change Language: Change the language of the program to your preferred language.</value>
+  </data>
+    <data name="Text_CheckBoxStandard" xml:space="preserve">
+    <value>Set as Standard</value>
+  </data>
+    <data name="Text_ContextRename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+    <data name="Text_CopyFolders" xml:space="preserve">
+    <value>Folders you want to Copy to the destination paths</value>
+  </data>
+    <data name="Text_CopyIndicator" xml:space="preserve">
+    <value>Item {CurItem} from {MaxItem}</value>
+  </data>
+    <data name="Text_Copying" xml:space="preserve">
+    <value>Copying...</value>
+  </data>
+    <data name="Text_CreateSubDir" xml:space="preserve">
+    <value>Create Sub-Directory for Copys</value>
+  </data>
+    <data name="Text_CurrentLanguage" xml:space="preserve">
+    <value>Current Language:</value>
+  </data>
+    <data name="Text_DangerousSettings" xml:space="preserve">
+    <value>Advanced settings</value>
+  </data>
+    <data name="Text_DeleteItemsAfterCopy" xml:space="preserve">
+    <value>Delete all the elements to be copied from the list after the copy operation.</value>
+  </data>
+    <data name="Text_DesktopShortcut" xml:space="preserve">
+    <value>Desktop Shortcut: Create a desktop icon on which you can drag files to copy them to your default template.</value>
+  </data>
+    <data name="Text_EasyInstructions" xml:space="preserve">
+    <value>Drop Files and Folders you want to Copy or click to add them.</value>
+  </data>
+    <data name="Text_EasyModeChange" xml:space="preserve">
+    <value>Changes to the Easy Mode.</value>
+  </data>
+    <data name="Text_ExpertMode" xml:space="preserve">
+    <value>Expert mode</value>
+  </data>
+    <data name="Text_ExplorerShortcut" xml:space="preserve">
+    <value>Explorer Shortcut: Create an explorer shortcut to right-click and copy files to your default template.</value>
+  </data>
+    <data name="Text_ExplorerShortcutTitle" xml:space="preserve">
+    <value>Copy file with Standard Template</value>
+  </data>
+    <data name="Text_Files" xml:space="preserve">
+    <value>Files:</value>
+  </data>
+    <data name="Text_Folders" xml:space="preserve">
+    <value>Folders:</value>
+  </data>
+    <data name="Text_GeneralSettings" xml:space="preserve">
+    <value>General Settings</value>
+  </data>
+    <data name="Text_HintSearchbox" xml:space="preserve">
+    <value>Search for a Template</value>
+  </data>
+    <data name="Text_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+    <data name="Text_Instructions" xml:space="preserve">
+    <value>Click or Drag and Drop to Add Elements</value>
+  </data>
+    <data name="Text_InstructionsPage2" xml:space="preserve">
+    <value>Select your Target Paths now.</value>
+  </data>
+    <data name="Text_Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+    <data name="Text_LoadedTemplate" xml:space="preserve">
+    <value>Loaded Template: </value>
+  </data>
+    <data name="Text_LoadingText" xml:space="preserve">
+    <value>Please Wait...</value>
+  </data>
+    <data name="Text_LogMode" xml:space="preserve">
+    <value>Change the Current Log Level (RECOMMENDED: Normal)</value>
+  </data>
+    <data name="Text_Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+    <data name="Text_OutputFilename" xml:space="preserve">
+    <value>Output Filename: Change the output name of the copyied file</value>
+  </data>
+    <data name="Text_OverwriteFiles" xml:space="preserve">
+    <value>Overwrite Files/Folders: This will Override all Files and Folders if they exists in the Target paths.</value>
+  </data>
+    <data name="Text_ProcessInformation" xml:space="preserve">
+    <value>Copying File/Folder {File} to {Destination}</value>
+  </data>
+    <data name="Text_RemoveAddedItems" xml:space="preserve">
+    <value>Remove Added Items</value>
+  </data>
+    <data name="Text_RenameTitle" xml:space="preserve">
+    <value>Rename Template</value>
+  </data>
+    <data name="Text_ResetSettingsTitle" xml:space="preserve">
+    <value>Reset settings: Resets all your Settings to the Program Standard.</value>
+  </data>
+    <data name="Text_SavedTemplate" xml:space="preserve">
+    <value>Saved Templates</value>
+  </data>
+    <data name="Text_SaveTitle" xml:space="preserve">
+    <value>Save</value>
+  </data>
+    <data name="Text_SaveWarning" xml:space="preserve">
+    <value>Name is Invalid. Please only use this Symbols and Letters without spaces: A-Z, a-z, 0-9, _, #, !, -</value>
+  </data>
+    <data name="Text_SelectedLanguage" xml:space="preserve">
+    <value>Selected Language: </value>
+  </data>
+    <data name="Text_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+    <data name="Text_SettingsTitle" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+    <data name="Text_Shortcuts" xml:space="preserve">
+    <value>Shortcuts</value>
+  </data>
+    <data name="Text_SummaryFailed" xml:space="preserve">
+    <value>Failed:</value>
+  </data>
+    <data name="Text_SummaryOnlyErrors" xml:space="preserve">
+    <value>Only show errors</value>
+  </data>
+    <data name="Text_SummarySuccess" xml:space="preserve">
+    <value>Successful:</value>
+  </data>
+    <data name="Text_SummaryTitle" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+    <data name="Text_TableITitletemsCopy" xml:space="preserve">
+    <value>Files you want to Copy to the Added Paths</value>
+  </data>
+    <data name="Text_TableTitleDestination" xml:space="preserve">
+    <value>Destination folders where Files will be Copied</value>
+  </data>
+    <data name="Text_TemplateNameHint" xml:space="preserve">
+    <value>Template-Name</value>
+  </data>
+    <data name="Text_Templates" xml:space="preserve">
+    <value>Templates</value>
+  </data>
+    <data name="Text_ToolTipButtonCopy" xml:space="preserve">
+    <value>Start Copying the files to the Added Destinations</value>
+  </data>
+    <data name="Text_ToolTipButtonDesktopShortcut" xml:space="preserve">
+    <value>Creates a shortcut on the desktop to which you can drag files to copy them</value>
+  </data>
+    <data name="Text_ToolTipButtonExplorerShortcut" xml:space="preserve">
+    <value>Creates an Explorer shortcut to copy files with right click</value>
+  </data>
+    <data name="Text_ToolTipListDest" xml:space="preserve">
+    <value>Click or Drag and Drop to Add something</value>
+  </data>
+    <data name="Text_ToolTipListFiles" xml:space="preserve">
+    <value>Drag and Drop Files or click here</value>
+  </data>
+    <data name="Text_ToolTipSaveTemplate" xml:space="preserve">
+    <value>Save as Template</value>
+  </data>
+    <data name="Text_UnloadTemplate" xml:space="preserve">
+    <value>Unload Template</value>
+  </data>
+</root>

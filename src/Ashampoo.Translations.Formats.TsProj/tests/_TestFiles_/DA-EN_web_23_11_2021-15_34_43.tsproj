@@ -1,0 +1,4557 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="website" version="1.0" tsversion="4" author="Ashampoo" mail="" source_language="en-US"
+         target_language="da-DK" creation_tool="Ashampoo CMS" pluginguid="DDEFCE2A-C9E8-4C6E-B604-9B6468BDCFC4">
+    <properties>
+        <property name="project.id">1</property>
+        <property name="translator.id">360</property>
+        <property name="translator.web.id">156</property>
+    </properties>
+
+    <translation id="textids.content.T_PARTNER0602_LIST_NOTEBOOK_5">
+        <target></target>
+        <source>Crop delicate details like hair</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0602_LIST_NOTEBOOK_4">
+        <target></target>
+        <source>More creative options with layers</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0602_LIST_NOTEBOOK_3">
+        <target></target>
+        <source>All cropping tools in a single location</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0602_LIST_NOTEBOOK_2">
+        <target></target>
+        <source>Quick access to main menu</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0602_LIST_NOTEBOOK_1">
+        <target></target>
+        <source>Album view for easy photo selection</source>
+
+    </translation>
+
+    <translation id="textids.content.T_MEDIACENTER_TITLE">
+        <target></target>
+        <source>Media-Center</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0408_TEXT_1">
+        <target></target>
+        <source>Thanks to a major performance boost, calculations are now much faster. And we also thought of the little
+            details: Aside from a handy new note feature in the undo timeline, we've also added the option to save
+            scaled versions of your images, perfect for use with Facebook, Instagram and other services!
+        </source>
+        Thanks to a major performance boost, calculations are now much faster. And we also thought of the the little
+        details: Aside from a handy new note feature in the undo timeline, we've also added the option to save scaled
+        versions of your images, perfect for use with Facebook, Instagram and other services!
+    </translation>
+
+    <translation id="textids.content.T_6010_LIST_FEAT_8">
+        <target></target>
+        <source>Quick ripping tool</source>
+
+    </translation>
+
+    <translation id="textids.content.T_CB_HL_OLDVERSION_2">
+        <target></target>
+        <source>Back to the future with {$product}</source>
+
+    </translation>
+
+    <translation id="textids.content.T_CB_TEXT_OLDVERSION_2">
+        <target></target>
+        <source>Get the successor at a special discount price!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_CB_TEXT_OLDVERSION">
+        <target></target>
+        <source>{$predecessor} is certainly a genuine classic–but no longer up to date! We've got a worthy successor for
+            you: {$product}!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_CB_HL_OLDVERSION">
+        <target></target>
+        <source>Hello time traveler!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0408_TEXT_2">
+        <target></target>
+        <source>SHARPEN projects 3 comes with a revised unsharpen tool featuring two oversampling modes for 1x and 2x
+            better sharpening results.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0408_HL_2">
+        <target></target>
+        <source>Almost sharper than reality</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0408_HL_1">
+        <target></target>
+        <source>Improved workflow</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0408_LIST_7">
+        <target></target>
+        <source>Mist and fog correction</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0408_LIST_6">
+        <target></target>
+        <source>Comparison view for unsharpen tool</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0408_LIST_5">
+        <target></target>
+        <source>HD color protection</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0408_LIST_4">
+        <target></target>
+        <source>Color filters for selective drawing</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0408_LIST_3">
+        <target></target>
+        <source>Saving of scaled images for Facebook and other services</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0408_LIST_2">
+        <target></target>
+        <source>Oversampling support for unsharpen tool</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0408_LIST_1">
+        <target></target>
+        <source>Intelligent masking to protection individual image segments</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0408_LIST_8">
+        <target></target>
+        <source>Enhanced scratch and sensor error correction with five quality levels</source>
+
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_BURNING">
+        <target></target>
+        <source>The new Ashampoo Burning Studio is the comfortable way to burn your data securely, copy CD, DVD and
+            Blu-ray discs without effort and enjoy a range of top-of-the-line multimedia features.
+        </source>
+        The new Ashampoo Burning Studio 22 is the comfortable way to burn your data securely, copy CD, DVD and Blu-ray
+        discs without effort and enjoy a range of top-of-the-line multimedia features.
+    </translation>
+
+    <translation id="textids.content.T_MACOS_SOFTWARE">
+        <target></target>
+        <source>Selected macOS Ashampoo software</source>
+
+    </translation>
+
+    <translation id="textids.content.T_2403_TEXT_QUICK_1_6">
+        <target></target>
+        <source>For quick and precise removal of programs select &quot;Applications&quot; (1) and then &quot;Uninstall&quot;
+            (2).
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_2403_TEXT_QUICK_1_2">
+        <target></target>
+        <source>Once enabled, UnInstaller will auto-detect new installations and log all system modifications. This
+            ensures the software can be completely removed later.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_2403_TEXT_QUICK_1_1">
+        <target></target>
+        <source>Enable the automatic installation detection right after launch with a single click (1).</source>
+
+    </translation>
+
+    <translation id="textids.content.T_2403_HL_QUICK_1_1">
+        <target></target>
+        <source>Enable installation auto-detection</source>
+
+    </translation>
+
+    <translation id="textids.content.T_2403_ICON_3">
+        <target></target>
+        <source>Boot-Center Module</source>
+        Boot-Center Modul
+    </translation>
+
+    <translation id="textids.content.T_2403_ICON_2">
+        <target></target>
+        <source>Category view</source>
+
+    </translation>
+
+    <translation id="textids.content.T_2403_ICON_4">
+        <target></target>
+        <source>Quick-Uninstall</source>
+
+    </translation>
+
+    <translation id="textids.content.T_2403_ICON_1">
+        <target></target>
+        <source>Multi-Level Detection</source>
+
+    </translation>
+
+    <translation id="textids.content.T_2403_TEXT_4_1">
+        <target></target>
+        <source>The program also comes with an interface optimized for the new Windows 11 design in addition to three
+            classic dark versions.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_24HSALE_TEXT">
+        <target></target>
+        <source>Get Ashampoo® top sellers at incredible prices in our 48-hour flash sale! Don't miss this one-time
+            chance to get our best programs at unbelievable discounts! You have 48 hours (and not one minute longer!) to
+            get Ashampoo® Photo Optimizer 8, Driver Updaterr, Snap 12 and more at spectacular prices!
+        </source>
+        Get Ashampoo® top sellers at incredible prices in our 48-hour flash sale! Don't miss this one-time chance to get
+        our best programs at unbelievable discounts! You have 48 hours (and not one minute longer!) to get Ashampoo® PDF
+        Pro 2, Driver Updaterr, Backup Pro 15 and more at spectacular prices!
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_10">
+        <target></target>
+        <source>Super-fast hi-res audio</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_10">
+        <target></target>
+        <source>Save music in hi-fi quality and build up your music library at up to 30x real-time speed. Audials One
+            2022 features optimized song detection for perfectly trimmed tracks. And the new improved audio recording
+            core and encoder provide perfect lossless recordings at up to 96 kHz and 24-bit.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_11">
+        <target></target>
+        <source>Experience a new way to explore genres, styles and top charts</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_10">
+        <target></target>
+        <source>Set up custom file naming schemes and effortlessly apply them to your entire library.</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_9">
+        <target></target>
+        <source>Was your Spotify account recently suspended? From now on, Audials prevents account suspension and shows
+            you which services are used to identify recordings.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_8">
+        <target></target>
+        <source>&quot;Music - Load&quot; lets you specify your audio sources and their individual priorities.</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_7">
+        <target></target>
+        <source>The brand new music manager in Audials provides a better overview of your songs thanks to top lists,
+            fold-out albums, fitting playlists and similar artists with instant playback.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_9">
+        <target></target>
+        <source>Pure musical enjoyment</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_8">
+        <target></target>
+        <source>Drag your songs, albums and playlists from all major streaming services (now including Tidal) into
+            Audials to instantly record them at high-res quality or use optimized high-speed background recording.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_8">
+        <target></target>
+        <source>Safe and precise music recordings</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_SUB_2">
+        <target></target>
+        <source>Record Spotify, Amazon Music, Tidal, Deezer &amp; others at ultra-high quality</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING">
+        <target></target>
+        <source>Audials one 2022: The ultimate streaming recorder!</source>
+        Audials 2022: The ultimate streaming recorder!
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_INTRO">
+        <target></target>
+        <source>Audials One 2022 is the ingenious solution to capture movies and music legally from the internet and
+            streaming services! Enjoy super-easy handling and lossless high-quality recordings! Capture, trim and add
+            subtitles to your songs! Naturally, Audials One 2022 is also fully compatible with Windows 11!
+        </source>
+        Audials one 2022 is the ingenious solution to capture movies and music legally from the internet and streaming
+        services! Enjoy super-easy handling and lossless high-quality recordings! Capture, trim and add subtitles to
+        your songs! Naturally, Audials one 2022 is also fully compatible with Windows 11!
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_INTRO">
+        <target></target>
+        <source>Audials One 2022 is the ingenious solution to capture movies and music legally from the internet and
+            streaming services! Enjoy super-easy handling and lossless high-quality recordings! Capture, trim and add
+            subtitles to your songs! Naturally, Audials One 2022 is also fully compatible with Windows 11!
+        </source>
+        Audials one 2022 is the ingenious solution to capture movies and music legally from the internet and streaming
+        services! Enjoy super-easy handling and lossless high-quality recordings! Capture, trim and add subtitles to
+        your songs! Audials one 2022 is also fully compatible with Windows 11!
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_WO">
+        <target></target>
+        <source>Make your Windows a faster, leaner and more productive system! Maximize performance, stop privacy
+            intrusions and enjoy a PC that feels like new again!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_BACKUP">
+        <target></target>
+        <source>Get the brand-new version of our tried and tested backup solution and stay safe from viruses, Windows
+            issues and hardware errors! The program is also fully compatible with Windows 11.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_SHIRTS_2">
+        <target></target>
+        <source>Official Ashampoo shirts are not available by retail but only directly from us–for special occasions!
+            Get yourself one of our iconic cotton shirts!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_SHIRTS">
+        <target></target>
+        <source>Ashampoo Shirts</source>
+
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_HOODIES_2">
+        <target></target>
+        <source>Get these unique collector's items! Our Ashampoo-branded hoodies are as rare as they are fluffy–and
+            originally only meant for us and associates. Now, they can be yours, too!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_HOODIES">
+        <target></target>
+        <source>Ashampoo Hoodies</source>
+
+    </translation>
+
+    <translation id="textids.content.T_LP_TEXT_22ANNIVERSARY_AIR_PODS_2">
+        <target></target>
+        <source>AirPods Pro are extremely light noise cancelling headphones. They cancel out ambient noise to help you
+            focus on your music, podcasts or calls without interruptions!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_7">
+        <target></target>
+        <source>The upcoming Windows includes a number of important enhancements, especially to the graphics and audio
+            subsystems. Audials one 2022 is optimized for even better performance on PCs running Windows 11 to create
+            perfect audio and video recordings for you even faster. At the same time, Audials one 2022 is fully
+            compatible with existing Windows 10 PCs!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_7">
+        <target></target>
+        <source>Ready for Windows 11</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_6">
+        <target></target>
+        <source>New video player with subtitles, slow-motion, fast-forward &amp; more!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_5">
+        <target></target>
+        <source>Experience immersive Netflix 5.1 surround sound</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_4">
+        <target></target>
+        <source>Remove black bars from recordings with pixel precision</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_2">
+        <target></target>
+        <source>Use Audials as web browser and record movies in the background with brand-new scheduler</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_LIST_MAILING_DETAILS_1">
+        <target></target>
+        <source>Search streaming services, media libraries and TVs all at once</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_DETAILS">
+        <target></target>
+        <source>Save videos in top quality</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_6">
+        <target></target>
+        <source>Enjoy unparalleled sound quality and an immersive cinema-like experience. Some providers let you stream
+            certain movies with 5.1 multi-channel audio. Audials 2022 lets you take advantage of this and captures your
+            recordings in cinema-like quality, even if your PC doesn't support this.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_6">
+        <target></target>
+        <source>Brilliant Netflix 5.1 surround sound</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_5">
+        <target></target>
+        <source>Find subtitles in almost any language and automatically add them to your recordings at exactly the right
+            time with a single click.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_5">
+        <target></target>
+        <source>Subtitle search engine</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_4">
+        <target></target>
+        <source>For videos recorded using Audials, the software automatically detects which parts contain trailers or
+            ads. It then highlights them in the video editor, enabling you to easily remove them.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_4">
+        <target></target>
+        <source>Automatically detect &amp; remove ads</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_3">
+        <target></target>
+        <source>Use the built-in editor to remove unwanted parts from your videos, such as trailers, adverts and recaps
+            with incredible ease. It even lets you view and remove each individual frame of a movie sequence.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_3">
+        <target></target>
+        <source>Video editor</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_2">
+        <target></target>
+        <source>The new web browser can also be used to automatically save multiple movies one after the other. Simply
+            search for videos using Audials and add them to your movie list. The recording scheduler will then play them
+            in the background. Download huge collections of movies overnight!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_2">
+        <target></target>
+        <source>Faster &amp; easier recording scheduler</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_1">
+        <target></target>
+        <source>Play streams from all services directly in Audials and record them live, twice as fast, twice as many!
+            This breakthrough technology gives you recordings in unparalleled quality.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_1">
+        <target></target>
+        <source>Genius: Faster &amp; easier recordings</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_SUB">
+        <target></target>
+        <source>Record Netflix, Amazon Video, Disney+, YouTube &amp; others in perfect quality</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_TEXT_8">
+        <target></target>
+        <source>Ashampoo® PDF Pro 3 not only displays, and scrolls, two documents side by side but takes it one step
+            further: By highlighting differences in various colors. The program saves you time and effort when comparing
+            PDFs. And for added comfort, differences can be listed as navigable links in a separate sidebar. Analyze
+            documents and spot differences in no time with Ashampoo® PDF Pro 3!
+        </source>
+        Ashampoo® PDF Pro 3 not only displays, and scrolls, two documents side by side but takes it one step further: By
+        highlighting differences in various colors. the program saves you time and effort when comparing PDFs. And for
+        added comfort, differences can be listed as navigable links in a separate sidebar. Analyze documents and spot
+        differences in no time with Ashampoo® PDF Pro 3!
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_INTRO">
+        <target></target>
+        <source>Your ultimate streaming recorder Find, record, save, convert and enjoy music, movies, radio &amp; more
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_CLAIM_1">
+        <target></target>
+        <source>Find and Save Music, Movies, TV &amp; More</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_25">
+        <target></target>
+        <source>Rounded corners and softer colors: the modern design of Audials blends in well with the new Windows 11.
+            We have tested its functionality with this operating system extensively. Of course, Audials is also still
+            compatible with Windows 10.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_25">
+        <target></target>
+        <source>Highly optimized for Windows 11</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_24">
+        <target></target>
+        <source>A wide range of options for adjusting the settings makes operation smoother in this modern design.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_24">
+        <target></target>
+        <source>Completely revamped settings</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_23">
+        <target></target>
+        <source>Windows, menus and the user interface now feature a brand new design in the options. Changing something
+            manually has an immediate effect on all other areas of the software.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_23">
+        <target></target>
+        <source>New design</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_22">
+        <target></target>
+        <source>In case you've accidentally recorded the same version of a track twice, you can easily manage and adjust
+            this with the help of numerous options, such as find, prioritize or delete duplicate versions.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_22">
+        <target></target>
+        <source>User-friendly duplicate management</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_21">
+        <target></target>
+        <source>Decide for yourself how you want Audials to name your recorded files, and apply your customizations to
+            your entire music collection in a matter of seconds. You can also define whether and how you want Audials to
+            organize your recordings into folders. Choose whether you want the folder or file name to not only include
+            the artist and song title, but also the album, song number or genre, etc.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_21">
+        <target></target>
+        <source>Specify file names and recording folders</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_20">
+        <target></target>
+        <source>You now have more options when it comes to album tags. If you choose for Audials to search for the tags,
+            it will automatically find everything and save it together with the respective song. However, you can also
+            easily modify everything manually.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_20">
+        <target></target>
+        <source>Improved tag control</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_19">
+        <target></target>
+        <source>You can easily create your own legal copies and monitor whether the streaming service is able to detect
+            if you're recording. We'll provide you with helpful tips prior to the recording process. Take back control
+            of your recordings with the numerous settings options! Pay attention to data privacy to prevent any nosy
+            portals from collecting your data.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_19">
+        <target></target>
+        <source>Download music streams safely</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_18">
+        <target></target>
+        <source>You can effortlessly record music streams in top quality and with utmost precision. All your favorite
+            features have now been enhanced in this new version.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_18">
+        <target></target>
+        <source>Recordings more precise than ever</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_17">
+        <target></target>
+        <source>You can download all the music in the world from all major streaming services! Specify which ones you
+            want to get music from, and even prioritize your favorite music sources.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_17">
+        <target></target>
+        <source>Where would you like Audials to browse?</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_16">
+        <target></target>
+        <source>Discover new music by the hottest artists and enjoy the many excellent Audials Charts playlists.
+            Creating your own personal style has never been so much fun. Select artists from your favorite genres and
+            receive suggestions of similar artists and playlists.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_16">
+        <target></target>
+        <source>Genres, styles &amp; the hottest top charts</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_15">
+        <target></target>
+        <source>Find music efficiently and download with ease. Discover entire discographies of every artist in the
+            world by simply unfolding their albums which you can listen to or save right away. Round off your music
+            experience with an array of playlists for pure music enjoyment!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_15">
+        <target></target>
+        <source>Download music with ease</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_14">
+        <target></target>
+        <source>Not only do you now have a much better overview of all your favorite artists, but you'll also be the
+            first to see the top hits and biggest tracks in music. Albums are displayed in a clear fashion and can be
+            folded out. Play relevant playlists right away and discover similar artists easier than ever before. All
+            your music from various storage locations will be displayed in one place.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_14">
+        <target></target>
+        <source>Make the most of your own music</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_13">
+        <target></target>
+        <source>Download music via our newly designed, easy-to-use main screen for artists, genres and top charts.
+            Browse, edit and enjoy your own personal music as well as music from around the world in an extremely
+            simplified format.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_13">
+        <target></target>
+        <source>Enjoy, discover and download music faster</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_12">
+        <target></target>
+        <source>GPU encoding has been greatly improved for use with the latest graphics cards. Witness new, more
+            efficient encoding. Smaller files can now be generated with no loss in quality. You are guaranteed
+            crystal-clear video quality.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_12">
+        <target></target>
+        <source>Improved encoder</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_11">
+        <target></target>
+        <source>The video player includes useful extra features and displays subtitles to help you understand the plot
+            of the movie. It also offers functions such as fast-forward, slow-motion and a preview along the timeline.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_11">
+        <target></target>
+        <source>New video player</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_10">
+        <target></target>
+        <source>Enjoy unparalleled sound quality and experience an immersive cinema atmosphere. Some providers let you
+            stream certain movies with 5.1 multi-channel audio. Audials 2022 lets you take advantage of this and
+            captures your recordings with cinema quality, even if your PC doesn't support this.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_10">
+        <target></target>
+        <source>Impressive Netflix 5.1 surround sound</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_9">
+        <target></target>
+        <source>The video player now features useful extra functions and provides subtitles to help you better
+            understand movie plots.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_9">
+        <target></target>
+        <source>Play videos with subtitles</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_8">
+        <target></target>
+        <source>Set your preferred languages so that the subtitles are automatically detected and inserted in your
+            language. Switch back and forth between subtitle languages with ease. Sounds simple? It is when you’re using
+            Audials 2022!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_8">
+        <target></target>
+        <source>Movie dialog in all languages</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_7">
+        <target></target>
+        <source>This function enables you to find subtitles in almost any language and add them to your recordings at
+            exactly the right time. Don't worry about missing any important dialog in your movie. Simply click on this
+            function to automatically insert subtitles during recording.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_7">
+        <target></target>
+        <source>Subtitle search engine</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_6">
+        <target></target>
+        <source>If your recorded video contains black bars that irritate you, then simply cut them away with pixel
+            precision by zooming in.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_6">
+        <target></target>
+        <source>Remove black bars</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_5">
+        <target></target>
+        <source>For videos recorded using Audials, the software automatically detects which parts contain trailers or
+            ads. It then highlights them in the video editor, enabling you to easily remove them.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_5">
+        <target></target>
+        <source>Automatically detect &amp; remove ads</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_4">
+        <target></target>
+        <source>Use our brand new editor to remove unwanted parts from your videos, such as trailers, adverts and
+            recaps. It even lets you view each individual frame of a movie sequence and remove it if you wish. Edit your
+            movies, clips &amp; series in a single click. The only parts of the video that will be re-encoded are the
+            ones you change.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_4">
+        <target></target>
+        <source>Edit out ads with ease</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_3">
+        <target></target>
+        <source>The new video streaming browser lets you browse video platforms directly from within Audials, enabling
+            you to save all your desired content in no time at all. You can also easily select the format and resolution
+            in up to 4k.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_3">
+        <target></target>
+        <source>Saving videos easier than ever</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_2">
+        <target></target>
+        <source>The new web browser can also be used to automatically save multiple movies one after the other. Simply
+            search for videos using Audials and add them to your movie list. The recording scheduler will then play them
+            in the background. Download huge collections of movies overnight!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_2">
+        <target></target>
+        <source>Faster &amp; easier recording scheduler</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_1">
+        <target></target>
+        <source>Audials works like a web browser and enables you to search for movies and series from any video
+            streaming service and then play them back immediately, allowing you to watch the video while it’s being
+            recorded. Select “Record from beginning ” to save the entire movie. You can also record the video in the
+            background which lets you continue to use other functions while it's being recorded.
+            This works for any video streaming website! Simply choose a video and save it. Thanks to our brand-new
+            overview of streaming sources, it's easier than ever to find your favorite services.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_1">
+        <target></target>
+        <source>Your new video streaming browser &amp; recorder</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_INTRO_2">
+        <target></target>
+        <source>Save your favorite songs from any music streaming service easy, fast, legal, and top quality. Enjoy your
+            music collection on all devices! Create your own movie collection as well!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_INTRO_1">
+        <target></target>
+        <source>Record movies, TV shows and television from streams. It's automatic, convenient and always in top video
+            quality.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0474_HL_17SUB">
+        <target></target>
+        <source>Append, reorder or rotate pages in PDFs</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0474_HL_16SUB">
+        <target></target>
+        <source>Insert, reposition and crop images and charts in PDFs</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0474_HL_15SUB">
+        <target></target>
+        <source>Fill out interactive forms with incredible ease</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0474_HL_14SUB">
+        <target></target>
+        <source>Encrypt PDFs with confidential information and share them</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0474_HL_13SUB">
+        <target></target>
+        <source>Format PDFs, track versions and check spellings</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0474_HL_12SUB">
+        <target></target>
+        <source>Instantly render PDFs at various quality levels</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0474_HL_11SUB">
+        <target></target>
+        <source>Highlight or mark central passages and add stamps</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0474_HL_10SUB">
+        <target></target>
+        <source>Find and replace texts, fonts and colors–even across documents</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0474_HL_9SUB">
+        <target></target>
+        <source>Convert and reuse image-based texts with OCR</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0474_HL_8SUB">
+        <target></target>
+        <source>Edit PDFs easily without previous knowledge or limitations</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0474_HL_6SUB">
+        <target></target>
+        <source>Customize colors and create uniform document designs</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0474_HL_5SUB">
+        <target></target>
+        <source>Embed and smart-update images</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0474_HL_4SUB">
+        <target></target>
+        <source>Batch-apply unique numbers and/or date/time-marks with Bates numbering</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0474_HL_3SUB">
+        <target></target>
+        <source>Capture screen contents as screenshots</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0474_HL_1SUB">
+        <target></target>
+        <source>Professional forms with input fields and checkboxes</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_LIST_FEAT_8">
+        <target></target>
+        <source>Fast and precise document comparisons</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_LIST_FEAT_7">
+        <target></target>
+        <source>PDF/A for long-term digital document preservation</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_LIST_FEAT_6">
+        <target></target>
+        <source>New fold-out elements for access to essential features</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_LIST_FEAT_5">
+        <target></target>
+        <source>Seamless document zoom</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_LIST_FEAT_4">
+        <target></target>
+        <source>Fast one-click switching between work modes</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_LIST_FEAT_3">
+        <target></target>
+        <source>Customizable accessbar with all important functions</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_TEXT_INTRO_NC">
+        <target></target>
+        <source>Ashampoo PDF Pro 3 is the complete solution to manage and edit your PDF documents. The program has
+            everything you need to create, convert, edit, merge and protect your PDFs. Create perfectly sized documents
+            that are readable on any device and use encryption to protect your property when needed. Your PDFs are now
+            as easily editable as Word documents!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_TEXT_9">
+        <target></target>
+        <source>Digital signatures are the equivalent of an ink signature on a paper document, but much more secure.
+            They signal authenticity and prevent secret tampering. Ashampoo® PDF Pro 3 makes signing your documents
+            super easy and helps you build trust with your recipients.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_SUB9">
+        <target></target>
+        <source>Sign your documents for authenticity and added trust!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_9">
+        <target></target>
+        <source>Create trustworthy PDFs with digital signatures</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_SUB8">
+        <target></target>
+        <source>Analyze and spot differences between documents with the built-in compare view</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_8">
+        <target></target>
+        <source>Fast and precise document comparisons</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_TEXT_7">
+        <target></target>
+        <source>Ashampoo® PDF Pro 3 supports the ISO-standardized PDF/A format designed to create documents that stay
+            accessible and readable even after many years. This makes it the perfect format to archive your most
+            important documents and preserve them for posterity.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_SUB7">
+        <target></target>
+        <source>Use the ISO-standardized PDF/A format for long-term digital document preservation</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_7">
+        <target></target>
+        <source>PDF/A: the secure standard</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_TEXT_6">
+        <target></target>
+        <source>Like a Swiss Army knife, Ashampoo® PDF Pro 3's ribbon bar features a multitude of fold-out sections.
+            These always contain the most important context-relevant functions in a clear and concise manner.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_SUB6">
+        <target></target>
+        <source>Expand them and gain instant access to essential features!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_6">
+        <target></target>
+        <source>Compact and versatile: multiple new fold-out elements</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_TEXT_5">
+        <target></target>
+        <source>You asked for it and we deliver: Ashampoo® PDF Pro 3 features a document magnification slider in the
+            omnipresent status bar for seamless zooms. Selecting and focusing in on content has never been easier!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_SUB5">
+        <target></target>
+        <source>Use the slider for seamless zooms</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_5">
+        <target></target>
+        <source>Document magnification from any mode</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_TEXT_4">
+        <target></target>
+        <source>The quick-access toolbar not only hosts the functions that matter most to you but also toggle switches
+            for the various work modes. Switch from text editing to hand or object mode and back again in a matter of
+            seconds. It's total control at the click of a button.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_SUB4">
+        <target></target>
+        <source>Switch between work modes in a single click for instant feature access</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_4">
+        <target></target>
+        <source>Fast switching between work modes</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_TEXT_3">
+        <target></target>
+        <source>If you've used Ashampoo® Office before you'll be familiar with the quick-access toolbar below the
+            ribbon. Ashampoo® PDF Pro 3 now also offers instant access to essential functions in a single customizable
+            bar. Now, you get to decide which functions best support your work flow for maximum utility and efficiency.
+            After all, good software should adapt to its users, not the other way around!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_SUB3">
+        <target></target>
+        <source>Customize the quick-access bar to your needs</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_3">
+        <target></target>
+        <source>Well-conceived customizable design</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_TEXT_2">
+        <target></target>
+        <source>Computer screens are always stressful to the eyes and documents with lots of white portions only add to
+            the strain! Ashampoo® PDF Pro 3 comes with a dark mode that reduces eye fatigue and lets you work for longer
+            periods, and be more productive, without breaks, at home and in the office!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_SUB2">
+        <target></target>
+        <source>Reduce eye strain with dark mode</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_2">
+        <target></target>
+        <source>Stress-free ergonomics</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_TEXT_1">
+        <target></target>
+        <source>With Ashampoo® PDF Pro 3, editing PDFs becomes as easy as editing text documents with an excellent word
+            processor. Version 3 features a new ribbon-based interface that you will also find in any modern office
+            application. This means there's virtually no learning curve! All essential functions are exactly where you'd
+            expect them to be, just like in Microsoft Word, Ashampoo® Write or any other Office program. Editing PDFs
+            has never been easier!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_SUB1">
+        <target></target>
+        <source>Handy and elegant: the new ribbon-based user interface in Ashampoo® PDF Pro 3</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_HL_1">
+        <target></target>
+        <source>Edit PDFs as quickly and easily as Word documents</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_TEXT_INTRO_UPGRADER">
+        <target></target>
+        <source>Ashampoo® PDF Pro 3 is brimming with new features! Use the nifty Office-like ribbons, enjoy dark mode
+            and magnify your documents seamlessly! Use quick-access toolbars for fast to-the-point feature access and
+            PDF/A to store your documents permanently and fully standards-compliant! You can also create confidential
+            PDFs with digital signatures or effortlessly compare two documents for differences. A single click is all it
+            takes to switch between the various work modes while the quick access bar provides an additional speed and
+            productivity boost. Ashampoo® PDF Pro 3 puts PDF editing on a whole new level, you'll see!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_HL_CLAIMNEW_2">
+        <target></target>
+        <source>World’s #1 Blu-ray &amp; Media Player</source>
+        Edit videos like a pro
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_TEXT_12">
+        <target></target>
+        <source>Don’t spend hours figuring out how to edit your footage. Screen Recorder comes with a remarkably simple
+            editing interface that allows you to quickly import and trim your footage, add titles and transitions, and
+            also now add two unique audio tracks.
+        </source>
+        Don’t spend hours figuring out how to edit your footage. Screen Recorder comes with a remarkably simple editing
+        interface that allows you to quickly import and trim your footage, add titles and transitions, and also now add
+        two unique audio tracks. 
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_TEXT_10">
+        <target></target>
+        <source>Get recordings started quicker, mute and unmute instantly, pause without having to touch your mouse, and
+            quickly take screenshots by setting customized hotkeys for recording and streaming.
+        </source>
+        Get recordings started quicker, mute and unmute instantly, pause without having to touch your mouse, and quickly
+        take screenshots by setting customized hotkeys for recording and streaming. 
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_HL_8">
+        <target></target>
+        <source>Better-than-Original Quality Audio &amp; Video Playback</source>
+        Better-than-Original Quality Audio &amp; Video Playback
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_TEXT_7">
+        <target></target>
+        <source>Stream your videos and TV shows to your TV using any leading casting device such as Apple TV®, Fire TV™,
+            Chromecast™, or Roku®.
+        </source>
+        Stream your videos and TV shows to your TV using any leading casting device such as Apple TV®, Fire TV™,
+        Chromecast™, or Roku®.
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_TEXT_10">
+        <target></target>
+        <source>Store and backup your system files online. PowerDirector comes with a huge 25GB CyberLink Cloud storage
+            absolutely free!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_HL_10">
+        <target></target>
+        <source>25GB Cloud Storage</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_TEXT_9">
+        <target></target>
+        <source>Powered by the 64-bit TrueVelocity engine with support for OpenCL &amp; multi-GPGPU acceleration.
+            Support for non-full frame video clips and improved multi-threading performance.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_HL_9">
+        <target></target>
+        <source>CPU &amp; GPU Performance Boosts</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_TEXT_8">
+        <target></target>
+        <source>TrueTheater® Color is one-click color correction technology that instantly optimizes hues and vibrancy
+            in your videos for a true-to-life appearance. Don’t just take our word for it though, the results speak for
+            themselves.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_HL_8">
+        <target></target>
+        <source>TrueTheater® Color</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_LIST_7_8">
+        <target></target>
+        <source>Correct Color Distortion</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_LIST_7_7">
+        <target></target>
+        <source>Apply Slow Motion to Clips</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_LIST_7_6">
+        <target></target>
+        <source>Zoom, Freeze &amp; Reverse</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_LIST_7_5">
+        <target></target>
+        <source>Stabilize Shake Footage</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_LIST_7_4">
+        <target></target>
+        <source>Add Pan &amp; Zoom Effects to Video</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_LIST_7_3">
+        <target></target>
+        <source>Create Stop-Motion Effects</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_LIST_7_2">
+        <target></target>
+        <source>Correct Fish-Eye Distortions</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_LIST_7_1">
+        <target></target>
+        <source>Accurate Motion Tracking</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_TEXT_7">
+        <target></target>
+        <source>Everything you need to edit, correct and enhance your action footage. The essential toolkit for working
+            with action camera footage.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_HL_7">
+        <target></target>
+        <source>Action Camera Center – The Extreme Video Toolkit</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_TEXT_6">
+        <target></target>
+        <source>Align or “snap” titles, masks and objects to position them perfectly within your frame. Snap to
+            vertical/horizontal axes or other objects.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_HL_6">
+        <target></target>
+        <source>Align Objects in a Snap</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_TEXT_5">
+        <target></target>
+        <source>18 cool new transition effects that will instantly turn your videos from ordinary to spectacular.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_HL_5">
+        <target></target>
+        <source>Creative Transition Effects</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_TEXT_4">
+        <target></target>
+        <source>Combine motion graphic elements with your videos’ titles to make them stylish and modern.</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_HL_4">
+        <target></target>
+        <source>Impressive Motion Graphics &amp; Animated Titles</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_TEXT_3">
+        <target></target>
+        <source>Easily create, edit and produce content perfectly fit for social media. Produce square (1:1) output for
+            Facebook and Instagram. Or edit and save vertical videos, the perfect size ratio for social media Stories.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_HL_3">
+        <target></target>
+        <source>1:1 Square Video Creation</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_TEXT_2">
+        <target></target>
+        <source>Use Video Collage Designer to create a striking, totally customizable collage complete with animated
+            openings and endings. Use one of our existing templates, or create your own to save and reuse on different
+            projects.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_HL_2">
+        <target></target>
+        <source>Video Collage Designer</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_TEXT_1">
+        <target></target>
+        <source>With Express Projects, you can pick from a huge range of ready-made templates complete with effects,
+            transitions, animations, and music. From there it’s simply a matter of adding your clips to the timeline and
+            clicking 'Produce'!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_HL_1">
+        <target></target>
+        <source>Make Stunning Videos in a few Clicks</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_TEXT_INTRO">
+        <target></target>
+        <source>All the tools you need for true creative freedom! Easily produce amazing creations to share, with
+            precise and professional editing tools that won’t take years to learn. Push your creative limits with the
+            latest in video creation technology and features.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_TEXT_QUICK_1_7">
+        <target></target>
+        <source>Click &quot;Start Backup&quot; to run the plan now (1).</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_TEXT_QUICK_1_8">
+        <target></target>
+        <source>The overview page summarizes the status of your backups in three clickable categories. Select &quot;View
+            Backup Plans&quot; to display additional details.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_HL_QUICK_1_8">
+        <target></target>
+        <source>Backup plan status</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_HL_QUICK_1_7">
+        <target></target>
+        <source>Start backup</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_TEXT_QUICK_1_6">
+        <target></target>
+        <source>Finally, you'll be presented with a summary that lists all relevant settings for the new backup plan.
+            Click &quot;Back&quot; to make changes or &quot;Next&quot; to conclude the process (1).
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_HL_QUICK_1_6">
+        <target></target>
+        <source>Check summary</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_TEXT_QUICK_1_5">
+        <target></target>
+        <source>Afterwards, select &quot;Daily backups of the 'Documents' folder&quot; (1) and click &quot;Next&quot;
+            (2). This will take care of the remaining settings for you.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_HL_QUICK_1_5">
+        <target></target>
+        <source>Select backup plan preset</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_TEXT_QUICK_1_4">
+        <target></target>
+        <source>Next, name your backup plan (1). Make sure to use a meaningful name to make it easier to tell your
+            various plans apart. Click &quot;Next&quot; to proceed (2).
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_HL_QUICK_1_4">
+        <target></target>
+        <source>Enter a name for the backup plan</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_TEXT_QUICK_1_3">
+        <target></target>
+        <source>Then, select the drive that will hold your backups (1) and click &quot;Next&quot; (2). This example uses
+            a USB flash drive.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_HL_QUICK_1_3">
+        <target></target>
+        <source>Select backup drive</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_TEXT_QUICK_1_2">
+        <target></target>
+        <source>Next, select the storage type you wish to use. In this example, the files will be backed up to a USB
+            flash drive, which is why &quot;Local drive or network drive&quot; is selected (1). Click &quot;Next&quot;
+            to proceed (2).
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_HL_QUICK_1_2">
+        <target></target>
+        <source>Select output location</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_TEXT_QUICK_1_1">
+        <target></target>
+        <source>Create a new backup plan from the start page of the program (1).</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_HL_QUICK_1_1">
+        <target></target>
+        <source>Create backup plan</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1859_HL_QUICK_1">
+        <target></target>
+        <source>What's the easiest way to back up the &quot;Documents&quot; folder on a daily basis?</source>
+
+    </translation>
+
+    <translation id="textids.content.T_CONNECT_FAQ_TEXT_4">
+        <target></target>
+        <source>Click &quot;Library&quot; in the sidebar to view a list of all programs currently linked to your
+            account. You can also install programs or review currently installed versions. If you need help adding new
+            software, see &quot;How do I add my software to Connect?&quot; in this FAQ or contact our support team.
+            We're always happy to help.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_CONNECT_FAQ_HL_4">
+        <target></target>
+        <source>Where are my programs and license keys?</source>
+
+    </translation>
+
+    <translation id="textids.content.T_CONNECT_FAQ_TEXT_3">
+        <target></target>
+        <source>What you do on your PC or cellphone is none of our business! Our goal with Connect is to make the way
+            you handle (new) software easier and more enjoyable. We only learn about information you choose to share
+            with us through your feedback, purchases or registrations. The rest is up to you!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_CONNECT_FAQ_HL_3">
+        <target></target>
+        <source>Does connect track what I'm doing on my PC / cellphone?</source>
+
+    </translation>
+
+    <translation id="textids.content.T_CONNECT_FAQ_TEXT_2">
+        <target></target>
+        <source>Click &quot;Feedback&quot; (heart icon) in the sidebar. It will allow you to post your message. We are
+            developing Connect for our users, i.e. you, so we appreciate any thoughts or suggestions you might have.
+            Let's work together and make Connect the number one place for great software, information and entertainment!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_CONNECT_FAQ_HL_2">
+        <target></target>
+        <source>How do I submit ideas and suggestions for Connect?</source>
+
+    </translation>
+
+    <translation id="textids.content.T_CONNECT_FAQ_TEXT_1">
+        <target></target>
+        <source>Launch Connect and click &quot;Activate product&quot; in the sidebar. A menu will open for you to input
+            your license key or activation code. Click &quot;Validate&quot; to review the program and the account it
+            will be linked to. Does everything check out? Then click &quot;Add&quot; and you're done! If you're
+            encountering any issues, please get in touch with our support team. We're always happy to help.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_CONNECT_FAQ_HL_1">
+        <target></target>
+        <source>How do I add my software to Connect?</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0223_LIST_3">
+        <target></target>
+        <source>NEW: Revamped Design</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0223_LIST_2">
+        <target></target>
+        <source>NEW: Drive activity display in the Windows taskbar</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0223_LIST_1">
+        <target></target>
+        <source>NEW: Notification of your PCs health</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0223_TEXT_9">
+        <target></target>
+        <source>O&amp;O Defrag 25 Professional Edition is compatible with Windows 8.x and Windows 10. It has been
+            optimized especially for low processor and memory capacity in older systems. A Server Edition of the new
+            version 25 will be available shortly for Windows Server versions.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0223_TEXT_8">
+        <target></target>
+        <source>And as always, everything happens automatically in the background. Even a change from hard disk to SSD
+            will be recognized and the optimization strategy adjusted accordingly.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0223_TEXT_7">
+        <target></target>
+        <source>Many new things have been added to the O&amp;O Defrag engine that make using it, especially under
+            Windows 10, even better. That‘s why version 25 now supports the Windows 10-integrated feature for
+            compressing system files so that more space can be kept free.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0223_TEXT_6">
+        <target></target>
+        <source>Alternatively, O&amp;O Defrag users can of course configure their own settings manually as much as they
+            would like. The O&amp;O Defrag interface has also been redesigned and customized for the latest
+            requirements.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0223_TEXT_5">
+        <target></target>
+        <source>Regular defragmentation speeds up systems, extends the life expectancy of hard disks and provides
+            increased data security. The new version O&amp;O Defrag 25 can simply be installed and then the user can let
+            it do its work. It will carry out whatever is needed on a user’s machine on its own. O&amp;O Defrag will
+            configure and run all settings automatically, according to the requirements of each system. Maximum
+            performance practically out of the can.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0223_TEXT_4">
+        <target></target>
+        <source>Thanks to the SOLID/COMPLETE method, data fragments scattered on SSDs will be combined and saved in
+            fewer memory cells. This results in read and write processes requiring fewer accesses to these memory cells
+            in the future. After defragmentation, the SSD works faster and its lifespan is extended because fewer read
+            and write accesses are needed.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0223_TEXT_3">
+        <target></target>
+        <source>Many new things have been added to the O&amp;O Defrag engine that make using it, especially under
+            Windows 10, even better. That‘s why version 25 now supports the Windows 10-integrated feature for
+            compressing system files so that more space can be kept free.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0223_TEXT_2">
+        <target></target>
+        <source>Regular defragmentation speeds up systems, extends the life expectancy of hard disks and provides
+            increased data security. The new version O&amp;O Defrag 25 can simply be installed and then the user can let
+            it do its work. It will carry out whatever is needed on a user’s machine on its own. O&amp;O Defrag will
+            configure and run all settings automatically, according to the requirements of each system. Maximum
+            performance practically out of the can.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0223_TEXT_1">
+        <target></target>
+        <source>Regular defragmentation speeds up systems, extends the life expectancy of hard disks and provides
+            increased data security. The new version O&amp;O Defrag 25 can simply be installed and then the user can let
+            it do its work. It will carry out whatever is needed on a user’s machine on its own. O&amp;O Defrag will
+            configure and run all settings automatically, according to the requirements of each system. Maximum
+            performance practically out of the can.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_HL_CLAIMNEW_2">
+        <target></target>
+        <source>YouCam for streamers, YouTubers and vloggers</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_HL_CLAIMNEW_1">
+        <target></target>
+        <source>The ultimate webcam solution for streamers, enterprises and private users</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_CLAIMNEW_2">
+        <target></target>
+        <source>Robust desktop capturing and high-quality video streaming in a single software</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_CLAIMNEW_1">
+        <target></target>
+        <source>Game streaming, screen capturing and video editing in one!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_HL_CLAIMNEW_2">
+        <target></target>
+        <source>The all-in-one premium multimedia player for video, music and photos</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0629_HL_CLAIMNEW_1">
+        <target></target>
+        <source>The ultimate media player for PC and home cinema</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_HL_CLAIMNEW_1">
+        <target></target>
+        <source>Professional video editing with unlimited possibilities!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_WORLD_CLEANUP_DAY">
+        <target></target>
+        <source>Let's make the world a little cleaner and more manageable! Everything starts with ourselves–and these
+            two programs will help you! Give your PC a deep cleansing and eliminate anything that doesn't belong. Clean
+            your PC down to the last bit!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_TEXT_14">
+        <target></target>
+        <source>Allow staff to review presentations by recording, editing, and publishing them online. Perfect for
+            visually explaining things to colleagues, creating tutorials or interactive visual training guides for your
+            teams. It’s also the easiest way to hold interactive presentations and connect with customers and staff.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_14">
+        <target></target>
+        <source>Screen Capture for Work</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_TEXT_13">
+        <target></target>
+        <source>Setup recordings faster with real-time webcam &amp; mic previews. See exactly what you'll look like
+            before you hit record using the preview window, and quickly adjust resolution and settings. The microphone
+            preview allows you to change volume fast and preview audio levels.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_13">
+        <target></target>
+        <source>Real-time Webcam &amp; Mic Preview</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_12">
+        <target></target>
+        <source>Easy-to-use Editing Tools</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_TEXT_11">
+        <target></target>
+        <source>Whether you’re a vlogger, gamer, or how-to expert, Screen Recorder will have you producing high-quality,
+            detailed videos in next to no time. Record your whole screen, just a window, or lock to a specific app. For
+            gamers, you can record gameplay from your PC even in exclusive mode, and also capture directly from your
+            gaming console!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_11">
+        <target></target>
+        <source>Record from PC or Connected Device</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_10">
+        <target></target>
+        <source>Customizable Hotkey Support</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_TEXT_9">
+        <target></target>
+        <source>Overlay PiP objects in your desktop and webcam recordings. It's an easy way to brand your videos,
+            promote a sponsor, or add a unique watermark to your content.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_9">
+        <target></target>
+        <source>Add PiP Objects Recordings</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_TEXT_8">
+        <target></target>
+        <source>Get creative when adding webcam footage to your screen recordings. Remove the background from your
+            webcam footage thanks to a powerful chroma key engine, and replace it with your own creative background
+            image.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_8">
+        <target></target>
+        <source>Record with Chroma Key</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_TEXT_7">
+        <target></target>
+        <source>Share more than just your gameplay. Share your gaming secrets, reactions and commentary with your
+            viewers by integrating webcam &amp; microphone audio and video on top of your in-game footage, even when
+            you’re streaming from a gaming console.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_7">
+        <target></target>
+        <source>Integrate Your Webcam into Livestreams</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_TEXT_6">
+        <target></target>
+        <source>We understand that CPU and GPU processing power is vital for smooth gameplay and streaming. While other
+            screen capturing solutions consume far too much of the precious processing power that gamers require, we’ve
+            taken every step possible to ensure Screen Recorder minimizes CPU &amp; GPU load as much as possible for
+            your gameplay.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_6">
+        <target></target>
+        <source>Reduced System Footprint</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_TEXT_5">
+        <target></target>
+        <source>Screen Recorder lets you multistream to up to five different services. This means you can simultaneously
+            livestream to Twitch, YouTube, and Facebook, plus up to two additional custom servers. It's easy to reach a
+            wider audience without the need for extra relay servers.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_5">
+        <target></target>
+        <source>Multistream to Five Different Platforms – Including Two Custom Servers</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_TEXT_4">
+        <target></target>
+        <source>Using Screen Recorder, you can connect directly to the platform of your choice and stream video in up to
+            Full HD quality. Livestreaming gameplay to Twitch, YouTube or Facebook is a great way to share your love of
+            gaming with the world.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_4">
+        <target></target>
+        <source>Livestream to Twitch, YouTube and Facebook</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_TEXT_3">
+        <target></target>
+        <source>Make presentations more interactive with screen sharing through livestreams. Record video conferences,
+            or create more effective training material by recording and editing them quickly with easy-to-use tools.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_3">
+        <target></target>
+        <source>For Work &amp; Business</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_TEXT_2">
+        <target></target>
+        <source>Powered by CyberLink’s industry-leading video editing tools, Screen Recorder is more than just screen
+            capturing software. Record &amp; edit content to provide your audience with videos that are detailed,
+            high-quality, and informative.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_2">
+        <target></target>
+        <source>For YouTubers &amp; Vloggers</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_TEXT_1">
+        <target></target>
+        <source>Go beyond just streaming in-game action and start creating content that engages with your followers on
+            Twitch, YouTube or Facebook. Integrate webcam commentary into livestreams, or record and edit gameplay to
+            focus on the best bits.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_HL_1">
+        <target></target>
+        <source>For Gamers &amp; Streamers</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0329_INTRO">
+        <target></target>
+        <source>CyberLink Screen Recorder 4 delivers robust desktop capture and video streaming in a single application.
+            No longer do game casters and online content creators need to juggle multiple applications or services for
+            multistreaming video, or editing desktop capture to publish on YouTube or Facebook. Screen Recorder couples
+            the easy-to-use editing features of PowerDirector – The No.1 Choice for Video Editors – with responsive,
+            high-quality screencasting and capturing technology, making it the all-in-one solution for recording or
+            streaming gameplay, vlogging, or sharing screen content with an online audience.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_TEXT_9">
+        <target></target>
+        <source>PowerDVD lets you get the most out of your home audio setup with support for master-quality sound
+            technology from the leaders in professional digital audio—Dolby and DTS. Enjoy the acoustic difference of
+            specialized multichannel audio and lossless audio formats such as FLAC and DSD.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_HL_9">
+        <target></target>
+        <source>The Ultimate Cinema-grade Sound at Home</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_TEXT_8">
+        <target></target>
+        <source>CyberLink's unique TrueTheater audio-visual enhancement technology is exclusive tech that instantly
+            upgrades the quality of all videos, including Blu-ray, HD and 360º content you watch so that you can truly
+            enjoy them on your home theater system. It can even make Ultra HD 4K video look even better!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_HL_7">
+        <target></target>
+        <source>Wireless Casting</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_TEXT_6">
+        <target></target>
+        <source>Upgrade your home cinema experience with stunning 8K video and support for 4K, HDR 10. Use the built-in
+            TV Mode to intuitively browse your media collection.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_HL_6">
+        <target></target>
+        <source>On the Big Screen</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_TEXT_5">
+        <target></target>
+        <source>Watch your favorite videos on PC using the all-in-one media player with the industry’s widest support of
+            file formats as well as Ultra HD Blu-ray and 8K video.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_HL_5">
+        <target></target>
+        <source>Entertainment on PC</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_TEXT_4">
+        <target></target>
+        <source>Redefining your entertainment experience with the ability to view wirelessly, cast to TV devices, or use
+            on-the-go streaming, to watch your videos on-demand, from any device, in any place.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_HL_4">
+        <target></target>
+        <source>All Your Entertainment Across Devices &amp; Screens</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_TEXT_3">
+        <target></target>
+        <source>It's easier than ever to share your favorite movies or shows. With CyberLink's new cloud space, upload
+            your video, copy the link, then share! There's no need for account signup or app download.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_HL_3">
+        <target></target>
+        <source>Share with Family &amp; Friends</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_TEXT_2">
+        <target></target>
+        <source>Take your Movies and TV Shows anywhere by using the CyberLink cloud. Or download to your mobile device
+            to resume watching offline
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_HL_2">
+        <target></target>
+        <source>Watch on-the-go</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_TEXT_1">
+        <target></target>
+        <source>Seamlessly continue watching from the exact point where you left off, in any room, and any device you
+            have.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0529_HL_1">
+        <target></target>
+        <source>Seamless Playback</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_TEXT_7">
+        <target></target>
+        <source>Now access detailed information about movies and TV shows with PowerDVD’s new, extensive content
+            database!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_HL_7">
+        <target></target>
+        <source>View Movie and TV Media Info</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_TEXT_6">
+        <target></target>
+        <source>Enjoy photo album slideshows in beautiful high-resolution on your PC just by clicking “Play”, even for
+            RAW image files. Save time and effort by sharing your shots to Facebook and Flickr right from PowerDVD.
+            Straighten out your photo collection the right way with one-click tools that do it all for you.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_HL_6">
+        <target></target>
+        <source>Manage Your Photo Collections with Ease</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_TEXT_5">
+        <target></target>
+        <source>For a truly immersive movie experience, you need exceptional audio. PowerDVD supports master-quality
+            sound technology from the leaders in professional digital audio. Enjoy the acoustic difference of
+            specialized multichannel audio and lossless audio formats.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_HL_5">
+        <target></target>
+        <source>Cinema Quality Audio with Lossless Support</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_TEXT_4">
+        <target></target>
+        <source>Let new PowerDVD show you how truly great home entertainment can be with better-than-original quality
+            playback of all your favorite videos, music and photos, as well as DVDs. It’s the easiest way to manage your
+            entire media library.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_HL_4">
+        <target></target>
+        <source>Your Personalized Media Center</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_TEXT_3">
+        <target></target>
+        <source>Want to keep an eye on the live sports game or just enjoy keeping YouTube going on in the background?
+            Mini-View lets you run a separate mini tab so you can multitask effortlessly.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_HL_3">
+        <target></target>
+        <source>Always on Top Mini View</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_TEXT_2">
+        <target></target>
+        <source>CyberLink's unique TrueTheater® enhancements improve the quality of your DVDs. Plus, make the best look
+            even better as you use TrueTheater Color, &amp; Lighting to upgrade even 4K video
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_HL_2">
+        <target></target>
+        <source>TrueTheater®: Better-Than-Original Quality</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_TEXT_1">
+        <target></target>
+        <source>PowerDVD is the only DVD player you’ll need for your Windows® PC. Enjoy unrivaled playback of all your
+            favorite Hollywood blockbusters without the need to install any extra plugins or software.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_HL_1">
+        <target></target>
+        <source>DVD Playback for Windows® PCs</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_TEXT_INTRO">
+        <target></target>
+        <source>With over 300 million copies sold, PowerDVD is the world's number one movie and media player. This
+            tradition continues with PowerDVD 20, the only software that not only plays DVDs but also increases picture
+            and audio quality during playback. Watch what you want, whenever you want to with world-class format and
+            codec support.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0229_HL_CLAIM">
+        <target></target>
+        <source>The world's number one movie and media player</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_TEXT_7">
+        <target></target>
+        <source>Turn PowerPoint slides into engaging presentations by choosing from a selection of layouts using PiP
+            video or side-by-side display. Add effects from a wide collection to bring your work to life. You can also
+            free-hand draw or record mouse cursor movements to highlight key areas.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_HL_7">
+        <target></target>
+        <source>Business Presentation Recording</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_TEXT_6">
+        <target></target>
+        <source>Enhance your webcam photos using a range of brush sizes and colors, or try freestyle drawing using your
+            fingers on a touch-screen.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_HL_6">
+        <target></target>
+        <source>Creative Photo Editing &amp; Quick Face Beautification</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_TEXT_5">
+        <target></target>
+        <source>Choose from over 200 lively effects that can be applied to your video chats and video recording
+            projects, with thousands more available for download on DirectorZone.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_HL_5">
+        <target></target>
+        <source>Real-time Video Effects – Animojis, Frame, Scenes, Filters, Particles &amp; Gadgets</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_TEXT_4">
+        <target></target>
+        <source>YouCam’s AR technology identifies your unique facial structure, features, and tone matrix to apply
+            natural-looking makeup in real time. Create your own presets, or choose from a large pool of readymade
+            palettes.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_HL_4">
+        <target></target>
+        <source>Live Skin Smoothing</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_TEXT_3">
+        <target></target>
+        <source>YouCam’s AR technology identifies your unique facial structure, features, and tone matrix to apply
+            natural-looking makeup in real time. Create your own presets, or choose from a large selection of readymade
+            palettes.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_HL_3">
+        <target></target>
+        <source>Look Sharp with Live Makeup</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_TEXT_2">
+        <target></target>
+        <source>YouCam is a perfect companion to Twitch, Facebook Live, and YouTube Live. Make YouCam your virtual
+            camera when using OBS Studio, XSplit, and Wirecast.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_HL_2">
+        <target></target>
+        <source>Use with Popular Streaming Services</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_TEXT_1">
+        <target></target>
+        <source>Add customized titles and images to your live-stream sessions. Showcase channel logos, advertising,
+            promotional messages, and sponsorships.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_HL_1">
+        <target></target>
+        <source>Customizable Titles and Images for Live Streaming</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_TEXT_INTRO">
+        <target></target>
+        <source>Integrate YouCam seamlessly into video call services like Skype, Zoom &amp; U Meeting, as well as
+            Facebook and YouTube Live or even Twitch. Apply real-time skin enhancements and makeup to look your best.
+            Add life to your meetings, streams, and broadcasts with over 200 fun augmented reality effects, customized
+            titles, and images.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0429_HL_INTRO">
+        <target></target>
+        <source>Turn your webcam into a live video studio</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0128_TEXT_4">
+        <target></target>
+        <source>Our expert team has rigorously tested the software for repairing corrupt video files captured with all
+            leading camera brands and devices in the world. These include brands like Sony®, Canon®, Nikon®, FujiFilm®,
+            GoPro®, DJI® (Mavic, Phantom), Panasonic®, Samsung®, Olympus®, Flip Video®, Pentax®, Mamiya®, Sigma®, and
+            Blackmagic®. The software also restores video files made with Android® phone and iPhone® cameras, dashcam,
+            CCTV cameras and more.
+        </source>
+        Our expert team has rigorously tested the software for repairing corrupt video files captured with all leading
+        camera brands and devices in the world. These include brands like Sony®, Canon®, Nikon®, FujiFilm®, GoPRo®, DJI®
+        (Mavic, Phantom), Panasonic®, Samsung®, Olympus®, Flip Video®, Pentax®, Mamiya®, Sigma®, and Blackmagic®. The
+        software also restores video files made with Android® phone and iPhone® cameras, dashcam, CCTV cameras and more.
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0128_LIST_2_1">
+        <target></target>
+        <source>Supports all storage media — SD cards, USB flash drives, HDDs etc.</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0128_LIST_1_1">
+        <target></target>
+        <source>Repairs severely corrupted video files by using sample files</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0128_HL_4">
+        <target></target>
+        <source>Cameras Tested with our Software for Successful Results</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0128_TEXT_3">
+        <target></target>
+        <source>Stellar Repair for Video is a complete digital video repair solution for Windows and Mac users. Support
+            for popular video file formats, camera brands, storage media, and ability to fix all sorts of corruptions,
+            make the software the best video repair tool for all.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0128_HL_3">
+        <target></target>
+        <source>Complete Video Repair Solution for Windows &amp; Mac users</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0128_LIST_2_3">
+        <target></target>
+        <source>Repairs videos created from DSLR, camcorders, CCTV, drone, dash cam, point and shoot, mirrorless,
+            android and iPhone etc.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0128_LIST_2_2">
+        <target></target>
+        <source>Fixes corrupt videos recovered from corrupt media</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0128_TEXT_2">
+        <target></target>
+        <source>Stellar Repair for Video can repair videos shot with all leading camera brands — Canon®, Sony®, Go Pro®,
+            Olympus®, Nikon®, Fuji®, Samsung®, Panasonic®, DJI®, Parrot®, Skydio®,Blackmagic® etc.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0128_HL_2">
+        <target></target>
+        <source>Repair Videos from any Camera</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0128_LIST_1_3">
+        <target></target>
+        <source>Previews repaired videos before saving</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0128_LIST_1_2">
+        <target></target>
+        <source>Fixes stuttering, flickering, blurry &amp; other video problems</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0128_TEXT_1">
+        <target></target>
+        <source>Repair corrupt, broken or damaged videos by using this advanced video repair software. It can repair
+            video files that got corrupt while shooting, transferring, editing, or conversion process.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0128_HL_1">
+        <target></target>
+        <source>HD Video Repair Software for Corrupted Video File</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0128_HL_CLAIM">
+        <target></target>
+        <source>Repairs Corrupted, Broken or Unplayable Video Files</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_HL_CLAIM">
+        <target></target>
+        <source>Best Photo Repair Software</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_TEXT_6">
+        <target></target>
+        <source>The software offers an ‘Advanced Repair’ option for severely corrupt JPEG/JPG images. It uses the
+            ‘sample file’ — a working JPEG file created using the same device as your corrupt file — to fix complex
+            corruption issues in JPEG/JPG photos. The software uses information from the sample to fix severe
+            corruptions in JPEG photos.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_HL_6">
+        <target></target>
+        <source>Repairs Severely Corrupt JPEG Photos using Sample File</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_TEXT_5">
+        <target></target>
+        <source>Stellar Repair for Photo fixes your completely unreadable image files even under the situations of
+            corrupt header, corrupt data, invalid image file structure, unknown or invalid marker, missing SOS marker
+            etc. You can repair inaccessible, greyed-out, grainy, blurry images or those showing errors as well.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_HL_5">
+        <target></target>
+        <source>Fixes Various Photo Corruption Issues</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_TEXT_4">
+        <target></target>
+        <source>Your photos may be severely corrupt beyond repair. The advanced Stellar Photo Repair software extracts
+            the embedded thumbnails in case of severely corrupt image files without compromising their visual fidelity.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_HL_4">
+        <target></target>
+        <source>Extracts Thumbnails of Severely Corrupt Photos</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_TEXT_3">
+        <target></target>
+        <source>The photo repair utility can simultaneously repair unlimited number of photos of same or different
+            formats. Stellar Repair for Photo offers a quick and easy way to repair hundreds of corrupt, broken or
+            damaged files stored in any drive or media.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_HL_3">
+        <target></target>
+        <source>Repairs Multiple Photos at One go</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_LIST_2_3">
+        <target></target>
+        <source>Repairs RAW files of popular camera brands — Nikon®, Canon®, Sony®, Olympus®, etc</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_LIST_2_2">
+        <target></target>
+        <source>Repairs photos taken with DSLRs, Android phones, iPhone, action cameras, etc.</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_LIST_2_1">
+        <target></target>
+        <source>Supports all camera memory cards: SDXC, SDHC, memory stick, etc.</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_TEXT_2">
+        <target></target>
+        <source>Repair photos shot with all kinds of cameras and saved in any digital storage device. The photo repair
+            software supports all Mac &amp; Windows computer drives, USB flash drives, memory stick, SD card, and other
+            storage media used in camera, drone, CCTV, Android phones etc.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_HL_2">
+        <target></target>
+        <source>Repairs Photos Stored in any Camera Memory Card</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_LIST_1_4">
+        <target></target>
+        <source>Repairs severely corrupt photos by using sample files</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_LIST_1_3">
+        <target></target>
+        <source>Extracts thumbnails of severely corrupt images</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_LIST_1_2">
+        <target></target>
+        <source>Fixes corrupt header &amp; invalid image file structure</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_LIST_1_1">
+        <target></target>
+        <source>Repairs distorted, blurry, pixelated, &amp; greyed-out images</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_TEXT_1">
+        <target></target>
+        <source>Stellar Repair for Photo software repairs corrupt photos and restores your prized memories. The powerful
+            software can fix any kind of image corruption and makes them sharp and vivid.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0228_HL_1">
+        <target></target>
+        <source>Repairs Corrupt Photos Like New</source>
+
+    </translation>
+
+    <translation id="textids.content.T_OFFICE_HEROES_BUNDLE_TEXT_2">
+        <target></target>
+        <source>You'll also get Ashampoo® Undeleter completely free of charge! Recover accidentally deleted files on
+            NTFS and FAT partitions and restore them in no time. It's a real lifesaver!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_OFFICE_HEROES_BUNDLE_TEXT_1">
+        <target></target>
+        <source>Get our two best office programs at a spectacular bundle price! Ashampoo® ZIP Pro 3 is the top choice to
+            compress, extract, send and encrypt your files! Process over 60 archive formats at lightning speed and with
+            strong 256-bit encryption! Ashampoo ® Snap 12 is the fastest way to create screenshots and videos of your
+            screen contents. Snap can capture, edit and share anything you see on your screen as images and videos!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_OFFICE_HEROES_BUNDLE_HL_1">
+        <target></target>
+        <source>Office heroes bundle</source>
+
+    </translation>
+
+    <translation id="textids.content.T_BENEFITS_HL_6">
+        <target></target>
+        <source>Instant download</source>
+
+    </translation>
+
+    <translation id="textids.content.T_LOGIN_HL_UNKNOWN_2">
+        <target></target>
+        <source>Back to login</source>
+
+    </translation>
+
+    <translation id="textids.content.T_SHOPPING_CART_NOTE">
+        <target></target>
+        <source>Exclusive bonus offer for newsletter subscribers:&lt;br&gt; PDF Pro 2 only $9.99. Get it now!</source>
+        Exclusive bonus offer for newsletter subscribers: PDF Pro 2 only $9.99. Get it now!
+    </translation>
+
+    <translation id="textids.content.T_METAKEYWORDS_TEXT_WEBCAMGUARD">
+        <target></target>
+        <source>how to turn off webcam;
+            turn off webcam windows 10;
+            turn off webcam;
+            camera off;
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0028_TEXT_INTRO">
+        <target></target>
+        <source>It only takes a second to delete images, videos and documents on Windows. One wrong click and important
+            files are gone. Stellar Data Recovery is the perfect solution to recover lost and accidentally deleted files
+            and folders on your Windows PC, laptop or any other Windows-compatible storage device!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0028_HL_SUBCLAIM">
+        <target></target>
+        <source>Safely recover data from all Windows-compatible storage devices</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0028_HL_CLAIM_NEW">
+        <target></target>
+        <source>Recover deleted data from your PC and external storage devices!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PROMO_FREEWARE_TEXT_2_2">
+        <target></target>
+        <source>Enjoy 9 great free programs for your PC!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PROMO_FREEWARE_TEXT_2_1">
+        <target></target>
+        <source>Welcome to our summer of free software!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PROMO_FREEWARE_TEXT_3">
+        <target></target>
+        <source>Ashampoo is known for excellent freeware titles. Here's a list of our current free programs. There's is
+            sure to something for you!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_ONBOARDING_BENEFITS_TITLE_1">
+        <target></target>
+        <source>The faster route to success</source>
+        Finish faster
+    </translation>
+
+    <translation id="textids.content.T_0401_TEXT_SUBMIT_2000_1_3">
+        <target></target>
+        <source>Our feedback system puts you in direct touch with our Connect team. Missing a feature? Finding a
+            procedure takes too many clicks? Tell us! We're heading into uncharted territory–and we'd like you to come
+            along for the ride! Get Ashampoo Connect on your PC and cellphone today and help shape the beta version into
+            a universal community-inspired software platform.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_TEXT_SUBMIT_2000_1_2">
+        <target></target>
+        <source>But that's only the beginning: After all, Ashampoo Connect is in beta status right now and will see many
+            new features over the coming months. Our goal is to create a platform that provides all users with
+            trustworthy quality software without nasty surprises, like PUP. A single service that spares users the
+            hassle of juggling multiple user accounts and license activation procedures when buying and unlocking
+            software! A service that provides news and entertainment, and has the best prices and most useful tools. We
+            want to make the development process as transparent and open to feedback, criticism and suggestions as
+            possible. Join us, become a software pioneer and be a part of a an ever-expanding development team!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_TEXT_SUBMIT_2000_1_1">
+        <target></target>
+        <source>Ashampoo Connect is your new route to us–and quality software. Experience firsthand how easy it is to
+            find, purchase and unlock software on Windows or via Android/iOS app! Check out free software, enjoy the new
+            download manager, and install software on your Windows PC directly through Connect. Get notified about
+            updates and install them at the click of a button!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_TEXT_SUBMIT_250_2">
+        <target></target>
+        <source>Ashampoo Connect wants to establish new links between software companies and customers. How about a
+            single service that covers all your software needs–on Windows and via iOS and Android app? Join us and
+            experience the humble beginnings and steady rise of Connect!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_TEXT_SUBMIT_250_1">
+        <target></target>
+        <source>Ashampoo Connect is the direct line between customers and Ashampoo. Users can buy, update and unlock
+            their purchased software or access free titles in just a few clicks, whether on Windows or via Android/iOS
+            app!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_HL_SUBMIT_45_8">
+        <target></target>
+        <source>The new way to experience software</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_HL_SUBMIT_45_7">
+        <target></target>
+        <source>The direct line to Ashampoo including free software and exclusive deals</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_HL_SUBMIT_45_6">
+        <target></target>
+        <source>Buy, unlock, install and update–everything from a single source!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_HL_SUBMIT_45_5">
+        <target></target>
+        <source>Ashampoo is breaking new ground. Join us!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_HL_SUBMIT_45_4">
+        <target></target>
+        <source>Become a Connect pioneer!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_HL_SUBMIT_45_3">
+        <target></target>
+        <source>The central hub for your software</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_HL_SUBMIT_45_2">
+        <target></target>
+        <source>The direct(est) route to exciting software</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_HL_SUBMIT_45_1">
+        <target></target>
+        <source>Ashampoo's big adventure</source>
+
+    </translation>
+
+    <translation id="textids.content.T_NEWSLETTER_HL_SUPER_DEAL">
+        <target></target>
+        <source>The super deal for loyal newsletter readers</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_VALID_KEY">
+        <target></target>
+        <source>Valid key:</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_ADD_YOUR_KEY">
+        <target></target>
+        <source>Please enter your license key or activation code here:</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_PRODUCT_BOUND_ACCOUNT">
+        <target></target>
+        <source>The product is registered for the following account:</source>
+
+    </translation>
+
+    <translation id="textids.content.T_MAIN_HL_FIRST_TIME_SHOPPER">
+        <target></target>
+        <source>Unbeatable bargain for first-time shoppers</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TALENTS_HL_5">
+        <target></target>
+        <source>Sounds good? Then get in touch with us at talents@ashampoo.com and show us your software!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TALENTS_LIST_7">
+        <target></target>
+        <source>The option to be hired for further projects</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TALENTS_LIST_6">
+        <target></target>
+        <source>Fair contracts and full legal transparency</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TALENTS_LIST_5">
+        <target></target>
+        <source>Mailings that reach millions of potential customers</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TALENTS_LIST_4">
+        <target></target>
+        <source>Publication with professional texts that grab the full attention of the trade press</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TALENTS_LIST_3">
+        <target></target>
+        <source>Expert tips and advice from our developers for the final polish</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TALENTS_LIST_2">
+        <target></target>
+        <source>Thorough testing by our QA</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TALENTS_LIST_1">
+        <target></target>
+        <source>Professional GUI from our designers</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TALENTS_HL_4">
+        <target></target>
+        <source>Here's what we offer:</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TALENTS_HL_3">
+        <target></target>
+        <source>We have the knowhow and marketing expertise to boost your sales and reputation to the max!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TALENTS_TEXT_1">
+        <target></target>
+        <source>Had a big idea and the software to show for it but no marketing clout? Let us help you!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TALENTS_HL_2">
+        <target></target>
+        <source>For people with great ideas and great software!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TALENTS_HL_1">
+        <target></target>
+        <source>Ashampoo Talents</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0401_TEXT_3">
+        <target></target>
+        <source>Connect is your digital hub to everything Ashampoo! Imagine a service that unlocks and updates all of
+            your software and provides the shortest route to technical support. That's what Connect is all about–and
+            more! You also get instant access to your license keys, free Ashampoo software and the best prices on the
+            market, always. Buy, download and install, or remove, your software in just a few clicks–with the always
+            free Connect client!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1560_LIST_NEWFEAT_6">
+        <target></target>
+        <source>Export visible 3D content to various formats for further processing (SKP, OBJ, Collada, 3DS, FBX)
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1560_LIST_NEWFEAT_5">
+        <target></target>
+        <source>Create and add custom 2D symbols to object catalog</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1560_LIST_NEWFEAT_4">
+        <target></target>
+        <source>2D drawing routines to augment floor plans</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1560_LIST_NEWFEAT_3">
+        <target></target>
+        <source>Room data sheet with automated living area calculation and PDF, RTF and Excel export</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1560_LIST_NEWFEAT_2">
+        <target></target>
+        <source>Combine multiple 2D plan views on a single sheet</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1560_LIST_NEWFEAT_1">
+        <target></target>
+        <source>Modeling functions for custom 2D objects and construction elements</source>
+
+    </translation>
+
+    <translation id="textids.content.M_UPGRADE_OUTNOW">
+        <target></target>
+        <source>Upgrade now available</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0026_HL_TRANSPARENCY">
+        <target></target>
+        <source>Full disclosure: Music Maker is provided free of charge by our partner Magix. The offer is for the sound
+            libraries that usually sell for a lot more! See for yourself!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_SOCIAL_TEXT_TERMS_LEGAL_8_NEW">
+        <target></target>
+        <source>Legal recourse shall be excluded. Questions or complaints relating to the raffle shall be directed to
+            its provider, Ashampoo. Contact information is available in the imprint of the raffle app or via email to
+            gewinnspiel@ashampoo.com. The raffle shall be subject to the law of the Federal Republic of Germany,
+            exclusively. Should a provision of these terms of participation be or become ineffective in whole or in
+            part, this shall not affect the validity of these terms in other respects. Instead of the ineffective
+            provision, the legally permissible provision that comes closest to the meaning and purpose expressed in the
+            ineffective provision shall apply. The same shall apply in the event that there is a regulatory gap in these
+            terms of participation.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_SOCIAL_TEXT_TERMS_LEGAL_8">
+        <target></target>
+        <source>Legal recourse shall be excluded. The raffle shall be subject to the law of the Federal Republic of
+            Germany, exclusively. Should a provision of these terms of participation be or become ineffective in whole
+            or in part, this shall not affect the validity of these terms in other respects. Instead of the ineffective
+            provision, the legally permissible provision that comes closest to the meaning and purpose expressed in the
+            ineffective provision shall apply. The same shall apply in the event that there is a regulatory gap in these
+            terms of participation.
+        </source>
+        Legal recourse shall be excluded. Questions or complaints relating to the raffle shall be directed to its
+        provider, Ashampoo. Contact information is available in the imprint of the raffle app or via email to
+        gewinnspiel@ashampoo.com. The raffle shall be subject to the law of the Federal Republic of Germany,
+        exclusively. Should a provision of these terms of participation be or become ineffective in whole or in part,
+        this shall not affect the validity of these terms in other respects. Instead of the ineffective provision, the
+        legally permissible provision that comes closest to the meaning and purpose expressed in the ineffective
+        provision shall apply. The same shall apply in the event that there is a regulatory gap in these terms of
+        participation.
+    </translation>
+
+    <translation id="textids.content.T_2424_HL_TEXT_1_3_2">
+        <target></target>
+        <source>(!)Did you know? You can collapse/expand the sidebars for added clarity or more work space.</source>
+
+    </translation>
+
+    <translation id="textids.content.T_CATEGORIES_TEXT_1_LONG">
+        <target></target>
+        <source>Are you looking for the best-in-class movie, image and video programs? Enter the colorful world of
+            multimedia! Burn your songs, enhance your photos and discover a surround sound experience! Action cam
+            footage, MP3s or cellphone images: We help you make the most out of your digital media!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_NICOLE_RECOMMENDS_SHORT">
+        <target></target>
+        <source>My WOW experience.</source>
+        Being a newbie at Ashampoo, I've had my biggest wow experience so far with System Utilities 21.
+    </translation>
+
+    <translation id="textids.content.T_ANGIE_RECOMMENDS_SHORT">
+        <target></target>
+        <source>Handling PDF files is part of my everyday working life.</source>
+
+    </translation>
+
+    <translation id="textids.content.T_CARSTEN_RECOMMENDS_SHORT">
+        <target></target>
+        <source>Soundstage Pro has changed the way I listen to music.</source>
+
+    </translation>
+
+    <translation id="textids.content.T_SEBI_RECOMMENDS_SHORT">
+        <target></target>
+        <source>I'm glad I can rest easy knowing Backup Pro 15 is taking care of data safety.</source>
+
+    </translation>
+
+    <translation id="textids.content.T_METAKEYWORDS_TEXT_ANTISPY">
+        <target></target>
+        <source>windows 10 disable telemetry,
+            telemetry windows 10,
+            windows 10 privacy issues,
+            windows 10 privacy fix tool,
+            window 10 privacy,
+            anti monitor,
+            stop windows 10 spying,
+            remove windows 10 spying,
+            anti tracking software,
+            anti spy software,
+            how to disable windows 10 tracking,
+        </source>
+        windows 10 disable telemetry
+        telemetry windows 10
+        windows 10 privacy issues
+        windows 10 privacy fix tool
+        window 10 privacy
+        anti monitor
+        stop windows 10 spying
+        remove windows 10 spying
+        anti tracking software
+        anti spy software
+        how to disable windows 10 tracking
+    </translation>
+
+    <translation id="textids.content.T_AGB_TEXT_28">
+        <target></target>
+        <source>Platform of the EU Commission regarding online dispute resolution</source>
+
+    </translation>
+
+    <translation id="textids.content.T_AGB_TEXT_27">
+        <target></target>
+        <source>In accordance with § 36 VSBG (law on alternative dispute resolution for consumer disputes, see directive
+            2013/11/EU), we hereby inform you that we will not participate in dispute settlement proceedings directed by
+            consumer arbitration boards nor are we obligated to do so.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_AGB_HL_4">
+        <target></target>
+        <source>Dispute resolution</source>
+
+    </translation>
+
+    <translation id="textids.content.T_SALE_HL_SAFER_INTERNET_1">
+        <target></target>
+        <source>Enjoy a safer web experience at a special price: Our contribution to Safer Internet Day!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_SALE_HL_SAFER_INTERNET_4">
+        <target></target>
+        <source>Our software picks for you</source>
+
+    </translation>
+
+    <translation id="textids.content.T_SALE_HL_SAFER_INTERNET_3">
+        <target></target>
+        <source>We'll help you stay safe!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_HL_FOLLOW_NEWS">
+        <target></target>
+        <source>The latest Ashampoo news online</source>
+        The latest Ashampoo® news online
+    </translation>
+
+    <translation id="textids.content.T_BUNDLE_TEXT_OFFICE_PDF">
+        <target></target>
+        <source>Experience our two top office programs at a spectacular bundle price! Ashampoo® PDF Pro 2 is our
+            versatile all-purpose PDF editor. This multi-talent no only lets you edit PDFs as easily as Word documents
+            but also converts and merges them to your liking! Create optimally sized PDFs that are readable on any
+            device and protected with strong encryption, if needed. Ashampoo® Office 8 is our powerful MS Office
+            alternative that retains full compatibility with the latter. Create quality documents, spreadsheets and
+            presentations with incredible ease and benefit from comfort features like the handy quick-start bar or
+            long-time data preservation. Get our latest top-of-the-line Office suite for 2021!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_MAILING_SILVESTER20_HL_DONATE_2">
+        <target></target>
+        <source>to Straßenengel</source>
+        to Strassenengel
+    </translation>
+
+    <translation id="textids.content.T_MAILING_SILVESTER20_HL_NEW_3">
+        <target></target>
+        <source>Welcome Manager</source>
+        Receptionist
+    </translation>
+
+    <translation id="textids.content.T_MAILING_SILVESTER20_HL_DONATE_1">
+        <target></target>
+        <source>We'll donate</source>
+
+    </translation>
+
+    <translation id="textids.content.T_MAILING_SILVESTER20_HL_FACTS_5">
+        <target></target>
+        <source>579 ice cream boxes</source>
+
+    </translation>
+
+    <translation id="textids.content.T_MAILING_SILVESTER20_HL_FACTS_4">
+        <target></target>
+        <source>4,157 cups of coffee</source>
+
+    </translation>
+
+    <translation id="textids.content.T_MAILING_SILVESTER20_HL_FACTS_3">
+        <target></target>
+        <source>6.5 million downloads</source>
+
+    </translation>
+
+    <translation id="textids.content.T_MAILING_SILVESTER20_HL_FACTS_2">
+        <target></target>
+        <source>250,847 customer inquiries</source>
+
+    </translation>
+
+    <translation id="textids.content.T_MAILING_SILVESTER20_HL_FACTS_1">
+        <target></target>
+        <source>Ashampoo end-of-year review 2020</source>
+
+    </translation>
+
+    <translation id="textids.content.T_NOTIFICATIONS_DISABLE_CTA">
+        <target></target>
+        <source>Disable push notifications</source>
+
+    </translation>
+
+    <translation id="textids.content.T_MAILING_SILVESTER20_TEXT_5">
+        <target></target>
+        <source>We're very grateful we've made it through this difficult year with a healthy team. In 2020, you once
+            again showed great interest in our programs and remained our loyal customers–no small feat in these
+            fast-paced times. We'll continue to provide you with high-quality software at fair prices in 2021, promise!
+        </source>
+        We're very grateful we've made it through this difficult year with a healthy team. In 2020, you once again
+        showed great interest in our programs and remained our loyal customers–no small feat in these fast-paced times.
+        We'll continue to provide you with good software at fair prices in 2021, promise!
+    </translation>
+
+    <translation id="textids.content.T_MAILING_SILVESTER20_TEXT_4">
+        <target></target>
+        <source>Naturally, planning for 2021 has already been completed–though we traditionally like to leave a little
+            room for spontaneous projects. As always, there'll be new versions of classics like WinOptimizer or Burning
+            Studio. Snap will receive a facelift and our security portfolio will see a proud addition in Ashampoo®
+            Privacy Control. If all goes well, we'll be having something new every month–and our partners are also
+            waiting in the wing. No small amount of heart and soul went into Ashampoo Connect, our new software
+            distribution, activation and update center. This project marks the beginning of an important piece of
+            Ashampoo's future and here's where you'll read about it first! With Connect, you'll get your software,
+            support and information through a single reliable source–and we can't wait to see your reactions!
+        </source>
+        Naturally, planning for 2021 has already been completed–though we traditionally like to leave a little room for
+        spontaneous projects. As always, there'll be new versions of classics like WinOptimizer or Burning Studio. Snap
+        will receive a facelift and our security portfolio will see a proud addition in Ashampoo® Privacy Control. If
+        all goes well, we'll be having something new every month–and our partners are also waiting in the wing. No small
+        amount of heart and soul went into Ashampoo Connect, our new software distribution, activation and update
+        center. This is the future place where you'll get your software, support and information from a single reliable
+        source.
+    </translation>
+
+    <translation id="textids.content.T_MAILING_SILVESTER20_TEXT_6">
+        <target></target>
+        <source>As a little finale, we've come up with a special donation sale. Only today can you get our software
+            highlights at a New Year's discount and we'll donate 10% of the profits to Oldenburger Straßenengel e.V.
+            That's a local charity that cares for the needy and the homeless in our city and is doing outstanding work.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_MAILING_SILVESTER20_TEXT_8">
+        <target></target>
+        <source>And now: Take a deep breath. You've made it through the year. May the next one be nicer and less
+            stressful. The whole team at Ashampoo wishes you a happy and healthy 2021!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_MAILING_SILVESTER20_TEXT_3">
+        <target></target>
+        <source>We quickly realized we needed help with current and future projects so there were also a few new faces
+            in 2020! Our newcomers swiftly settled in and we not only gained good professionals but genuinely likable
+            people that fully fit into the company. Here are a few of them.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_MAILING_SILVESTER20_TEXT_2">
+        <target></target>
+        <source>This wasn't just about the technical implementation of home office schedules. We wanted to preserve what
+            defines us as a team and makes us strong: closeness and cohesion. Parents lovingly cared for their kids and
+            still didn't miss a single deadline; bosses contacted their employees and asked about their well-being at
+            home; people began posting their breakfast and whatever went through their minds.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_MAILING_SILVESTER20_TEXT_1">
+        <target></target>
+        <source>2020 is coming to an end and we'll probably agree this year has been like no other! To us as Ashampoo,
+            these special times posed special challenges. While we had celebrated us and our new home until sunrise
+            during our start of the new year celebration, we were now facing new challenges beyond the usual software
+            production and distribution routine.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_REQUIREMENTS_TEXT_ARM">
+        <target></target>
+        <source>Systems with ARM processors are not supported.</source>
+
+    </translation>
+
+    <translation id="textids.content.T_FREENET_TEXT_4">
+        <target></target>
+        <source>If you've unsubscribed in the mean time, you won't be receiving any more emails from us, naturally.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_FREENET_TEXT_3">
+        <target></target>
+        <source>We'd love to get you back on board!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_FREENET_TEXT_2">
+        <target></target>
+        <source>If you'd like to get back in touch with us and receive our newsletter with exclusive discounts, upgrade
+            infos and blog articles, just use this link:
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_FREENET_TEXT_1">
+        <target></target>
+        <source>Hello,
+            maybe you've been wondering why you haven't received any newsletters from us recently.
+            We have a lot going on and mistakes happen. In this case, you've been unsubscribed from our newsletters for
+            no reason!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_FREENET_HL">
+        <target></target>
+        <source>Important information on your Ashampoo account</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1438_HL_CLAIM_4_2">
+        <target></target>
+        <source>Version for 2021</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1438_HL_CLAIM_4">
+        <target></target>
+        <source>Our best version for 2021</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PRIVACYPOLICY_TEXT_NEW_6">
+        <target></target>
+        <source>You can revoke your consent informally at any time, e.g. by sending an e-mail to &lt;a href=&quot;mailto:hr@crash.immo&quot;&gt;hr@crash.immo&lt;/a&gt;.</source>
+        You can revoke your consent informally at any time, e.g. by sending an e-mail to hr@crash.immo.
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0502_LIST_35">
+        <target></target>
+        <source>Remain in full control with the enhanced Preview Mode</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0502_LIST_34">
+        <target></target>
+        <source>Easily layer and swap between various backgrounds</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0502_LIST_33">
+        <target></target>
+        <source>Optimized automatic Edge Recognition algorithms</source>
+
+    </translation>
+
+    <translation id="textids.content.T_SALES_HL_BUY1GET2">
+        <target></target>
+        <source>Buy one, get one free</source>
+
+    </translation>
+
+    <translation id="textids.content.T_CONSENT_TEXT_NEWSLETTER">
+        <target></target>
+        <source>I hereby confirm that I have read and understood the text above, fully accept and agree to its
+            content.
+        </source>
+        I hereby confirm that I have read and understood the content of the above text.
+    </translation>
+
+    <translation id="textids.content.T_2303_HL_LAYERS_1">
+        <target></target>
+        <source>The four uninstallation phases</source>
+
+    </translation>
+
+    <translation id="textids.content.T_SOCIAL_TEXT_TERMS_LEGAL_7">
+        <target></target>
+        <source>Personal data provided by participants within the scope of the raffle will be collected, stored,
+            processed, used, and–for example for the purpose of prize delivery–passed on to third parties. No further
+            processing shall take place.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_SOCIAL_TEXT_TERMS_LEGAL_6">
+        <target></target>
+        <source>Any liability for damages on the part of Ashampoo and its organs, employees, and vicarious agents,
+            arising from or in connection with the raffle, regardless of legal grounds, shall be limited to cases of
+            intent or gross negligence to the extent permitted by law.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_SOCIAL_TEXT_TERMS_LEGAL_5">
+        <target></target>
+        <source>Cash payment, payment in kind or exchange of prizes shall not be permissible. Prizes shall be
+            non-transferable. Winners shall accept prize changes necessitated by factors beyond the control of the
+            companies involved in the promotion. Winners shall report back within 24 hours, otherwise new winners shall
+            be drawn. All decisions made by Ashampoo shall be final. Inquiries in this regard shall go unanswered.
+            Ashampoo reserves the right to suspend the promotion in whole or in part should difficulties arise that
+            compromise the integrity of the raffle. Ashampoo also reserves the right to alter these terms of
+            participation without prior notice.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_SOCIAL_TEXT_TERMS_LEGAL_4">
+        <target></target>
+        <source>Winners shall be determined after the closing date in a random drawing among all participants. The
+            drawing process shall be recorded and made available as video on the respective platform. In case of raffles
+            that involve the completion of a task, only participants who successfully completed said task shall be
+            included.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_SOCIAL_TEXT_TERMS_LEGAL_3">
+        <target></target>
+        <source>Ashampoo shall not be held responsible for technical malfunctions, especially failures of the telephone
+            network, computer network, electronics or computers. This shall not apply to damages caused by culpable
+            injury to life, limb or health.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_SOCIAL_TEXT_TERMS_LEGAL_2">
+        <target></target>
+        <source>The aforementioned comment shall be deemed a declaration of participation under these terms. Ashampoo
+            accepts this declaration.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_SOCIAL_TEXT_TERMS_LEGAL_1">
+        <target></target>
+        <source>Eligible participants shall participate by liking the raffle post (clicking the Like button) and
+            answering the question under the respective account in the form of a comment under the raffle post.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_SOCIAL_TEXT_TERMS_LEGAL_HL">
+        <target></target>
+        <source>Participation:</source>
+
+    </translation>
+
+    <translation id="textids.content.T_SOCIAL_TEXT_TERMS_LEGAL_ENTITLED">
+        <target></target>
+        <source>All persons involved in the conception and implementation of the raffle as well as employees of the
+            provider and their family members shall be ineligible for participation. In addition, the provider reserves
+            the right to exclude persons from participation at its own discretion on grounds of legitimate reasons, for
+            example in the event of (a) manipulation regarding access or implementation of the raffle, (b) violation of
+            these terms and conditions, (c) unfair conduct or (d) false or misleading statements in connection with the
+            participation in the raffle.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_SOCIAL_TEXT_TERMS_LEGAL_INTRO">
+        <target></target>
+        <source>Ashampoo GmbH &amp; Co KG will conduct a raffle among fans of the social media accounts &quot;Ashampoo
+            Deutschland&quot;, &quot;Ashampoo&quot; and &quot;Ashampoo&quot;. The raffle will be held based on the
+            following terms of participation. Ashampoo holds sole responsibility for organization, implementation and
+            prize delivery. This raffle is not affiliated with Facebook or Instagram.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_SYSTEM_BUNDLE_HL_3">
+        <target></target>
+        <source>Speed up your Windows with three system power utilities at a sensational price</source>
+
+    </translation>
+
+    <translation id="textids.content.T_SYSTEM_BUNDLE_HL_2">
+        <target></target>
+        <source>A better Windows fast</source>
+
+    </translation>
+
+    <translation id="textids.content.T_SYSTEM_BUNDLE_HL_1">
+        <target></target>
+        <source>Three must-have system utilities–now at an unbeatable bargain price!</source>
+        Three must-have system tools–now at an unbeatable bargain price!
+    </translation>
+
+    <translation id="textids.content.T_HALLOWEEN_SALE_HL_8">
+        <target></target>
+        <source>Also great for ghost hour shots</source>
+
+    </translation>
+
+    <translation id="textids.content.T_HALLOWEEN_SALE_HL_7">
+        <target></target>
+        <source>For the ultimate horror soundtrack</source>
+
+    </translation>
+
+    <translation id="textids.content.T_HALLOWEEN_SALE_HL_6">
+        <target></target>
+        <source>Your ghastly ghoulish pictures perfectly organized</source>
+
+    </translation>
+
+    <translation id="textids.content.T_HALLOWEEN_SALE_HL_5">
+        <target></target>
+        <source>For small secret data</source>
+
+    </translation>
+
+    <translation id="textids.content.T_HALLOWEEN_SALE_HL_4">
+        <target></target>
+        <source>The unknown force that makes your PC better</source>
+
+    </translation>
+
+    <translation id="textids.content.T_HALLOWEEN_SALE_HL_3">
+        <target></target>
+        <source>Your magic spells as handy PDFs!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_HALLOWEEN_SALE_HL_2">
+        <target></target>
+        <source>Risen for the 18th time to wander your PC</source>
+
+    </translation>
+
+    <translation id="textids.content.T_HALLOWEEN_SALE_HL_1">
+        <target></target>
+        <source>Burn disc, burn!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_TEXT_QUICK_1_8">
+        <target></target>
+        <source>The overview page summarizes the status of your backups in three clickable categories. Select &quot;View
+            Backup Plans&quot; to display additional details.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_HL_QUICK_1_8">
+        <target></target>
+        <source>Backup plan status</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_TEXT_QUICK_1_7">
+        <target></target>
+        <source>Click &quot;Start Backup&quot; to run the plan now (1).</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_HL_QUICK_1_7">
+        <target></target>
+        <source>Start backup</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_TEXT_QUICK_1_6">
+        <target></target>
+        <source>Finally, you'll be presented with a summary that lists all relevant settings for the new backup plan.
+            Click &quot;Back&quot; to make changes or &quot;Next&quot; to conclude the process (1).
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_HL_QUICK_1_6">
+        <target></target>
+        <source>Check summary</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_TEXT_QUICK_1_5">
+        <target></target>
+        <source>Afterwards, select &quot;Daily backups of the 'Documents' folder&quot; (1) and click &quot;Next&quot;
+            (2). This will take care of the remaining settings for you.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_HL_QUICK_1_5">
+        <target></target>
+        <source>Select backup plan preset</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_TEXT_QUICK_1_4">
+        <target></target>
+        <source>Next, name your backup plan (1). Make sure to use a meaningful name to make it easier to tell your
+            various plans apart. Click &quot;Next&quot; to proceed (2).
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_HL_QUICK_1_4">
+        <target></target>
+        <source>Enter a name for the backup plan</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_TEXT_QUICK_1_3">
+        <target></target>
+        <source>Then, select the drive that will hold your backups (1) and click &quot;Next&quot; (2). This example uses
+            a USB flash drive.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_HL_QUICK_1_3">
+        <target></target>
+        <source>Select backup drive</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_TEXT_QUICK_1_2">
+        <target></target>
+        <source>Next, select the storage type you wish to use. In this example, the files will be backed up to a USB
+            flash drive, which is why &quot;Local drive or network drive&quot; is selected (1). Click &quot;Next&quot;
+            to proceed (2).
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_HL_QUICK_1_2">
+        <target></target>
+        <source>Select output location</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_TEXT_QUICK_1_1">
+        <target></target>
+        <source>Create a new backup plan from the start page of the program (1).</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_HL_QUICK_1_1">
+        <target></target>
+        <source>Create backup plan</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1659_HL_QUICK_1">
+        <target></target>
+        <source>What's the easiest way to back up the &quot;Documents&quot; folder on a daily basis?</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_TEXT_9">
+        <target></target>
+        <source>Discover the new colorful design that matches the website and is easier to use. You can now find
+            important functions faster and more reliably. Immerse yourself in a unique world that you are gradually
+            discovering.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_HL_9">
+        <target></target>
+        <source>Breathtaking experience</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_TEXT_8">
+        <target></target>
+        <source>Thanks to the many audio profiles, it is now easier to choose the right output format. A distinction is
+            made between music files with standard quality and lossless, high-resolution quality.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_HL_8">
+        <target></target>
+        <source>Better output profiles</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_TEXT_7">
+        <target></target>
+        <source>Despite the many navigation and customization options, the redesigned toolbar means you'll never get
+            lost in the depths of the Audials software. Now the top left corner of the toolbar always shows you where
+            you are. At the top right, you can type what you want to hear at any time - which is immediately displayed
+            when you search for music.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_HL_7">
+        <target></target>
+        <source>Completly new navigation</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_TEXT_6">
+        <target></target>
+        <source>With Audials 2021, your tracks are all displayed in one place for you to enjoy and sort into playlists,
+            regardless of where they are saved. A new feature divides them up according to their storage locations: this
+            enables you to browse through your various music collections and copy songs from one collection to the
+            other. You can view any number of collections at once and choose to show/hide them.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_HL_6">
+        <target></target>
+        <source>Organize multiple music collections</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_TEXT_5_3">
+        <target></target>
+        <source>With unprecedented flexibility, you can choose how you would like your tracks to be organized. You can
+            specify virtually any rules for folders and file names, and Audials will quickly rearrange your music
+            collection, of course making sure that any new files are also added accordingly.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_TEXT_5_2">
+        <target></target>
+        <source>The new music manager will display all your music from any number of storage locations in one place, and
+            always in a clear and orderly fashion - this includes all your files on your PC, your phone, cloud storage,
+            or even your streaming services.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_TEXT_5_1">
+        <target></target>
+        <source>You have a massive music collection with all sorts of genres? We've now replaced the core of our media
+            management with a brand new high performance solution so that even the scanning process is incredibly fast.
+            Every change you make, no matter how many songs it affects, is now instantly visible. This music manager
+            will never keep you waiting, be it 1000, 10,000 or even 500,000 songs!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_HL_5">
+        <target></target>
+        <source>Music management fully revamped</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_TEXT_4">
+        <target></target>
+        <source>When looking for songs, Amazon Music is now also available in the search on top of in addition to
+            Spotify, YouTube, Soundcloud, Vimeo and Veoh - this way you will definitely find exactly what you're looking
+            for! Once your music has been located, it'll be downloaded faster than ever before.
+            We have also massively improved our playlists. All it takes is a single click to add all of the songs to
+            your collection. You can then listen to it whenever you want and create playlists until your heart is
+            content, and of course download it later if you need it.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_HL_4">
+        <target></target>
+        <source>Find and download music fast and create playlists</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_TEXT_3_3">
+        <target></target>
+        <source>A particularly useful improvement is that Audials now knows the optimal bit rate for all output formats
+            for all important streaming services. If you, for example, type in &quot;Amazon quality high in MP3&quot;,
+            Audials will generate a 320kbit/s MP3. However, if you switch to M4A, you will instead receive 256kbit/s
+            M4A, as Audials knows that this is more efficient in terms of coding.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_TEXT_3_2">
+        <target></target>
+        <source>On Audials 2021, it is much easier to choose which format to save your tracks in. You can either use
+            standard formats like MP3, AAC and WMA or high-resolution audio formats like FLAC and WAV.
+            This means that services like Tidal, Amazon and Deezer, which stream in lossless quality, are automatically
+            saved in top quality, while music from other sources is saved in a standard format.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_TEXT_3_1">
+        <target></target>
+        <source>Things have been made much easier now for you as the user: Audials always automatically uses the ideal
+            format settings depending on the service and output format.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_HL_3">
+        <target></target>
+        <source>Top quality - Optimal bit rate in your desired format</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_TEXT_2">
+        <target></target>
+        <source>The download speed is automatically adjusted according to your PC's capacity. Whether you're using the
+            upgraded drag and drop function or you're recording in the background, you'll get your music up to 30 times
+            faster than the real-time speed. Audials 2021 downloads music at more than twice the speed compared to its
+            predecessor! You can now download one hour of music in just two minutes.
+            In a process that is now faster than ever, you'll receive perfectly trimmed and tagged music files that are
+            100% error-free.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_HL_2">
+        <target></target>
+        <source>Extreme speed</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_TEXT_1">
+        <target></target>
+        <source>Thanks to the new user interface, downloading music has never been easier. Simply drag and drop your
+            songs, albums or playlists into Audials and have them recorded for you at 30 times the normal speed. Or
+            simply play them using the music streaming service - Audials will save everything. Audials will also always
+            select the ideal settings, but you have the option to change them at any time.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_HL_1">
+        <target></target>
+        <source>Easier to download</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0612_TEXT_INTRO">
+        <target></target>
+        <source>Save your favorite songs from any music streaming service easy, fast, legal, and top quality. Enjoy your
+            music collection everywhere! Record also audiobooks from streams.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_TEXT_INTRO">
+        <target></target>
+        <source>Create your own movie collection! Record movies, series and television from streams. It's automatic,
+            convenient, and always in top video quality. Save your favorite programs from live TV streams on the PC.
+            Enjoy live TV from anywhere!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_TEXT_11">
+        <target></target>
+        <source>Explore the vibrant new design, which matches our website and is much easier to use. Locating important
+            functions has never been this simple. Immerse yourself into the unique world and explore it bit by bit.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_HL_11">
+        <target></target>
+        <source>Breathtaking experience</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_TEXT_10">
+        <target></target>
+        <source>The new toolbar is designed to make sure that you never have any difficulty navigating Audials, despite
+            the many navigation and customization options. You'll always be able to see exactly where you are in the top
+            left. And in the top right, you can type in what you'd like to watch and the results will immediately be
+            displayed thanks to the instant search function.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_HL_10">
+        <target></target>
+        <source>Brand new navigation concept</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_TEXT_9">
+        <target></target>
+        <source>It's now much easier for you to choose the right output format thanks to a wide range of video
+            profiles.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_HL_9">
+        <target></target>
+        <source>Better output profiles</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_TEXT_7">
+        <target></target>
+        <source>Audials 2021 now supports the recording of live video streams as seen on Twitch, YouTube live, Facebook
+            live, and other services. You can determine which parts of the live stream you want to have recorded. The
+            features now also include a timer (to schedule a recording for a later point in time) and an auto-stop
+            function if you only wish to record up to a certain point. The recording quality is optimized according to
+            the quality of the video stream recording.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_HL_7">
+        <target></target>
+        <source>Live Video recordings</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_TEXT_6">
+        <target></target>
+        <source>The entire content of the music video portal YouTube can now be dragged and dropped into Audials and
+            then recorded. It is also now much easier to browse and link the platform. Your playlists featuring hundreds
+            of songs as well as all your favorite music will now be downloaded to your hard drive in a much quicker and
+            easier process.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_HL_6">
+        <target></target>
+        <source>Saving made super easy</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_TEXT_5">
+        <target></target>
+        <source>From now on, the movies &amp; series available in your video library will be displayed as clearly
+            arranged tiles. Thanks to the automatic tagging feature, your video library will always be kept tidy and
+            will be organized into genres and series without you having to do anything.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_HL_5">
+        <target></target>
+        <source>Your new video libary</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_TEXT_4">
+        <target></target>
+        <source>Information related to your recordings such as the name of the movie/series, actors, year of release,
+            genre, director, short description, DVD cover, etc. is now automatically added to all your recordings.
+            Manual adjustments are always possible, but no longer necessary.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_HL_4">
+        <target></target>
+        <source>Automatic video labeling</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_TEXT_3">
+        <target></target>
+        <source>The use of graphic card-based encoding has been optimized and now works automatically. This lowers the
+            performance requirements and decreases the likelihood of problems occurring in the video recordings. All of
+            the video profiles indicate whether or not GPU support is available, allowing you to benefit from it with
+            all output formats.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_HL_3">
+        <target></target>
+        <source>Improved GPU support</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_TEXT_2">
+        <target></target>
+        <source>You'll now be able to enjoy enhanced video quality thanks to the feature that makes sure that videos are
+            automatically saved at the ideal frame rate! The frame rate of the recording source is automatically
+            detected to ensure that not a single frame is lost. This allows you to achieve unparalleled video recordings
+            without having to worry about a thing!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_HL_2">
+        <target></target>
+        <source>Consistently optimal frame rate</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_TEXT_1">
+        <target></target>
+        <source>You'll now get all your movies and series from popular streaming services at breakneck speed. The trick:
+            Audials prompts your browser to play videos at twice the speed, and then records them with no loss of
+            quality! This is especially handy when it comes to planning recordings: all your videos will automatically
+            be saved to your hard drive, but at double the speed!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER_0512_HL_1">
+        <target></target>
+        <source>Highspeed recording</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0412_HL_MORE">
+        <target></target>
+        <source>Find and record music, movies, TV &amp; more</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0412_HL_CLAIM">
+        <target></target>
+        <source>Audials One 2021 is the ultimate streaming recorder!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0305_LIST_1_9">
+        <target></target>
+        <source>Works with exposure series or simply with a single image</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0305_TEXT_IMAGE_5">
+        <target></target>
+        <source>Fine settings</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0305_TEXT_IMAGE_4">
+        <target></target>
+        <source>Fast optimization</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0305_TEXT_IMAGE_3">
+        <target></target>
+        <source>Perfect exposure</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0305_TEXT_IMAGE_2">
+        <target></target>
+        <source>Sample images</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0305_TEXT_IMAGE_1">
+        <target></target>
+        <source>Image browser / bracketing</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TOPSELLER_BUNDLE_BP_HL_2">
+        <target></target>
+        <source>Our classics bundle at an unbeatable price</source>
+        Our classics bundle at an unbeatable price!
+    </translation>
+
+    <translation id="textids.content.T_1659_TEXT_4">
+        <target></target>
+        <source>The new details view provides essential information about your backups, like previous and next run as
+            well as save location. Information about file origins and backup type is also included. Even keeping track
+            of multiple backups running in parallel is no longer an issue. And you can also create detailed reports to
+            find out exactly what is going on with each of your plans. Naturally, you'll be instantly notified should
+            things go wrong, e.g. because your external hard disk is full!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_WEB_SEARCH_HL">
+        <target></target>
+        <source>Find</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0846_SUBMITFEAT_LIST_9">
+        <target></target>
+        <source>Apply effects, texts, and watermarks</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0846_SUBMITFEAT_LIST_8">
+        <target></target>
+        <source>20 presets for filters and image parameters</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0846_SUBMITFEAT_LIST_7">
+        <target></target>
+        <source>Super easy video rotating and editing</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0846_SUBMITFEAT_LIST_6">
+        <target></target>
+        <source>Slowmo and time-lapse effects</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0846_SUBMITFEAT_LIST_5">
+        <target></target>
+        <source>Better sharpness and perfect colors</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0846_SUBMITFEAT_LIST_4">
+        <target></target>
+        <source>Remove digital noise</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0846_SUBMITFEAT_LIST_3">
+        <target></target>
+        <source>Fix lens distortions</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0846_SUBMITFEAT_LIST_2">
+        <target></target>
+        <source>Fix sharpness, distortions, and flickering</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0846_SUBMITFEAT_LIST_1">
+        <target></target>
+        <source>Cut, flip and rotate videos</source>
+
+    </translation>
+
+    <translation id="textids.content.T_AUTUMN_SALE_HL_3">
+        <target></target>
+        <source>Big fall sale: Our best offers for the cozy season!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_AUTUMN_SALE_HL_2">
+        <target></target>
+        <source>Fall is coming and our prices are dropping like leaves!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_AUTUMN_SALE_HL_1">
+        <target></target>
+        <source>The leaves are falling–and so are our prices!</source>
+
+    </translation>
+
+    <translation id="textids.content._TOPSELLER_BUNDLE_BP_TEXT_INTRO">
+        <target></target>
+        <source>Our Topseller Selection–Burn&amp;Photo gives you two of the most powerful Ashampoo® products at an
+            unbeatable package price! Get two real classics that evolved and set new standards with each new version!
+            Ashampoo® Burning Studio 21 burns your files, movies, or music to any CD, DVD, or Blu-ray Disc. It's fast,
+            it's safe, it's a joy to use! Burn data, create audio CDs, make backups or produce your own movies–the
+            possibilities are endless! Ashampoo® Photo Commander 16 is the complete solution to view, edit and organize
+            your photos. Bring order to your collection, optimize any number of photos simultaneously and create stylish
+            calendars, cards, or entire slideshows in no time!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_TOPSELLER_BUNDLE_BP_HL_1">
+        <target></target>
+        <source>Burn&amp;Photo: Get the best, forget the rest!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TOPSELLER_BUNDLE_BS_TEXT_INTRO">
+        <target></target>
+        <source>Get a bundle of two Ashampoo® top sellers at a bargain price! Ashampoo® Burning Studio 21 is our
+            all-rounder to burn, back up and process your files. It's the comfortable route to success for all your
+            burning needs! Ashampoo® Snap 11 is the fastest and most flexible solution to capture, edit and share
+            anything on your screen. What you see is what you get, be it still images or videos–and the program comes
+            with extensive and versatile editing and sharing tools too!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_TOPSELLER_BUNDLE_BS_HL_2">
+        <target></target>
+        <source>The super deal for two first-class programs!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_TOPSELLER_BUNDLE_BS_HL_1">
+        <target></target>
+        <source>Two Ashampoo top sellers for the price of one!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_6006_HL_MAILING_3">
+        <target></target>
+        <source>Full performance – no charge, no time restrictions</source>
+        Full performance–no charge, no time restrictions
+    </translation>
+
+    <translation id="textids.content.T_6006_SUBJECT_MAILING">
+        <target></target>
+        <source>Exclusively for our newsletter subscribers</source>
+
+    </translation>
+
+    <translation id="textids.content.T_6006_HL_MAILING_4">
+        <target></target>
+        <source>A better Windows for everyone!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_6006_TEXT_MAILING_3">
+        <target></target>
+        <source>Ashampoo® WinOptimizer 2020 comes with a total of 23 modules to boost the performance and customize your
+            Windows system. The program analyzes your operating system and hardware, irrevocably deletes files and
+            encrypts/decrypts sensitive data. Efficient user rights and power scheme management is also included.
+            Furthermore, the program includes two information-rich benchmarks to measure the speed of various PC
+            components.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_6006_TEXT_MAILING_2">
+        <target></target>
+        <source>Which applications and services would you like to auto-launch with Windows? This decision alone can free
+            up RAM and improve system performance. Then there's the issue of data privacy. How much do you value your
+            privacy and how much information are you willing to share with Microsoft? There's no more reason to just
+            accept Windows' default settings!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_6006_HL_MAILING_2">
+        <target></target>
+        <source>You control how your system behaves!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_6006_TEXT_MAILING_1">
+        <target></target>
+        <source>Over time, Windows operating systems can become unresponsive and cluttered with web browsing traces or a
+            bloated Registry. Ashampoo® WinOptimizer 2020 cleans and accelerates Windows and offers multiple
+            customization options!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_6006_HL_MAILING_1">
+        <target></target>
+        <source>State-of-the-art system optimization–free for you!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_SALES0011_TEXT_3">
+        <target></target>
+        <source>You're free to use your Ashampoo® PDF Pro 2 license on up to three PCs, even five in the case of
+            Ashampoo® Office 2018!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_SALES0011_TEXT_2">
+        <target></target>
+        <source>As an added bonus, you'll also receive our best Office suite, Ashampoo® Office 2018, for free. It's the
+            afforable Office solution with full Microsoft Office compatibility, no compromises, no learning curve!
+            Ashampoo® Office 2018 will have you create documents, spreadsheets and presentations faster than ever
+            before!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_SALES0011_TEXT_1">
+        <target></target>
+        <source>Ashampoo® PDF Pro 2 is our current flagship product to edit PDFs with incredible ease. The program comes
+            with tools to create, convert, edit and protect your PDF documents. A built-in virtual printer allows you to
+            create size-optimized PDFs with optional encryption from any application. With Ashampoo® PDF Pro 2, you can
+            also create interactive forms or edit existing PDFs with the same great ease of use of a regular MS Word
+            document!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_48HOURS_80PROZENT">
+        <target></target>
+        <source>Valid only 48 hours - Save up to 80%!</source>
+        Only 48 hours left: Save up to 80%!
+    </translation>
+
+    <translation id="textids.content.T_HL_FOLLOW_INFORMED">
+        <target></target>
+        <source>Stay informed!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_REGACTION_PRIVACY_NOTICE_2020_SHORT">
+        <target></target>
+        <source>We make our free products and services available to you if, in return, you’ll allow us to regularly send
+            you news &amp; product information by email.
+        </source>
+        We make our free products available to you if, in return, you’ll allow us to regularly send you news &amp;
+        product information by email.
+    </translation>
+
+    <translation id="textids.content.T_1438_TEXT_NC_3">
+        <target></target>
+        <source>Present is a powerful match for PowerPoint. Create convincing presentations with great ease and show
+            your presentations without additional software on any PC! Breathtaking animations and slide transitions as
+            well as a mature master slide concept help you tackle on any presentation task. Design any number of master
+            layouts with freely positionable placeholders in just a few clicks. This not only gives your presentations a
+            uniform look but also ensures full compatibility with PowerPoint. Multiple ready-made design templates,
+            fully customizable at the click of a button, facilitate the design process. And why not add some zest to
+            your presentations with graphics, charts, animations as well as audio and video objects? The new Media
+            ribbon makes managing these objects a breeze! And since Present uses the common PPTX file format, exchanging
+            documents with Microsoft PowerPoint is a no-brainer. Get yourself the Office suite with excellent
+            performance at an unbeatable price tag and full Microsoft Office compatibility today! Buy once, use forever!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1438_LIST_FEAT_14">
+        <target></target>
+        <source>SQLite support</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1438_HL_CLAIM_3">
+        <target></target>
+        <source>Has all the markings of a great Office suite: Speed, power, and compatibility!</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PREORDER_LAST_CHANCE">
+        <target></target>
+        <source>Last chance to pre-order–maximum discount</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_TEXT_QUICK_1_5">
+        <target></target>
+        <source>If you don't want to delete entries from all groups, you can exclude individual groups (3) under &quot;Settings&quot;
+            (1) &gt; &quot;Registry&quot; (2). Click &quot;OK&quot; (4) to apply your modifications. Afterwards, you may
+            proceed as described in the third section.
+        </source>
+        If you don't want to delete entries from all groups, you can exclude individual groups (3) under &quot;Settings&quot;
+        (1) &gt; &quot;Registry&quot; (2) . Click &quot;OK&quot; (4) to apply your modifications. Afterwards, you may
+        proceed as described in the third section.
+    </translation>
+
+    <translation id="textids.content.T_0178_TEXT_QUICK_1_3">
+        <target></target>
+        <source>Click &quot;Delete now&quot; (1) to have Ashampoo Registry Cleaner do the heavy lifting and remove all
+            selected entries. A backup will be created before any modifications are made to help you undo actions in the
+            event of system issues.
+        </source>
+        Click &quot;Delete now&quot; (1) to have Ashampoo Registry Cleaner do the heavy lifting and remove all selected
+        entries, A backup will be created before any modifications are made to help you undo actions in the event of
+        system issues.
+    </translation>
+
+    <translation id="textids.content.T_0178_HL_QUICK_1_5">
+        <target></target>
+        <source>Excluding groups (optional)</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_TEXT_QUICK_1_4">
+        <target></target>
+        <source>Afterwards, you'll see a list of the deleted entries (1) as well as entries, that were locked by the
+            system and could not be deleted (2).
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_HL_QUICK_1_4">
+        <target></target>
+        <source>Done</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_HL_QUICK_1_3">
+        <target></target>
+        <source>Delete now</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_TEXT_QUICK_1_2">
+        <target></target>
+        <source>After completion, irrelevant Windows Registry entries will be displayed as groups.</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_HL_QUICK_1_2">
+        <target></target>
+        <source>Results ordered by groups</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_TEXT_QUICK_1_1">
+        <target></target>
+        <source>Directly after launch, Ashampoo Registry Cleaner 2 will start scanning for irrelevant Registry
+            entries.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_HL_QUICK_1_1">
+        <target></target>
+        <source>Analysis on program launch</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_HL_QUICK_1">
+        <target></target>
+        <source>Safely declutter and fix our Windows Registry</source>
+
+    </translation>
+
+    <translation id="textids.content.T_REGACTION_PRIVACY_NOTICE_2020_TRIAL">
+        <target></target>
+        <source>We will provide you with this 20 days extension of the test period if we are allowed to send you regular
+            news &amp; product information by the e-mail in return. The Ashampoo GmbH &amp; Co. KG will use your e-mail
+            address exclusively for the aforementioned purpose and will not pass it on to third parties for advertising
+            purposes. You can object to the use of your e-mail address for advertising purposes at any time.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_TEXT_2">
+        <target></target>
+        <source>Ashampoo Registry Cleaner 2 scans your Registry to detect and fix corrupted, redundant or invalid
+            entries. By cleaning and compacting your Registry, your overall system speed will increase since read
+            operations that target the Registry will perform faster. For extra safety, Ashampoo Registry Cleaner 2 comes
+            with real-time backups to undo any modifications at the click of a button.
+        </source>
+        Ashampoo Registry Cleaner 2 scans your Registry to detect and fix corrupted, redundant or invalid entries. By
+        cleaning, and compacting, your Registry, your overall system speed will increase since read operations that
+        target the Registry will perform faster. For extra safety, Ashampoo Registry Cleaner 2 comes with real-time
+        backups to undo any modifications at the click of a button.
+    </translation>
+
+    <translation id="textids.content.T_0178_TEXT_4">
+        <target></target>
+        <source>With its simple and self-explanatory handling combined with optimized search algorithms, Ashampoo
+            Registry Cleaner 2 cleans your Registry quickly and highly efficiently. It takes just a few clicks to get
+            the job done, which makes it ideal for newcomers. No knowledge of the inner workings of the Windows Registry
+            is required!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_HL_4">
+        <target></target>
+        <source>Small, refined and highly efficient</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_TEXT_3">
+        <target></target>
+        <source>Highly advanced search algorithms based on 20 years of extensive experience ensure perfect scan results
+            and a total and safe makeover of your Registry. Registry Cleaner 2's default settings only detect entries
+            that are safe to remove or repair. This provides great cleaning results at maximum safety for your operating
+            system. For added safety, backups are created for all modifications.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_HL_3">
+        <target></target>
+        <source>Fix and clean with built-in failsafe</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_HL_2">
+        <target></target>
+        <source>How Ashampoo Registry Cleaner 2 works</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_TEXT_1">
+        <target></target>
+        <source>Windows stores common application settings and configuration data in a central database called Windows
+            Registry. Over time, this database can become cluttered with leftover data from no longer installed software
+            and entries can even become corrupted. Since so many applications rely on the Registry for information,
+            clutter and data corruption can cause noticeable performance drops and make your PC feel sluggish and
+            unresponsive. Frequent error messages or problems when uninstalling programs can also be caused by Windows
+            Registry issues.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0178_HL_1">
+        <target></target>
+        <source>What is Windows Registry?</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1757_HL_DECSRIPTION">
+        <target></target>
+        <source>Ashampoo Photo Optimizer 2020 can enhance your photos too! Download the free photo editor here and try
+            it out today!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1757_HL_TITLE">
+        <target></target>
+        <source>Easy 1-click photo editing</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1757_TEXT_INTRO">
+        <target></target>
+        <source>Image editing often means hours of intense high-concentration work–but it doesn't have to be this way!
+            Ashampoo Photo Optimizer 2020 is different: it improves your images automatically. By meticulously analyzing
+            each image, your shots get a second chance to come out the way you had hoped: with vibrant colors, perfect
+            lighting and a harmonious natural look. And we haven't forgotten about manual fine-tuning either. See for
+            yourself and try it out today!
+        </source>
+        Image editing often means hours of intensive high-concentration work–but it doesn't have to be this way!
+        Ashampoo Photo Optimizer 2020 is different: it improves your images automatically. By meticulously analyzing
+        each image, your shots get a second chance to come out the way you had hoped: with vibrant colors, perfect
+        lighting and a harmonious natural look. And we haven't forgotten about manual fine-tuning either. See for
+        yourself and try it out today!
+    </translation>
+
+    <translation id="textids.content.M_PREHEADER">
+        <target></target>
+        <source>Only for a short time!</source>
+        Update drivers automatically and improve the performance of your PC!
+    </translation>
+</project>

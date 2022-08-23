@@ -1,0 +1,265 @@
+{
+  "version": "Version",
+  "release_date": "Veröffentlichungsdatum",
+  "last_updated": "Letztes Update",
+  "sort": "Sortieren nach",
+  "filter": "Filter",
+  "store": {
+    "discover": "Entdecken",
+    "browse": "Durchsuchen"
+  },
+  "analytics": {
+    "consent_text": "ANALYTICS TEXT PLACEHOLDER",
+    "consent_refuse": "Ablehnen",
+    "consent_accept": "Akzeptieren und fortfahren"
+  },
+  "agreement": {
+    "terms_of_use": "AGB",
+    "eula": "EULA",
+    "alpha_dialog": "Ashampoo® Connect befindet sich aktiv in Entwicklung und in einem frühen Status. Features werden aufgebaut, verändert oder arbeiten noch nicht wie erwartet. Begleite uns auf dieser spannenden Reise.",
+    "alpha_checkbox": "Ich habe den Status verstanden und möchte fortfahren",
+    "here": "Hier",
+    "tos_agree": " Ich bin mit den {terms_of_use} einverstanden.",
+    "privacy_policy_note": "{here} kannst Du unsere Datenschutzerklärung zur Kenntnis nehmen.",
+    "eula_header": "Endbenutzer-Lizenzvereinbarung",
+    "eula_agreement": "Ich habe die {eula} gelesen und bin einverstanden.",
+    "enter_newsletter": "Unsere kostenfreien Produkte und Dienste sind werbefinanziert",
+    "free_product_newsletter": "Dieses kostenfreie Produkt stellen wir Dir zur Verfügung, wenn wir Dir im Gegenzug regelmäßig per E-Mail News & Produktinformationen zusenden dürfen. Die Ashampoo GmbH & Co. KG wird Deine E-Mail-Adresse ausschließlich für den zuvor genannten Zweck verwenden und nicht zu Werbezwecken an Dritte weitergegeben. Der Verwendung deiner E-Mail-Adresse für werbliche Zwecke kannst Du jederzeit widersprechen.",
+    "newsletter_agreement": "Ich stimme dem Empfang werblicher E-Mails zu und möchte die kostenfreie Lizenz erhalten."
+  },
+  "service": {
+    "service_not_available": {
+      "title": "Connect-Service nicht erreichbar.",
+      "text": "Der Connect-Service ist nicht erreichbar und es wird empfohlen Connect neu zu starten. Sollte das Problem weiterhin bestehen, installiere das Programm erneut oder wenden Dich an unseren Support."
+    }
+  },
+  "button": {
+    "reset": "Zurücksetzen",
+    "preordered": "Vorbestellt",
+    "validate": "Überprüfen",
+    "close": "Schließen",
+    "start": "Starten",
+    "add": "Hinzufügen",
+    "buy": "Kaufen",
+    "preorder": "Vorbestellen",
+    "cancel": "Abbrechen",
+    "feedback": "Feedback",
+    "forgot_password": "Passwort vergessen?",
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "send": "Senden",
+    "settings": "Einstellungen",
+    "support": "Support",
+    "manual": "Handbuch",
+    "about": "Über",
+    "search": "Suchen",
+    "let_s_go": "Los gehts",
+    "install": "Installieren",
+    "launch": "Starten",
+    "skip": "Überspringen",
+    "changelog": "Changelog",
+    "you_have_an_account": "Du hast bereits ein Ashampoo® Konto?",
+    "goto_shop": "Shop besuchen",
+    "activate_program": "Programm aktivieren",
+    "learn_more": "Mehr erfahren...",
+    "more_info": "Mehr Infos",
+    "advanced_ok": "Alles klar",
+    "addProductToArchive": "Archivieren",
+    "continue": "Fortfahren",
+    "next": "Weiter",
+    "uninstall": "Entfernen",
+    "verify": "Verifizieren",
+    "create_shortcut": "Eine Verknüpfung erstellen",
+    "auto_update": "Automatisches Update"
+  },
+  "errors": {
+    "email_required": "Gib deine E-Mail-Adresse ein.",
+    "enter_at_least_8_characters": "Passwörter müssen mindestens 8 Zeichen lang sein.",
+    "password_required": "Gib dein Passwort ein.",
+    "tos_required": "Bitte akzeptiere unsere Nutzungsbedingungen"
+  },
+  "notifications": {
+    "settings_saved": "Einstellungen gespeichert"
+  },
+  "settings": {
+    "other": "Sonstiges",
+    "run_at_startup": "Beim Systemstart ausführen",
+    "install_path": "Standard-Installationspfad",
+    "startpage": "Startseite",
+    "theme": "Theme",
+    "system-theme": "System",
+    "dark-theme": "Dunkel",
+    "light-theme": "Hell",
+    "language": "Sprache",
+    "stay_logged_in": "Eingeloggt bleiben?",
+    "misc": "Sonstiges",
+    "legal": "Rechtliche Hinweise",
+    "terms_of_use": "Allgemeine Geschäftsbedingungen",
+    "privacy_policy": "Datenschutzerklärung",
+    "privacy_settings": "Datenschutzeinstellungen",
+    "homepage": "Ashampoo® Homepage",
+    "version": "Version: {version}",
+    "operating_system": "Betriebssystem: {operating_system}"
+  },
+  "tabs": {
+    "notifications": "Benachrichtigungen",
+    "home": "Startseite",
+    "library": "Meine Bibliothek",
+    "downloads": "Downloads",
+    "shop": "Shop",
+    "installed_programs": "Installierte Programme",
+    "my_programs": "Meine Programme",
+    "activate_key": "Lizenz aktivieren",
+    "activate_product": "Produkt aktivieren"
+  },
+  "text": {
+    "in_x_days_download_available": "In {days} Tagen steht Dein Download zur Verfügung.",
+    "no_search_result": "Deine Suche ergab keine Treffer",
+    "downloading_update": "Update wird heruntergeladen...",
+    "restarting_connect": "Neustart... ",
+    "loading_local_service": "Lokaler Dienst wird geladen... ",
+    "checking_for_connect_update": "Suche nach Aktualisierung...",
+    "checking_login": "Überprüfe login...",
+    "initializing": "Initialisieren... ",
+    "product_will_be_updated": "{productName} wird aktualisiert",
+    "product_was_added": "{productName} wurde hinzugefügt",
+    "create_account": "Konto erstellen",
+    "email": "E-Mail",
+    "free": "Kostenlos",
+    "password": "Passwort",
+    "please_wait": "Bitte warten...",
+    "downloading": "Lade herunter...",
+    "checking_for_updates": "Prüfe auf Aktualisierungen...",
+    "add_product_to_library": "Füge {productName} deiner Bibliothek hinzu.",
+    "the_product_will_be_linked_to_your_account": "Das Programm wird mit deinem Ashampoo® Konto verknüpft und ist anschließend auf jedem Gerät abrufbar.",
+    "name_ascending": "Name (aufsteigend)",
+    "name_descending": "Name (absteigend)",
+    "date_ascending": "Datum (aufsteigend)",
+    "date_descending": "Datum (absteigend)",
+    "last_used_ascending": "Zuletzt verwendet (aufsteigend)",
+    "last_used_descending": "Zuletzt verwendet (absteigend)",
+    "installed_products_only": "Installierte Produkte",
+    "not_installed_products_only": "Nicht installierte Produkte",
+    "loading": "Lade...",
+    "no_content_downloads": "Keine aktiven Downloads verfügbar",
+    "coming_soon_headline": "Noch nicht verfügbar",
+    "coming_soon_subline": "Wir benachrichtigen Dich, sobald dieser Bereich nutzbar ist.",
+    "your_license_keys": "Deine Lizenzschlüssel",
+    "enter_license_key": "Gib deinen Lizenzschlüssel ein",
+    "confirm_product": "Produkt bestätigen",
+    "key": "Schlüssel",
+    "key_placeholder": "Lizenzschlüssel oder Aktivierungscode",
+    "valid_key": "Gültiger Schlüssel erkannt:",
+    "add_your_key": "Gib hier deinen Lizenzschlüssel oder Aktivierungscode ein:",
+    "product_bound_account": "Das Produkt wird für folgendes Konto registriert:",
+    "popup_dialog_headline": "Willkommen in der Ashampoo® Connect Entwicklung",
+    "popup_dialog_p1": "Unsere gemeinsame Plattform für Software befindet sich aktiv in der Entwicklung. Entdecke bereits die Bereitstellung deiner persönlichen Software in eigener Bibliothek und nahezu alle Ashampoo- sowie Partnerprodukte, Apps und Tools im neuen Shop Bereich.",
+    "popup_dialog_p2": "Lasse durch Verknüpfen (\"sichern\") von Software mit deinem Konto deine Bibliothek weiter wachsen.",
+    "popup_dialog_p3": "Unterstütze unsere Vision mit Feedback und deinen Wünschen zu Ashampoo® Connect",
+    "popup_dialog_p4": "Begleite uns auf dieser spannenden Reise."
+  },
+  "onboarding": {
+    "benefits": [
+      {
+        "title": "Willkommen bei Ashampoo® Connect",
+        "subtitle": "Deine Software und unser Service.\n\nGemeinsam - Plattformunabhängig!"
+      },
+      {
+        "title": "Alles im Blick",
+        "subtitle": "Zentrale Verwaltung und globale Software Updates"
+      },
+      {
+        "title": "Von uns für Dich",
+        "subtitle": "Kostenlose Produkte sowie exklusive Angebote und Inhalte"
+      },
+      {
+        "title": "Am Puls der Zeit",
+        "subtitle": "Modern, smart und topaktuell.\n\nWir freuen uns auf Dich!"
+      },
+      {
+        "title": "Schneller am Ziel",
+        "subtitle": "Installiere und genieße Software ohne Umwege"
+      }
+    ],
+    "testArray": [
+      "firstTestValue",
+      "secondTestValue",
+      "thirdTestValue"
+    ],
+    "testArray2": [
+      [
+        "testArrayInsideArray1Value1",
+        "testArrayInsideArray1Value2"
+      ],
+      [
+        "testArrayInsideArray2Value1",
+        "testArrayInsideArray2Value2"
+      ]
+    ]
+  },
+  "preorder": {
+    "release_date": "Erscheinungsdatum: {date}",
+    "preorder_now": "Vorbestellen & Sparen"
+  },
+  "views": {
+    "signin": {
+      "title": "Mit Ashampoo® Konto anmelden"
+    },
+    "password_recovery": {
+      "email_send": "Es wurde Dir eine E-Mail mit einem Link zum Zurücksetzen des Passworts geschickt.",
+      "text": "Gib die E-Mail-Adresse des Ashampoo®-Kontos ein, auf das Du zugreifen möchtest. Wir senden Dir Informationen, wie Du dein Passwort zurücksetzt.",
+      "title": "Passwort-Wiederherstellung"
+    },
+    "signup": {
+      "title": "Ashampoo® Konto erstellen"
+    },
+    "library": {
+      "isempty_headline": "Willkommen in deiner Bibliothek",
+      "isempty_text": "Hier findest Du deine persönlichen Programme. Derzeit besitzt Du noch keine Programme. Diese kannst im Shop entdecken, erwerben und hinzufügen.",
+      "workingon_headline": "Baustelle",
+      "workingon_text": "Diese Funktion befindet sich im Aufbau."
+    },
+    "home": {
+      "greeting": "Hallo {name}, willkommen zurück",
+      "available_soon": "In Kürze für Dich verfügbar",
+      "heroTitle": "Ashampoo® Connect Mobile",
+      "heroSubtitle": "Jetzt kostenlos im Google Playstore und App Store erhältlich",
+      "recently_updated": "Zuletzt von uns aktualisiert",
+      "free": "Heute für Dich kostenlos",
+      "new_release": "Unsere neuesten Veröffentlichungen"
+    }
+  },
+  "contextMenu": {
+    "copy": "kopieren",
+    "cut": "ausschneiden",
+    "paste": "einfügen",
+    "redo": "wiederherstellen",
+    "selectAll": "alles markieren",
+    "undo": "rückgängig machen"
+  },
+  "task": {
+    "state": {
+      "aborted": "Abgebrochen",
+      "completed": "Abgeschlossen",
+      "error": "Fehler",
+      "paused": "Pausiert",
+      "progress": "In Arbeit...",
+      "queued": "In Warteschlange"
+    },
+    "downloadTask": {
+      "state": {
+        "progress": "Herunterladen..."
+      }
+    },
+    "installTask": {
+      "state": {
+        "progress": "Installiere...",
+        "completed": "Installiert"
+      }
+    }
+  },
+  "product": {
+    "removing": "Entferne...",
+    "isRunning": "Wird ausgeführt..."
+  }
+}

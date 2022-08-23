@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="website" version="1.0" tsversion="4" author="Miguel Blasco" mail="miguelangelblasco@gmail.com"
+         source_language="en-US" target_language="es-ES" creation_tool="Ashampoo CMS"
+         pluginguid="DDEFCE2A-C9E8-4C6E-B604-9B6468BDCFC4">
+    <properties>
+        <property name="project.id">1</property>
+        <property name="translator.id">13</property>
+        <property name="translator.web.id">6</property>
+    </properties>
+
+    <translation id="textids.content.T_0574_SUBMIT_2000">
+        <target></target>
+        <source>Ashampoo PDF Pro 3 creates, edits, merges and converts PDFs. Creating and editing is as simple as
+            working with a Word document, with custom comments, layouts and images. Ashampoo PDF Pro 3 supports multiple
+            popular formats (Microsoft Word, RTF, HTML, EPUB, JPEG etc.) for easy document exchange, e.g. with Microsoft
+            Excel. Document images and colors are fully replaceable and customizable and the built-in find and replace
+            feature supports both text and fonts. Merging multiple documents is a simple drag &amp; drop operation and
+            the ability to create portfolios or photo albums greatly facilitate working with multiple files. The
+            integrated text recognition (OCR) instantly converts scanned text into computer-editable text. Word
+            processing is highly versatile with support for wrapping text around objects, powerful spell checking and
+            auto-hyphenation. Inserting, moving, cropping, masking and deleting individual images is also possible.
+            Sensitive information can be blacked out and documents protected with AES encryption. With the included
+            printer driver, PDFs can be created from virtually any Windows application. Version 3 comes with a nifty
+            ribbon-based interface with an eye-friendly dark mode as well as a customizable quick access bar and
+            space-efficient fold-out elements. For long-term digital preservation, we've added PDF/A export, while
+            digital signatures help users add an extra layer of security to their important documents. Furthermore, the
+            status bar now features seamless zooming and work modes are switchable at the click of a button. In
+            addition, comparing documents is now faster and more precise than ever before thanks to a new compare
+            algorithm.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_SUBMIT_250">
+        <target></target>
+        <source>Ashampoo PDF Pro 3 is a powerful PDF editor to create, convert, edit and sign PDF documents. You can
+            also merge existing documents, rearrange pages or modify document layouts.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_SUBMIT_80">
+        <target></target>
+        <source>PDF editor to edit, convert, merge and create PDFs</source>
+
+    </translation>
+
+    <translation id="textids.content.T_0574_SUBMIT_45">
+        <target></target>
+        <source>Comprehensive PDF software</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_INTRO">
+        <target></target>
+        <source>Audials One 2022 is the ingenious solution to capture movies and music legally from the internet and
+            streaming services! Enjoy super-easy handling and lossless high-quality recordings! Capture, trim and add
+            subtitles to your songs! Naturally, Audials One 2022 is also fully compatible with Windows 11!
+        </source>
+        Audials one 2022 is the ingenious solution to capture movies and music legally from the internet and streaming
+        services! Enjoy super-easy handling and lossless high-quality recordings! Capture, trim and add subtitles to
+        your songs! Audials one 2022 is also fully compatible with Windows 11!
+    </translation>
+
+    <translation id="textids.content.T_1904_SUBMIT_2000">
+        <target></target>
+        <source>By default, Windows 11 will only run on PCs that meet the minimum requirements. First, Windows 11 Check
+            &amp; Enable quickly analyzes your hardware and reports possible compatibility issues. The program then goes
+            deeper to find out if Windows 11 will still run on your machine regardless. In the event of an incompatible
+            CPU or missing TPM 2.0 support, Windows 11 Check &amp; Enable can still enable the installation since the
+            more prevalent TPM 1.20 will also suffice. Windows 11 Check &amp; Enable adds two Registry entries to your
+            system to enable the installation of Windows 11 on officially unsupported systems. Note that, if you install
+            Windows 11 on an officially unsupported system, Microsoft will no longer support your PC and it won't be
+            entitled to receive updates. The verification process in Windows 11 Check &amp; Enable includes TPM (trusted
+            platform module) as well as all installed or connected components, and relevant configurations. The
+            following hardware components and configurations are inspected: CPU, RAM, hard disk, display resolution,
+            graphics card, DirectX, WDDM, TPM, UEFI, SecureBoot. If your PC fails in any of these categories, you'll be
+            notified along with possible fixes. Even though the installation of Windows 11 backed by Windows 11 Check
+            &amp; Enable is legally safe, we recommend (as with any major upgrade!) that you back up your machine with
+            Ashampoo® Backup Pro 16 prior to the OS upgrade. This will take care of the risks generally involved with
+            any major system upgrade.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_SUBMIT_250">
+        <target></target>
+        <source>Ashampoo® Windows 11 Check &amp; Enable checks your PC for Windows 11 compatibility. Even if your PC
+            doesn't meet all the requirements, the program can still allow you to install and run Windows 11.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_SUBMIT_80">
+        <target></target>
+        <source>Check your Windows 11 compatibility and enable OS installation</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_SUBMIT_45">
+        <target></target>
+        <source>Check compatibility and install Windows 11</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_TEXT_5">
+        <target></target>
+        <source>Although Windows 11 will run on systems without TPM 2.0 or compatible CPUs, the other requirements are
+            more rigorously enforced. Make sure to run Windows 11 Check &amp; Enable to be on the safe side and find out
+            if your machine can run Windows 11 today!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_HL_5">
+        <target></target>
+        <source>Can I now install Windows 11 on any PC?</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_TEXT_4">
+        <target></target>
+        <source>Absolutely. Microsoft have themselves pointed out that Windows 11 is installable on systems that fail to
+            meet all of their system requirements. Installation on numerous test PCs went flawlessly. Yet, for liability
+            reasons, Microsoft still cite theoretical risks and the possibility that future updates may be unavailable.
+            We therefore recommend (as with any major upgrade!) that you back up your machine with Ashampoo® Backup Pro
+            16 prior to the OS upgrade. A complete system backup ensures you can try out the new OS risk-free.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_HL_4">
+        <target></target>
+        <source>Is it (legally) safe to allow the installation of Windows 11 through Windows 11 Check &amp; Enable?
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_TEXT_3">
+        <target></target>
+        <source>The verification process includes TPM (trusted platform module) as well as all installed or connected
+            components, and relevant configurations. The following hardware components and configurations are inspected:
+            CPU, RAM, hard disk, display resolution, graphics card, DirectX, WDDM, TPM, UEFI, SecureBoot. If your PC
+            fails in any of these categories, you'll be notified along with possible fixes.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_HL_3">
+        <target></target>
+        <source>How does Windows 11 Check &amp; Enable work?</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_TEXT_2">
+        <target></target>
+        <source>Even if your PC is deemed incompatible, there's a loophole: Windows 11 Check &amp; Enable can allow your
+            PC to install Windows 11 in the event of an incompatible CPU or missing TPM 2.0 support! In this case, the
+            far more prevalent TPM 1.20 is all you need. Windows 11 Check &amp; Enable can add two Registry entries to
+            your system to allow installation of Windows 11 anyway. Note that, if you install Windows 11 on an
+            officially unsupported system, Microsoft will no longer support your PC and it won't be entitled to receive
+            updates.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_HL_2">
+        <target></target>
+        <source>Your chance to run Windows 11</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_TEXT_1">
+        <target></target>
+        <source>By default, Windows 11 will only run on PCs that meet the minimum requirements. Windows 11 Check &amp;
+            Enable quickly analyzes your hardware and reports possible issues.
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_HL_SUBCLAIM">
+        <target></target>
+        <source>Is your PC ready for Windows 11? If not, would you still like to install it anyway?</source>
+
+    </translation>
+
+    <translation id="textids.content.T_1904_HL_CLAIM">
+        <target></target>
+        <source>Check your Windows 11 compatibility and enable OS installation</source>
+
+    </translation>
+
+    <translation id="textids.content.T_LP_HL_22ANNIVERSARY_ANSWER2">
+        <target></target>
+        <source>22 months</source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_TEXT_MAILING_7">
+        <target></target>
+        <source>The upcoming Windows includes a number of important enhancements, especially to the graphics and audio
+            subsystems. Audials one 2022 is optimized for even better performance on PCs running Windows 11 to create
+            perfect audio and video recordings for you even faster. At the same time, Audials one 2022 is fully
+            compatible with existing Windows 10 PCs!
+        </source>
+
+    </translation>
+
+    <translation id="textids.content.T_PARTNER0712_HL_MAILING_7">
+        <target></target>
+        <source>Ready for Windows 11</source>
+
+    </translation>
+</project>
