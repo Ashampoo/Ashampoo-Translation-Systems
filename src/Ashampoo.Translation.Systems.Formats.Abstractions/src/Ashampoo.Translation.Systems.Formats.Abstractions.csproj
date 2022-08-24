@@ -16,10 +16,12 @@
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageIcon>ash-logo-icon-big-128x.png</PackageIcon>
     </PropertyGroup>
     
     <ItemGroup>
         <None Include="../../../LICENSE" Pack="true" PackagePath="" />
+        <None Include="../../../ash-logo-icon-big-128x.png" Pack="true" PackagePath="" />
     </ItemGroup>
 
     <ItemGroup>
