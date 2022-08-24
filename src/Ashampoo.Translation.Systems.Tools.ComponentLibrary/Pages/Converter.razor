@@ -1,0 +1,31 @@
+﻿@page "/converter"
+@using Ashampoo.Translation.Systems.Tools.ComponentLibrary.Components
+@using Microsoft.AspNetCore.Components.Web
+@using MudBlazor
+
+
+<PageTitle>Converter</PageTitle>
+
+<MudGrid Justify="Justify.Center">
+    <MudItem xs="12" sm="4">
+        <UploadFormat OnFormatUploaded="FormatUploaded" Class="d-flex align-center justify-center mud-width-full py-6">
+            Upload File
+        </UploadFormat>
+    </MudItem>
+    <MudItem xs="12" sm="4">
+        <UploadFormat OnFormatUploaded="FormatImported" Disabled="@(format is null)"
+                      Class="d-flex align-center justify-center mud-width-full py-6">
+            Import file
+        </UploadFormat>
+    </MudItem>
+    <MudItem xs="12" sm="4">
+        <ExportFormat Format="@format" FileName="@fileName"></ExportFormat>
+    </MudItem>
+    <MudItem xs="12" Class="d-flex" style="max-height: 80vh;">
+        <DisplayFormat Format="@format"/>
+    </MudItem>
+</MudGrid>
+
+<MudScrollToTop ScrollBehavior="ScrollBehavior.Smooth">
+    <MudFab Color="Color.Tertiary" Icon="@Icons.Filled.ArrowCircleUp"/>
+</MudScrollToTop>
