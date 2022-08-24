@@ -2,6 +2,9 @@
 
 namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 
+/// <summary>
+/// Interface for a translation format.
+/// </summary>
 public interface IFormat : ITranslationUnits
 {
     /// <summary>
@@ -41,6 +44,12 @@ public interface IFormat : ITranslationUnits
     /// </exception>
     Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider();
 
+    /// <summary>
+    /// The <see cref="IFormatHeader"/> containing the header information for this format.
+    /// </summary>
     IFormatHeader Header { get; }
+    /// <summary>
+    /// Information about how many languages the format can handle.
+    /// </summary>
     FormatLanguageCount LanguageCount { get; }
 }

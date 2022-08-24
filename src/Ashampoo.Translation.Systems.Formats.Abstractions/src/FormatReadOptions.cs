@@ -5,9 +5,18 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 /// </summary>
 public class FormatReadOptions
 {
+    /// <summary>
+    /// The target language of the format.
+    /// </summary>
     public string? TargetLanguage { get; init; }
+    /// <summary>
+    /// The source language of the format.
+    /// </summary>
     public string? SourceLanguage { get; init; }
 
+    /// <summary>
+    /// Indicates whether the read has been cancelled.
+    /// </summary>
     public bool IsCancelled { get; set; }
     
     /// <summary>

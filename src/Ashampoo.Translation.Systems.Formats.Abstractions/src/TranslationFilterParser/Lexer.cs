@@ -9,6 +9,12 @@ public class Lexer : IDisposable
     private int position;
     private readonly TextReader reader;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Lexer"/> class.
+    /// </summary>
+    /// <param name="input">
+    /// The input string to tokenize.
+    /// </param>
     public Lexer(string input)
     {
         reader = new StringReader(input);
@@ -133,12 +139,16 @@ public class Lexer : IDisposable
         return (char)reader.Peek();
     }
 
+    /// <inheritdoc />
     public void Dispose()
     {
         reader.Dispose();
         GC.SuppressFinalize(this);
     }
     
+    /// <summary>
+    /// Destructor.
+    /// </summary>
     ~Lexer()
     {
         Dispose();

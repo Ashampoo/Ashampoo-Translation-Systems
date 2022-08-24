@@ -9,8 +9,17 @@ public class LineReader : IDisposable
     private readonly TextReader textReader;
     private string? lastLine;
 
+    /// <summary>
+    /// The number of the line that is currently being read.
+    /// </summary>
     public int LineNumber { get; private set; }
 
+    /// <summary>
+    /// Creates a new instance of the <see cref="LineReader"/> class.
+    /// </summary>
+    /// <param name="reader">
+    /// The <see cref="TextReader"/> to read from.
+    /// </param>
     public LineReader(TextReader reader)
     {
         // This should create a Thread-Safe StreamReader.
@@ -106,7 +115,10 @@ public class LineReader : IDisposable
         textReader.Dispose();
         GC.SuppressFinalize(this);
     }
-
+    
+    /// <summary>
+    /// Destructor.
+    /// </summary>
     ~LineReader()
     {
         Dispose();

@@ -10,6 +10,7 @@ public class MatchValueTranslationFilter : ITranslationFilter
 {
     private readonly Regex regex;
 
+    /// <inheritdoc />
     public string? Language { get; init; }
 
     private MatchValueTranslationFilter(Regex regex, string? language = null)
@@ -51,6 +52,15 @@ public class MatchValueTranslationFilter : ITranslationFilter
         return new MatchValueTranslationFilter(new Regex($"{input}$"), language);
     }
 
+    /// <summary>
+    /// Checks, if the value of the <see cref="ITranslation"/> for the given language matches the input.
+    /// </summary>
+    /// <param name="translationUnit">
+    /// The <see cref="ITranslationUnit"/> containing the <see cref="ITranslation"/> that will be checked.
+    /// </param>
+    /// <returns>
+    /// True, if the value of the <see cref="ITranslation"/> for the given language matches the input.
+    /// </returns>
     public bool IsValid(ITranslationUnit translationUnit)
     {
         if (Language is not null)
@@ -70,6 +80,7 @@ public class MatchValueTranslationFilter : ITranslationFilter
         return false;
     }
 
+    /// <inheritdoc />
     public override string ToString()
     {
         return $"Value = {regex}";

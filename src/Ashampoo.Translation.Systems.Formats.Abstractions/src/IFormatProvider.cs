@@ -1,5 +1,9 @@
 namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 
+/// <summary>
+/// Interface for a provider for a specific <see cref="IFormat"/>.
+/// Contains additional information about the format.
+/// </summary>
 public interface IFormatProvider
 {
     /// <summary>

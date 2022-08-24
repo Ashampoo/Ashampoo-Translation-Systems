@@ -11,8 +11,15 @@ public class AssignOptions
     /// A <see cref="ITranslationFilter"/> that is used to filter out translations while converting formats.
     /// </summary>
     public ITranslationFilter? Filter { get; set; }
-
+    
+    /// <summary>
+    /// Specifies what language should be used for the source language while converting between formats.
+    /// </summary>
     public string? SourceLanguage { get; set; }
+    
+    /// <summary>
+    /// Specifies what language should be used for the target language while converting between formats.
+    /// </summary>
     public string? TargetLanguage { get; set; }
     
     /// <summary>

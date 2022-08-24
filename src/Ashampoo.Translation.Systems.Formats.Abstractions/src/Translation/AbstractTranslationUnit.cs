@@ -5,12 +5,20 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 /// </summary>
 public abstract class AbstractTranslationUnit : HashSet<ITranslation>, ITranslationUnit
 {
+    
+    /// <summary>
+    /// Base constructor for the <see cref="AbstractTranslationUnit"/> class.
+    /// </summary>
+    /// <param name="id">
+    /// The id of the translation unit.
+    /// </param>
     protected AbstractTranslationUnit(string id)
         : base(new TranslationUnitEqualityComparer())
     {
         Id = id;
     }
 
+    /// <inheritdoc />
     public string Id { get; init; }
     
     /// <summary>

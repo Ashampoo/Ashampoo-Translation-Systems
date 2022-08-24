@@ -2,6 +2,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 
+/// <summary>
+/// Static class that contains extension methods for <see cref="IServiceCollection"/>.
+/// </summary>
 public static class FormatProviderExtensions
 {
     /// <summary>

@@ -15,7 +15,13 @@ public interface ITranslation
     /// </summary>
     string? Comment { get; set; }
 
+    /// <summary>
+    /// Indicates whether this translation is empty.
+    /// </summary>
     bool IsEmpty { get; }
 
+    /// <summary>
+    /// The language of the translation.
+    /// </summary>
     string Language { get; set; }
 }

@@ -6,7 +6,7 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 public interface ITranslationString : ITranslation
 {
     /// <summary>
-    /// Translated value.
+    /// The value of the translation.
     /// </summary>
     string Value { get; set; }
 }

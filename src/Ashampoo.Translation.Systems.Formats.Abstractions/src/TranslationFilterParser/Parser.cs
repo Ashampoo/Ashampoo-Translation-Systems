@@ -9,13 +9,18 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions.TranslationFilterPar
 /// </summary>
 public class Parser
 {
-    public ITranslationFilter Filter { get; init; }
+    /// <summary>
+    /// The filter that was parsed from the input string.
+    /// </summary>
+    public ITranslationFilter Filter { get; private set; }
     
     /// <summary>
     /// Create a new parser.
     /// </summary>
     /// <param name="input">The filter string</param>
-    /// <exception cref="Exception"></exception>
+    /// <exception cref="Exception">
+    /// Thrown if the input string is invalid.
+    /// </exception>
     public Parser(string input)
     {
         var tokens = new Lexer(input).Tokenize();

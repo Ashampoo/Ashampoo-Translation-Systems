@@ -1,7 +1,11 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.TranslationFilter;
 using Ashampoo.Translation.Systems.Formats.Abstractions.TranslationFilterParser.Exceptions;
 
 namespace Ashampoo.Translation.Systems.Formats.Abstractions.TranslationFilterParser.Extensions;
 
+/// <summary>
+/// Static class, providing extension methods for parsing a <see cref="ITranslationFilter"/> from a string.
+/// </summary>
 public static class EnumeratorTokenExtensions
 {
     /// <summary>

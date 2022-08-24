@@ -14,9 +14,15 @@ public interface ITranslationFilter
     /// <returns>A <see langword="bool"/> indicating whether the <see cref="ITranslationUnit"/> is valid under the filter.</returns>
     bool IsValid(ITranslationUnit translationUnit);
 
+    /// <summary>
+    /// The optional language for the filter, not all filters require a language.
+    /// </summary>
+    /// <exception cref="InvalidOperationException">
+    /// Thrown if the filter does not support a language.
+    /// </exception>
     string? Language
     {
-        get => throw new Exception($"{GetType()} has no language support.");
-        init => throw new Exception($"{GetType()} has no language support.");
+        get => throw new InvalidOperationException($"{GetType()} has no language support.");
+        init => throw new InvalidOperationException($"{GetType()} has no language support.");
     }
 }

@@ -5,16 +5,29 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 /// </summary>
 public abstract class AbstractTranslationUnits : HashSet<ITranslationUnit>
 {
+    /// <summary>
+    /// Base constructor for the <see cref="AbstractTranslationUnits"/> class.
+    /// </summary>
+    /// <param name="collection">
+    /// The collection of <see cref="ITranslationUnit"/> objects
+    /// to add to the <see cref="AbstractTranslationUnits"/> object.
+    /// </param>
     protected AbstractTranslationUnits(IEnumerable<ITranslationUnit> collection)
         : base(collection, new TranslationUnitsEqualityComparer())
     {
     }
 
+    /// <summary>
+    /// Base constructor for the <see cref="AbstractTranslationUnits"/> class.
+    /// </summary>
     protected AbstractTranslationUnits()
         : base(new TranslationUnitsEqualityComparer())
     {
     }
 
+    /// <summary>
+    /// The id of the <see cref="AbstractTranslationUnits"/> object.
+    /// </summary>
     public virtual string Id { get; init; } = "";
 
     /// <summary>
@@ -44,7 +57,7 @@ public abstract class AbstractTranslationUnits : HashSet<ITranslationUnit>
     }
 }
 
-public class TranslationUnitsEqualityComparer : IEqualityComparer<ITranslationUnit>
+internal class TranslationUnitsEqualityComparer : IEqualityComparer<ITranslationUnit>
 {
     public bool Equals(ITranslationUnit? x, ITranslationUnit? y)
     {

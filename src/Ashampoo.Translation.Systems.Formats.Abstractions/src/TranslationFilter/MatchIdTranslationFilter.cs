@@ -45,11 +45,21 @@ public class MatchIdTranslationFilter : ITranslationFilter
         return new MatchIdTranslationFilter(new Regex($"{input}$"));
     }
 
+    /// <summary>
+    /// Checks, if the id of an <see cref="ITranslationUnit"/> matches the input.
+    /// </summary>
+    /// <param name="translationUnit">
+    /// The <see cref="ITranslationUnit"/> to check against the input.
+    /// </param>
+    /// <returns>
+    /// True, if the id of the <see cref="ITranslationUnit"/> matches the input.
+    /// </returns>
     public bool IsValid(ITranslationUnit translationUnit)
     {
         return regex.IsMatch(translationUnit.Id);
     }
 
+    /// <inheritdoc />
     public override string ToString()
     {
         return $"Id = {regex}";
