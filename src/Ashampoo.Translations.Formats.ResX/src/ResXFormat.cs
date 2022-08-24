@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 using Ashampoo.Translations.Formats.Abstractions;
 using Ashampoo.Translations.Formats.Abstractions.Translation;
 using Ashampoo.Translations.Formats.ResX.Elements;
-using Microsoft.Toolkit.Diagnostics;
+using CommunityToolkit.Diagnostics;
 using IFormatProvider = Ashampoo.Translations.Formats.Abstractions.IFormatProvider;
 
 namespace Ashampoo.Translations.Formats.ResX;

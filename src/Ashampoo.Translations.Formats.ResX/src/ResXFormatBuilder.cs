@@ -1,7 +1,7 @@
 ﻿using Ashampoo.Translations.Formats.Abstractions;
 using Ashampoo.Translations.Formats.Abstractions.Translation;
 using Ashampoo.Translations.Formats.ResX.Elements;
-using Microsoft.Toolkit.Diagnostics;
+using CommunityToolkit.Diagnostics;
 
 namespace Ashampoo.Translations.Formats.ResX;
 

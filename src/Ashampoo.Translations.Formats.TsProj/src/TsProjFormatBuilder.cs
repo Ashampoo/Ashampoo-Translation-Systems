@@ -1,7 +1,7 @@
 using Ashampoo.Translations.Formats.Abstractions;
 using Ashampoo.Translations.Formats.Abstractions.Translation;
 using Ashampoo.Translations.Formats.TsProj.Element;
-using Microsoft.Toolkit.Diagnostics;
+using CommunityToolkit.Diagnostics;
 
 namespace Ashampoo.Translations.Formats.TsProj;
 

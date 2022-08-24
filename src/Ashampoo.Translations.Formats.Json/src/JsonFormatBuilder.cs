@@ -1,6 +1,6 @@
 using Ashampoo.Translations.Formats.Abstractions;
 using Ashampoo.Translations.Formats.Abstractions.Translation;
-using Microsoft.Toolkit.Diagnostics;
+using CommunityToolkit.Diagnostics;
 
 namespace Ashampoo.Translations.Formats.Json;
 

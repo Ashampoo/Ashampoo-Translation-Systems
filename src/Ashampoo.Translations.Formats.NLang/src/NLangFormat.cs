@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using Ashampoo.Translations.Formats.Abstractions;
 using Ashampoo.Translations.Formats.Abstractions.IO;
 using Ashampoo.Translations.Formats.Abstractions.Translation;
-using Microsoft.Toolkit.Diagnostics;
+using CommunityToolkit.Diagnostics;
 using IFormatProvider = Ashampoo.Translations.Formats.Abstractions.IFormatProvider;
 
 namespace Ashampoo.Translations.Formats.NLang;

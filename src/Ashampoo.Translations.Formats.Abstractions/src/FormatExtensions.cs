@@ -1,6 +1,6 @@
 ﻿using Ashampoo.Translations.Formats.Abstractions.Translation;
 using Ashampoo.Translations.Formats.Abstractions.TranslationFilter;
-using Microsoft.Toolkit.Diagnostics;
+using CommunityToolkit.Diagnostics;
 
 namespace Ashampoo.Translations.Formats.Abstractions;
 

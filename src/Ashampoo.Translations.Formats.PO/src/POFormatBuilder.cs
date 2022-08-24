@@ -1,5 +1,5 @@
 using Ashampoo.Translations.Formats.Abstractions;
-using Microsoft.Toolkit.Diagnostics;
+using CommunityToolkit.Diagnostics;
 
 namespace Ashampoo.Translations.Formats.PO;
 
