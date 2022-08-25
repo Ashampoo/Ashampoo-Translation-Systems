@@ -5,7 +5,6 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <PackageId>Ashampoo.Translation.Systems.Formats.Abstractions</PackageId>
-        <Version>1.0.0</Version>
         <Authors>tjorvenK</Authors>
         <Company>Ashampoo_GmbH_Co_KG</Company>
         <Description>Abstraction package for interfaces, default and base implementations</Description>
