@@ -1,0 +1,15 @@
+﻿name: release-abstraction-package
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/Ashampoo.Translation.Systems.Formats.Abstractions/**"
+
+jobs: 
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Version
+        id: GetVersion
+        uses: ./github/actions/reuse-generate-version

@@ -10,8 +10,12 @@ public interface IFormat : ITranslationUnits
     /// <summary>
     /// Reads the format from the given stream.
     /// </summary>
-    /// <param name="stream"></param>
-    /// <param name="options"></param>
+    /// <param name="stream">
+    /// The stream to read from.
+    /// </param>
+    /// <param name="options">
+    /// The options to use.
+    /// </param>
     /// <exception cref="UnsupportedFormatException"></exception>
     void Read(Stream stream, FormatReadOptions? options = null) // TODO: require options
     {
