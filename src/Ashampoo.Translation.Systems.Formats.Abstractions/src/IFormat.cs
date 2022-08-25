@@ -52,6 +52,7 @@ public interface IFormat : ITranslationUnits
     /// The <see cref="IFormatHeader"/> containing the header information for this format.
     /// </summary>
     IFormatHeader Header { get; }
+    
     /// <summary>
     /// Information about how many languages the format can handle.
     /// </summary>
