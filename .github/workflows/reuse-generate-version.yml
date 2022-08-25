@@ -29,7 +29,6 @@ jobs:
         tag_prefix: "v"
         major_pattern: ${{ env.MAJOR_PATTERN }}
         minor_pattern: ${{ env.MINOR_PATTERN }}
-        format: "${major}.${minor}.${patch}-prerelease${increment}"
         branch: ${{ env.BRANCH }}
         namespace: "abstract"
         bump_each_commit: false
