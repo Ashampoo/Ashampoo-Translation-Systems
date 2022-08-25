@@ -33,8 +33,9 @@ jobs:
       id: StagingIdentifier
       run: echo ::set-output name=tag::${{ env.STAGING_IDENTIFIER }}
         
-    - name: Abstraction Version
-      id: AbstractVersion
+    - name: Abstraction Prerelease Version
+      if: ${{ inputs.prerelease}}
+      id: AbstractPrereleaseVersion
       uses: paulhatch/semantic-version@v5.0.0-alpha2
       with:
         change_path: "src/Ashampoo.Translation.Systems.Formats.Abstractions"
@@ -43,6 +44,20 @@ jobs:
         minor_pattern: ${{ env.MINOR_PATTERN }}
         format: "abstract-v${major}.${minor}.${patch}-${{ steps.StagingIdentifier.outputs.tag }}${increment}"
         version_format: "abstract-v${major}.${minor}.${patch}-${{ steps.StagingIdentifier.outputs.tag }}${increment}"
+        bump_each_commit: false
+        search_commit_body: true
+    
+    - name: Abstraction Release Version
+      if: ${{ !inputs.prerelease}}
+      id: AbstractReleaseVersion
+      uses: paulhatch/semantic-version@v5.0.0-alpha2
+      with:
+        change_path: "src/Ashampoo.Translation.Systems.Formats.Abstractions"
+        tag_prefix: "abstract-v"
+        major_pattern: ${{ env.MAJOR_PATTERN }}
+        minor_pattern: ${{ env.MINOR_PATTERN }}
+        format: "abstract-v${major}.${minor}.${patch}"
+        version_format: "abstract-v${major}.${minor}.${patch}"
         bump_each_commit: false
         search_commit_body: true
         
@@ -55,5 +70,5 @@ jobs:
         git push --tags
       
     outputs:
-      abstract-version: ${{ steps.AbstractVersion.outputs.version }}
+      abstract-version: ${{ steps.AbstractPrereleaseVersion.outputs.version || steps.AbstractReleaseVersion.outputs.version }}
         
