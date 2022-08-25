@@ -3,12 +3,13 @@
 on:
   push:
     branches: [main]
-    paths:
-      - "src/Ashampoo.Translation.Systems.Formats.Abstractions/**"
+#    paths:
+#      - "src/Ashampoo.Translation.Systems.Formats.Abstractions/**"
 
 jobs: 
-  release:
+  checkout:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/workflows/reuse-generate-version.yml
+  release:
+    uses: ./.github/workflows/reuse-generate-version.yml
