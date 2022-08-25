@@ -1,0 +1,12 @@
+﻿name: release-abstraction-package
+
+on:
+  push:
+    branches:
+      - 'release/**'
+    
+jobs:
+  release:
+    uses: ./.github/workflows/reuse-generate-version.yml
+    with:
+      prerelease: false
