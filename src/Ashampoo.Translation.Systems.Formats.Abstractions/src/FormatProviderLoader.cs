@@ -18,7 +18,8 @@ internal class FormatProviderLoader
     {
         // Load all the assemblies in the given path
         var fileNames =
-            Directory.GetFiles(path, "Ashampoo.Translations.Formats.*.dll", SearchOption.TopDirectoryOnly);
+            Directory.GetFiles(path, "Ashampoo.Translation.Systems.Formats.*.dll", SearchOption.TopDirectoryOnly)
+                .Select(p => Path.GetFileNameWithoutExtension(p)).ToArray();
 
         foreach (var filename in fileNames)
         {
@@ -31,8 +32,9 @@ internal class FormatProviderLoader
     private Assembly LoadAssembly(string fileName)
     {
         logger.LogInformation("loading assembly {FileName}", fileName);
-        var loadContext = new PluginLoadContext(fileName);
-        return loadContext.LoadFromAssemblyName(new AssemblyName(Path.GetFileNameWithoutExtension(fileName)));
+
+        var assemblyName = new AssemblyName(fileName);
+        return AssemblyLoadContext.Default.LoadFromAssemblyName(assemblyName);
     }
 
     private IEnumerable<IFormatProvider> CreateFormatProvider(Assembly assembly)
@@ -40,7 +42,6 @@ internal class FormatProviderLoader
         var builder = new FormatProviderBuilder();
         foreach (var type in assembly.GetTypes())
         {
-            // TODO: Correctly load assemblies, so that we can compare types against the interface
             if (typeof(IFormat).IsAssignableFrom(type) && !type.IsInterface && !type.IsAbstract)
             {
                 if (Activator.CreateInstance(type) is not IFormat format) continue;

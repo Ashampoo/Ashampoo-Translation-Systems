@@ -23,7 +23,7 @@ public class Startup
         
         services.AddFormatFactory(configuration =>
         {
-            var path = Path.GetDirectoryName(typeof(FormatFactoryExtensions).Assembly.Location);
+            var path = Path.GetDirectoryName(typeof(Startup).Assembly.Location);
 
             if (string.IsNullOrWhiteSpace(path))
                 throw new ArgumentNullException(nameof(path), "Assembly location could not be found.");

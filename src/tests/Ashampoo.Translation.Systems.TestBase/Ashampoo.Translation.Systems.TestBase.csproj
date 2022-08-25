@@ -18,10 +18,7 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj">
-            <Private>false</Private>
-            <ExcludeAssets>runtime</ExcludeAssets>
-        </ProjectReference>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj" />
     </ItemGroup>
     <ItemGroup>
         <None Include="_TestFiles_/**" />

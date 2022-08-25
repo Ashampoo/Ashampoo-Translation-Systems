@@ -1,8 +1,8 @@
-using Ashampoo.Translations.Formats.Abstractions;
-using Ashampoo.Translations.Formats.Abstractions.Translation;
+using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Microsoft.Toolkit.Diagnostics;
 
-namespace Ashampoo.Translations.Formats.Gengo;
+namespace Ashampoo.Translation.Systems.Formats.Gengo;
 
 public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
 {

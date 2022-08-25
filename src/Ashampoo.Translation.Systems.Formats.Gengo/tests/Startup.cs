@@ -1,19 +1,20 @@
-﻿using Ashampoo.Translations.Formats.Abstractions;
+﻿using System.IO;
+using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Diagnostics;
 
-namespace Ashampoo.Translations.Formats.Gengo.Tests;
+namespace Ashampoo.Translation.Systems.Formats.Gengo.Tests;
 
 public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddFormatFactory().AddFormatProvider(builder =>
+        services.AddFormatFactory(configuration =>
         {
-            return builder.SetId("gengo")
-                .SetSupportedFileExtensions(new[] { ".xlsx", ".xls" })
-                .SetFormatType<GengoFormat>()
-                .SetFormatBuilder<GengoFormatBuilder>()
-                .Create();
+            var path = Path.GetDirectoryName(typeof(Startup).Assembly.Location);
+            Guard.IsNotNullOrWhiteSpace(path, nameof(path));
+            
+            configuration.PluginPaths.Add(path);
         });
     }
 }

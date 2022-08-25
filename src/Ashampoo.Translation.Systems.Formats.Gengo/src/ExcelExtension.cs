@@ -1,6 +1,6 @@
 ﻿using NPOI.SS.UserModel;
 
-namespace Ashampoo.Translations.Formats.Gengo;
+namespace Ashampoo.Translation.Systems.Formats.Gengo;
 
 public static class ExcelExtension
 {
