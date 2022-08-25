@@ -3,8 +3,8 @@
 on:
   push:
     branches: [main]
-#    paths:
-#      - "src/Ashampoo.Translation.Systems.Formats.Abstractions/**"
+    paths:
+      - "src/Ashampoo.Translation.Systems.Formats.Abstractions/**"
 
 jobs: 
   checkout:
