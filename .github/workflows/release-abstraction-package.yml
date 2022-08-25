@@ -17,4 +17,4 @@ jobs:
           
       - name: Get Version
         id: GetVersion
-        uses: ./github/actions/reuse-generate-version.yml
+        uses: ./github/workflows/reuse-generate-version
