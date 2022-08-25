@@ -43,7 +43,6 @@ jobs:
         minor_pattern: ${{ env.MINOR_PATTERN }}
         format: "abstract-v${major}.${minor}.${patch}-${{ steps.StagingIdentifier.outputs.tag }}${increment}"
         version_format: "abstract-v${major}.${minor}.${patch}-${{ steps.StagingIdentifier.outputs.tag }}${increment}"
-        branch: ${{ env.BRANCH }}
         bump_each_commit: false
         search_commit_body: true
         
