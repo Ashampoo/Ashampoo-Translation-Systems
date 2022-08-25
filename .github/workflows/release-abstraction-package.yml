@@ -7,9 +7,5 @@ on:
       - "src/Ashampoo.Translation.Systems.Formats.Abstractions/**"
 
 jobs: 
-  checkout:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
   release:
-    uses: ./.github/workflows/reuse-generate-version.yml
+    uses: ./.github/workflows/reuse-generate-abstraction-version.yml

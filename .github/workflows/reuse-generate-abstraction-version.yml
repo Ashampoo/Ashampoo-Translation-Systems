@@ -1,6 +1,12 @@
-﻿name: reuse-generate-version
+﻿name: reuse-generate-abstraction-version
 on:
   workflow_call:
+    inputs:
+      prerelease:
+        description: 'indicates if the release is a prerelease'
+        default: true
+        required: false
+        type: boolean
     outputs:
       abstract-version:
         description: "Version number of the abstraction package"
@@ -11,6 +17,7 @@ env:
   MAJOR_PATTERN: "major"
   MINOR_PATTERN: "minor"
   BRANCH: "origin/main"
+  STAGING_IDENTIFIER: "prerelease."
   
 jobs:
   bump-version:
@@ -21,6 +28,11 @@ jobs:
       with:
         fetch-depth: 0
         
+    - name: Set Staging identifier
+      if: ${{ inputs.prerelease}}
+      id: StagingIdentifier
+      run: echo ::set-output name=tag::-${{ env.STAGING_IDENTIFIER }}
+        
     - name: Abstraction Version
       id: AbstractVersion
       uses: paulhatch/semantic-version@v5.0.0-alpha2
@@ -29,8 +41,9 @@ jobs:
         tag_prefix: "abstract-v"
         major_pattern: ${{ env.MAJOR_PATTERN }}
         minor_pattern: ${{ env.MINOR_PATTERN }}
-        format: "abstract-v${major}.${minor}.${patch}-prerelease.${increment}"
-        version_format: "abstract-v${major}.${minor}.${patch}-prerelease.${increment}"
+        if: ${{ inputs.prerelease }}
+        format: "abstract-v${major}.${minor}.${patch}${{ steps.StagingIdentifier.outputs.tag }}${increment}"
+        version_format: "abstract-v${major}.${minor}.${patch}${{ steps.StagingIdentifier.outputs.tag }}${increment}"
         branch: ${{ env.BRANCH }}
         bump_each_commit: false
         search_commit_body: true
