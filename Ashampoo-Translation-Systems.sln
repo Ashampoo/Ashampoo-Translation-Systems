@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.System
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.Systems.Formats.Gengo.Tests", "src\Ashampoo.Translation.Systems.Formats.Gengo\tests\Ashampoo.Translation.Systems.Formats.Gengo.Tests.csproj", "{9F6181FC-FA15-4173-99E5-AFC74ACD0937}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.Systems.Formats", "src\Ashampoo.Translation.Systems.Formats\src\Ashampoo.Translation.Systems.Formats.csproj", "{53389A5D-6790-4E38-A2C5-1B0D74B76DCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -126,5 +128,9 @@ Global
 		{9F6181FC-FA15-4173-99E5-AFC74ACD0937}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F6181FC-FA15-4173-99E5-AFC74ACD0937}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F6181FC-FA15-4173-99E5-AFC74ACD0937}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53389A5D-6790-4E38-A2C5-1B0D74B76DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53389A5D-6790-4E38-A2C5-1B0D74B76DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53389A5D-6790-4E38-A2C5-1B0D74B76DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53389A5D-6790-4E38-A2C5-1B0D74B76DCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
