@@ -30,6 +30,7 @@ jobs:
         major_pattern: ${{ env.MAJOR_PATTERN }}
         minor_pattern: ${{ env.MINOR_PATTERN }}
         format: "abstract-v${major}.${minor}.${patch}-prerelease.${increment}"
+        version_format: "abstract-v${major}.${minor}.${patch}-prerelease.${increment}"
         branch: ${{ env.BRANCH }}
         bump_each_commit: false
         search_commit_body: true
