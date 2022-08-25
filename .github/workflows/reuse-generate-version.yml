@@ -34,7 +34,6 @@ jobs:
       run: echo ::set-output name=tag::${{ env.STAGING_IDENTIFIER }}
         
     - name: Abstraction Version
-      if: ${{ inputs.prerelease}}
       id: AbstractVersion
       uses: paulhatch/semantic-version@v5.0.0-alpha2
       with:
