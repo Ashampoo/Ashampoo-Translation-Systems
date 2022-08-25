@@ -1,4 +1,4 @@
-﻿name: release-abstraction-package
+﻿name: prerelease-abstraction-package
 
 on:
   push:
@@ -8,4 +8,6 @@ on:
 
 jobs: 
   release:
-    uses: ./.github/workflows/reuse-generate-abstraction-version.yml
+    uses: ./.github/workflows/reuse-generate-version.yml
+    with: 
+      prerelease: true

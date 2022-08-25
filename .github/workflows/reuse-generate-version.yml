@@ -1,11 +1,11 @@
-﻿name: reuse-generate-abstraction-version
+﻿name: reuse-generate-version
 on:
   workflow_call:
     inputs:
       prerelease:
         description: 'indicates if the release is a prerelease'
         default: true
-        required: false
+        required: true
         type: boolean
     outputs:
       abstract-version:
@@ -34,6 +34,7 @@ jobs:
       run: echo ::set-output name=tag::${{ env.STAGING_IDENTIFIER }}
         
     - name: Abstraction Version
+      if: ${{ inputs.prerelease}}
       id: AbstractVersion
       uses: paulhatch/semantic-version@v5.0.0-alpha2
       with:
