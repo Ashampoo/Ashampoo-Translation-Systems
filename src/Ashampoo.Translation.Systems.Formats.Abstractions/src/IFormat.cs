@@ -7,7 +7,6 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 /// </summary>
 public interface IFormat : ITranslationUnits
 {
-    
     /// <summary>
     /// Reads the format from the given stream.
     /// </summary>
