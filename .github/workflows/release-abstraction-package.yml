@@ -11,6 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Get Version
-        id: GetVersion
-        uses: ./.github/workflows/reuse-generate-version.yml
+      - uses: ./.github/workflows/reuse-generate-version.yml
