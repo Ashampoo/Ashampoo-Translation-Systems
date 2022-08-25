@@ -42,7 +42,6 @@ jobs:
         tag_prefix: "abstract-v"
         major_pattern: ${{ env.MAJOR_PATTERN }}
         minor_pattern: ${{ env.MINOR_PATTERN }}
-        if: ${{ inputs.prerelease }}
         format: "abstract-v${major}.${minor}.${patch}-${{ steps.StagingIdentifier.outputs.tag }}${increment}"
         version_format: "abstract-v${major}.${minor}.${patch}-${{ steps.StagingIdentifier.outputs.tag }}${increment}"
         branch: ${{ env.BRANCH }}
