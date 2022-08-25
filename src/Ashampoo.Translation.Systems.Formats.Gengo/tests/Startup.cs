@@ -1,7 +1,7 @@
-﻿using Ashampoo.Translations.Formats.Abstractions;
+﻿using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Ashampoo.Translations.Formats.Gengo.Tests;
+namespace Ashampoo.Translation.Systems.Formats.Gengo.Tests;
 
 public class Startup
 {

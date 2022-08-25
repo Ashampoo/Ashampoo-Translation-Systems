@@ -1,12 +1,13 @@
 using System.Text.RegularExpressions;
-using Ashampoo.Translations.Formats.Abstractions;
-using Ashampoo.Translations.Formats.Abstractions.Translation;
+using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Microsoft.Toolkit.Diagnostics;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using IFormatProvider = Ashampoo.Translations.Formats.Abstractions.IFormatProvider;
+using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
-namespace Ashampoo.Translations.Formats.Gengo;
+
+namespace Ashampoo.Translation.Systems.Formats.Gengo;
 
 /// <summary>
 /// Implementation of the <see cref="IFormat"/> interface for the Gengo translation format.

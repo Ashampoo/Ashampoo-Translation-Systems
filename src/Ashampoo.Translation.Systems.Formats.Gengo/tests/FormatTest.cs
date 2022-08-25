@@ -1,14 +1,14 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using Ashampoo.Translations.Formats.Abstractions;
-using Ashampoo.Translations.Formats.Abstractions.Translation;
-using Ashampoo.Translations.Formats.Abstractions.TranslationFilter;
-using Ashampoo.Translations.TestBase;
+using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
+using Ashampoo.Translation.Systems.Formats.Abstractions.TranslationFilter;
+using Ashampoo.Translation.Systems.TestBase;
 using NPOI.XSSF.UserModel;
 using Xunit;
 
-namespace Ashampoo.Translations.Formats.Gengo.Tests;
+namespace Ashampoo.Translation.Systems.Formats.Gengo.Tests;
 
 public class FormatTest : FormatTestBase<GengoFormat>
 {

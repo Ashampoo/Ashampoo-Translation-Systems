@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Ashampoo.Translations.Formats.Abstractions\src\Ashampoo.Translations.Formats.Abstractions.csproj">
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj">
             <Private>false</Private>
             <ExcludeAssets>runtime</ExcludeAssets>
         </ProjectReference>
