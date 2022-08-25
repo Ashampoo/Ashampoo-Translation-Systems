@@ -1,12 +1,14 @@
 ﻿name: release-abstraction-package
 
 on:
-  push:
+  pull_request:
     branches:
       - 'release/**'
-    
+    types: [closed]
+
 jobs:
   release:
+    if: ${{ github.event.pull_request.merged == true && github.event.label.name == 'release' }}
     uses: ./.github/workflows/reuse-generate-versions.yml
     with:
       prerelease: false
