@@ -26,11 +26,11 @@ jobs:
       uses: paulhatch/semantic-version@v5.0.0-alpha2
       with:
         change_path: "src/Ashampoo.Translation.Systems.Formats.Abstractions"
-        tag_prefix: "v"
+        tag_prefix: "abstract-v"
         major_pattern: ${{ env.MAJOR_PATTERN }}
         minor_pattern: ${{ env.MINOR_PATTERN }}
+        format: "abstract-v${major}.${minor}.${patch}-prerelease.${increment}"
         branch: ${{ env.BRANCH }}
-        namespace: "abstract"
         bump_each_commit: false
         search_commit_body: true
         
