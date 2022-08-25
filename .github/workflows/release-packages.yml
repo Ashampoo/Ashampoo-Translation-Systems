@@ -7,6 +7,6 @@ on:
     
 jobs:
   release:
-    uses: ./.github/workflows/reuse-generate-version.yml
+    uses: ./.github/workflows/reuse-generate-versions.yml
     with:
       prerelease: false
