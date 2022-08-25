@@ -16,7 +16,9 @@ public interface IFormat : ITranslationUnits
     /// <param name="options">
     /// The options to use.
     /// </param>
-    /// <exception cref="UnsupportedFormatException"></exception>
+    /// <exception cref="UnsupportedFormatException">
+    /// Thrown if the format is not supported.
+    /// </exception>
     void Read(Stream stream, FormatReadOptions? options = null) // TODO: require options
     {
         ReadAsync(stream, options).Wait();
