@@ -16,7 +16,7 @@
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <PackageIcon>ash-logo-icon-big-128x.png</PackageIcon>
-        <MinVerTagPrefix>formats-v</MinVerTagPrefix>
+        <MinVerTagPrefix>v</MinVerTagPrefix>
         <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
         <MinVerDefaultPreReleasePhase>prerelease</MinVerDefaultPreReleasePhase>
     </PropertyGroup>
