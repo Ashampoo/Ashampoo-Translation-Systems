@@ -9,6 +9,7 @@ on:
 jobs:
   release:
     if: ${{ github.event.pull_request.merged == true && github.event.label.name == 'release' }}
-    uses: ./.github/workflows/reuse-generate-versions.yml
+    uses: ./.github/workflows/reuse-generate-version-and-init-release.yml
     with:
       prerelease: false
+    secrets: inherit
