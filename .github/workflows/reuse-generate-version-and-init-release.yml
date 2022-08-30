@@ -81,7 +81,7 @@ jobs:
       id: github_release
       uses: mikepenz/release-changelog-builder-action@v3
       with:
-        configuration: "changelog_configuration.json"
+        configuration: ".github/changelog_configuration.json"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
@@ -90,7 +90,7 @@ jobs:
       id: github_release_prod
       uses: mikepenz/release-changelog-builder-action@v3
       with:
-        configuration: "changelog_configuration.json"
+        configuration: ".github/changelog_configuration.json"
         toTag: "${{ steps.ReleaseVersion.outputs.version }}"
         fromTag: "${{ steps.latestRelease.outputs.release }}"
       env:
