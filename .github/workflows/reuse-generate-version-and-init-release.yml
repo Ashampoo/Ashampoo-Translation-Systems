@@ -1,4 +1,4 @@
-﻿name: reuse-generate-version-and-init-release
+name: reuse-generate-version-and-init-release
 on:
   workflow_call:
     inputs:
