@@ -1,19 +1,19 @@
 ﻿{
   "categories": [
     {
-      "title": "## 🚀 Features",
+      "title": "## :rocket: Features",
       "labels": ["feature"]
     },
     {
-      "title": "## 🐛 Fixes",
+      "title": "## :bug: Fixes",
       "labels": ["fix"]
     },
     {
-      "title": "## 🧪 Tests",
+      "title": "## :test_tube: Tests",
       "labels": ["test"]
     },
     {
-      "title": "## 📝 Documentation",
+      "title": "## :pencil: Documentation",
       "labels": ["docs"]
     }
   ],
