@@ -6,6 +6,7 @@ on:
 
 jobs: 
   release:
-    uses: ./.github/workflows/reuse-generate-versions.yml
+    uses: ./.github/workflows/reuse-generate-version-and-init-release.yml
     with: 
       prerelease: true
+    secrets: inherit
