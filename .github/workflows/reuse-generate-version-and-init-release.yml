@@ -81,36 +81,7 @@ jobs:
       id: github_release
       uses: mikepenz/release-changelog-builder-action@v3
       with:
-        configurationJson: |
-          {
-            "categories": [
-              {
-                "title": "## :rocket: Features",
-                "labels": ["feature"]
-              },
-              {
-                "title": "## :bug: Fixes",
-                "labels": ["fix"]
-              },
-              {
-                "title": "## :test_tube: Tests",
-                "labels": ["test"]
-              },
-              {
-                "title": "## :pencil: Documentation",
-                "labels": ["docs"]
-              }
-            ],
-            "ignore_labels": [
-              "ignore"
-            ],
-            "sort": "ASC",
-            "template": "#{{CHANGELOG}}",
-            "pr_template": "- #{{TITLE}} by #{{AUTHOR}} (#{{NUMBER}})",
-            "empty_template": "- no changes",
-            "max_pull_requests": 1000,
-            "max_back_track_time_days": 1000
-          }
+        configuration: "changelog_configuration.json"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
@@ -119,36 +90,7 @@ jobs:
       id: github_release_prod
       uses: mikepenz/release-changelog-builder-action@v3
       with:
-        configurationJson: |
-          {
-            "categories": [
-              {
-                "title": "## :rocket: Features",
-                "labels": ["feature"]
-              },
-              {
-                "title": "## :bug: Fixes",
-                "labels": ["fix"]
-              },
-              {
-                "title": "## :test_tube: Tests",
-                "labels": ["test"]
-              },
-              {
-                "title": "## :pencil: Documentation",
-                "labels": ["docs"]
-              }
-            ],
-            "ignore_labels": [
-              "ignore"
-            ],
-            "sort": "ASC",
-            "template": "#{{CHANGELOG}}",
-            "pr_template": "- #{{TITLE}} by #{{AUTHOR}} (#{{NUMBER}})",
-            "empty_template": "- no changes",
-            "max_pull_requests": 1000,
-            "max_back_track_time_days": 1000
-          }
+        configuration: "changelog_configuration.json"
         toTag: "${{ steps.ReleaseVersion.outputs.version }}"
         fromTag: "${{ steps.latestRelease.outputs.release }}"
       env:
