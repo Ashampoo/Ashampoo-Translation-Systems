@@ -21,8 +21,10 @@ public class MessageString : Message, ITranslationString
         set => MsgStr = value;
     }
 
+    /// <inheritdoc />
     public override bool IsEmpty => string.IsNullOrWhiteSpace(MsgStr);
 
+    /// <inheritdoc />
     public MessageString(string id, string value, string language, string? comment = null, string msgCtxt = "")
     {
         MsgId = id;
@@ -32,6 +34,7 @@ public class MessageString : Message, ITranslationString
         MsgCtxt = msgCtxt;
     }
 
+    /// <inheritdoc />
     public override async Task WriteAsync(TextWriter writer)
     {
         await base.WriteAsync(writer);

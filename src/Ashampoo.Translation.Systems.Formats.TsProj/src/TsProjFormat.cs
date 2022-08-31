@@ -12,16 +12,24 @@ namespace Ashampoo.Translation.Systems.Formats.TsProj;
 /// </summary>
 public class TsProjFormat : AbstractTranslationUnits, IFormat
 {
+    /// <summary>
+    /// The project element for the xml structure.
+    /// </summary>
     public Project Project { get; private set; }
+
+    /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
 
+    /// <inheritdoc />
     public FormatLanguageCount LanguageCount => FormatLanguageCount.SourceAndTarget;
 
+    /// <inheritdoc />
     public TsProjFormat()
     {
         Project = new Project();
     }
 
+    /// <inheritdoc />
     public async Task ReadAsync(Stream stream, FormatReadOptions? options = null)
     {
         var xmlSettings = new XmlReaderSettings
@@ -168,11 +176,18 @@ public class TsProjFormat : AbstractTranslationUnits, IFormat
         return true;
     }
 
+    /// <inheritdoc />
     public void Write(Stream stream)
     {
         WriteAsync(stream).Wait();
     }
 
+    /// <summary>
+    /// Asynchronously writes the current instance to the specified stream.
+    /// </summary>
+    /// <param name="stream">
+    /// The stream to write to.
+    /// </param>
     public async Task WriteAsync(Stream stream)
     {
         //Add an empty namespace and empty value
@@ -194,7 +209,8 @@ public class TsProjFormat : AbstractTranslationUnits, IFormat
 
         await writer.FlushAsync(); 
     }
-    
+
+    /// <inheritdoc />
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         return builder => builder.SetId("tsproj")

@@ -4,6 +4,9 @@ using System.Xml.Serialization;
 
 namespace Ashampoo.Translation.Systems.Formats.ResX.Elements;
 
+/// <summary>
+/// Represents the header of a ResX file.
+/// </summary>
 public class RawResXHeader : IXmlSerializable
 {
     private const string NameStr = "name";
@@ -68,16 +71,19 @@ public class RawResXHeader : IXmlSerializable
         set => _ = value; //do nothing
     }
 
+    /// <inheritdoc />
     public XmlSchema GetSchema()
     {
         return null!;
     }
 
+    /// <inheritdoc />
     public void ReadXml(XmlReader reader)
     {
         Value = reader.ReadInnerXml();
     }
 
+    /// <inheritdoc />
     public void WriteXml(XmlWriter writer)
     {
         var readerSettings = new XmlReaderSettings
@@ -131,11 +137,20 @@ public class RawResXHeader : IXmlSerializable
     }
 }
 
+/// <summary>
+/// Contains constants for the ResX format.
+/// </summary>
 public static class ResXConstants
 {
+    /// <summary>
+    /// The name of the ResX reader.
+    /// </summary>
     public const string ResHeaderReader =
         "System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
 
+    /// <summary>
+    /// The name of the ResX writer.
+    /// </summary>
     public const string ResHeaderWriter =
         "System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
 }

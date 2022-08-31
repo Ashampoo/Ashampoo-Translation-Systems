@@ -2,6 +2,9 @@ using Ashampoo.Translation.Systems.Formats.AshLang.IO;
 
 namespace Ashampoo.Translation.Systems.Formats.AshLang.Chunk;
 
+/// <summary>
+/// A writer to write AshLang chunks.
+/// </summary>
 public class ChunkWriter
 {
     private readonly BinaryWriter writer;
