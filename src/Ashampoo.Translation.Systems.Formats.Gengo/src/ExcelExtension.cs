@@ -2,6 +2,9 @@
 
 namespace Ashampoo.Translation.Systems.Formats.Gengo;
 
+/// <summary>
+/// Provides extension methods for working with excel files.
+/// </summary>
 public static class ExcelExtension
 {
     /// <summary>
