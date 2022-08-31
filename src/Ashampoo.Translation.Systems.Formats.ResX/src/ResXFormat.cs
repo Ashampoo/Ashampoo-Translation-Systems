@@ -14,21 +14,35 @@ namespace Ashampoo.Translation.Systems.Formats.ResX;
 /// </summary>
 public class ResXFormat : AbstractTranslationUnits, IFormat
 {
+    /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
+
+    /// <inheritdoc />
     public FormatLanguageCount LanguageCount => FormatLanguageCount.OnlyTarget;
 
+    /// <summary>
+    /// The root element for the xml structure.
+    /// </summary>
     public Root XmlRoot { get; private set; }
 
+    /// <inheritdoc />
     public ResXFormat()
     {
         XmlRoot = new Root();
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ResXFormat"/> class with the given <paramref name="xmlRoot"/>.
+    /// </summary>
+    /// <param name="xmlRoot">
+    /// The root element for the xml structure.
+    /// </param>
     public ResXFormat(Root xmlRoot)
     {
         XmlRoot = xmlRoot;
     }
 
+    /// <inheritdoc />
     public async Task ReadAsync(Stream stream, FormatReadOptions? options = null)
     {
         var xmlSettings = new XmlReaderSettings
@@ -96,11 +110,16 @@ public class ResXFormat : AbstractTranslationUnits, IFormat
         }
     }
 
+    /// <inheritdoc />
     public void Write(Stream stream)
     {
         WriteAsync(stream).Wait();
     }
 
+    /// <summary>
+    /// Asynchronously writes the current instance to the given <paramref name="stream"/>.
+    /// </summary>
+    /// <param name="stream"></param>
     public async Task WriteAsync(Stream stream)
     {
         //Add an empty namespace and empty value
@@ -122,7 +141,8 @@ public class ResXFormat : AbstractTranslationUnits, IFormat
 
         await xmlWriter.FlushAsync();
     }
-    
+
+    /// <inheritdoc />
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         return builder => builder.SetId("resx")

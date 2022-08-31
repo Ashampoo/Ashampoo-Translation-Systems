@@ -13,6 +13,7 @@ public class ResXFormatBuilder : IFormatBuilderWithTarget
     private string? targetLanguage;
     private readonly Dictionary<string, string> translations = new();
 
+    /// <inheritdoc />
     public IFormat Build()
     {
         Guard.IsNotNullOrWhiteSpace(targetLanguage, nameof(targetLanguage));
@@ -46,11 +47,13 @@ public class ResXFormatBuilder : IFormatBuilderWithTarget
         return format;
     }
 
+    /// <inheritdoc />
     public void Add(string id, string target)
     {
         translations.Add(id, target);
     }
 
+    /// <inheritdoc />
     public void SetTargetLanguage(string language)
     {
         targetLanguage = language;
