@@ -14,11 +14,13 @@ public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget
     private string? targetLanguage;
     private readonly Dictionary<string, (string, string)> translations = new();
 
+    /// <inheritdoc />
     public void Add(string id, string source, string target)
     {
         translations.Add(id, (source, target));
     }
 
+    /// <inheritdoc />
     public IFormat Build()
     {
         Guard.IsNotNullOrWhiteSpace(sourceLanguage, nameof(sourceLanguage)); // sourceLanguage is required
@@ -65,11 +67,13 @@ public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget
         return tsProjFormat;
     }
 
+    /// <inheritdoc />
     public void SetSourceLanguage(string language)
     {
         sourceLanguage = language;
     }
 
+    /// <inheritdoc />
     public void SetTargetLanguage(string language)
     {
         targetLanguage = language;
