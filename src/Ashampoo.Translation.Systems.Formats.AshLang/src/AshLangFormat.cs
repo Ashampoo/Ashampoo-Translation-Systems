@@ -5,13 +5,21 @@ using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IForma
 
 namespace Ashampoo.Translation.Systems.Formats.AshLang;
 
+/// <summary>
+/// Provides a format for the AshLang format.
+/// </summary>
 public class AshLangFormat : AbstractTranslationUnits, IFormat
 {
+    /// <summary>
+    /// The chunks of the ashlang file.
+    /// </summary>
     public IChunk[] Chunks { get; private set; }
 
+    /// <inheritdoc />
     public FormatLanguageCount LanguageCount => FormatLanguageCount.SourceAndTarget;
 
 
+    /// <inheritdoc />
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         return builder => builder.SetId("ashlang")
@@ -21,9 +29,14 @@ public class AshLangFormat : AbstractTranslationUnits, IFormat
             .Create();
     }
 
+    /// <inheritdoc />
     public IFormatHeader Header { get; private set; }
 
 
+    
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AshLangFormat"/> class.
+    /// </summary>
     public AshLangFormat()
     {
         var ashLangFormatHeader = new AshLangFormatHeader();
@@ -43,12 +56,14 @@ public class AshLangFormat : AbstractTranslationUnits, IFormat
         };
     }
 
+    /// <inheritdoc />
     public void Write(Stream stream)
     {
         var chunkWriter = new ChunkWriter(stream, Chunks);
         chunkWriter.Write();
     }
 
+    /// <inheritdoc />
     public Task ReadAsync(Stream stream, FormatReadOptions? options = null)
     {
         try

@@ -2,6 +2,9 @@ using Ashampoo.Translation.Systems.Formats.AshLang.IO;
 
 namespace Ashampoo.Translation.Systems.Formats.AshLang.Chunk;
 
+/// <summary>
+/// A reader to read chunks from a stream.
+/// </summary>
 public class ChunkReader
 {
     private BinaryReader? reader;
