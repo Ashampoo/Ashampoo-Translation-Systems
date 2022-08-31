@@ -7,9 +7,21 @@ namespace Ashampoo.Translation.Systems.Formats.PO;
 /// </summary>
 public abstract class Message : ITranslation
 {
+    /// <summary>
+    /// Identifier for the message context.
+    /// </summary>
     public const string TypeMsgCtxt = "msgctxt ";
+    /// <summary>
+    /// Identifier for the message id.
+    /// </summary>
     public const string TypeMsgId = "msgid ";
+    /// <summary>
+    /// Identifier for the message id plural.
+    /// </summary>
     public const string TypeMsgIdPlural = "msgid_plural ";
+    /// <summary>
+    /// Identifier for the message string.
+    /// </summary>
     public const string TypeMsgStr = "msgstr ";
     private const string Divider = "/"; // TODO: move to interface?
 
@@ -33,15 +45,29 @@ public abstract class Message : ITranslation
     /// </summary>
     public string? Comment { get; set; }
 
+    /// <inheritdoc />
     public abstract bool IsEmpty { get; }
 
+    /// <inheritdoc />
     public string Language { get; set; } = "";
 
-    public void TextWriter(TextWriter writer)
+    /// <summary>
+    /// Write the message to the given writer.
+    /// </summary>
+    /// <param name="writer">
+    /// The writer to write the message to.
+    /// </param>
+    public void Write(TextWriter writer)
     {
         WriteAsync(writer).Wait();
     }
 
+    /// <summary>
+    /// Asynchronously write the message to the given writer.
+    /// </summary>
+    /// <param name="writer">
+    /// The writer to write to.
+    /// </param>
     public virtual async Task WriteAsync(TextWriter writer)
     {
         if (!string.IsNullOrWhiteSpace(Comment)) await writer.WriteLineAsync($"{Escape(Comment)}");

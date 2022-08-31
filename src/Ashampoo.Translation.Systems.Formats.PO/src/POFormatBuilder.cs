@@ -12,11 +12,13 @@ public class POFormatBuilder : IFormatBuilderWithTarget
     private readonly Dictionary<string, string> translations = new();
     private const string Divider = "/"; // TODO: move to interface?
 
+    /// <inheritdoc />
     public void Add(string id, string target)
     {
         translations.Add(id, target);
     }
 
+    /// <inheritdoc />
     public IFormat Build()
     {
         Guard.IsNotNullOrWhiteSpace(targetLanguage, nameof(targetLanguage));
@@ -50,6 +52,7 @@ public class POFormatBuilder : IFormatBuilderWithTarget
         return poFormat;
     }
 
+    /// <inheritdoc />
     public void SetTargetLanguage(string language)
     {
         targetLanguage = language;
