@@ -15,10 +15,13 @@ public class POFormat : AbstractTranslationUnits, IFormat
 {
     private static Regex reComment = new(@"#(?<type>[|:,. ]{0,1})(?<content>.*)");
 
+    /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new POHeader();
 
+    /// <inheritdoc />
     public FormatLanguageCount LanguageCount => FormatLanguageCount.OnlyTarget;
 
+    /// <inheritdoc />
     public async Task ReadAsync(Stream stream, FormatReadOptions? options = null)
     {
         // TODO: dispose stream readers?
@@ -183,11 +186,21 @@ public class POFormat : AbstractTranslationUnits, IFormat
         return comments;
     }
 
+    /// <inheritdoc />
     public void Write(Stream stream)
     {
         WriteAsync(stream).Wait();
     }
 
+    /// <summary>
+    /// Asynchronously writes the format to the given stream.
+    /// </summary>
+    /// <param name="stream">
+    /// The stream to write to.
+    /// </param>
+    /// <exception cref="Exception">
+    /// Thrown if an error occurs.
+    /// </exception>
     public async Task WriteAsync(Stream stream)
     {
         var writer = new StreamWriter(stream, Encoding.UTF8);
@@ -207,7 +220,8 @@ public class POFormat : AbstractTranslationUnits, IFormat
 
         await writer.FlushAsync();
     }
-    
+
+    /// <inheritdoc />
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         return builder => builder.SetId("po")

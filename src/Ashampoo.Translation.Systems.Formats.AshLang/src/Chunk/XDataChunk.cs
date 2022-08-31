@@ -7,6 +7,9 @@ X-Data:
 
 namespace Ashampoo.Translation.Systems.Formats.AshLang.Chunk;
 
+/// <summary>
+/// Represents a chunk of data.
+/// </summary>
 public class XDataChunk : Dictionary<string, string>, IChunk
 {
     /// <summary>
@@ -24,10 +27,16 @@ public class XDataChunk : Dictionary<string, string>, IChunk
     {
     }
 
+    /// <summary>
+    /// The id of the chunk.
+    /// </summary>
     public const string Id = "xdid";
     string IChunk.Id => Id;
+
+    /// <inheritdoc />
     public bool IsEmpty => Count == 0;
 
+    /// <inheritdoc />
     public void Read(BinaryReader reader)
     {
         var count = reader.ReadUInt32();
@@ -39,6 +48,7 @@ public class XDataChunk : Dictionary<string, string>, IChunk
         }
     }
 
+    /// <inheritdoc />
     public void Write(BinaryWriter writer)
     {
         writer.Write(Convert.ToUInt32(Count));
@@ -49,6 +59,7 @@ public class XDataChunk : Dictionary<string, string>, IChunk
         }
     }
 
+    /// <inheritdoc />
     public override string ToString()
     {
         var res = string.Join(",", this.Select(p => $"{p.Key}={p.Value}"));

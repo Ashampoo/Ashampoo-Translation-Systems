@@ -9,20 +9,24 @@ public class TranslationStringSource : ITranslationString
 {
     private readonly Element.Translation translationElement;
 
+    /// <inheritdoc />
     public string Value
     {
         get => translationElement.Source ?? string.Empty;
         set => translationElement.Source = value;
     }
 
+    /// <inheritdoc />
     public string Id => translationElement.Id;
 
+    /// <inheritdoc />
     public string? Comment
     {
         get => translationElement.Comment;
         set => translationElement.Comment = value;
     }
 
+    /// <inheritdoc />
     public string Language { get; set; } = string.Empty;
 
     /// <summary>
@@ -36,5 +40,6 @@ public class TranslationStringSource : ITranslationString
         this.translationElement = translationElement;
     }
 
+    /// <inheritdoc />
     public bool IsEmpty => string.IsNullOrWhiteSpace(Value);
 }

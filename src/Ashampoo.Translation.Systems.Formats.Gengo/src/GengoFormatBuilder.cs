@@ -4,17 +4,22 @@ using Microsoft.Toolkit.Diagnostics;
 
 namespace Ashampoo.Translation.Systems.Formats.Gengo;
 
+/// <summary>
+/// Builder for the <see cref="GengoFormat"/>.
+/// </summary>
 public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
 {
     private string? sourceLanguage;
     private string? targetLanguage;
     private readonly Dictionary<string, (string, string)> translations = new();
 
+    /// <inheritdoc />
     public void Add(string id, string source, string target)
     {
         translations.Add(id, (source, target));
     }
 
+    /// <inheritdoc />
     public IFormat Build()
     {
         Guard.IsNotNullOrWhiteSpace(sourceLanguage, nameof(sourceLanguage));
@@ -51,11 +56,13 @@ public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
         return gengoFormat;
     }
 
+    /// <inheritdoc />
     public void SetSourceLanguage(string language)
     {
         sourceLanguage = language;
     }
 
+    /// <inheritdoc />
     public void SetTargetLanguage(string language)
     {
         targetLanguage = language;

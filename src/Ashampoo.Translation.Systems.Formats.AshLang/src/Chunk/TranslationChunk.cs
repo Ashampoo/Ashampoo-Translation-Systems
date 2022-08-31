@@ -13,10 +13,34 @@ Translations:
 
 namespace Ashampoo.Translation.Systems.Formats.AshLang.Chunk;
 
+/// <summary>
+/// Represents a translation chunk.
+/// </summary>
 public class TranslationChunk : IChunk
 {
+    /// <summary>
+    /// Represents a translation in an AshLang file.
+    /// </summary>
     public class Translation
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Translation"/> class.
+        /// </summary>
+        /// <param name="flags">
+        /// The flags of the translation.
+        /// </param>
+        /// <param name="key">
+        /// The key of the translation.
+        /// </param>
+        /// <param name="value">
+        /// The value of the translation.
+        /// </param>
+        /// <param name="fallback">
+        /// The fallback of the translation.
+        /// </param>
+        /// <param name="comment">
+        /// The comment of the translation.
+        /// </param>
         public Translation(uint flags, string key, string value, string fallback, string comment)
         {
             Flags = flags;
@@ -27,19 +51,47 @@ public class TranslationChunk : IChunk
             Comment = comment;
         }
 
+        /// <summary>
+        /// Gets the flags of the translation.
+        /// </summary>
         public uint Flags { get; }
+        /// <summary>
+        /// Gets the key of the translation.
+        /// </summary>
         public string Key { get; }
+        /// <summary>
+        /// Gets the id of the translation.
+        /// </summary>
         public string Fallback { get; }
+        /// <summary>
+        /// Gets or sets the value of the translation.
+        /// </summary>
         public string Comment { get; set; }
+        /// <summary>
+        /// Gets or sets the fallback of the translation.
+        /// </summary>
         public string Value { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the Id of the translation.
+        /// </summary>
         public string Id { get; set; }
     }
 
     string IChunk.Id => Id;
+    /// <summary>
+    /// The id of the chunk.
+    /// </summary>
     public const string Id = "STMP";
+    /// <summary>
+    /// The translations of the chunk.
+    /// </summary>
     public readonly IList<Translation> Translations = new List<Translation>();
+
+    /// <inheritdoc />
     public bool IsEmpty => Translations.Count == 0;
 
+    /// <inheritdoc />
     public void Read(BinaryReader reader)
     {
         var dataId = reader.ReadUTF8String(4);
@@ -57,6 +109,7 @@ public class TranslationChunk : IChunk
         }
     }
 
+    /// <inheritdoc />
     public void Write(BinaryWriter writer)
     {
         /*

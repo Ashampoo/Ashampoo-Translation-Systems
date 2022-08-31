@@ -14,8 +14,10 @@ namespace Ashampoo.Translation.Systems.Formats.Gengo;
 /// </summary>
 public class GengoFormat : AbstractTranslationUnits, IFormat
 {
+    /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
 
+    /// <inheritdoc />
     public FormatLanguageCount LanguageCount => FormatLanguageCount.SourceAndTarget;
 
     private static readonly Regex
@@ -26,6 +28,7 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
     private static readonly Regex
         RegexWithoutMarker = new(@"^(?<id>.*)$"); // Regex to get the id without square brackets around it.
 
+    /// <inheritdoc />
     public async Task ReadAsync(Stream stream, FormatReadOptions? options = null)
     {
         ArgumentNullException.ThrowIfNull(options); // Options have to be provided
@@ -153,6 +156,7 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
         return match.Groups["id"].Value;
     }
 
+    /// <inheritdoc />
     public void Write(Stream stream)
     {
         XSSFWorkbook workbook = new(); // Create a new workbook
@@ -204,7 +208,8 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
             sheet.AutoSizeColumn(i);
         }
     }
-    
+
+    /// <inheritdoc />
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         return builder => builder.SetId("gengo")
