@@ -4,7 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <EnableDynamicLoading>true</EnableDynamicLoading>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
