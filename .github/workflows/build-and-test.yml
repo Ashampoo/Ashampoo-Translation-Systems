@@ -2,7 +2,7 @@ name: build-and-test
 
 on:
   pull_request:
-    branches: [main, release/**]
+    branches: [main, release/**, develop]
     types: [opened, reopened, synchronize, edited]
     paths:
       - "**.cs"
