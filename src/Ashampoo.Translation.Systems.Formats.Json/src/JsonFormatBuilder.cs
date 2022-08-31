@@ -4,16 +4,21 @@ using CommunityToolkit.Diagnostics;
 
 namespace Ashampoo.Translation.Systems.Formats.Json;
 
+/// <summary>
+/// Builder for the <see cref="JsonFormat"/>.
+/// </summary>
 public class JsonFormatBuilder : IFormatBuilderWithTarget
 {
     private string? targetLanguage;
     private readonly Dictionary<string, string> translations = new();
 
+    /// <inheritdoc />
     public void Add(string id, string target)
     {
         translations.Add(id, target);
     }
 
+    /// <inheritdoc />
     public IFormat Build()
     {
         Guard.IsNotNullOrWhiteSpace(targetLanguage, nameof(targetLanguage));
@@ -38,6 +43,7 @@ public class JsonFormatBuilder : IFormatBuilderWithTarget
         return jsonFormat;
     }
 
+    /// <inheritdoc />
     public void SetTargetLanguage(string language)
     {
         targetLanguage = language;

@@ -14,13 +14,16 @@ namespace Ashampoo.Translation.Systems.Formats.Json;
 /// </summary>
 public class JsonFormat : AbstractTranslationUnits, IFormat
 {
+    /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
 
+    /// <inheritdoc />
     public FormatLanguageCount LanguageCount => FormatLanguageCount.OnlyTarget;
     private const string Divider = "/";
 
     private static readonly Regex ArrayIdentifierRegex = new(@"\[\d+\]");
 
+    /// <inheritdoc />
     public async Task ReadAsync(Stream stream, FormatReadOptions? options = null)
     {
         var configureSuccess = await ConfigureOptionsAsync(options); // Configure options
@@ -149,11 +152,18 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
         }
     }
 
+    /// <inheritdoc />
     public void Write(Stream stream)
     {
         WriteAsync(stream).Wait();
     }
 
+    /// <summary>
+    /// Asynchronously writes the format to the specified stream.
+    /// </summary>
+    /// <param name="stream">
+    /// The stream to write to.
+    /// </param>
     public async Task WriteAsync(Stream stream)
     {
         var root = new JsonObject();
@@ -287,7 +297,8 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
             break;
         }
     }
-    
+
+    /// <inheritdoc />
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         return builder => builder.SetId("json")
