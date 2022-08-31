@@ -4,11 +4,40 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <IsPackable>false</IsPackable>
+        <PackageId>Ashampoo.Translation.Systems.Formats.ResX</PackageId>
+        <Authors>tjorvenK</Authors>
+        <Company>Ashampoo_GmbH_Co_KG</Company>
+        <Description>Package containing the implementation for the ResX format.</Description>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageTags>localization;translation;resx</PackageTags>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageIcon>ash-logo-icon-big-128x.png</PackageIcon>
+        <MinVerTagPrefix>v</MinVerTagPrefix>
+        <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
+        <MinVerDefaultPreReleasePhase>prerelease</MinVerDefaultPreReleasePhase>
+        <PackageReadmeFile>Resx.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../../LICENSE" Pack="true" PackagePath=""/>
+        <None Include="../../../ash-logo-icon-big-128x.png" Pack="true" PackagePath=""/>
+        <None Include="Resx.md" Pack="true" PackagePath=""/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+        <PackageReference Include="MinVer" Version="4.2.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
 </Project>
