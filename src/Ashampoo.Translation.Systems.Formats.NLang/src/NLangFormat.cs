@@ -14,15 +14,20 @@ namespace Ashampoo.Translation.Systems.Formats.NLang;
 public class NLangFormat : AbstractTranslationUnits, IFormat
 {
     private static readonly Regex ReMsg = new(@"(?<key>.*?)=(?<value>.*)");
+
+    /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
 
+    /// <inheritdoc />
     public FormatLanguageCount LanguageCount => FormatLanguageCount.OnlyTarget;
 
+    /// <inheritdoc />
     public void Read(Stream stream, FormatReadOptions? options = null)
     {
         ReadAsync(stream, options).Wait();
     }
 
+    /// <inheritdoc />
     public async Task ReadAsync(Stream stream, FormatReadOptions? options = null)
     {
         var configureSuccess = await ConfigureOptionsAsync(options); // Configure options
@@ -106,11 +111,21 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
         );
     }
 
+    /// <inheritdoc />
     public void Write(Stream stream)
     {
         WriteAsync(stream).Wait();
     }
 
+    /// <summary>
+    /// Asynchronously writes the format to the specified stream.
+    /// </summary>
+    /// <param name="stream">
+    /// The stream to write to.
+    /// </param>
+    /// <exception cref="Exception">
+    /// Thrown if the format is invalid.
+    /// </exception>
     public async Task WriteAsync(Stream stream)
     {
         // NLang is UTF16 LE
@@ -125,7 +140,8 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
 
         await writer.FlushAsync();
     }
-    
+
+    /// <inheritdoc />
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         return builder => builder.SetId("nlang")
