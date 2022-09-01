@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <PackageId>Ashampoo.Translation.Systems.Components</PackageId>
+        <Authors>tjorvenK</Authors>
+        <Company>Ashampoo_GmbH_Co_KG</Company>
+        <Description>Package containg basic blazor components and services for creating a converter.</Description>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageTags>localization;blazor;razor;ASP.Net,c#,dotnet</PackageTags>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageIcon>ash-logo-icon-big-128x.png</PackageIcon>
+        <MinVerTagPrefix>v</MinVerTagPrefix>
+        <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
+        <MinVerDefaultPreReleasePhase>prerelease</MinVerDefaultPreReleasePhase>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="MediatR" Version="10.0.1" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+        <PackageReference Include="MudBlazor" Version="6.0.14" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../../LICENSE" Pack="true" PackagePath="" />
+        <None Include="../../../ash-logo-icon-big-128x.png" Pack="true" PackagePath="" />
+        <None Include="README.md" Pack="true" PackagePath="" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+        <PackageReference Include="MinVer" Version="4.2.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="src" />
+    </ItemGroup>
+    
+</Project>
