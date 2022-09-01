@@ -1,11 +1,13 @@
 ﻿name: prerelease-packages
 
 on:
-  push:
+  pull_request:
     branches: [main]
+    types: [closed]
 
 jobs: 
   release:
+    if: ${{ github.event.pull_request.merged == true && github.event.label.name == 'release' }}
     uses: ./.github/workflows/reuse-generate-version-and-init-release.yml
     with: 
       prerelease: true
