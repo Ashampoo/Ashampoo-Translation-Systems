@@ -94,5 +94,25 @@ public static class DependencyInjection
             configuration.PluginPaths.Add(path);
         });
         return services;
-    }  
+    }
+
+    /// <summary>
+    /// Register the given <see cref="IFormat"/> with the service collection.
+    /// </summary>
+    /// <param name="services">
+    /// The <see cref="IServiceCollection"/> to add the <see cref="IFormat"/> to.
+    /// </param>
+    /// <typeparam name="T">
+    /// The type of <see cref="IFormat"/> to register.
+    /// </typeparam>
+    /// <returns>
+    /// The <see cref="IServiceCollection"/> so that additional calls can be chained.
+    /// </returns>
+    public static IServiceCollection RegisterFormat<T>(this IServiceCollection services) where T : IFormat
+    {
+        var format = Activator.CreateInstance<T>();
+        services.AddFormatProvider(format.BuildFormatProvider());
+
+        return services;
+    }
 }
