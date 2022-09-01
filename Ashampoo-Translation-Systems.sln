@@ -22,7 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.System
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.Systems.Formats.TsProj.Tests", "src\Ashampoo.Translation.Systems.Formats.TsProj\tests\Ashampoo.Translation.Systems.Formats.TsProj.Tests.csproj", "{4DDC2740-501A-4760-8384-21B9D2F994DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.Systems.Components", "src\Ashampoo.Translation.Systems.Components\Ashampoo.Translation.Systems.Components.csproj", "{D8C6BB19-A1D1-4CEC-A605-31B8A2C58FDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.Systems.Components", "src\Ashampoo.Translation.Systems.Components\src\Ashampoo.Translation.Systems.Components.csproj", "{D8C6BB19-A1D1-4CEC-A605-31B8A2C58FDC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.Systems.Formats.Abstractions.Tests", "src\Ashampoo.Translation.Systems.Formats.Abstractions\tests\Ashampoo.Translation.Systems.Formats.Abstractions.Tests.csproj", "{5C56057B-2927-4CB0-B9E2-13154699CD8E}"
 EndProject
