@@ -29,9 +29,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        id: set-matrix
         with:
           fetch-depth: 0
+
+      - name: set-matrix
+        id: set-matrix
         run: echo "::set-output name=matrix::$(ls src/Ashampoo.Translation.Systems.*/src/Ashampoo.Translation.Systems.*.csproj | sed -r 's/.*\/(.*).csproj$/\1/')"
 
   publish-nuget-packages:
