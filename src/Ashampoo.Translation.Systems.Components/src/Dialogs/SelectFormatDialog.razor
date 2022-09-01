@@ -16,26 +16,3 @@
         <MudButton Color="Color.Primary" OnClick="Submit">Ok</MudButton>
     </DialogActions>
 </MudDialog>
-
-@code
-{
-    [CascadingParameter]
-    MudDialogInstance MudDialog { get; set; } = default!;
-
-    private string? formatId;
-    private bool error;
-
-    void Submit()
-    {
-        if (string.IsNullOrWhiteSpace(formatId))
-        {
-            error = true;
-            return;
-        }
-        error = false;
-        MudDialog.Close(DialogResult.Ok(formatId));
-    }
-
-
-    void Cancel() => MudDialog.Cancel();
-}

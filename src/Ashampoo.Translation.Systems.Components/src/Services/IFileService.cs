@@ -2,6 +2,9 @@ using Ashampoo.Translation.Systems.Formats.Abstractions;
 
 namespace Ashampoo.Translation.Systems.Components.Services;
 
+/// <summary>
+/// A service for handling translation files.
+/// </summary>
 public interface IFileService
 {
     /// <summary>

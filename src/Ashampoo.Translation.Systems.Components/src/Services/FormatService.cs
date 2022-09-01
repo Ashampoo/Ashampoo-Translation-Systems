@@ -4,12 +4,22 @@ using MudBlazor;
 
 namespace Ashampoo.Translation.Systems.Components.Services;
 
+/// <inheritdoc />
 public class FormatService : IFormatService
 {
     private readonly IFormatFactory formatFactory;
 
     private readonly IDialogService dialogService;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FormatService"/> class.
+    /// </summary>
+    /// <param name="dialogService">
+    /// The dialog service.
+    /// </param>
+    /// <param name="formatFactory">
+    /// The format factory.
+    /// </param>
     public FormatService
     (
         IDialogService dialogService,
@@ -20,12 +30,14 @@ public class FormatService : IFormatService
         this.formatFactory = formatFactory;
     }
 
+    /// <inheritdoc />
     public IFormat ConvertTo(IFormat format, string convertFormatId,
         FormatOptionsCallback? formatOptionsCallback = null, AssignOptions? options = null)
     {
         return ConvertToAsync(format, convertFormatId, formatOptionsCallback, options).Result;
     }
 
+    /// <inheritdoc />
     public async Task<IFormat?> ReadFromStreamAsync(Stream stream, string fileName,
         FormatOptionsCallback? formatOptionsCallback = null)
     {
@@ -44,6 +56,7 @@ public class FormatService : IFormatService
         return formatReadOptions.IsCancelled ? null : format;
     }
 
+    /// <inheritdoc />
     public async Task ConfigureFormatOptionsAsync(FormatOptions options, string title = "Configure format options")
     {
         var dialogOptions = new DialogOptions { CloseOnEscapeKey = true };
@@ -56,6 +69,7 @@ public class FormatService : IFormatService
         options.IsCanceled = result is null || result.Cancelled;
     }
 
+    /// <inheritdoc />
     public async Task<IFormat> ConvertToAsync(IFormat format, string convertFormatId,
         FormatOptionsCallback? formatOptionsCallback = null, AssignOptions? options = null)
     {
@@ -71,6 +85,7 @@ public class FormatService : IFormatService
         return convertedFormat;
     }
 
+    /// <inheritdoc />
     public async Task SwitchLanguageAsync(IFormat format, string oldLanguage, string? newLanguage = null)
     {
         if (!oldLanguage.Equals(format.Header.SourceLanguage) && !oldLanguage.Equals(format.Header.TargetLanguage))
@@ -109,11 +124,8 @@ public class FormatService : IFormatService
         else
             format.Header.SourceLanguage = newLanguage;
     }
-
-    /// <summary>
-    /// Display a <see cref="SelectFormatDialog"/> to select an <see cref="IFormat"/>.
-    /// </summary>
-    /// <returns><see cref="Task{TResult}"/></returns>
+    
+    /// <inheritdoc />
     public async Task<string?> GetFormatIdAsync()
     {
         var dialogReference = dialogService.Show<SelectFormatDialog>("Select a Format");

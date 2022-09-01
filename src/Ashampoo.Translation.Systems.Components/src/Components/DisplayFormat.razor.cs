@@ -5,8 +5,14 @@ using Microsoft.AspNetCore.Components;
 
 namespace Ashampoo.Translation.Systems.Components.Components;
 
+/// <summary>
+/// Component for displaying translations of a format in a table.
+/// </summary>
 public partial class DisplayFormat : ComponentBase
 {
+    /// <summary>
+    /// The format to display, passed to the component as a parameter.
+    /// </summary>
     [Parameter] public IFormat Format { get; set; } = default!;
 
     [Inject] private IFormatService FormatService { get; init; } = default!;
@@ -118,8 +124,23 @@ public partial class DisplayFormat : ComponentBase
     }
 }
 
+/// <summary>
+/// Provides extension methods for <see cref="ITranslationUnit"/>.
+/// </summary>
 public static class TranslationExtensions
 {
+    /// <summary>
+    /// Get the translation string for the given language.
+    /// </summary>
+    /// <param name="unit">
+    /// The translation unit.
+    /// </param>
+    /// <param name="language">
+    /// The language to get the translation string for.
+    /// </param>
+    /// <returns>
+    /// The translation string for the given language.
+    /// </returns>
     public static ITranslationString AsTranslationString(this ITranslationUnit unit, string language)
     {
         var translation = unit[language];
