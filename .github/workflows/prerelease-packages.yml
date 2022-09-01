@@ -6,6 +6,13 @@ on:
     types: [ closed ]
 
 jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: debug
+        run: |
+          echo ${{ github.event.pull_request.merged }}
+          echo ${{ github.event.labels.*.name }}
   generate-version:
     if: ${{ (github.event.pull_request.merged == true) && (contains(github.event.pull_request.labels.*.name, 'site')) }}
     uses: ./.github/workflows/reuse-generate-version-and-init-release.yml
