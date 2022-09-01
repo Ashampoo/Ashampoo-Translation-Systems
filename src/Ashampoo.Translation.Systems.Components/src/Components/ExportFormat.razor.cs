@@ -4,10 +4,19 @@ using Microsoft.AspNetCore.Components;
 
 namespace Ashampoo.Translation.Systems.Components.Components;
 
+/// <summary>
+/// Component for exporting a format to a file.
+/// </summary>
 public partial class ExportFormat : ComponentBase
 {
+    /// <summary>
+    /// The format to export, passed in from the parent component as a parameter.
+    /// </summary>
     [Parameter] public IFormat? Format { get; set; }
 
+    /// <summary>
+    /// The name of the file to export to.
+    /// </summary>
     [Parameter] public string FileName { get; set; } = "";
 
     [Inject] private IFormatService FormatService { get; init; } = default!;

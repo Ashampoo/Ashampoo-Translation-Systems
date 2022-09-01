@@ -4,12 +4,21 @@ using Microsoft.JSInterop;
 
 namespace Ashampoo.Translation.Systems.Components.Services;
 
+/// <summary>
+/// A service for handling translation files for web applications.
+/// </summary>
 public class WebFileService : IFileService
 {
     private readonly IJSRuntime js;
 
     private IJSObjectReference? module;
 
+    /// <summary>
+    /// Creates a new instance of the <see cref="WebFileService"/> class.
+    /// </summary>
+    /// <param name="js">
+    /// The <see cref="IJSRuntime"/> instance to use for interacting with the JavaScript environment.
+    /// </param>
     public WebFileService(IJSRuntime js)
     {
         this.js = js;
@@ -24,6 +33,7 @@ public class WebFileService : IFileService
             "./_content/Ashampoo.Translation.Systems.Components/Scripts/WebFileService.js");
     }
 
+    /// <inheritdoc />
     public async Task SaveFile(Stream stream, string fileName, string[]? fileExtension = null)
     {
         if (module is null) await LoadModule();
@@ -33,9 +43,10 @@ public class WebFileService : IFileService
         await js.InvokeVoidAsync("saveFile", streamRef, fileName, fileExtension);
     }
 
+    /// <inheritdoc />
     public async Task SaveFormatsAsync(IEnumerable<IFormat> formats, string fileName, string[]? fileExtensions = null)
     {
-        // Create a zip archive in a mnemory stream.
+        // Create a zip archive in a memory stream.
         await using var ms = new MemoryStream(); 
         using var archive = new ZipArchive(ms, ZipArchiveMode.Create, true); 
         

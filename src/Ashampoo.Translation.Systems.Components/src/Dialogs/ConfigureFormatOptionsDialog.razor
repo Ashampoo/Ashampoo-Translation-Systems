@@ -27,28 +27,3 @@
     </DialogActions>
 
 </MudDialog>
-
-@code
-{
-    [CascadingParameter]
-    MudDialogInstance MudDialog { get; set; } = default!;
-
-
-    [Parameter]
-    public FormatOptions FormatOptions { get; init; } = default!;
-
-    private MudForm? form;
-
-    void Submit()
-    {
-        form?.Validate();
-        if (!form?.IsValid ?? true) return;
-        MudDialog.Close(DialogResult.Ok(true));
-    }
-
-    void Cancel()
-    {
-        form?.ResetValidation();
-        MudDialog.Cancel();
-    }
-}

@@ -6,20 +6,44 @@ using MudBlazor;
 
 namespace Ashampoo.Translation.Systems.Components.Components;
 
+/// <summary>
+/// A component for uploading a file and creating a format object from it.
+/// </summary>
 public partial class UploadFormat : ComponentBase
 {
+    /// <summary>
+    /// Callback when the file is uploaded, and the format is created.
+    /// </summary>
     [Parameter] public EventCallback<(IFormat?, string)> OnFormatUploaded { get; init; }
 
+    /// <summary>
+    /// Child content to display in the upload button.
+    /// </summary>
     [Parameter] public RenderFragment? ChildContent { get; set; }
 
+    /// <summary>
+    /// Bool indicating if uploading is disabled.
+    /// </summary>
     [Parameter] public bool Disabled { get; set; } = false;
 
+    /// <summary>
+    /// The color of the upload button.
+    /// </summary>
     [Parameter] public Color Color { get; set; } = Color.Primary;
 
+    /// <summary>
+    /// The variant of the upload button.
+    /// </summary>
     [Parameter] public Variant Variant { get; set; } = Variant.Filled;
 
+    /// <summary>
+    /// Css class for the upload button.
+    /// </summary>
     [Parameter] public string Class { get; set; } = "";
 
+    /// <summary>
+    /// The start icon of the upload button.
+    /// </summary>
     [Parameter] public string StartIcon { get; set; } = Icons.Filled.CloudUpload;
 
     [Inject] private IFormatService FormatService { get; init; } = default!;

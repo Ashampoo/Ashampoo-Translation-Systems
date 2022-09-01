@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Components;
 
 namespace Ashampoo.Translation.Systems.Components.Pages;
 
+/// <summary>
+/// A page that allows the user to upload, display, import and export formats.
+/// </summary>
 [AllowAnonymous]
 public partial class Converter : ComponentBase
 {
