@@ -1,9 +1,8 @@
-﻿using Ashampoo.Translation.Systems.Logging.Notifications;
-using Ashampoo.Translation.Systems.Tools.ComponentLibrary.Notifications;
+﻿using Ashampoo.Translation.Systems.Components.Notifications;
 using MediatR;
 using MudBlazor;
 
-namespace Ashampoo.Translation.Systems.Tools.ComponentLibrary.NotificationHandlers;
+namespace Ashampoo.Translation.Systems.Components.NotificationHandlers;
 
 public class FormatUploadedNotificationHandler : INotificationHandler<FormatUploadedNotification>
 {

@@ -1,11 +1,10 @@
-﻿using Ashampoo.Translation.Systems.Formats.Abstractions;
-using Ashampoo.Translation.Systems.Logging.Notifications;
-using Ashampoo.Translation.Systems.Tools.ComponentLibrary.Notifications;
+﻿using Ashampoo.Translation.Systems.Components.Notifications;
+using Ashampoo.Translation.Systems.Formats.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
-namespace Ashampoo.Translation.Systems.Tools.ComponentLibrary.Pages;
+namespace Ashampoo.Translation.Systems.Components.Pages;
 
 [AllowAnonymous]
 public partial class Converter : ComponentBase

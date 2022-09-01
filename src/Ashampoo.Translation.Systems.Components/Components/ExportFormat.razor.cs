@@ -1,8 +1,8 @@
+using Ashampoo.Translation.Systems.Components.Services;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
-using Ashampoo.Translation.Systems.Tools.ComponentLibrary.Services;
 using Microsoft.AspNetCore.Components;
 
-namespace Ashampoo.Translation.Systems.Tools.ComponentLibrary.Components;
+namespace Ashampoo.Translation.Systems.Components.Components;
 
 public partial class ExportFormat : ComponentBase
 {
