@@ -1,5 +1,5 @@
 ﻿using MediatR;
 
-namespace Ashampoo.Translation.Systems.Logging.Notifications;
+namespace Ashampoo.Translation.Systems.Tools.ComponentLibrary.Notifications;
 
 public record FormatUploadedNotification : INotification;

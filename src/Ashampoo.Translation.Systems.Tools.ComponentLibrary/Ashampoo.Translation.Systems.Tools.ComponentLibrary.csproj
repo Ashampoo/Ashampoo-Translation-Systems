@@ -10,6 +10,5 @@
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj" />
-        <ProjectReference Include="..\Ashampoo.Translation.Systems.Logging\src\Ashampoo.Translation.Systems.Logging.csproj" />
     </ItemGroup>
 </Project>
