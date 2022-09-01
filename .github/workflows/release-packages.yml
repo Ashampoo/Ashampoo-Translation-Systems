@@ -7,7 +7,7 @@ on:
 
 jobs:
   generate-version:
-    if: ${{ github.event.pull_request.merged == true && github.event.label.name == 'release' }}
+    if: ${{ (github.event.pull_request.merged == true) && (contains(github.event.pull_request.labels.*.name, 'release')) }}
     uses: ./.github/workflows/reuse-generate-version-and-init-release.yml
     with:
       prerelease: false
