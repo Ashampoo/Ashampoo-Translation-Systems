@@ -76,6 +76,11 @@ public abstract class Message : ITranslation
         await writer.WriteLineAsync($"{TypeMsgId}\"{Escape(MsgId)}\"");
     }
 
+    /// <summary>
+    /// Escape the given string.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
     protected static string Escape(string input)
     {
         return input.Replace("\n", "\\n");
