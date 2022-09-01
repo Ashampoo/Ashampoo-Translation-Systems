@@ -6,7 +6,7 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 /// <summary>
 /// Static class that contains extension methods for <see cref="IServiceCollection"/>.
 /// </summary>
-public static class FormatFactoryExtensions
+public static class DependencyInjection
 {
     /// <summary>
     /// Register the <see cref="DefaultFormatFactory"/> in the <see cref="IServiceCollection"/>.
@@ -69,4 +69,30 @@ public static class FormatFactoryExtensions
         });
         return services;
     }
+    
+    /// <summary>
+    /// Registers all necessary services and the format implementations.
+    /// </summary>
+    /// <param name="services">
+    /// The <see cref="IServiceCollection"/> to register the services with.
+    /// </param>
+    /// <returns>
+    /// The <see cref="IServiceCollection"/> for chaining.
+    /// </returns>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown if something went wrong during the registration.
+    /// </exception>
+    public static IServiceCollection RegisterFormats(this IServiceCollection services)
+    {
+        services.AddFormatFactory(configuration =>
+        {
+            var path = Path.GetDirectoryName(typeof(DependencyInjection).Assembly.Location);
+
+            if (string.IsNullOrWhiteSpace(path))
+                throw new ArgumentNullException(nameof(path), "Assembly location could not be found.");
+    
+            configuration.PluginPaths.Add(path);
+        });
+        return services;
+    }  
 }
