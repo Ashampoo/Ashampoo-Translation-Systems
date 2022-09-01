@@ -11,8 +11,8 @@ jobs:
     steps:
       - name: debug
         run: |
-          echo ${{ github.event.pull_request.merged }}
-          echo ${{ github.event.labels.*.name }}
+          echo "::debug::${{ github.event.pull_request.merged }}"
+          echo "::debug::${{ github.event.label.name }}"
   generate-version:
     if: ${{ (github.event.pull_request.merged == true) && (contains(github.event.pull_request.labels.*.name, 'site')) }}
     uses: ./.github/workflows/reuse-generate-version-and-init-release.yml
