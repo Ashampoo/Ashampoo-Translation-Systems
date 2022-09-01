@@ -1,6 +1,6 @@
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 
-namespace Ashampoo.Translation.Systems.Tools.ComponentLibrary.Services;
+namespace Ashampoo.Translation.Systems.Components.Services;
 
 public interface IFormatService
 {

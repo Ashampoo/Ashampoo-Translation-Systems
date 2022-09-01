@@ -2,7 +2,7 @@ using System.IO.Compression;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Microsoft.JSInterop;
 
-namespace Ashampoo.Translation.Systems.Tools.ComponentLibrary.Services;
+namespace Ashampoo.Translation.Systems.Components.Services;
 
 public class WebFileService : IFileService
 {
@@ -21,7 +21,7 @@ public class WebFileService : IFileService
     private async Task LoadModule()
     {
         module = await js.InvokeAsync<IJSObjectReference>("import",
-            "./_content/Ashampoo.Translation.Systems.Tools.ComponentLibrary/Scripts/WebFileService.js");
+            "./_content/Ashampoo.Translation.Systems.Components/Scripts/WebFileService.js");
     }
 
     public async Task SaveFile(Stream stream, string fileName, string[]? fileExtension = null)

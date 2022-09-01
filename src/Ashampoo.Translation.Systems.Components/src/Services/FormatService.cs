@@ -1,8 +1,8 @@
+using Ashampoo.Translation.Systems.Components.Dialogs;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
-using Ashampoo.Translation.Systems.Tools.ComponentLibrary.Dialogs;
 using MudBlazor;
 
-namespace Ashampoo.Translation.Systems.Tools.ComponentLibrary.Services;
+namespace Ashampoo.Translation.Systems.Components.Services;
 
 public class FormatService : IFormatService
 {
