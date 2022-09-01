@@ -2,14 +2,46 @@
 
 on:
   pull_request:
-    branches:
-      - 'release/**'
-    types: [closed]
+    branches: [ release/** ]
+    types: [ closed ]
 
 jobs:
-  release:
+  generate-version:
     if: ${{ github.event.pull_request.merged == true && github.event.label.name == 'release' }}
     uses: ./.github/workflows/reuse-generate-version-and-init-release.yml
     with:
       prerelease: false
     secrets: inherit
+      
+  remove-prefix-from-version:
+    needs: [ generate-version ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: remove-prefix
+        id: remove-prefix
+        run: |
+          TAG=${{ generate-version.outputs.version }}
+          echo ::set-output name=version::${TAG#v}       
+  
+  set-matrix:
+    needs: [ generate-version ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+        
+      - name: set-matrix
+        id: set-matrix
+        run: echo "::set-output name=matrix::$(ls src/Ashampoo.Translation.Systems.*/src/Ashampoo.Translation.Systems.*.csproj | sed -r 's/.*\/(.*).csproj$/\1/')"
+  
+  publish-nuget-packages:
+    needs: [ generate-version, set-matrix ]
+    strategy:
+      matrix:
+        project_name: ${{ fromJson(steps.set-matrix.outputs.matrix) }}
+    uses: ./.github/workflows/reuse-publish-nuget-package.yml
+    with:
+      project_name: ${{ matrix.project_name }}
+      version: ${{ remove-prefix.outputs.version }}

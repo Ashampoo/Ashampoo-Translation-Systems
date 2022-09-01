@@ -1,0 +1,27 @@
+name: reuse-publish-nuget-package.yml
+
+on: 
+  workflow_call:
+    inputs:
+      project_name:
+        description: "The name of the project to publish"
+        required: true
+        type: string
+      version:
+        description: "The version to publish"
+        required: true
+        type: string
+
+jobs:     
+  publish-nuget-package:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - name: Install dependencies
+      run: dotnet restore ./src/${{ inputs.project_name }}/src/${{ inputs.project_name }}.csproj
+      
+    - name: Generate package
+      run: dotnet pack ./src/${{ inputs.project_name }}/src/${{ inputs.project_name }}.csproj -c Release
+      
+    - name: Publish package
+      run: dotnet nuget push ./src/${{ inputs.project_name }}/bin/Release/${{ inputs.project_name }}.${{ inputs.version }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }}  --source https://api.nuget.org/v3/index.json
