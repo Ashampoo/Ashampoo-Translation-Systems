@@ -21,7 +21,6 @@ env:
 jobs:
   bump-version-and-init-release:
     runs-on: ubuntu-latest
-    environment: production
     steps:
     - name: Checkout
       uses: actions/checkout@v3
