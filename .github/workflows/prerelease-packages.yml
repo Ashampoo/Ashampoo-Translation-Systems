@@ -20,7 +20,7 @@ jobs:
       - name: remove-prefix
         id: remove-prefix
         run: |
-          TAG=${{ jobs.generate-version.outputs.version }}
+          TAG=${{ job.generate-version.outputs.version }}
           echo ::set-output name=version::${TAG#v}
     outputs: 
         version: ${{ steps.remove-prefix.outputs.version }}
