@@ -17,6 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+        
     - name: Install dependencies
       run: dotnet restore ./src/${{ inputs.project_name }}/src/${{ inputs.project_name }}.csproj
       
