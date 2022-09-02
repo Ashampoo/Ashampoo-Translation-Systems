@@ -20,7 +20,7 @@ jobs:
       - name: remove-prefix
         id: remove-prefix
         run: |
-          TAG=${{ needs.generate-version.outputs.version }}
+          TAG=${{ jobs.generate-version.outputs.version }}
           echo ::set-output name=version::${TAG#v}
     outputs: 
         version: ${{ steps.remove-prefix.outputs.version }}
@@ -48,4 +48,4 @@ jobs:
     uses: ./.github/workflows/reuse-publish-nuget-package.yml
     with:
       project_name: ${{ matrix.project_name }}
-      version: ${{ needs.remove-prefix.outputs.version }}
+      version: ${{ needs.remove-prefix-from-version.outputs.version }}
