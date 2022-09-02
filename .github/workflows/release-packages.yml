@@ -12,18 +12,21 @@ jobs:
     with:
       prerelease: false
     secrets: inherit
-      
+  
   remove-prefix-from-version:
-    needs: [ generate-version ]
+    needs: generate-version
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.remove-prefix.outputs.version }}
     steps:
+      - name: check-version
+        run: |
+          echo version: ${{ needs.generate-version.outputs.version }}
       - name: remove-prefix
         id: remove-prefix
         run: |
-          TAG=${{ job.generate-version.outputs.version }}
+          TAG=${{ needs.generate-version.outputs.version }}
           echo ::set-output name=version::${TAG#v}
-    outputs:
-      version: ${{ steps.remove-prefix.outputs.version }}
 
   set-matrix:
     needs: [ generate-version ]
