@@ -19,6 +19,8 @@ jobs:
   publish-nuget-package:
     runs-on: ubuntu-latest
     environment: production
+    env: 
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -37,4 +39,4 @@ jobs:
       
     - name: Publish package
       run: |
-        dotnet nuget push ./src/${{ inputs.project_name }}/src/bin/Release/${{ inputs.project_name }}.${{ inputs.version }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }}  --source https://api.nuget.org/v3/index.json
+        dotnet nuget push ./src/${{ inputs.project_name }}/src/bin/Release/${{ inputs.project_name }}.${{ inputs.version }}.nupkg -k ${{ env.NUGET_API_KEY }}  -s https://api.nuget.org/v3/index.json

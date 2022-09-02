@@ -52,3 +52,4 @@ jobs:
     with:
       project_name: ${{ matrix.project_name }}
       version: ${{ needs.remove-prefix-from-version.outputs.version }}
+    secrets: inherit
