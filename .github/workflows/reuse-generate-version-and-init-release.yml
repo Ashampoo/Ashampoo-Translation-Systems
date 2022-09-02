@@ -10,7 +10,7 @@ on:
     outputs:
       version:
         description: "Version number of the package"
-        value: ${{ jobs.bump-version.outputs.version }}
+        value: ${{ jobs.bump-version-and-init-release.outputs.version }}
         
 env:
   GITHUB_TOKEN: ${{ github.token }}
@@ -21,6 +21,8 @@ env:
 jobs:
   bump-version-and-init-release:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.PrereleaseVersion.outputs.version || steps.ReleaseVersion.outputs.version }}
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -124,6 +126,3 @@ jobs:
       run: |
         echo release_body: "${{ env.CHANGELOG }}"
         echo release_url: "${{ steps.release.outputs.url }}"
-      
-    outputs:
-      version: ${{ steps.PrereleaseVersion.outputs.version || steps.ReleaseVersion.outputs.version }}
