@@ -260,6 +260,14 @@ public class FormatTest : FormatTestBase<GengoFormat>
     }
 
     [Fact]
+    public async Task EmptyCellsTest()
+    {
+        var format = await CreateAndReadFromFileAsync("empty-cells-excel-test.xlsx",
+            new FormatReadOptions { SourceLanguage = "en-US", TargetLanguage = "de-DE" });
+        Assert.Empty(format);
+    }
+
+    [Fact]
     public async Task OptionsCallbackCancelledTest()
     {
         Task OptionsCallback(FormatOptions options)
