@@ -20,15 +20,7 @@ public class Startup
         // });
 
         services.AddLogging(b => b.AddConsole());
-        
-        services.AddFormatFactory(configuration =>
-        {
-            var path = Path.GetDirectoryName(typeof(Startup).Assembly.Location);
 
-            if (string.IsNullOrWhiteSpace(path))
-                throw new ArgumentNullException(nameof(path), "Assembly location could not be found.");
-    
-            configuration.PluginPaths.Add(path);
-        });
+        services.AddFormatFactory().RegisterFormat<AshLangFormat>();;
     }
 }
