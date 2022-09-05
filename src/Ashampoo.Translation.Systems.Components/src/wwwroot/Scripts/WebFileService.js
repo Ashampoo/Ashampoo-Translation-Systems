@@ -11,8 +11,23 @@ window.saveFile = async (contentStreamReference, fileName, fileExtension) => {
             accept: {'text/plain': fileExtension},
         }],
     };
-
+    
+    try
+    {
+        
     const fileHandle = await window.showSaveFilePicker(options);
+    }
+    catch (e)
+    {
+        if(e.name === "AbortError")
+        {
+            return;
+        }
+        else
+        {
+            throw e;
+        }
+    }
     const writableStream = await fileHandle.createWritable();
     await writableStream.write(blob);
     await writableStream.close();
