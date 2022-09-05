@@ -38,8 +38,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.System
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.Systems.Formats", "src\Ashampoo.Translation.Systems.Formats\src\Ashampoo.Translation.Systems.Formats.csproj", "{53389A5D-6790-4E38-A2C5-1B0D74B76DCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.Systems.BlazorServer", "src\Ashampoo.Translation.Systems.Components\tests\Ashampoo.Translation.Systems.BlazorServer\src\Ashampoo.Translation.Systems.BlazorServer.csproj", "{3D6B80E7-4C45-4400-A973-C468C6BB1EE6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
