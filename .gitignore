@@ -452,3 +452,6 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+## Test Blazor Server for Component Library
+src/Ashampoo.Translation.Systems.Components/tests/Ashampoo.Translation.Systems.BlazorServer
