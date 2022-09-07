@@ -54,7 +54,7 @@ public class WebFileService : IFileService
         {
             // Create a new entry in the archive.
             var formatFile =
-                archive.CreateEntry($"{fileName}-{format.Header.TargetLanguage}.{fileExtensions?[0] ?? "txt"}");
+                archive.CreateEntry($"{fileName}-{format.Header.TargetLanguage}{fileExtensions?[0] ?? "txt"}");
             await using var entryStream = formatFile.Open(); // Open the entry stream.
 
             await using var tempMemoryStream = new MemoryStream(); 
