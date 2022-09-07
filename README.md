@@ -27,14 +27,14 @@ services.RegisterFormat<MyFormat>();
 ## Supported Formats
 
 ### AshLang
-AshLang is a file format for storing a translations with their english original text.\
-An AshLang file is a binary file with the following structure:
-
-TODO: complete readme
+AshLang is a file format for storing translations with their english original text.\
+An AshLang file is a binary file.\
+We recommend not to use this format for storing translations, because it is an internal format of Ashampoo,\
+and is not human-readable.
 
 ### Gengo
 The Gengo format is a simple format for storing translations.\
-It is meant to be used for sending it to Gengo for translating.\
+It is meant to be used for sending it to [Gengo](https://gengo.com/) for translating.\
 Gengo is based on Excel (.xlsx) and has a specific structure:\
 
 |    [[[ ID ]]]     |    source     |    target     |
