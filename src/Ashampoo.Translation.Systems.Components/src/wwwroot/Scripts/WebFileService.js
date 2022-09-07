@@ -12,10 +12,19 @@ window.saveFile = async (contentStreamReference, fileName, fileExtension) => {
         }],
     };
 
-    const fileHandle = await window.showSaveFilePicker(options);
-    const writableStream = await fileHandle.createWritable();
-    await writableStream.write(blob);
-    await writableStream.close();
+    try {
+
+        const fileHandle = await window.showSaveFilePicker(options);
+        const writableStream = await fileHandle.createWritable();
+        await writableStream.write(blob);
+        await writableStream.close();
+    } catch (e) {
+        if (e.name === "AbortError") {
+            
+        } else {
+            throw e;
+        }
+    }
 }
 
 async function downloadFileFromStream(fileName, contentStreamReference) {

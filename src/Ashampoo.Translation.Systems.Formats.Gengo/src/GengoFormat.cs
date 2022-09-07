@@ -117,13 +117,19 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
 
     private Tuple<ITranslationString, ITranslationString>? CreateTranslations(IRow row)
     {
-        var id = row.TryGetStringCellValue(0); // Get the id from the first cell
+        var idCell = row.TryGetCell(0); // Get the first cell
+        if (idCell is null) return null; // If the cell is null, return null
+        if(idCell.Address.Column != 0) return null; // If the first cell is not in the first column, skip the row
+        var id = idCell.StringCellValue ?? string.Empty; // Get the id from the cell
         if (string.IsNullOrWhiteSpace(id)) return null; // If the id is empty, skip the row
 
         id = RemoveMarker(id); // Remove the marker from the id
         if (string.IsNullOrWhiteSpace(id)) return null; // If the id is empty, skip the row
 
-        var source = row.TryGetStringCellValue(1); // Get the source from the second cell
+        var sourceCell = row.TryGetCell(1); // Get the second cell
+        if (sourceCell is null) return null; // If the cell is null, return null
+        if(sourceCell.Address.Column != 1) return null; // If the second cell is not in the second column, skip the row
+        var source = sourceCell.StringCellValue ?? string.Empty; // Get the source from the cell
         if (string.IsNullOrWhiteSpace(source)) return null; // If the source is empty, skip the row
 
         var target =
