@@ -6,7 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <PackageId>Ashampoo.Translation.Systems.Formats</PackageId>
         <Authors>tjorvenK</Authors>
-        <Company>Ashampoo_GmbH_Co_KG</Company>
+        <Company>ashampoo</Company>
         <Description>Package containing formats for translation files.</Description>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageTags>localization;translation;po;gengo;json;resx</PackageTags>

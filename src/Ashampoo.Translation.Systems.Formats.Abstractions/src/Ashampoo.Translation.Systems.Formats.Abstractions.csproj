@@ -6,7 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <PackageId>Ashampoo.Translation.Systems.Formats.Abstractions</PackageId>
         <Authors>tjorvenK</Authors>
-        <Company>Ashampoo_GmbH_Co_KG</Company>
+        <Company>ashampoo</Company>
         <Description>Abstraction package for interfaces, default and base implementations</Description>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageTags>localization;translation;po;gengo</PackageTags>

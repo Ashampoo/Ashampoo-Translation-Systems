@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <PackageId>Ashampoo.Translation.Systems.Components</PackageId>
         <Authors>tjorvenK</Authors>
-        <Company>Ashampoo_GmbH_Co_KG</Company>
+        <Company>ashampoo</Company>
         <Description>Package containg basic blazor components and services for creating a converter.</Description>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageTags>localization;blazor;razor;ASP.Net,c#,dotnet</PackageTags>
