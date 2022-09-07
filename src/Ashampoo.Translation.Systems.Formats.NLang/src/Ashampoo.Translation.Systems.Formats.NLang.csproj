@@ -6,7 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <PackageId>Ashampoo.Translation.Systems.Formats.NLang</PackageId>
         <Authors>tjorvenK</Authors>
-        <Company>Ashampoo_GmbH_Co_KG</Company>
+        <Company>ashampoo</Company>
         <Description>Package containing the implementation for the NLang format.</Description>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageTags>localization;translation;nlang</PackageTags>
