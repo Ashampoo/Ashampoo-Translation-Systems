@@ -45,6 +45,15 @@ public partial class UploadFormat : ComponentBase
     /// The start icon of the upload button.
     /// </summary>
     [Parameter] public string StartIcon { get; set; } = Icons.Filled.CloudUpload;
+    
+    /// <summary>
+    /// Callback to configure format options.
+    /// </summary>
+    [Parameter] public FormatOptionsCallback? FormatOptionsCallback { get; set; }
+    /// <summary>
+    /// Options for reading the format.
+    /// </summary>
+    [Parameter] public FormatReadOptions? FormatReadOptions { get; set; }
 
     [Inject] private IFormatService FormatService { get; init; } = default!;
 
@@ -78,7 +87,10 @@ public partial class UploadFormat : ComponentBase
             ms.Position = 0;
 
             // Create the format.
-            format = await FormatService.ReadFromStreamAsync(ms, e.File.Name, FormatOptionsCallback);
+            if(FormatReadOptions is not null) 
+                format = await FormatService.ReadFromStreamAsync(ms, e.File.Name, FormatReadOptions);
+            else
+                format = await FormatService.ReadFromStreamAsync(ms, e.File.Name, FormatOptionsCallback ?? OptionsCallback);
             
             // Get the file name
             fileName = Path.GetFileNameWithoutExtension(e.File.Name);
@@ -101,7 +113,7 @@ public partial class UploadFormat : ComponentBase
     /// </summary>
     /// <param name="options"></param>
     /// <returns>A <see cref="Task"/> representing an asynchronous operation.</returns>
-    private async Task FormatOptionsCallback(FormatOptions options)
+    private async Task OptionsCallback(FormatOptions options)
     {
         await FormatService.ConfigureFormatOptionsAsync(options);
     }
