@@ -30,6 +30,7 @@ public class FormatService : IFormatService
         this.formatFactory = formatFactory;
     }
 
+
     /// <inheritdoc />
     public IFormat ConvertTo(IFormat format, string convertFormatId,
         FormatOptionsCallback? formatOptionsCallback = null, AssignOptions? options = null)
@@ -56,6 +57,19 @@ public class FormatService : IFormatService
         return formatReadOptions.IsCancelled ? null : format;
     }
 
+    /// <inheritdoc />
+    public async Task<IFormat?> ReadFromStreamAsync(Stream stream, string fileName, FormatReadOptions readOptions)
+    {
+        var format = formatFactory.TryCreateFormatByFileName(fileName) ??
+                     throw new InvalidOperationException("File type not supported.");
+        
+        await format.ReadAsync(stream, readOptions);
+        
+        return readOptions.IsCancelled ? null : format;
+        
+        
+    }
+    
     /// <inheritdoc />
     public async Task ConfigureFormatOptionsAsync(FormatOptions options, string title = "Configure format options")
     {
