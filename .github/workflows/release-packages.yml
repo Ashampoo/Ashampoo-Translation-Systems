@@ -2,17 +2,17 @@
 
 on:
   pull_request:
-    branches: [ release/** ]
+    branches: [ main ]
     types: [ closed ]
 
 jobs:
   generate-version:
-    if: ${{ (github.event.pull_request.merged == true) && (contains(github.event.pull_request.labels.*.name, 'release')) }}
+    if: ${{ (github.event.pull_request.merged == true) && ((contains(github.event.pull_request.labels.*.name, 'prerelease')) || (contains(github.event.pull_request.labels.*.name, 'release'))) }}
     uses: ./.github/workflows/reuse-generate-version-and-init-release.yml
     with:
-      prerelease: false
+      prerelease: ${{(contains(github.event.pull_request.labels.*.name, 'release')) == false}}
     secrets: inherit
-  
+
   remove-prefix-from-version:
     needs: generate-version
     runs-on: ubuntu-latest
@@ -27,7 +27,26 @@ jobs:
         run: |
           TAG=${{ needs.generate-version.outputs.version }}
           echo ::set-output name=version::${TAG#v}
-
+          
+  create-release-branch:
+    needs: generate-version
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'release') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Create Release Branch
+        run: git checkout -b release/${{ needs.generate-version.outputs.version }}
+      - name: Initialize mandatory git config
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email noreply@github.com
+      - name: Push new branch
+        run: git push origin release/${{ needs.generate-version.outputs.version}}
+  
   set-matrix:
     needs: [ generate-version ]
     runs-on: ubuntu-latest
