@@ -19,7 +19,7 @@
         <MinVerTagPrefix>v</MinVerTagPrefix>
         <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
         <MinVerDefaultPreReleasePhase>prerelease</MinVerDefaultPreReleasePhase>
-        <PackageReadmeFile>PO.md</PackageReadmeFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -29,7 +29,7 @@
     <ItemGroup>
         <None Include="../../../LICENSE" Pack="true" PackagePath="" />
         <None Include="../../../ash-logo-icon-big-128x.png" Pack="true" PackagePath="" />
-        <None Include="PO.md" Pack="true" PackagePath="" />
+        <None Include="README.md" Pack="true" PackagePath="" />
     </ItemGroup>
 
     <ItemGroup>

@@ -9,33 +9,38 @@ This repository contains the source code for a system for working with translati
 ## Installation
 To use the system, you need to install the following dependencies from NuGet:
 
-[Ashampoo.Translation.Systems.Formats.Abstractions](https://www.nuget.org/packages/Ashampoo.Translation.Systems/) if you only want to use the interfaces and base classes, and not hte format implementations.\
+[Ashampoo.Translation.Systems.Formats.Abstractions](https://www.nuget.org/packages/Ashampoo.Translation.Systems/) if you only want to use the interfaces and base classes, and not the format implementations.\
 [Ashampoo.Translation.Systems.Formats](https://www.nuget.org/packages/Ashampoo.Translation.Systems.Formats/) if you want to use the complete system, including the format implementations.\
-If you only want to use specific formats, you can install the corresponding packages directly.
-
-To register all your installed formats with the IServiceCollection, you need to add the following line to the `Startup.cs` file:
+If you only want to use specific formats, you can install the corresponding packages directly.\
+\
+To register all your installed formats with the `IServiceCollection`, you need to call the following methods:
 ```c#
+using Ashampoo.Translation.Systems.Formats.Abstractions;
+
 services.RegisterFormats();
 ```
-If you want to register only specific formats, you can add the following line to the `Startup.cs` file:
+If you want to register only specific formats, you can register them manually with your `IServiceCollection`:
 ```c#
+using Ashampoo.Translation.Systems.Formats.Abstractions;
+
 services.AddFormatFactory();
 services.RegisterFormat<MyFormat>();
 ```
 > NOTE: If you want to register multiple formats individually, you only need to call `services.AddFormatFactory()` once.
 
+
 ## Supported Formats
 
 ### AshLang
-AshLang is a file format for storing a translations with their english original text.\
-An AshLang file is a binary file with the following structure:
-
-TODO: complete readme
+AshLang is a file format for storing translations with their english original text.\
+An AshLang file is a binary file.\
+We recommend not to use this format for storing translations, because it is an internal format of Ashampoo,\
+and is not human-readable.
 
 ### Gengo
 The Gengo format is a simple format for storing translations.\
-It is meant to be used for sending it to Gengo for translating.\
-Gengo is based on Excel (.xlsx) and has a specific structure:\
+It is meant to be used for sending it to [Gengo](https://gengo.com/) for translating.\
+Gengo is based on Excel (.xlsx) and has a specific structure:
 
 |    [[[ ID ]]]     |    source     |    target     |
 |:-----------------:|:-------------:|:-------------:|
