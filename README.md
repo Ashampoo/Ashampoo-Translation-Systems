@@ -1,9 +1,9 @@
 [![build and test](https://github.com/RealAshampoo/Ashampoo-Translation-Systems/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/RealAshampoo/Ashampoo-Translation-Systems/actions/workflows/build-and-test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](https://github.com/RealAshampoo/Ashampoo-Translation-Systems/blob/main/LICENSE)
-![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/RealAshampoo/Ashampoo-Translation-Systems?display_name=tag&include_prereleases&sort=semver&style=flat-square)
-![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Ashampoo.Translation.Systems.Formats?color=green&label=Formats)
-![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Ashampoo.Translation.Systems.Formats.Abstractions?color=green&label=Abstractions)
-![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Ashampoo.Translation.Systems.Components?color=green&label=Components)
+[![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/RealAshampoo/Ashampoo-Translation-Systems?display_name=tag&include_prereleases&sort=semver&style=flat-square)](https://github.com/RealAshampoo/Ashampoo-Translation-Systems/releases/latest)
+[![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Ashampoo.Translation.Systems.Formats?color=green&label=Formats&style=flat-square)](https://www.nuget.org/packages/Ashampoo.Translation.Systems.Formats)
+[![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Ashampoo.Translation.Systems.Formats.Abstractions?color=green&label=Abstractions&style=flat-square)](https://www.nuget.org/packages/Ashampoo.Translation.Systems.Formats.Abstractions)
+[![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Ashampoo.Translation.Systems.Components?color=green&label=Components&style=flat-square)](https://www.nuget.org/packages/Ashampoo.Translation.Systems.Components)
 # Ashampoo-Translation-Systems
 
 ## Description
