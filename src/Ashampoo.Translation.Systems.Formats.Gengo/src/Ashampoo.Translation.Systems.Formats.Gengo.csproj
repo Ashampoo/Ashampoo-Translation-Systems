@@ -19,7 +19,7 @@
         <MinVerTagPrefix>v</MinVerTagPrefix>
         <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
         <MinVerDefaultPreReleasePhase>prerelease</MinVerDefaultPreReleasePhase>
-        <PackageReadmeFile>Gengo.md</PackageReadmeFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -32,13 +32,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="../../../LICENSE" Pack="true" PackagePath=""/>
-        <None Include="../../../ash-logo-icon-big-128x.png" Pack="true" PackagePath=""/>
-        <None Include="Gengo.md" Pack="true" PackagePath=""/>
+        <None Include="../../../LICENSE" Pack="true" PackagePath="" />
+        <None Include="../../../ash-logo-icon-big-128x.png" Pack="true" PackagePath="" />
+        <None Include="README.md" Pack="true" PackagePath="" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
         <PackageReference Include="MinVer" Version="4.2.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
