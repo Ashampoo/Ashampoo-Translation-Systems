@@ -3,18 +3,39 @@
 This package provides the implementation of several translation file formats,
 such as PO and Json, for the Ashampoo Translation Studio.
 
+## Installation
+To use the system, you need to install the following dependencies from NuGet:
+
+[Ashampoo.Translation.Systems.Formats](https://www.nuget.org/packages/Ashampoo.Translation.Systems.Formats/)\
+If you only want to use specific formats, you can install the corresponding packages directly.\
+\
+To register all your installed formats with the `IServiceCollection`, you need to call the following methods:
+```c#
+using Ashampoo.Translation.Systems.Formats.Abstractions;
+
+services.RegisterFormats();
+```
+If you want to register only specific formats, you can register them manually with your `IServiceCollection`:
+```c#
+using Ashampoo.Translation.Systems.Formats.Abstractions;
+
+services.AddFormatFactory();
+services.RegisterFormat<MyFormat>();
+```
+> NOTE: If you want to register multiple formats individually, you only need to call `services.AddFormatFactory()` once.
+
 ## Supported Formats
 
 ### AshLang
-AshLang is a file format for storing a translations with their english original text.\
-An AshLang file is a binary file with the following structure:
-
-TODO: complete readme
+AshLang is a file format for storing translations with their english original text.\
+An AshLang file is a binary file.\
+We recommend not to use this format for storing translations, because it is an internal format of Ashampoo,\
+and is not human-readable.
 
 ### Gengo
 The Gengo format is a simple format for storing translations.\
 It is meant to be used for sending it to Gengo for translating.\
-Gengo is based on Excel (.xlsx) and has a specific structure:\
+Gengo is based on Excel (.xlsx) and has a specific structure:
 
 | [[[ ID ]]]        | source         | target          |
 |:-----------------:|:--------------:|:---------------:|
@@ -149,10 +170,3 @@ target_language="target_language">
 
 ## License
 This project is licensed under the MIT license.
-
-## Contributing
-Contributions are always welcome!\
-Please read the [contribution guidelines](CONTRIBUTING.md) first.
-
-## Code of Conduct
-This project and everyone participating in it is governed by the [Code of Conduct](CODE_OF_CONDUCT.md).
