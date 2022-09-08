@@ -8,7 +8,7 @@ namespace Ashampoo.Translation.Systems.Components.Services;
 public interface IFormatService
 {
     /// <summary>
-    /// Create a new instance of IFormat from the given stream.
+    /// Create a new instance of <see cref="IFormat"/> from the given stream.
     /// </summary>
     /// <param name="stream">
     /// The stream to read the format from.
@@ -20,7 +20,30 @@ public interface IFormatService
     /// The options to use when creating the format.
     /// </param>
     /// <returns> A new instance of IFormat</returns>
+    /// /// <exception cref="InvalidOperationException">
+    /// Thrown if the file type is not supported.
+    /// </exception>
     Task<IFormat?> ReadFromStreamAsync(Stream stream, string fileName, FormatOptionsCallback? options = null);
+    
+    /// <summary>
+    /// Create a new instance of <see cref="IFormat"/> from the given stream.
+    /// </summary>
+    /// <param name="stream">
+    /// The stream to read the format from.
+    /// </param>
+    /// <param name="fileName">
+    /// The name of the file the stream is from.
+    /// </param>
+    /// <param name="readOptions">
+    /// The options to use when reading the format.
+    /// </param>
+    /// <returns>
+    /// A new instance of IFormat, or null if the format could not be read.
+    /// </returns>
+    /// <exception cref="InvalidOperationException">
+    /// Thrown if the file type is not supported.
+    /// </exception>
+    Task<IFormat?> ReadFromStreamAsync(Stream stream, string fileName, FormatReadOptions readOptions);
 
     /// <summary>
     /// Convert the given instance of IFormat into the format specified by id.
