@@ -24,7 +24,7 @@ services.RegisterFormats();
 ```
 If you want to register only specific formats, you can register them manually with your `IServiceCollection`:
 ```c#
-using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.MyFormat;
 
 services.AddFormatFactory();
 services.RegisterFormat<MyFormat>();
