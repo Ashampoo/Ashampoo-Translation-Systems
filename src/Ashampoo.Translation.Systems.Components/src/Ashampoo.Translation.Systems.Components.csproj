@@ -22,9 +22,9 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="MediatR" Version="10.0.1" />
-        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
-        <PackageReference Include="MudBlazor" Version="6.0.15" />
+        <PackageReference Include="MediatR" Version="11.0.0" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+        <PackageReference Include="MudBlazor" Version="6.0.17" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj" />
