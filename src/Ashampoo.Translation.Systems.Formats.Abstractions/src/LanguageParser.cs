@@ -7,8 +7,12 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 /// </summary>
 public static class LanguageParser
 {
-    private static readonly Regex Regex = new(@".*((?<language>[a-z]{2,3})[-_](?<country>[a-zA-Z]{2,3}))");
-    
+    private static readonly Regex LanguageCountryRegex = 
+        new(@".*((?<language>[a-z]{2,3})[-_](?<country>[a-zA-Z]{2,3}))");
+
+    private static readonly Regex LanguageScriptTagCountryRegex =
+        new(@".*(?<language>[a-z]{2,3})[-_](?<scripttag>[a-zA-Z]{4})[-_](?<country>[a-zA-Z]{2,3})");
+
     /// <summary>
     /// Try to parse a language from a file path.
     /// </summary>
@@ -24,22 +28,47 @@ public static class LanguageParser
 
         for (var i = filePathComponents.Length - 1; i >= 0; i--)
         {
-            var match = Regex.Match(filePathComponents[i]);
+            var filePathComponent = filePathComponents[i];
+            var code = TryParseLanguageCountry(filePathComponent);
+            code ??= TryParseLanguageScriptTagCountry(filePathComponent);
 
-            if (!match.Success) continue;
-
-            var targetLanguage = match.Groups["language"].Value;
-            var targetCountry = match.Groups["country"].Value;
-            var code = $"{targetLanguage}-{targetCountry.ToUpper()}";
-
-            var valid = IsValidLanguageCode(code);
-
-            if (valid) return code;
+            if (code is not null) return code;
         }
 
         return null;
     }
-    
+
+    private static string? TryParseLanguageCountry(string filePath)
+    {
+        var match = LanguageCountryRegex.Match(filePath);
+
+        if (!match.Success) return null;
+
+        var targetLanguage = match.Groups["language"].Value;
+        var targetCountry = match.Groups["country"].Value;
+        var code = $"{targetLanguage}-{targetCountry.ToUpper()}";
+
+        var valid = IsValidLanguageCode(code);
+
+        return valid ? code : null;
+    }
+
+    private static string? TryParseLanguageScriptTagCountry(string filePath)
+    {
+        var match = LanguageScriptTagCountryRegex.Match(filePath);
+
+        if (!match.Success) return null;
+
+        var targetLanguage = match.Groups["language"].Value;
+        var targetScriptTag = match.Groups["scripttag"].Value;
+        var targetCountry = match.Groups["country"].Value;
+        var code = $"{targetLanguage}-{targetScriptTag}-{targetCountry.ToUpper()}";
+
+        var valid = IsValidLanguageCode(code);
+
+        return valid ? code : null;
+    }
+
     /// <summary>
     /// Check if a language code is valid.
     /// </summary>
