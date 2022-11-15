@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <PackageId>Ashampoo.Translation.Systems.Formats</PackageId>
@@ -24,24 +24,24 @@
 
     
     <ItemGroup>
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj" />
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.AshLang\src\Ashampoo.Translation.Systems.Formats.AshLang.csproj" />
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Gengo\src\Ashampoo.Translation.Systems.Formats.Gengo.csproj" />
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Json\src\Ashampoo.Translation.Systems.Formats.Json.csproj" />
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.NLang\src\Ashampoo.Translation.Systems.Formats.NLang.csproj" />
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.PO\src\Ashampoo.Translation.Systems.Formats.PO.csproj" />
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.ResX\src\Ashampoo.Translation.Systems.Formats.ResX.csproj" />
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.TsProj\src\Ashampoo.Translation.Systems.Formats.TsProj.csproj" />
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj"/>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.AshLang\src\Ashampoo.Translation.Systems.Formats.AshLang.csproj"/>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Gengo\src\Ashampoo.Translation.Systems.Formats.Gengo.csproj"/>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Json\src\Ashampoo.Translation.Systems.Formats.Json.csproj"/>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.NLang\src\Ashampoo.Translation.Systems.Formats.NLang.csproj"/>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.PO\src\Ashampoo.Translation.Systems.Formats.PO.csproj"/>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.ResX\src\Ashampoo.Translation.Systems.Formats.ResX.csproj"/>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.TsProj\src\Ashampoo.Translation.Systems.Formats.TsProj.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="../../../LICENSE" Pack="true" PackagePath="" />
-        <None Include="../../../ash-logo-icon-big-128x.png" Pack="true" PackagePath="" />
-        <None Include="README.md" Pack="true" PackagePath="" />
+        <None Include="../../../LICENSE" Pack="true" PackagePath=""/>
+        <None Include="../../../ash-logo-icon-big-128x.png" Pack="true" PackagePath=""/>
+        <None Include="README.md" Pack="true" PackagePath=""/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
         <PackageReference Include="MinVer" Version="4.2.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
