@@ -78,6 +78,7 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
 
     private async Task ReadTranslations(LineReader lineReader)
     {
+        await lineReader.SkipEmptyLinesAsync();
         while (await lineReader.HasMoreLinesAsync())
         {
             var translation = await ReadTranslation(lineReader); // Read translation
@@ -86,13 +87,13 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
                 [translation.Language] = translation
             };
             Add(translationUnit);
+            await lineReader.SkipEmptyLinesAsync();
         }
     }
 
     //TODO: add comment support
     private async Task<ITranslation> ReadTranslation(LineReader lineReader)
     {
-        await lineReader.SkipEmptyLinesAsync();
         var line = await lineReader.ReadLineAsync() ?? string.Empty;
 
         var match = ReMsg.Match(line);
