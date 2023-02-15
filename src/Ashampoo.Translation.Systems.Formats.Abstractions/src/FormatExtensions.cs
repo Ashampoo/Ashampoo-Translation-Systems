@@ -170,7 +170,7 @@ public static class FormatExtensions
         AssignOptions options
     )
     {
-        if (!await ConfigureOptions(false, options)) throw new InvalidOperationException();
+        if (!await ConfigureOptions(true, options)) throw new InvalidOperationException();
         var filter = options.Filter ?? new DefaultTranslationFilter();
 
         var targetLanguage = options.TargetLanguage;
