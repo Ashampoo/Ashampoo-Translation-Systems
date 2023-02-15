@@ -43,6 +43,25 @@ public class JsonFormatBuilder : IFormatBuilderWithTarget
         return jsonFormat;
     }
 
+    /// <summary>
+    /// This method does nothing, because JsonFormat does not support header information.
+    /// </summary>
+    /// <param name="header"></param>
+    public void SetHeaderInformation(IFormatHeader header)
+    {
+        // Do nothing, JsonFormat does not support header information
+    }
+
+    /// <summary>
+    /// This method does nothing, because JsonFormat does not support header information.
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="value"></param>
+    public void AddHeaderInformation(string key, string value)
+    {
+        // Do nothing, JsonFormat does not support header information
+    }
+
     /// <inheritdoc />
     public void SetTargetLanguage(string language)
     {

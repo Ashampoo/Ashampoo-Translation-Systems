@@ -13,6 +13,7 @@ public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget
     private string? sourceLanguage;
     private string? targetLanguage;
     private readonly Dictionary<string, (string, string)> translations = new();
+    private Dictionary<string, string> information = new();
 
     /// <inheritdoc />
     public void Add(string id, string source, string target)
@@ -34,6 +35,23 @@ public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget
         project.TargetLanguage = targetLanguage; // Set target language for xml object
         tsProjFormat.Header.SourceLanguage = sourceLanguage; // Set source language for format object
         tsProjFormat.Header.TargetLanguage = targetLanguage; // Set target language for format object
+        
+        // Add information to header
+        var nameFound = information.TryGetValue("Name", out var name);
+        var versionFound = information.TryGetValue("Version", out var version);
+        var authorFound = information.TryGetValue("Author", out var author);
+        var mailFound = information.TryGetValue("Mail", out var mail);
+        var creationToolFound = information.TryGetValue("CreationTool", out var creationTool);
+        var creationToolVersionFound = information.TryGetValue("CreationToolVersion", out var creationToolVersion);
+        var countryNameFound = information.TryGetValue("CountryName", out var countryName);
+        
+        if (nameFound) project.Name = name;
+        if (versionFound) project.Version = version;
+        if (authorFound) project.Author = author;
+        if (mailFound) project.Mail = mail;
+        if (creationToolFound) project.CreationTool = creationTool;
+        if (creationToolVersionFound) project.CreationToolVersion = creationToolVersion;
+        if (countryNameFound) project.CountryName = countryName;
 
         var component = new Component
         {
@@ -77,5 +95,17 @@ public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget
     public void SetTargetLanguage(string language)
     {
         targetLanguage = language;
+    }
+    
+    /// <inheritdoc />
+    public void SetHeaderInformation(IFormatHeader header)
+    {
+        information = new Dictionary<string, string>(header);
+    }
+
+    /// <inheritdoc />
+    public void AddHeaderInformation(string key, string value)
+    {
+        information.Add(key, value);
     }
 }
