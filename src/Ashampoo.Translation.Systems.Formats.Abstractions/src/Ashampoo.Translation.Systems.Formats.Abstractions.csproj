@@ -18,7 +18,7 @@
         <PackageIcon>ash-logo-icon-big-128x.png</PackageIcon>
         <MinVerTagPrefix>v</MinVerTagPrefix>
         <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
-        <MinVerDefaultPreReleasePhase>prerelease</MinVerDefaultPreReleasePhase>
+        <MinVerDefaultPreReleaseIdentifiers>prerelease.0</MinVerDefaultPreReleaseIdentifiers>
     </PropertyGroup>
     
     <ItemGroup>
