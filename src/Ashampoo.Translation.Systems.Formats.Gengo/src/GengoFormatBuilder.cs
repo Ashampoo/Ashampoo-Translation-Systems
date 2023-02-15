@@ -40,9 +40,11 @@ public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
         foreach (var keyValuePair in translations)
         {
             var sourceTranslationString =
-                new DefaultTranslationString(keyValuePair.Key, keyValuePair.Value.Item1, sourceLanguage); //Create new translation string
+                new DefaultTranslationString(keyValuePair.Key, keyValuePair.Value.Item1,
+                    sourceLanguage); //Create new translation string
             var targetTranslationString =
-                new DefaultTranslationString(keyValuePair.Key, keyValuePair.Value.Item2, targetLanguage); //Create new translation string
+                new DefaultTranslationString(keyValuePair.Key, keyValuePair.Value.Item2,
+                    targetLanguage); //Create new translation string
 
             var translationUnit = new DefaultTranslationUnit(keyValuePair.Key) //Create new translation unit
             {
@@ -66,5 +68,32 @@ public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
     public void SetTargetLanguage(string language)
     {
         targetLanguage = language;
+    }
+    
+    /// <summary>
+    /// This method is not supported because <see cref="GengoFormat"/> does not support header information,
+    /// it will do nothing.
+    /// </summary>
+    /// <param name="header">
+    /// The <see cref="IFormatHeader"/> containing the information.
+    /// </param>
+    public void SetHeaderInformation(IFormatHeader header)
+    {
+        // Do nothing, Gengo does not support header information
+    }
+
+    /// <summary>
+    /// This method is not supported because <see cref="GengoFormat"/> does not support header information,
+    /// it will do nothing.
+    /// </summary>
+    /// <param name="key">
+    /// The key of the header information.
+    /// </param>
+    /// <param name="value">
+    /// The value of the header information.
+    /// </param>
+    public void AddHeaderInformation(string key, string value)
+    {
+        // Do nothing, Gengo does not support header information
     }
 }

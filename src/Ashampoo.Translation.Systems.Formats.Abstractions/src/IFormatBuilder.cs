@@ -12,4 +12,25 @@ public interface IFormatBuilder
     /// The instance of <see cref="IFormat"/>.
     /// </returns>
     IFormat Build();
+    
+     
+    /// <summary>
+    /// Set the header information. All information will be added to the header and will overwrite
+    /// existing information. All previous information will be removed.
+    /// </summary>
+    /// <param name="header">
+    /// The <see cref="IFormatHeader"/> containing the information.
+    /// </param>
+    void SetHeaderInformation(IFormatHeader header);
+    
+    /// <summary>
+    /// Add a header information. If the key already exists, the value will be overwritten.
+    /// </summary>
+    /// <param name="key">
+    /// The key of the information.
+    /// </param>
+    /// <param name="value">
+    /// The value of the information.
+    /// </param>
+    void AddHeaderInformation(string key, string value);
 }

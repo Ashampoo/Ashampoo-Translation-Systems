@@ -181,6 +181,7 @@ public static class FormatExtensions
 
         formatBuilder.SetTargetLanguage(targetLanguage);
         formatBuilder.SetSourceLanguage(sourceLanguage);
+        formatBuilder.SetHeaderInformation(format.Header);
 
         foreach (var unit in format)
         {

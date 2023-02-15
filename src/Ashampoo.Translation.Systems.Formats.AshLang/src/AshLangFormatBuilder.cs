@@ -13,6 +13,7 @@ public class AshLangFormatBuilder : IFormatBuilderWithSourceAndTarget
     private const string SourceLanguage = "en-US"; // AshLang source is always in English
     private string? targetLanguage;
     private readonly Dictionary<string, (string source, string target)> translations = new();
+    private Dictionary<string, string> information = new();
 
     /// <inheritdoc />
     public IFormat Build()
@@ -26,6 +27,14 @@ public class AshLangFormatBuilder : IFormatBuilderWithSourceAndTarget
                 TargetLanguage = targetLanguage
             }
         };
+
+        var appIdChunk = ashLang.Chunks.OfType<AppIdChunk>().FirstOrDefault();
+        if ( appIdChunk is not null && information.TryGetValue("Name", out var name))
+        {
+            appIdChunk.Name = name;
+            information.Remove("Name");
+        }
+
         var translationChunk = (TranslationChunk)ashLang.Chunks.Last();
 
         foreach (var (id, (source, target)) in translations)
@@ -61,5 +70,17 @@ public class AshLangFormatBuilder : IFormatBuilderWithSourceAndTarget
     public void SetTargetLanguage(string language)
     {
         targetLanguage = language;
+    }
+
+    /// <inheritdoc />
+    public void SetHeaderInformation(IFormatHeader header)
+    {
+        information = new Dictionary<string, string>(header);
+    }
+
+    /// <inheritdoc />
+    public void AddHeaderInformation(string key, string value)
+    {
+        information.Add(key, value);
     }
 }
