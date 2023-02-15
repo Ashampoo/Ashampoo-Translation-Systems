@@ -116,7 +116,7 @@ public class AshLangFormatHeader : IFormatHeader
     /// <inheritdoc />
     public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
     {
-        throw new NotImplementedException();
+        return XDataChunk.GetEnumerator();
     }
 
     /// <inheritdoc />
@@ -139,6 +139,6 @@ public class AshLangFormatHeader : IFormatHeader
 
     IEnumerator IEnumerable.GetEnumerator()
     {
-        throw new NotImplementedException();
+        return XDataChunk.GetEnumerator();
     }
 }

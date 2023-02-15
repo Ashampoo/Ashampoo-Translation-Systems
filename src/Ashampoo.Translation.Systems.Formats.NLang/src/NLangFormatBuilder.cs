@@ -47,4 +47,23 @@ public class NLangFormatBuilder : IFormatBuilderWithTarget
     {
         targetLanguage = language;
     }
+    
+    /// <summary>
+    /// This method does nothing, because NLangFormat does not support header information.
+    /// </summary>
+    /// <param name="header"></param>
+    public void SetHeaderInformation(IFormatHeader header)
+    {
+        // Do nothing, NLangFormat does not support header information
+    }
+
+    /// <summary>
+    /// This method does nothing, because NLangFormat does not support header information.
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="value"></param>
+    public void AddHeaderInformation(string key, string value)
+    {
+        // Do nothing, NLangFormat does not support header information
+    }
 }

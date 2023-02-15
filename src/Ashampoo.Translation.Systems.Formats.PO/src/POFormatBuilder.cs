@@ -51,6 +51,17 @@ public class POFormatBuilder : IFormatBuilderWithTarget
 
         return poFormat;
     }
+    
+    public void SetHeaderInformation(IFormatHeader header)
+    {
+        //TODO: implement
+    }
+
+    /// <inheritdoc />
+    public void AddHeaderInformation(string key, string value)
+    {
+        //TODO: implement
+    }
 
     /// <inheritdoc />
     public void SetTargetLanguage(string language)

@@ -170,7 +170,7 @@ public static class FormatExtensions
         AssignOptions options
     )
     {
-        if (!await ConfigureOptions(false, options)) throw new InvalidOperationException();
+        if (!await ConfigureOptions(true, options)) throw new InvalidOperationException();
         var filter = options.Filter ?? new DefaultTranslationFilter();
 
         var targetLanguage = options.TargetLanguage;
@@ -181,6 +181,7 @@ public static class FormatExtensions
 
         formatBuilder.SetTargetLanguage(targetLanguage);
         formatBuilder.SetSourceLanguage(sourceLanguage);
+        formatBuilder.SetHeaderInformation(format.Header);
 
         foreach (var unit in format)
         {
