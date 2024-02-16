@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PackageIcon>ash-logo-icon-big-128x.png</PackageIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="..\ash-logo-icon-big-128x.png">
+        <Pack>true</Pack>
+        <PackagePath></PackagePath>
+        <Link>ash-logo-icon-big-128x.png</Link>
+      </None>
+      <None Include="..\LICENSE">
+        <Pack>true</Pack>
+        <PackagePath></PackagePath>
+        <Link>LICENSE</Link>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\src\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj" />
+    </ItemGroup>
+
+</Project>
