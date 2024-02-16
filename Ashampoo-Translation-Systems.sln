@@ -38,6 +38,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.System
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.Systems.Formats", "src\Ashampoo.Translation.Systems.Formats\src\Ashampoo.Translation.Systems.Formats.csproj", "{53389A5D-6790-4E38-A2C5-1B0D74B76DCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.Systems.Formats.JavaProperties", "Ashampoo.Translation.Systems.Formats.JavaProperties\Ashampoo.Translation.Systems.Formats.JavaProperties.csproj", "{4481C61F-6BF8-4FE4-8576-1FFEA0B67BF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.Systems.Formats.JavaProperties.Test", "Ashampoo.Translation.Systems.Formats.JavaProperties.Test\Ashampoo.Translation.Systems.Formats.JavaProperties.Test.csproj", "{B31DF60F-D7D6-4D9A-BE2A-3A7089E27118}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -124,5 +128,13 @@ Global
 		{3D6B80E7-4C45-4400-A973-C468C6BB1EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D6B80E7-4C45-4400-A973-C468C6BB1EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D6B80E7-4C45-4400-A973-C468C6BB1EE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4481C61F-6BF8-4FE4-8576-1FFEA0B67BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4481C61F-6BF8-4FE4-8576-1FFEA0B67BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4481C61F-6BF8-4FE4-8576-1FFEA0B67BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4481C61F-6BF8-4FE4-8576-1FFEA0B67BF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B31DF60F-D7D6-4D9A-BE2A-3A7089E27118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B31DF60F-D7D6-4D9A-BE2A-3A7089E27118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B31DF60F-D7D6-4D9A-BE2A-3A7089E27118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B31DF60F-D7D6-4D9A-BE2A-3A7089E27118}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
