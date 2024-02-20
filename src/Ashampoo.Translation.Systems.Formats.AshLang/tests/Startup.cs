@@ -8,17 +8,7 @@ public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
-        // services.AddFormatFactory().AddFormatProvider(builder =>
-        // {
-        //     return builder.SetId("ashlang")
-        //         .SetSupportedFileExtensions(new[] { ".ashlang" })
-        //         .SetFormatType<AshLangFormat>()
-        //         .SetFormatBuilder<AshLangFormatBuilder>()
-        //         .Create();
-        // });
-
         services.AddLogging(b => b.AddConsole());
-
         services.AddFormatFactory().RegisterFormat<AshLangFormat>();;
     }
 }

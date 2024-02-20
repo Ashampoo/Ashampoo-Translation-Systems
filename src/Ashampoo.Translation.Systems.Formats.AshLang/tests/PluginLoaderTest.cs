@@ -1,4 +1,5 @@
 ﻿using Ashampoo.Translation.Systems.Formats.Abstractions;
+using FluentAssertions;
 using Xunit;
 
 namespace Ashampoo.Translation.Systems.Formats.AshLang.Tests;
@@ -15,6 +16,6 @@ public class PluginLoaderTest
     [Fact]
     public void LoadTest()
     {
-        Assert.NotEmpty(_formatFactory.GetFormatProviders());
+        _formatFactory.GetFormatProviders().Should().NotBeEmpty();
     }
 }
