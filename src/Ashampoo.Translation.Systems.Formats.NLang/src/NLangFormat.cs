@@ -13,13 +13,15 @@ namespace Ashampoo.Translation.Systems.Formats.NLang;
 /// </summary>
 public class NLangFormat : AbstractTranslationUnits, IFormat
 {
-    private static readonly Regex ReMsg = new(@"(?<key>.*?)=(?<value>.*)");
+    private static readonly Regex ReMsg = new("(?<key>.*?)=(?<value>.*)");
 
     /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
 
     /// <inheritdoc />
     public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
+
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
 
     /// <inheritdoc />
     public void Read(Stream stream, FormatReadOptions? options = null)
@@ -81,7 +83,7 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
         await lineReader.SkipEmptyLinesAsync();
         while (await lineReader.HasMoreLinesAsync())
         {
-            Add(await ReadTranslation(lineReader));
+            TranslationUnits.Add(await ReadTranslation(lineReader));
             await lineReader.SkipEmptyLinesAsync();
         }
     }
@@ -135,7 +137,7 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
         // NLang is UTF16 LE
         var writer = new StreamWriter(stream, Encoding.Unicode);
 
-        foreach (var translationUnit in this)
+        foreach (var translationUnit in TranslationUnits)
         {
             if (translationUnit is not TranslationUnit nLangTranslationUnit)
                 throw new Exception($"Unexpected translation unit: {translationUnit.GetType()}");

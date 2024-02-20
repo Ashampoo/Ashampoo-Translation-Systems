@@ -13,13 +13,15 @@ namespace Ashampoo.Translation.Systems.Formats.PO;
 /// </summary>
 public class POFormat : AbstractTranslationUnits, IFormat
 {
-    private static Regex reComment = new(@"#(?<type>[|:,. ]{0,1})(?<content>.*)");
+    private static Regex _reComment = new("#(?<type>[|:,. ]{0,1})(?<content>.*)");
 
     /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new POHeader();
 
     /// <inheritdoc />
     public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
+
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
 
     /// <inheritdoc />
     public async Task ReadAsync(Stream stream, FormatReadOptions? options = null)
@@ -110,7 +112,7 @@ public class POFormat : AbstractTranslationUnits, IFormat
                     messageString
                 }
             };
-            Add(translationUnit);
+            TranslationUnits.Add(translationUnit);
         }
     }
 
@@ -213,7 +215,7 @@ public class POFormat : AbstractTranslationUnits, IFormat
         await poHeader.WriteAsync(writer);
 
         // write messages.
-        foreach (var unit in this)
+        foreach (var unit in TranslationUnits)
         {
             if (unit is not TranslationUnit poTranslationUnit)
                 throw new Exception($"Unexpected translation unit: {unit.GetType()}");

@@ -50,7 +50,7 @@ public class AshLangFormatBuilder : IFormatBuilderWithSourceAndTarget
                     new TargetTranslationString(targetLanguage, translation)
                 }
             };
-            ashLang.Add(translationUnit);
+            ashLang.TranslationUnits.Add(translationUnit);
         }
 
 

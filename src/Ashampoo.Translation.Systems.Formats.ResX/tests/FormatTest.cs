@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
@@ -23,7 +22,7 @@ public class FormatTest : FormatTestBase<ResXFormat>
         var format = CreateFormat();
 
         Assert.NotNull(format);
-        Assert.Empty(format);
+        Assert.Empty(format.TranslationUnits);
         Assert.Null(format.Header.SourceLanguage);
         Assert.Equal(string.Empty, format.Header.TargetLanguage);
     }
@@ -33,9 +32,11 @@ public class FormatTest : FormatTestBase<ResXFormat>
     {
         var format =
             await CreateAndReadFromFileAsync("Res.en.resx", new FormatReadOptions { TargetLanguage = "en-US" });
-        Assert.Equal(117, format.Count);
+        Assert.Equal(117, format.TranslationUnits.Count);
         Assert.Equal("en-US", format.Header.TargetLanguage);
-        Assert.Equal("Remove Added Items", format["Text_RemoveAddedItems"]?.Translations.GetTranslation("en-US")?.Value);
+        Assert.Equal("Remove Added Items",
+            format.TranslationUnits.GetTranslationUnit("Text_RemoveAddedItems").Translations.GetTranslation("en-US")
+                .Value);
     }
 
     [Fact]
@@ -47,43 +48,5 @@ public class FormatTest : FormatTestBase<ResXFormat>
         await using var ms = new MemoryStream();
         await format.WriteAsync(ms);
         ms.Seek(0, SeekOrigin.Begin);
-    }
-
-    [Fact]
-    public void ImportSuccessTest()
-    {
-        IFormat format = CreateAndReadFromFile("Res.en.resx", new FormatReadOptions { TargetLanguage = "en-US" });
-
-        const string id = "Button_RemoveAll";
-        const string value = "Import Test";
-
-        var importedWithUnits = format.ImportMockTranslationWithUnits(language: "en-US", id: id, value: value);
-        Assert.NotNull(importedWithUnits);
-        Assert.Single(importedWithUnits);
-        Assert.Equal("Import Test", format[id]?.Translations.GetTranslation("en-US")?.Value);
-    }
-
-    [Fact]
-    public void NoMatchImportTest()
-    {
-        IFormat format = CreateAndReadFromFile("Res.en.resx", new FormatReadOptions { TargetLanguage = "en-US" });
-
-        const string id = "Not matching Import-Id";
-        const string value = "Import Test";
-        var imported = format.ImportMockTranslationWithUnits(language: "en-US", id: id, value: value);
-
-        Assert.Empty(imported);
-    }
-
-    [Fact]
-    public void ImportEqualTranslationTest()
-    {
-        IFormat format = CreateAndReadFromFile("Res.en.resx", new FormatReadOptions { TargetLanguage = "en-US" });
-
-        const string id = "Button_RemoveAll";
-        const string value = "Remove All";
-        var imported = format.ImportMockTranslationWithUnits(language: "en-US", id: id, value: value);
-
-        Assert.Empty(imported);
     }
 }

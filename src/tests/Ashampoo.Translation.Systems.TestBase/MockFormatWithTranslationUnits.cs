@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
@@ -15,11 +15,7 @@ public class MockFormatWithTranslationUnits : AbstractTranslationUnits, IFormat
         return new MockFormatWithTranslationUnits(language, id, value);
     }
 
-    public MockFormatWithTranslationUnits()
-    {
-    }
-
-    public MockFormatWithTranslationUnits(string language, string id, string value)
+    private MockFormatWithTranslationUnits(string language, string id, string value)
     {
         var translationString = new MockTranslationString(id: id, value: value, language: language);
         var translationUnit = new MockTranslationUnit(id: id)
@@ -29,7 +25,7 @@ public class MockFormatWithTranslationUnits : AbstractTranslationUnits, IFormat
                 translationString
             }
         };
-        Add(translationUnit);
+        TranslationUnits.Add(translationUnit);
     }
 
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
@@ -40,15 +36,7 @@ public class MockFormatWithTranslationUnits : AbstractTranslationUnits, IFormat
     public IFormatHeader Header { get; init; } = new MockHeader();
 
     public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
-
-    public void Add(string language, string id, string value)
-    {
-        var translationString = new MockTranslationString(id: id, value: value, language: language);
-
-        var translationUnit = this[id] ?? new MockTranslationUnit(id: id);
-        translationUnit.Translations.AddOrUpdateTranslation(language, translationString);
-        Add(translationUnit);
-    }
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
 
     public void Read(Stream stream, FormatReadOptions? options = null)
     {
@@ -58,11 +46,6 @@ public class MockFormatWithTranslationUnits : AbstractTranslationUnits, IFormat
     public void Write(Stream stream)
     {
         throw new NotImplementedException();
-    }
-
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
     }
 
     public Task ReadAsync(Stream stream, FormatReadOptions? options = null)

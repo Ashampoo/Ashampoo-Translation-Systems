@@ -1,11 +1,12 @@
-﻿using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
+﻿using System.Diagnostics.CodeAnalysis;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 
 /// <summary>
 /// Interface for a translation format.
 /// </summary>
-public interface IFormat : ITranslationUnits
+public interface IFormat
 {
     /// <summary>
     /// Reads the format from the given stream.
@@ -59,4 +60,39 @@ public interface IFormat : ITranslationUnits
     /// Information about how many languages the format can handle.
     /// </summary>
     LanguageSupport LanguageSupport { get; }
+    
+    ICollection<ITranslationUnit> TranslationUnits { get; }
+}
+
+
+public static class TranslationUnitCollectionExtensions
+{
+    public static bool TryGetTranslationUnit(this ICollection<ITranslationUnit> translationUnits, string id,
+        [NotNullWhen(true)] out ITranslationUnit? translationUnit)
+    {
+        var foundTranslationUnit = translationUnits.FirstOrDefault(t => t.Id == id);
+        if (foundTranslationUnit is null)
+        {
+            translationUnit = null;
+            return false;
+        }
+
+        translationUnit = foundTranslationUnit;
+        return true;
+    }
+
+    public static ITranslationUnit GetTranslationUnit(this ICollection<ITranslationUnit> translationUnits, string id) =>
+        translationUnits.First(t => t.Id == id);
+
+    public static void AddOrUpdateTranslationUnit(this ICollection<ITranslation> translations, string language, ITranslation value)
+    {
+        var existingTranslation = translations.FirstOrDefault(t => t.Language == language);
+
+        if (existingTranslation is not null)
+        {
+            translations.Remove(existingTranslation);
+        }
+
+        translations.Add(value);
+    }
 }

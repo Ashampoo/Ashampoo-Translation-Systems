@@ -18,20 +18,11 @@ public static class Helper
     {
         Assert.Equal(lhStream.Length, rhStream.Length);
 
-        var lhByte = -1;
-        var rhByte = -1;
+        int lhByte;
+        int rhByte;
         while ((lhByte = lhStream.ReadByte()) != -1 && (rhByte = rhStream.ReadByte()) != -1)
         {
             Assert.Equal(lhByte, rhByte);
         }
-    }
-
-    public static IList<ITranslation> ImportMockTranslationWithUnits(this IFormat format, string language, string id,
-        string value = "Import Test")
-    {
-        var mockFormat =
-            MockFormatWithTranslationUnits.CreateMockFormatWithTranslationUnits(language: language, id: id,
-                value: value);
-        return format.ImportFrom(mockFormat);
     }
 }

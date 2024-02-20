@@ -12,13 +12,6 @@ namespace Ashampoo.Translation.Systems.Formats.Gengo.Tests;
 
 public class FormatTest : FormatTestBase<GengoFormat>
 {
-    private readonly IFormatFactory _formatFactory;
-
-    public FormatTest(IFormatFactory formatFactory)
-    {
-        _formatFactory = formatFactory;
-    }
-
     private static XSSFWorkbook CreateFileWithHeaderRow()
     {
         var workbook = new XSSFWorkbook();
@@ -38,27 +31,19 @@ public class FormatTest : FormatTestBase<GengoFormat>
     }
 
     [Fact]
-    public void IsAssignableFrom()
-    {
-        IFormat format = CreateFormat();
-
-        Assert.IsAssignableFrom<ITranslationUnits>(format);
-    }
-
-    [Fact]
     public void NewFormat()
     {
         var format = CreateFormat();
 
         Assert.NotNull(format);
-        Assert.Empty(format);
+        Assert.Empty(format.TranslationUnits);
         Assert.Null(format.Header.SourceLanguage);
         Assert.Equal(string.Empty, format.Header.TargetLanguage);
         Assert.Equal(LanguageSupport.SourceAndTarget, format.LanguageSupport);
 
         format = new GengoFormat { Header = new DefaultFormatHeader() { SourceLanguage = "en-US", TargetLanguage = "de-DE" } };
         Assert.NotNull(format);
-        Assert.Empty(format);
+        Assert.Empty(format.TranslationUnits);
         Assert.Equal("en-US", format.Header.SourceLanguage);
         Assert.Equal("de-DE", format.Header.TargetLanguage);
     }
@@ -70,17 +55,17 @@ public class FormatTest : FormatTestBase<GengoFormat>
         var format = CreateAndReadFromFile("normalized-excel-test.xlsx",
             new FormatReadOptions { SourceLanguage = "de-DE", TargetLanguage = "en-US" });
 
-        Assert.Equal(4, format.Count);
+        Assert.Equal(4, format.TranslationUnits.Count);
 
         const string id = "MESSAGES.MESSAGE_BETAVERSION_EXPIRED";
-        var foundById = format[id];
-        var translationString = foundById?.Translations.GetTranslation("en-US");
+        var foundById = format.TranslationUnits.GetTranslationUnit(id);
+        var translationString = foundById.Translations.GetTranslation("en-US");
 
         const string target =
             @"Unfortunately, the beta version of the software has expired. Please install the final version of this software.%CRLFYou can download it from ‘www.ashampoo.com’.";
         Assert.NotNull(foundById);
         Assert.Equal(2, foundById.Translations.Count);
-        Assert.Equal(target, translationString?.Value);
+        Assert.Equal(target, translationString.Value);
     }
 
     [Fact]
@@ -92,8 +77,8 @@ public class FormatTest : FormatTestBase<GengoFormat>
         Assert.Equal("en-US", format.Header.TargetLanguage);
         Assert.Equal("de-DE", format.Header.SourceLanguage);
 
-        Assert.Equal(4, format.Count);
-        foreach (var unit in format)
+        Assert.Equal(4, format.TranslationUnits.Count);
+        foreach (var unit in format.TranslationUnits)
         {
             Assert.Equal(2, unit.Translations.Count);
         }
@@ -101,7 +86,7 @@ public class FormatTest : FormatTestBase<GengoFormat>
         const string id = "MESSAGES.MESSAGE_BETAVERSION_EXPIRED";
         const string value =
             "Diese Betaversion der Software ist leider abgelaufen. Bitte installieren Sie die finale Version dieser Software.%CRLFSie können diese z.B. von \"www.ashampoo.com\" herunterladen.";
-        var foundById = format[id];
+        var foundById = format.TranslationUnits.GetTranslationUnit(id);
         foundById.Should().NotBeNull();
         foundById!.Translations.TryGetTranslation("de-DE", out var translation).Should().BeTrue();
         Assert.Equal(value, translation!.Value);
@@ -138,53 +123,7 @@ public class FormatTest : FormatTestBase<GengoFormat>
         // files not identical on binary level
         File.Delete($"{temp}temp-empty-target-excel-test.xlsx");
     }
-
-    [Fact]
-    public void ImportSuccessTest()
-    {
-        IFormat format = CreateAndReadFromFile("normalized-excel-test.xlsx",
-            new FormatReadOptions { SourceLanguage = "de-DE", TargetLanguage = "en-US" });
-
-        const string id = "MESSAGES.MESSAGE_TRANSLATOR_NAME";
-        const string valueSource = "Import Test Source";
-        const string valueTarget = "Import Test Target";
-        var importedWithUnits =
-            format.ImportMockTranslationWithUnits(language: "de-DE", id: id, value: valueSource);
-
-        Assert.NotNull(importedWithUnits);
-        Assert.Single(importedWithUnits);
-        Assert.Equal("Import Test Source", format[id]?.Translations.GetTranslation("de-DE")?.Value);
-
-        importedWithUnits = format.ImportMockTranslationWithUnits(language: "en-US", id: id, value: valueTarget);
-        Assert.NotNull(importedWithUnits);
-        Assert.Single(importedWithUnits);
-        Assert.Equal("Import Test Target", format[id]?.Translations.GetTranslation("en-US")?.Value);
-    }
-
-    [Fact]
-    public void NoMatchImportTest()
-    {
-        IFormat format = CreateAndReadFromFile("normalized-excel-test.xlsx",
-            new FormatReadOptions { SourceLanguage = "de-DE", TargetLanguage = "en-US" });
-
-        const string id = "Not matching Import-Id";
-        const string value = "Import Test";
-        var imported = format.ImportMockTranslationWithUnits(language: "de-DE", id: id, value: value);
-        Assert.Empty(imported);
-    }
-
-    [Fact]
-    public void ImportEqualTranslationTest()
-    {
-        IFormat format = CreateAndReadFromFile("normalized-excel-test.xlsx",
-            new FormatReadOptions { SourceLanguage = "de-DE", TargetLanguage = "en-US" });
-
-        const string id = "MESSAGES.MESSAGE_TRANSLATOR_NAME";
-        const string value = "Ashampoo Development GmbH & Co. KG";
-        var imported = format.ImportMockTranslationWithUnits(language: "de-DE", id: id, value: value);
-        Assert.Empty(imported);
-    }
-
+    
     [Fact]
     public async Task IncompatibleExcelFileTest()
     {
@@ -225,7 +164,7 @@ public class FormatTest : FormatTestBase<GengoFormat>
         var options = new FormatReadOptions { SourceLanguage = "en-US", TargetLanguage = "de-DE" };
         await format.ReadAsync(ms, options);
 
-        Assert.Empty(format);
+        Assert.Empty(format.TranslationUnits);
     }
 
     [Fact]
@@ -233,7 +172,7 @@ public class FormatTest : FormatTestBase<GengoFormat>
     {
         var format = await CreateAndReadFromFileAsync("empty-cells-excel-test.xlsx",
             new FormatReadOptions { SourceLanguage = "en-US", TargetLanguage = "de-DE" });
-        Assert.Empty(format);
+        Assert.Empty(format.TranslationUnits);
     }
 
     [Fact]
@@ -265,7 +204,7 @@ public class FormatTest : FormatTestBase<GengoFormat>
         await format.ReadAsync(ms, options);
 
         Assert.True(options.IsCancelled);
-        Assert.Empty(format);
+        Assert.Empty(format.TranslationUnits);
     }
 
     [Fact]
@@ -316,9 +255,9 @@ public class FormatTest : FormatTestBase<GengoFormat>
 
         Assert.Equal("en-US", format.Header.SourceLanguage);
         Assert.Equal("de-DE", format.Header.TargetLanguage);
-        Assert.Single(format);
-        Assert.NotNull(format["ID Test"]);
-        Assert.Equal("Test source", format["ID Test"]?.Translations.GetTranslation("en-US")?.Value);
-        Assert.Equal("Test target", format["ID Test"]?.Translations.GetTranslation("de-DE")?.Value);
+        Assert.Single(format.TranslationUnits);
+        Assert.NotNull(format.TranslationUnits.GetTranslationUnit("ID Test"));
+        Assert.Equal("Test source", format.TranslationUnits.GetTranslationUnit("ID Test").Translations.GetTranslation("en-US").Value);
+        Assert.Equal("Test target", format.TranslationUnits.GetTranslationUnit("ID Test").Translations.GetTranslation("de-DE").Value);
     }
 }

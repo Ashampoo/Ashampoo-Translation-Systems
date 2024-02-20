@@ -8,35 +8,35 @@ namespace Ashampoo.Translation.Systems.Formats.NLang;
 /// </summary>
 public class NLangFormatBuilder : IFormatBuilderWithTarget
 {
-    private string? targetLanguage;
-    private readonly Dictionary<string, string> translations = new();
+    private string? _targetLanguage;
+    private readonly Dictionary<string, string> _translations = new();
 
     /// <inheritdoc />
     public void Add(string id, string target)
     {
-        translations.Add(id, target);
+        _translations.Add(id, target);
     }
 
     /// <inheritdoc />
     public IFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(targetLanguage, nameof(targetLanguage));
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage, nameof(_targetLanguage));
 
         //Create new NLang format and add translations
         var nLangFormat = new NLangFormat
         {
             Header =
             {
-                TargetLanguage = targetLanguage
+                TargetLanguage = _targetLanguage
             }
         };
 
-        foreach (var translation in translations)
+        foreach (var translation in _translations)
         {
             var translationUnit = new TranslationUnit(translation.Key);
-            var translationString = new TranslationString(translation.Key, translation.Value, targetLanguage);
+            var translationString = new TranslationString(translation.Key, translation.Value, _targetLanguage);
             translationUnit.Translations.Add(translationString);
-            nLangFormat.Add(translationUnit);
+            nLangFormat.TranslationUnits.Add(translationUnit);
         }
 
         return nLangFormat;
@@ -45,7 +45,7 @@ public class NLangFormatBuilder : IFormatBuilderWithTarget
     /// <inheritdoc />
     public void SetTargetLanguage(string language)
     {
-        targetLanguage = language;
+        _targetLanguage = language;
     }
     
     /// <summary>

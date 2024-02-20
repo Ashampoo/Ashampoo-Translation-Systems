@@ -10,19 +10,19 @@ namespace Ashampoo.Translation.Systems.Formats.ResX;
 /// </summary>
 public class ResXFormatBuilder : IFormatBuilderWithTarget
 {
-    private string? targetLanguage;
-    private readonly Dictionary<string, string> translations = new();
+    private string? _targetLanguage;
+    private readonly Dictionary<string, string> _translations = new();
 
     /// <inheritdoc />
     public IFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(targetLanguage, nameof(targetLanguage));
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage, nameof(_targetLanguage));
 
         var format = new ResXFormat
         {
             Header =
             {
-                TargetLanguage = targetLanguage
+                TargetLanguage = _targetLanguage
             },
             XmlRoot =
             {
@@ -30,7 +30,7 @@ public class ResXFormatBuilder : IFormatBuilderWithTarget
             }
         };
 
-        foreach (var (id, value) in translations)
+        foreach (var (id, value) in _translations)
         {
             var data = new Data
             {
@@ -39,7 +39,7 @@ public class ResXFormatBuilder : IFormatBuilderWithTarget
             };
             format.XmlRoot.Data.Add(data);
 
-            var translationString = new DefaultTranslationString(id, value, targetLanguage);
+            var translationString = new DefaultTranslationString(id, value, _targetLanguage);
             var translationUnit = new DefaultTranslationUnit(id)
             {
                 Translations =
@@ -47,7 +47,7 @@ public class ResXFormatBuilder : IFormatBuilderWithTarget
                     translationString
                 }
             };
-            format.Add(translationUnit);
+            format.TranslationUnits.Add(translationUnit);
         }
 
         return format;
@@ -56,13 +56,13 @@ public class ResXFormatBuilder : IFormatBuilderWithTarget
     /// <inheritdoc />
     public void Add(string id, string target)
     {
-        translations.Add(id, target);
+        _translations.Add(id, target);
     }
 
     /// <inheritdoc />
     public void SetTargetLanguage(string language)
     {
-        targetLanguage = language;
+        _targetLanguage = language;
     }
     
     /// <summary>

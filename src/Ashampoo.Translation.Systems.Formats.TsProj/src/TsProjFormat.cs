@@ -23,6 +23,8 @@ public class TsProjFormat : AbstractTranslationUnits, IFormat
     /// <inheritdoc />
     public LanguageSupport LanguageSupport => LanguageSupport.SourceAndTarget;
 
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
+
     /// <inheritdoc />
     public TsProjFormat()
     {
@@ -71,7 +73,7 @@ public class TsProjFormat : AbstractTranslationUnits, IFormat
     {
         foreach (var unit in ReadTranslations(translations))
         {
-            Add(unit); // Add the translation unit to the hash set of translation units
+            TranslationUnits.Add(unit); // Add the translation unit to the hash set of translation units
         }
     }
 

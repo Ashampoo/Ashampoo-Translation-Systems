@@ -20,6 +20,8 @@ public class ResXFormat : AbstractTranslationUnits, IFormat
     /// <inheritdoc />
     public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
 
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
+
     /// <summary>
     /// The root element for the xml structure.
     /// </summary>
@@ -112,7 +114,7 @@ public class ResXFormat : AbstractTranslationUnits, IFormat
                 }
             };
 
-            Add(translationUnit);
+            TranslationUnits.Add(translationUnit);
         }
     }
 

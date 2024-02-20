@@ -9,35 +9,35 @@ namespace Ashampoo.Translation.Systems.Formats.Json;
 /// </summary>
 public class JsonFormatBuilder : IFormatBuilderWithTarget
 {
-    private string? targetLanguage;
-    private readonly Dictionary<string, string> translations = new();
+    private string? _targetLanguage;
+    private readonly Dictionary<string, string> _translations = new();
 
     /// <inheritdoc />
     public void Add(string id, string target)
     {
-        translations.Add(id, target);
+        _translations.Add(id, target);
     }
 
     /// <inheritdoc />
     public IFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(targetLanguage, nameof(targetLanguage));
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage, nameof(_targetLanguage));
 
         //create new json format and add translations
         var jsonFormat = new JsonFormat
         {
             Header =
             {
-                TargetLanguage = targetLanguage
+                TargetLanguage = _targetLanguage
             }
         };
 
-        foreach (var translation in translations)
+        foreach (var translation in _translations)
         {
             var translationUnit = new DefaultTranslationUnit(translation.Key);
-            var translationString = new DefaultTranslationString(translation.Key, translation.Value, targetLanguage);
+            var translationString = new DefaultTranslationString(translation.Key, translation.Value, _targetLanguage);
             translationUnit.Translations.Add(translationString);
-            jsonFormat.Add(translationUnit);
+            jsonFormat.TranslationUnits.Add(translationUnit);
         }
 
         return jsonFormat;
@@ -65,6 +65,6 @@ public class JsonFormatBuilder : IFormatBuilderWithTarget
     /// <inheritdoc />
     public void SetTargetLanguage(string language)
     {
-        targetLanguage = language;
+        _targetLanguage = language;
     }
 }

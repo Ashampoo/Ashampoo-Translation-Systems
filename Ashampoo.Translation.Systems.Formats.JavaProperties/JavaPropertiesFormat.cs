@@ -15,6 +15,9 @@ public partial class JavaPropertiesFormat : AbstractTranslationUnits, IFormat
     public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
 
     /// <inheritdoc/>
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
+
+    /// <inheritdoc/>
     public void Read(Stream stream, FormatReadOptions? options = null)
     {
         ReadAsync(stream, options).Wait();
@@ -72,7 +75,7 @@ public partial class JavaPropertiesFormat : AbstractTranslationUnits, IFormat
         await reader.SkipEmptyLinesAsync();
         while (await reader.HasMoreLinesAsync())
         {
-            Add(ParseLine(await reader.ReadLineAsync(), reader.LineNumber));
+            TranslationUnits.Add(ParseLine(await reader.ReadLineAsync(), reader.LineNumber));
         }
     }
 
@@ -111,7 +114,7 @@ public partial class JavaPropertiesFormat : AbstractTranslationUnits, IFormat
     {
         await using StreamWriter writer = new(stream, Encoding.Latin1);
 
-        foreach (var translationUnit in this)
+        foreach (var translationUnit in TranslationUnits)
         {
             foreach (var translation in translationUnit.Translations)
             {

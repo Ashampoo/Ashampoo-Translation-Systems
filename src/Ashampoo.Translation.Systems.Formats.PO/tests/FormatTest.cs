@@ -17,54 +17,11 @@ public class FormatTest : FormatTestBase<POFormat>
     }
 
     [Fact]
-    public void ImportSuccessTest()
-    {
-        IFormat format = CreateAndReadFromFile("normalized_translation_de.po",
-            new FormatReadOptions { TargetLanguage = "de" });
-
-        const string id =
-            "{\\\"cxt\\\": \\\"question_heading\\\", \\\"id\\\": 418828805, \\\"checksum\\\": 1234361483}/What do you think about Ashampoo? What changes would you like to see?";
-        const string value = "Import Test";
-        var imported = format.ImportMockTranslationWithUnits(language: "de", id: id, value: value);
-
-        Assert.Equal(1, imported.Count);
-        Assert.Equal(value, format[id]?.Translations.GetTranslation("de")?.Value);
-    }
-
-    [Fact]
-    public void NoMatchImportTest()
-    {
-        IFormat format = CreateAndReadFromFile("normalized_translation_de.po",
-            new FormatReadOptions { TargetLanguage = "de" });
-
-        const string id = "Not matching Import-Id";
-        const string value = "Import Test";
-        var imported = format.ImportMockTranslationWithUnits(language: "de", id: id, value: value);
-
-        Assert.Equal(0, imported.Count);
-    }
-
-    [Fact]
-    public void ImportEqualTranslationTest()
-    {
-        IFormat format = CreateAndReadFromFile("normalized_translation_de.po",
-            new FormatReadOptions { TargetLanguage = "de" });
-
-        const string id =
-            "What do you think about Ashampoo? What changes would you like to see?{\\\"cxt\\\": \\\"question_heading\\\", \\\"id\\\": 418828805, \\\"checksum\\\": 1234361483}";
-        const string value = "Was denken Sie über die Firma Ashampoo? Worüber würden Sie sich freuen?";
-        var imported = format.ImportMockTranslationWithUnits(language: "de", id: id, value: value);
-
-        Assert.Equal(0, imported.Count);
-    }
-
-
-    [Fact]
     public void NewFormat()
     {
         IFormat format = CreateFormat();
 
-        Assert.Equal(0, format.Count);
+        Assert.Equal(0, format.TranslationUnits.Count);
     }
 
     [Fact]
@@ -75,14 +32,14 @@ public class FormatTest : FormatTestBase<POFormat>
         var poHeader = format.Header as POHeader;
         Assert.NotNull(poHeader);
 
-        Assert.Equal(69, format.Count);
+        Assert.Equal(69, format.TranslationUnits.Count);
         Assert.Equal("de", format.Header.TargetLanguage);
         Assert.Equal("FULL NAME <EMAIL@ADDRESS>", poHeader.Author);
 
         const string id =
             "{\\\"cxt\\\": \\\"collector_disqualification\\\", \\\"id\\\": 254239623, \\\"checksum\\\": 2373663968}/Thank you for completing our survey!";
         Assert.Equal("Vielen Dank, dass Sie die Umfrage abgeschlossen haben!",
-            format[id]?.Translations.GetTranslation("de")?.Value);
+            format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation("de").Value);
     }
 
     [Fact]

@@ -9,21 +9,21 @@ namespace Ashampoo.Translation.Systems.Formats.Gengo;
 /// </summary>
 public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
 {
-    private string? sourceLanguage;
-    private string? targetLanguage;
-    private readonly Dictionary<string, (string, string)> translations = new();
+    private string? _sourceLanguage;
+    private string? _targetLanguage;
+    private readonly Dictionary<string, (string, string)> _translations = new();
 
     /// <inheritdoc />
     public void Add(string id, string source, string target)
     {
-        translations.Add(id, (source, target));
+        _translations.Add(id, (source, target));
     }
 
     /// <inheritdoc />
     public IFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(sourceLanguage, nameof(sourceLanguage));
-        Guard.IsNotNullOrWhiteSpace(targetLanguage, nameof(targetLanguage));
+        Guard.IsNotNullOrWhiteSpace(_sourceLanguage, nameof(_sourceLanguage));
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage, nameof(_targetLanguage));
 
 
         //Create new Gengo format and add translations
@@ -31,20 +31,20 @@ public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
         {
             Header =
             {
-                SourceLanguage = sourceLanguage,
-                TargetLanguage = targetLanguage
+                SourceLanguage = _sourceLanguage,
+                TargetLanguage = _targetLanguage
             }
         };
 
         // ReSharper disable once ForeachCanBePartlyConvertedToQueryUsingAnotherGetEnumerator
-        foreach (var keyValuePair in translations)
+        foreach (var keyValuePair in _translations)
         {
             var sourceTranslationString =
                 new DefaultTranslationString(keyValuePair.Key, keyValuePair.Value.Item1,
-                    sourceLanguage); //Create new translation string
+                    _sourceLanguage); //Create new translation string
             var targetTranslationString =
                 new DefaultTranslationString(keyValuePair.Key, keyValuePair.Value.Item2,
-                    targetLanguage); //Create new translation string
+                    _targetLanguage); //Create new translation string
 
             var translationUnit = new DefaultTranslationUnit(keyValuePair.Key) //Create new translation unit
             {
@@ -55,7 +55,7 @@ public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
                 }
             };
 
-            gengoFormat.Add(translationUnit); //Add translation unit to format
+            gengoFormat.TranslationUnits.Add(translationUnit); //Add translation unit to format
         }
 
         return gengoFormat;
@@ -64,13 +64,13 @@ public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
     /// <inheritdoc />
     public void SetSourceLanguage(string language)
     {
-        sourceLanguage = language;
+        _sourceLanguage = language;
     }
 
     /// <inheritdoc />
     public void SetTargetLanguage(string language)
     {
-        targetLanguage = language;
+        _targetLanguage = language;
     }
     
     /// <summary>

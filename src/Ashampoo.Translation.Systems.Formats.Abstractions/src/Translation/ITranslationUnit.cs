@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 /// <summary>
@@ -10,24 +12,38 @@ public interface ITranslationUnit
     /// </summary>
     string Id { get; }
     
-    HashSet<ITranslation> Translations { get; }
+    ICollection<ITranslation> Translations { get; }
 }
 
-/// <summary>
-/// Interface for a container that contains <see cref="ITranslationUnit"/>.
-/// </summary>
-public interface ITranslationUnits : IEnumerable<ITranslationUnit>
+
+public static class TranslationCollectionExtensions
 {
-    /// <summary>
-    /// The count of translation units.
-    /// </summary>
-    int Count { get; }
-    
-    /// <summary>
-    /// Gets the <see cref="ITranslationUnit"/> with the specified id.
-    /// </summary>
-    /// <param name="id">
-    /// The id of the <see cref="ITranslationUnit"/>.
-    /// </param>
-    ITranslationUnit? this[string id] { get; set; }
+    public static bool TryGetTranslation(this ICollection<ITranslation> translations, string language,
+        [NotNullWhen(true)] out ITranslation? translation)
+    {
+        var foundTranslation = translations.FirstOrDefault(t => t.Language == language);
+        if (foundTranslation is null)
+        {
+            translation = null;
+            return false;
+        }
+
+        translation = foundTranslation;
+        return true;
+    }
+
+    public static ITranslation GetTranslation(this ICollection<ITranslation> translations, string language) =>
+        translations.First(t => t.Language == language);
+
+    public static void AddOrUpdateTranslation(this ICollection<ITranslation> translations, string language, ITranslation value)
+    {
+        var existingTranslation = translations.FirstOrDefault(t => t.Language == language);
+
+        if (existingTranslation is not null)
+        {
+            translations.Remove(existingTranslation);
+        }
+
+        translations.Add(value);
+    }
 }

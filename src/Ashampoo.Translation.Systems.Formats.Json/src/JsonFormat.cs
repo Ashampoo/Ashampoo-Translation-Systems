@@ -20,6 +20,8 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
     /// <inheritdoc />
     public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
 
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
+
     private const string Divider = "/";
 
     private static readonly Regex ArrayIdentifierRegex = new(@"\[\d+\]");
@@ -113,7 +115,7 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
                     }
                 };
 
-                Add(translationUnit); // Add translation unit to list
+                TranslationUnits.Add(translationUnit); // Add translation unit to list
             }
             else
                 Parse(nextId, property.Value); // Parse next element
@@ -149,7 +151,7 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
                             translationString
                         }
                     }; 
-                    Add(translationUnit); // Add translation unit to list
+                    TranslationUnits.Add(translationUnit); // Add translation unit to list
                     break;
                 }
                 case JsonValueKind.Array:
@@ -190,7 +192,7 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
 
     private void CreateJsonObjects(JsonObject obj)
     {
-        foreach (var unit in this)
+        foreach (var unit in TranslationUnits)
         {
             var id = unit.Id;
             var index = id.IndexOf(Divider,
@@ -208,7 +210,7 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
     {
         if (trailing.Length == 0) // If trailing is empty, element has no nested elements
         {
-            var value = unit.Translations.GetTranslation(Header.TargetLanguage)?.Value ??
+            var value = unit.Translations.GetTranslation(Header.TargetLanguage).Value ??
                         throw new ArgumentNullException(nameof(ITranslation.Value));
             var jsonValue = JsonValue.Create(value); // create json element from value
             obj.Add(id, jsonValue);
@@ -266,7 +268,7 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
         {
             if (trailing.Length == 0) // Current element does not have nested elements
             {
-                var value = unit.Translations.GetTranslation(Header.TargetLanguage)?.Value ??
+                var value = unit.Translations.GetTranslation(Header.TargetLanguage).Value ??
                             throw new ArgumentNullException(nameof(ITranslation.Value));
                 var jsonValue = JsonValue.Create(value);
                 array.Add(jsonValue);

@@ -46,8 +46,6 @@ namespace Ashampoo.Translation.Systems.TestBase
             format.Read(stream, options);
 
             stream.Close();
-            stream.Dispose();
-
             return format;
         }
 

@@ -20,6 +20,9 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
     /// <inheritdoc />
     public LanguageSupport LanguageSupport => LanguageSupport.SourceAndTarget;
 
+    /// <inheritdoc />
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
+
     private static readonly Regex
         RegexMarker =
             new(@"^\[{3}(?<id>.*)\]{3}$",
@@ -113,7 +116,7 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
                     translations.Item2
                 }
             };
-            Add(translationUnit); // Add the translation unit to the hash set of translation units
+            TranslationUnits.Add(translationUnit); // Add the translation unit to the hash set of translation units
         }
     }
 
@@ -173,7 +176,7 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
         CreateHeaderRow(sheet); // Create the header row
         var rowCount = 1; // The row count
 
-        foreach (var translationUnit in this) // Loop through all translation units
+        foreach (var translationUnit in TranslationUnits) // Loop through all translation units
         {
             var row = sheet.CreateRow(rowCount); // Create a new row
 
@@ -183,8 +186,8 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
             }
 
             row.Cells[0].SetCellValue($"[[[{translationUnit.Id}]]]"); // Set the id with square brackets around it
-            row.Cells[1].SetCellValue(translationUnit.Translations.GetTranslation(Header.SourceLanguage!)?.Value);
-            row.Cells[2].SetCellValue(translationUnit.Translations.GetTranslation(Header.TargetLanguage)?.Value);
+            row.Cells[1].SetCellValue(translationUnit.Translations.GetTranslation(Header.SourceLanguage!).Value);
+            row.Cells[2].SetCellValue(translationUnit.Translations.GetTranslation(Header.TargetLanguage).Value);
 
             rowCount++;
         }

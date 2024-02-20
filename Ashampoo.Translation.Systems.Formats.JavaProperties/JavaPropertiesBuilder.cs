@@ -27,7 +27,7 @@ public class JavaPropertiesBuilder : IFormatBuilderWithTarget
             DefaultTranslationUnit unit = new(translation.Key);
             DefaultTranslationString translationString = new(translation.Key, translation.Value, _targetLanguage);
             unit.Translations.Add(translationString);
-            format.Add(unit);
+            format.TranslationUnits.Add(unit);
         }
 
         return format;

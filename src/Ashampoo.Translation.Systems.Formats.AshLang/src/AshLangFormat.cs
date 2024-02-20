@@ -18,6 +18,7 @@ public class AshLangFormat : AbstractTranslationUnits, IFormat
     /// <inheritdoc />
     public LanguageSupport LanguageSupport => LanguageSupport.SourceAndTarget;
 
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
 
     /// <inheritdoc />
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
@@ -88,7 +89,7 @@ public class AshLangFormat : AbstractTranslationUnits, IFormat
                         new TargetTranslationString(Header.TargetLanguage, translation)
                     }
                 };
-                Add(translationUnit);
+                TranslationUnits.Add(translationUnit);
             }
 
             Chunks = reader.Chunks;
