@@ -105,7 +105,10 @@ public class POFormat : AbstractTranslationUnits, IFormat
 
             var translationUnit = new TranslationUnit(messageString.Id) // Create translation unit
             {
-                [Header.TargetLanguage] = messageString
+                Translations =
+                {
+                    messageString
+                }
             };
             Add(translationUnit);
         }

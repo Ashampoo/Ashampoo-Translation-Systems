@@ -5,7 +5,7 @@ namespace Ashampoo.Translation.Systems.Formats.TsProj;
 /// <summary>
 /// Special implementation of the <see cref="ITranslationString"/> interface, for source string for the <see cref="TsProjFormat"/> .
 /// </summary>
-public class TranslationStringSource : ITranslationString
+public class TranslationStringSource : ITranslation
 {
     private readonly Element.Translation translationElement;
 

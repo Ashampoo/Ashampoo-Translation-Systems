@@ -49,9 +49,9 @@ public class TsProjFormatTest : FormatTestBase<TsProjFormat>
         //TODO: add author to tsproj
 
         const string id = "peru.CFileNotFoundError.Desc";
-        Assert.Equal("The file '%FILE%' was not found.", (format[id]?["en-US"] as ITranslationString)?.Value);
+        Assert.Equal("The file '%FILE%' was not found.", format[id]?.Translations.GetTranslation("en-US")?.Value);
         Assert.Equal("Die Datei '%FILE%' wurde nicht gefunden.",
-            (format[id]?["de-DE"] as ITranslationString)?.Value);
+            format[id]?.Translations.GetTranslation("de-DE")?.Value);
     }
 
     [Fact]
@@ -68,13 +68,13 @@ public class TsProjFormatTest : FormatTestBase<TsProjFormat>
 
         Assert.NotNull(importedWithUnits);
         Assert.Single(importedWithUnits);
-        Assert.Equal("Import Test Source", (format[id]?["en-US"] as ITranslationString)?.Value);
+        Assert.Equal("Import Test Source", format[id]?.Translations.GetTranslation("en-US")?.Value);
 
         importedWithUnits = format.ImportMockTranslationWithUnits(language: "de-DE", id: id, value: valueTarget);
 
         Assert.NotNull(importedWithUnits);
         Assert.Single(importedWithUnits);
-        Assert.Equal("Import Test Target", (format[id]?["de-DE"] as ITranslationString)?.Value);
+        Assert.Equal("Import Test Target", format[id]?.Translations.GetTranslation("de-DE")?.Value);
     }
 
     [Fact]
@@ -139,7 +139,7 @@ public class TsProjFormatTest : FormatTestBase<TsProjFormat>
 
         Assert.NotNull(convertedFormat);
         Assert.Single(convertedFormat);
-        Assert.Equal("Hallo Welt", (convertedFormat["Convert test"]?["de-DE"] as ITranslationString)?.Value);
+        Assert.Equal("Hallo Welt", convertedFormat["Convert test"]?.Translations.GetTranslation("de-DE")?.Value);
     }
 
     [Fact]

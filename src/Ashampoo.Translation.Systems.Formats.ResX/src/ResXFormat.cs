@@ -104,7 +104,13 @@ public class ResXFormat : AbstractTranslationUnits, IFormat
             var comment = data.Comment;
 
             var translationString = new DefaultTranslationString(id, value, Header.TargetLanguage, comment);
-            var translationUnit = new DefaultTranslationUnit(id) { translationString };
+            var translationUnit = new DefaultTranslationUnit(id)
+            {
+                Translations =
+                {
+                    translationString
+                }
+            };
 
             Add(translationUnit);
         }

@@ -88,7 +88,13 @@ public partial class JavaPropertiesFormat : AbstractTranslationUnits, IFormat
         var value = match.Groups["value"].Value;
 
         var translation = new DefaultTranslationString(id, value, Header.TargetLanguage);
-        return new DefaultTranslationUnit(id) { translation };
+        return new DefaultTranslationUnit(id)
+        {
+            Translations =
+            {
+                translation
+            }
+        };
     }
 
     /// <inheritdoc/>
@@ -105,11 +111,11 @@ public partial class JavaPropertiesFormat : AbstractTranslationUnits, IFormat
     {
         await using StreamWriter writer = new(stream, Encoding.Latin1);
 
-        foreach (var translation in this.SelectMany(translationUnit => translationUnit))
+        foreach (var translationUnit in this)
         {
-            if (translation is AbstractTranslationString translationString)
+            foreach (var translation in translationUnit.Translations)
             {
-                await writer.WriteLineAsync($"{translationString.Id}={translationString.Value}");
+                await writer.WriteLineAsync($"{translationUnit.Id}={translation.Value}");
             }
         }
 

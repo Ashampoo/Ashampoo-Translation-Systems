@@ -6,7 +6,7 @@ namespace Ashampoo.Translation.Systems.Formats.AshLang;
 /// <summary>
 /// Implementation of the <see cref="ITranslationString"/> interface, representing a target translation string for the AshLang format.
 /// </summary>
-public class TargetTranslationString : ITranslationString
+public class TargetTranslationString : ITranslation
 {
     private readonly TranslationChunk.Translation translation;
 

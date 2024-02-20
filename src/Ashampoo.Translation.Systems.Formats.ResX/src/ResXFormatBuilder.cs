@@ -40,7 +40,13 @@ public class ResXFormatBuilder : IFormatBuilderWithTarget
             format.XmlRoot.Data.Add(data);
 
             var translationString = new DefaultTranslationString(id, value, targetLanguage);
-            var translationUnit = new DefaultTranslationUnit(id) { translationString };
+            var translationUnit = new DefaultTranslationUnit(id)
+            {
+                Translations =
+                {
+                    translationString
+                }
+            };
             format.Add(translationUnit);
         }
 

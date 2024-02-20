@@ -15,9 +15,9 @@ namespace Ashampoo.Translation.Systems.Formats.TsProj.Tests
             const string id = "peru.CFileNotFoundError.GeneralDesc";
 
             Assert.Equal("The file was not found.",
-                (format[id]?[format.Header.SourceLanguage ?? ""] as ITranslationString)?.Value);
+                format[id]?.Translations.GetTranslation(format.Header.SourceLanguage ?? "")?.Value);
             Assert.Equal("Die Datei wurde nicht gefunden.",
-                (format[id]?[format.Header.TargetLanguage] as ITranslationString)?.Value);
+                format[id]?.Translations.GetTranslation(format.Header.TargetLanguage)?.Value);
         }
     }
 }

@@ -75,8 +75,11 @@ public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget
 
             var translationUnit = new DefaultTranslationUnit(keyValuePair.Key) // Create new translation unit
             {
-                sourceTranslationString,
-                targetTranslationString
+                Translations =
+                {
+                    sourceTranslationString,
+                    targetTranslationString
+                }
             };
 
             tsProjFormat.Add(translationUnit);

@@ -19,6 +19,7 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
 
     /// <inheritdoc />
     public FormatLanguageCount LanguageCount => FormatLanguageCount.OnlyTarget;
+
     private const string Divider = "/";
 
     private static readonly Regex ArrayIdentifierRegex = new(@"\[\d+\]");
@@ -106,7 +107,10 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
 
                 var translationUnit = new DefaultTranslationUnit(nextId) // Create translation unit
                 {
-                    translationString
+                    Translations =
+                    {
+                        translationString
+                    }
                 };
 
                 Add(translationUnit); // Add translation unit to list
@@ -139,7 +143,12 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
                     );
 
                     var translationUnit = new DefaultTranslationUnit(nextId)
-                        { translationString }; // Create translation unit
+                    {
+                        Translations =
+                        {
+                            translationString
+                        }
+                    }; 
                     Add(translationUnit); // Add translation unit to list
                     break;
                 }
@@ -199,8 +208,8 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
     {
         if (trailing.Length == 0) // If trailing is empty, element has no nested elements
         {
-            var value = (unit[Header.TargetLanguage] as ITranslationString)?.Value ??
-                        throw new ArgumentNullException(nameof(ITranslationString.Value));
+            var value = unit.Translations.GetTranslation(Header.TargetLanguage)?.Value ??
+                        throw new ArgumentNullException(nameof(ITranslation.Value));
             var jsonValue = JsonValue.Create(value); // create json element from value
             obj.Add(id, jsonValue);
             return;
@@ -212,18 +221,18 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
         {
             > 0 => trailing[(index + Divider.Length)..],
             _ => string.Empty
-        }; 
+        };
 
         if (ArrayIdentifierRegex.IsMatch(front)) // Check if next element is an array item
         {
             // Next element is an array item, so current element is an array
-            
+
             foreach (var (key, value) in obj)
             {
                 if (key != id) continue; // find the array element with the same id as the current element
 
                 var array = value?.AsArray() ?? throw new Exception("Expected array."); // get the array
-                CreateJsonArray(front, newTrailing, array, unit); 
+                CreateJsonArray(front, newTrailing, array, unit);
                 return;
             }
 
@@ -232,9 +241,9 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
             obj.Add(id, newArray);
             return;
         }
-        
+
         // Next element is an object element
-        
+
         foreach (var pair in obj) // Check if object element with the same id exists
         {
             if (pair.Key != id) continue;
@@ -243,7 +252,7 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
             CreateJsonObject(front, newTrailing, jsonObj, unit);
             return;
         }
-        
+
         // Object element doesn't exist, create new object
 
         var newJsonObj = new JsonObject();
@@ -257,19 +266,24 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
         {
             if (trailing.Length == 0) // Current element does not have nested elements
             {
-                var value = (unit[Header.TargetLanguage] as ITranslationString)?.Value ??
-                            throw new ArgumentNullException(nameof(ITranslationString.Value));
+                var value = unit.Translations.GetTranslation(Header.TargetLanguage)?.Value ??
+                            throw new ArgumentNullException(nameof(ITranslation.Value));
                 var jsonValue = JsonValue.Create(value);
                 array.Add(jsonValue);
                 return;
             }
-            
+
             // Current element has nested elements
 
             var position = int.Parse(id.Trim('[', ']')); // Get array index from id
             var index = trailing.IndexOf(Divider, StringComparison.Ordinal); // Get index of next divider
-            var front = index > 0 ? trailing[..index] : trailing; // Front part of trailing is the id for the next element
-            var newTrailing = index > 0 ? trailing[(index + Divider.Length)..] : ""; // Trailing part of trailing is the trailing part of the next element
+            var front = index > 0
+                ? trailing[..index]
+                : trailing; // Front part of trailing is the id for the next element
+            var newTrailing =
+                index > 0
+                    ? trailing[(index + Divider.Length)..]
+                    : ""; // Trailing part of trailing is the trailing part of the next element
 
             var element = array.ElementAtOrDefault(position); // Get array element at position
 

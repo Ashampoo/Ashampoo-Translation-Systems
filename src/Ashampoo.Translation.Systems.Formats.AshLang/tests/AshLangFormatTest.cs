@@ -54,7 +54,7 @@ public class AshLangFormatTest : FormatTestBase<AshLangFormat>
 
         var translationUnit = format[id];
         Assert.NotNull(translationUnit);
-        Assert.Equal(value, (translationUnit["de-DE"] as ITranslationString)?.Value);
+        Assert.Equal(value, translationUnit.Translations.GetTranslation("de-DE")?.Value);
         Assert.Equal(1, imported.Count);
     }
 
@@ -98,9 +98,10 @@ public class AshLangFormatTest : FormatTestBase<AshLangFormat>
         var translationUnit = format[id];
         Assert.NotNull(translationUnit);
         Assert.Equal(id, translationUnit.Id);
-        Assert.Equal("Error moving file '%SRC%' to '%DEST%'.", (translationUnit["en-US"] as ITranslationString)?.Value);
+        Assert.Equal("Error moving file '%SRC%' to '%DEST%'.",
+            translationUnit.Translations.GetTranslation("en-US")?.Value);
         Assert.Equal("Fehler beim Verschieben der Datei '%SRC%' nach '%DEST%'.",
-            (translationUnit["de-DE"] as ITranslationString)?.Value);
+            translationUnit.Translations.GetTranslation("de-DE")?.Value);
     }
 
     [Fact]
@@ -137,9 +138,9 @@ public class AshLangFormatTest : FormatTestBase<AshLangFormat>
         Assert.Equal("de-DE", ashLang.Header.TargetLanguage);
 
         Assert.Single(ashLang);
-        Assert.Equal(2, ashLang["Convert ID"]?.Count);
-        Assert.Equal("Convert Test", (ashLang["Convert ID"]?["en-US"] as ITranslationString)?.Value);
-        Assert.Null(ashLang["Convert Test"]?.TryGet("de-DE"));
+        Assert.Equal(2, ashLang["Convert ID"]?.Translations.Count);
+        Assert.Equal("Convert Test", ashLang["Convert ID"]?.Translations.GetTranslation("en-US")?.Value);
+        Assert.Null(ashLang["Convert Test"]?.Translations.GetTranslation("de-DE"));
     }
 
     [Fact]
@@ -160,14 +161,14 @@ public class AshLangFormatTest : FormatTestBase<AshLangFormat>
         Assert.Equal("de-DE", ashLang.Header.TargetLanguage);
 
         Assert.Equal(3, ashLang.Count);
-        Assert.Equal("Test Source 1", (ashLang["Test ID 1"]?["en-US"] as ITranslationString)?.Value);
-        Assert.Equal("Test Ziel 1", (ashLang["Test ID 1"]?["de-DE"] as ITranslationString)?.Value);
+        Assert.Equal("Test Source 1", ashLang["Test ID 1"]?.Translations.GetTranslation("en-US")?.Value);
+        Assert.Equal("Test Ziel 1", ashLang["Test ID 1"]?.Translations.GetTranslation("de-DE")?.Value);
 
-        Assert.Equal("Test Source 2", (ashLang["Test ID 2"]?["en-US"] as ITranslationString)?.Value);
-        Assert.Equal(string.Empty, (ashLang["Test ID 2"]?.TryGet("de-DE") as ITranslationString)?.Value);
+        Assert.Equal("Test Source 2", ashLang["Test ID 2"]?.Translations.GetTranslation("en-US")?.Value);
+        Assert.Equal(string.Empty, ashLang["Test ID 2"]?.Translations.GetTranslation("de-DE")?.Value);
 
-        Assert.Equal(string.Empty, (ashLang["Test ID 3"]?.TryGet("en-US") as ITranslationString)?.Value);
-        Assert.Equal("Test Ziel 2", (ashLang["Test ID 3"]?["de-DE"] as ITranslationString)?.Value);
+        Assert.Equal(string.Empty, ashLang["Test ID 3"]?.Translations.GetTranslation("en-US")?.Value);
+        Assert.Equal("Test Ziel 2", ashLang["Test ID 3"]?.Translations.GetTranslation("de-DE")?.Value);
 
 
         builder = (IFormatBuilderWithSourceAndTarget)formatFactory.GetFormatProvider(typeof(AshLangFormat))

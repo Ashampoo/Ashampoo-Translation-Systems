@@ -29,7 +29,7 @@ public class FormatTest : FormatTestBase<POFormat>
         var imported = format.ImportMockTranslationWithUnits(language: "de", id: id, value: value);
 
         Assert.Equal(1, imported.Count);
-        Assert.Equal(value, (format[id]?["de"] as ITranslationString)?.Value);
+        Assert.Equal(value, format[id]?.Translations.GetTranslation("de")?.Value);
     }
 
     [Fact]
@@ -83,7 +83,7 @@ public class FormatTest : FormatTestBase<POFormat>
         const string id =
             "{\\\"cxt\\\": \\\"collector_disqualification\\\", \\\"id\\\": 254239623, \\\"checksum\\\": 2373663968}/Thank you for completing our survey!";
         Assert.Equal("Vielen Dank, dass Sie die Umfrage abgeschlossen haben!",
-            (format[id]?["de"] as ITranslationString)?.Value);
+            format[id]?.Translations.GetTranslation("de")?.Value);
     }
 
     [Fact]
@@ -124,7 +124,7 @@ public class FormatTest : FormatTestBase<POFormat>
 
         Assert.NotNull(convertedFormat);
 
-        Assert.Equal("Hallo Welt", (convertedFormat["Convert Test"]?["de"] as ITranslationString)?.Value);
+        Assert.Equal("Hallo Welt", convertedFormat["Convert Test"]?.Translations.GetTranslation("de")?.Value);
     }
 
     [Fact]

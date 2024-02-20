@@ -100,9 +100,9 @@ public class TsProjFormat : AbstractTranslationUnits, IFormat
 
         var translationUnit = new DefaultTranslationUnit(translation.Id);
         if (source is not null)
-            translationUnit[source.Language] = source; // Add the source translation if it exists
+            translationUnit.Translations.AddOrUpdateTranslation(source.Language, source); // Add the source translation if it exists
 
-        translationUnit[target.Language] = target;
+        translationUnit.Translations.AddOrUpdateTranslation(target.Language, target);
         return translationUnit;
     }
 

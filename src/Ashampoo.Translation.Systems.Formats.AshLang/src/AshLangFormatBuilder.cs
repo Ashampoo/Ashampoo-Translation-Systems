@@ -29,7 +29,7 @@ public class AshLangFormatBuilder : IFormatBuilderWithSourceAndTarget
         };
 
         var appIdChunk = ashLang.Chunks.OfType<AppIdChunk>().FirstOrDefault();
-        if ( appIdChunk is not null && information.TryGetValue("Name", out var name))
+        if (appIdChunk is not null && information.TryGetValue("Name", out var name))
         {
             appIdChunk.Name = name;
             information.Remove("Name");
@@ -44,8 +44,11 @@ public class AshLangFormatBuilder : IFormatBuilderWithSourceAndTarget
 
             var translationUnit = new DefaultTranslationUnit(id)
             {
-                new SourceTranslationString(SourceLanguage, translation),
-                new TargetTranslationString(targetLanguage, translation)
+                Translations =
+                {
+                    new SourceTranslationString(SourceLanguage, translation),
+                    new TargetTranslationString(targetLanguage, translation)
+                }
             };
             ashLang.Add(translationUnit);
         }

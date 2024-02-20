@@ -107,19 +107,21 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
 
             var translationUnit = new DefaultTranslationUnit(translations.Item3) // Create the translation unit
             {
-                [translations.Item1.Language] = translations.Item1,
-                [translations.Item2.Language] = translations.Item2
+                Translations =
+                {
+                    translations.Item1,
+                    translations.Item2
+                }
             };
-
             Add(translationUnit); // Add the translation unit to the hash set of translation units
         }
     }
 
-    private Tuple<ITranslationString, ITranslationString, string>? CreateTranslations(IRow row)
+    private Tuple<ITranslation, ITranslation, string>? CreateTranslations(IRow row)
     {
         var idCell = row.TryGetCell(0); // Get the first cell
         if (idCell is null) return null; // If the cell is null, return null
-        if(idCell.Address.Column != 0) return null; // If the first cell is not in the first column, skip the row
+        if (idCell.Address.Column != 0) return null; // If the first cell is not in the first column, skip the row
         var id = idCell.StringCellValue ?? string.Empty; // Get the id from the cell
         if (string.IsNullOrWhiteSpace(id)) return null; // If the id is empty, skip the row
 
@@ -128,7 +130,7 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
 
         var sourceCell = row.TryGetCell(1); // Get the second cell
         if (sourceCell is null) return null; // If the cell is null, return null
-        if(sourceCell.Address.Column != 1) return null; // If the second cell is not in the second column, skip the row
+        if (sourceCell.Address.Column != 1) return null; // If the second cell is not in the second column, skip the row
         var source = sourceCell.StringCellValue ?? string.Empty; // Get the source from the cell
         if (string.IsNullOrWhiteSpace(source)) return null; // If the source is empty, skip the row
 
@@ -150,7 +152,7 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
             Header.TargetLanguage ?? throw new ArgumentNullException(nameof(Header.TargetLanguage))
         );
 
-        return new Tuple<ITranslationString, ITranslationString, string>(sourceTranslation, targetTranslation, id);
+        return new Tuple<ITranslation, ITranslation, string>(sourceTranslation, targetTranslation, id);
     }
 
     private string RemoveMarker(string str)
@@ -181,8 +183,8 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
             }
 
             row.Cells[0].SetCellValue($"[[[{translationUnit.Id}]]]"); // Set the id with square brackets around it
-            row.Cells[1].SetCellValue((translationUnit.TryGet(Header.SourceLanguage!) as ITranslationString)?.Value);
-            row.Cells[2].SetCellValue((translationUnit.TryGet(Header.TargetLanguage) as ITranslationString)?.Value);
+            row.Cells[1].SetCellValue(translationUnit.Translations.GetTranslation(Header.SourceLanguage!)?.Value);
+            row.Cells[2].SetCellValue(translationUnit.Translations.GetTranslation(Header.TargetLanguage)?.Value);
 
             rowCount++;
         }
@@ -190,10 +192,11 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
         AutosizeColumns(sheet, 0, 3); // Autosize the columns
 
 
-        workbook.Write(stream, true); // Write the workbook to the stream, and leave the stream open TODO: Is this correct?
+        workbook.Write(stream,
+            true); // Write the workbook to the stream, and leave the stream open TODO: Is this correct?
     }
 
-    private void CreateHeaderRow(ISheet sheet) 
+    private void CreateHeaderRow(ISheet sheet)
     {
         var row = sheet.CreateRow(0); // Create a new row
 

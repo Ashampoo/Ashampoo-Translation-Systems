@@ -5,7 +5,7 @@ namespace Ashampoo.Translation.Systems.Formats.PO;
 /// <summary>
 /// Implementation of ITranslationString and a PO message string.
 /// </summary>
-public class MessageString : Message, ITranslationString
+public class MessageString : Message, ITranslation
 {
     /// <summary>
     /// Message string of the po format.

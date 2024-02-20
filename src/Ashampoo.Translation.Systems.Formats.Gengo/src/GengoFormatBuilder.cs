@@ -48,8 +48,11 @@ public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
 
             var translationUnit = new DefaultTranslationUnit(keyValuePair.Key) //Create new translation unit
             {
-                sourceTranslationString,
-                targetTranslationString
+                Translations =
+                {
+                    sourceTranslationString,
+                    targetTranslationString
+                }
             };
 
             gengoFormat.Add(translationUnit); //Add translation unit to format

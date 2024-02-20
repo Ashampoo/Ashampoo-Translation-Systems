@@ -35,7 +35,7 @@ public class NLangFormatBuilder : IFormatBuilderWithTarget
         {
             var translationUnit = new TranslationUnit(translation.Key);
             var translationString = new TranslationString(translation.Key, translation.Value, targetLanguage);
-            translationUnit.Add(translationString);
+            translationUnit.Translations.Add(translationString);
             nLangFormat.Add(translationUnit);
         }
 

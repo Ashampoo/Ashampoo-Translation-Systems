@@ -65,15 +65,18 @@ public class MatchValueTranslationFilter : ITranslationFilter
     {
         if (Language is not null)
         {
-            var translation = translationUnit.TryGet(Language);
-            var translationString = translation as ITranslationString;
+            if (translationUnit.Translations.TryGetTranslation(Language, out var translation))
+            {
+                var translationString = translation;
+                return regex.IsMatch(translationString.Value);
+            }
 
-            return translationString is not null && regex.IsMatch(translationString.Value);
+            return false;
         }
 
-        foreach (var translation in translationUnit)
+        foreach (var translation in translationUnit.Translations)
         {
-            if (translation is ITranslationString translationString && regex.IsMatch(translationString.Value))
+            if (regex.IsMatch(translation.Value))
                 return true;
         }
 

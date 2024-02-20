@@ -41,18 +41,17 @@ public class FormatTest : FormatTestBase<JavaPropertiesFormat>
 
         foreach (var unit in format)
         {
-            unit.Should().ContainSingle();
+            unit.Translations.Should().ContainSingle();
         }
 
         format.Count.Should().Be(186);
 
         var foundById = format[id];
         foundById.Should().NotBeNull();
-        var translationString = foundById!["de-DE"] as AbstractTranslationString;
+        var translationString = foundById!.Translations.GetTranslation("de-DE");
         translationString.Should().NotBeNull();
         translationString!.Value.Should().Be("Über Photos");
         translationString.Comment.Should().BeNull();
-        translationString.Id.Should().Be(id);
     }
 
     [Fact]
@@ -66,7 +65,7 @@ public class FormatTest : FormatTestBase<JavaPropertiesFormat>
 
         var importedWithUnits = format.ImportMockTranslationWithUnits("en-US", id);
         importedWithUnits.Should().NotBeNull().And.ContainSingle();
-        (format[id]?["en-US"] as ITranslationString)?.Value.Should().Be(value);
+        format[id]?.Translations.GetTranslation("en-US")?.Value.Should().Be(value);
     }
 
     [Fact]
@@ -106,6 +105,6 @@ public class FormatTest : FormatTestBase<JavaPropertiesFormat>
 
         javaProperties.Should().NotBeNull().And.ContainSingle();
         javaProperties.First().Id.Should().Be("Convert ID");
-        (javaProperties["Convert ID"]?["en-US"] as ITranslationString)?.Value.Should().Be("Convert Test");
+        javaProperties["Convert ID"]?.Translations.GetTranslation("en-US")?.Value.Should().Be("Convert Test");
     }
 }

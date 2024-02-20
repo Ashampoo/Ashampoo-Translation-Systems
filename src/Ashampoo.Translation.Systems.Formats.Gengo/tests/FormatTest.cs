@@ -5,6 +5,7 @@ using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.Formats.Abstractions.TranslationFilter;
 using Ashampoo.Translation.Systems.TestBase;
+using FluentAssertions;
 using NPOI.XSSF.UserModel;
 using Xunit;
 
@@ -74,12 +75,12 @@ public class FormatTest : FormatTestBase<GengoFormat>
 
         const string id = "MESSAGES.MESSAGE_BETAVERSION_EXPIRED";
         var foundById = format[id];
-        var translationString = foundById?["en-US"] as ITranslationString;
+        var translationString = foundById?.Translations.GetTranslation("en-US");
 
         const string target =
             @"Unfortunately, the beta version of the software has expired. Please install the final version of this software.%CRLFYou can download it from ‘www.ashampoo.com’.";
         Assert.NotNull(foundById);
-        Assert.Equal(2, foundById.Count);
+        Assert.Equal(2, foundById.Translations.Count);
         Assert.Equal(target, translationString?.Value);
     }
 
@@ -95,16 +96,16 @@ public class FormatTest : FormatTestBase<GengoFormat>
         Assert.Equal(4, format.Count);
         foreach (var unit in format)
         {
-            Assert.Equal(2, unit.Count);
+            Assert.Equal(2, unit.Translations.Count);
         }
 
         const string id = "MESSAGES.MESSAGE_BETAVERSION_EXPIRED";
         const string value =
             "Diese Betaversion der Software ist leider abgelaufen. Bitte installieren Sie die finale Version dieser Software.%CRLFSie können diese z.B. von \"www.ashampoo.com\" herunterladen.";
         var foundById = format[id];
-        var translationString = foundById?["de-DE"] as ITranslationString;
-
-        Assert.Equal(value, translationString?.Value);
+        foundById.Should().NotBeNull();
+        foundById!.Translations.TryGetTranslation("de-DE", out var translation).Should().BeTrue();
+        Assert.Equal(value, translation!.Value);
     }
 
     [Fact]
@@ -153,12 +154,12 @@ public class FormatTest : FormatTestBase<GengoFormat>
 
         Assert.NotNull(importedWithUnits);
         Assert.Single(importedWithUnits);
-        Assert.Equal("Import Test Source", (format[id]?["de-DE"] as ITranslationString)?.Value);
+        Assert.Equal("Import Test Source", format[id]?.Translations.GetTranslation("de-DE")?.Value);
 
         importedWithUnits = format.ImportMockTranslationWithUnits(language: "en-US", id: id, value: valueTarget);
         Assert.NotNull(importedWithUnits);
         Assert.Single(importedWithUnits);
-        Assert.Equal("Import Test Target", (format[id]?["en-US"] as ITranslationString)?.Value);
+        Assert.Equal("Import Test Target", format[id]?.Translations.GetTranslation("en-US")?.Value);
     }
 
     [Fact]
@@ -199,7 +200,7 @@ public class FormatTest : FormatTestBase<GengoFormat>
 
         Assert.Single(convertedFormat);
         Assert.NotNull(convertedFormat["Convert Test"]);
-        Assert.Equal("Hallo Welt", (convertedFormat["Convert Test"]?["de-DE"] as ITranslationString)?.Value);
+        Assert.Equal("Hallo Welt", convertedFormat["Convert Test"]?.Translations.GetTranslation("de-DE")?.Value);
     }
 
     [Fact]
@@ -349,7 +350,7 @@ public class FormatTest : FormatTestBase<GengoFormat>
         Assert.Equal("de-DE", format.Header.TargetLanguage);
         Assert.Single(format);
         Assert.NotNull(format["ID Test"]);
-        Assert.Equal("Test source", (format["ID Test"]?["en-US"] as ITranslationString)?.Value);
-        Assert.Equal("Test target", (format["ID Test"]?["de-DE"] as ITranslationString)?.Value);
+        Assert.Equal("Test source", format["ID Test"]?.Translations.GetTranslation("en-US")?.Value);
+        Assert.Equal("Test target", format["ID Test"]?.Translations.GetTranslation("de-DE")?.Value);
     }
 }

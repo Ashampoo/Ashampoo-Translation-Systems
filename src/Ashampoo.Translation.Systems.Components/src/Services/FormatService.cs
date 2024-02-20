@@ -1,5 +1,6 @@
 using Ashampoo.Translation.Systems.Components.Dialogs;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using MudBlazor;
 
 namespace Ashampoo.Translation.Systems.Components.Services;
@@ -128,10 +129,10 @@ public class FormatService : IFormatService
 
         foreach (var translationUnit in format)
         {
-            var translation = translationUnit.TryGet(oldLanguage);
-            if (translation is null) continue;
-
-            translation.Language = newLanguage;
+            if (translationUnit.Translations.TryGetTranslation(oldLanguage, out var translation))
+            {
+                translation.Language = newLanguage;
+            }
         }
 
         if (isTargetLanguage) format.Header.TargetLanguage = newLanguage;

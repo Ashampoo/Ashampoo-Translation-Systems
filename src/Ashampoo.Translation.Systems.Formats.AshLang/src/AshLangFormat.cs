@@ -33,7 +33,6 @@ public class AshLangFormat : AbstractTranslationUnits, IFormat
     public IFormatHeader Header { get; private set; }
 
 
-    
     /// <summary>
     /// Initializes a new instance of the <see cref="AshLangFormat"/> class.
     /// </summary>
@@ -83,8 +82,11 @@ public class AshLangFormat : AbstractTranslationUnits, IFormat
             {
                 var translationUnit = new DefaultTranslationUnit(translation.Id)
                 {
-                    new SourceTranslationString(sourceLanguage, translation),
-                    new TargetTranslationString(Header.TargetLanguage, translation)
+                    Translations =
+                    {
+                        new SourceTranslationString(sourceLanguage, translation),
+                        new TargetTranslationString(Header.TargetLanguage, translation)
+                    }
                 };
                 Add(translationUnit);
             }

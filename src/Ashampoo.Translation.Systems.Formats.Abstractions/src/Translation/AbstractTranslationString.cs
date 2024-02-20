@@ -3,7 +3,7 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 /// <summary>
 /// Abstract base class for the <see cref="ITranslationString"/> interface.
 /// </summary>
-public abstract class AbstractTranslationString : ITranslationString
+public abstract class AbstractTranslationString : ITranslation
 {
     /// <inheritdoc />
     public virtual string Value { get; set; } = "";

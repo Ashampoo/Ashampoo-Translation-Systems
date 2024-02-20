@@ -2,7 +2,7 @@ using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 namespace Ashampoo.Translation.Systems.TestBase;
 
-public class MockTranslationString : ITranslationString
+public class MockTranslationString : ITranslation
 {
     public string Value { get; set; }
 

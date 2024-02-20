@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -50,7 +51,7 @@ public class FormatTest : FormatTestBase<JsonFormat>
         Assert.Equal(301, format.Count);
         Assert.Equal("en-US", format.Header.TargetLanguage);
         Assert.Null(format.Header.SourceLanguage);
-        Assert.Equal("Save", (format["settings/save"]?["en-US"] as ITranslationString)?.Value);
+        Assert.Equal("Save", format["settings/save"]?.Translations.GetTranslation("en-US")?.Value);
     }
 
     [Fact]
@@ -107,8 +108,8 @@ public class FormatTest : FormatTestBase<JsonFormat>
             new AssignOptions { TargetLanguage = "en-US", Filter = new DefaultTranslationFilter() });
 
         Assert.Single(converted);
-        Assert.Single(converted["ID"] ?? Enumerable.Empty<ITranslation>());
-        Assert.Equal("Hello World", (converted["ID"]?["en-US"] as ITranslationString)?.Value);
+        Assert.Single(converted["ID"]?.Translations ?? new HashSet<ITranslation>());
+        Assert.Equal("Hello World", converted["ID"]?.Translations.GetTranslation("en-US")?.Value);
     }
 
     [Fact]
@@ -132,9 +133,9 @@ public class FormatTest : FormatTestBase<JsonFormat>
         Assert.Equal("de-DE", convertedDeDe.Header.TargetLanguage);
 
         Assert.Equal("Error creating unique file name.",
-            (convertedEnUs[id]?["en-US"] as ITranslationString)?.Value);
+            convertedEnUs[id]?.Translations.GetTranslation("en-US")?.Value);
         Assert.Equal("Fehler beim Erzeugen eines eindeutigen Dateinamens",
-            (convertedDeDe[id]?["de-DE"] as ITranslationString)?.Value);
+            convertedDeDe[id]?.Translations.GetTranslation("de-DE")?.Value);
     }
 
     [Fact]
@@ -148,7 +149,7 @@ public class FormatTest : FormatTestBase<JsonFormat>
         var importedWithUnits = format.ImportMockTranslationWithUnits(language: "en-US", id: id, value: value);
         Assert.NotNull(importedWithUnits);
         Assert.Single(importedWithUnits);
-        Assert.Equal("Import Test", (format[id]?["en-US"] as ITranslationString)?.Value);
+        Assert.Equal("Import Test", format[id]?.Translations.GetTranslation("en-US")?.Value);
     }
 
     [Fact]

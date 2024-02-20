@@ -36,7 +36,7 @@ public class JsonFormatBuilder : IFormatBuilderWithTarget
         {
             var translationUnit = new DefaultTranslationUnit(translation.Key);
             var translationString = new DefaultTranslationString(translation.Key, translation.Value, targetLanguage);
-            translationUnit.Add(translationString);
+            translationUnit.Translations.Add(translationString);
             jsonFormat.Add(translationUnit);
         }
 

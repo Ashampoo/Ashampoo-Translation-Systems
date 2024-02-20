@@ -34,14 +34,15 @@ public static class FormatExtensions
         List<ITranslation> imported = new();
         foreach (var translationUnit in formatToImport)
         {
-            foreach (var translation in translationUnit)
+            foreach (var translation in translationUnit.Translations)
             {
                 var id = translationUnit.Id;
                 var language = translation.Language;
-                var value = (translation as ITranslationString)?.Value;
+                var value = translation.Value;
                 if (value is null) throw new Exception("Expected translation string");
 
-                if (format[id]?.TryGet(language) is not ITranslationString translationString) continue;
+                if (format[id] is null) continue;
+                if (!format[id]!.Translations.TryGetTranslation(language, out var translationString)) continue;
                 if (translationString.Value.Equals(value)) continue;
 
                 translationString.Value = value;
@@ -155,9 +156,10 @@ public static class FormatExtensions
             if (!filter.IsValid(unit)) continue;
 
             var id = unit.Id;
-            var translationString = unit.TryGet(targetLanguage) as ITranslationString;
-
-            formatBuilder.Add(id, translationString?.Value ?? string.Empty);
+            if (unit.Translations.TryGetTranslation(targetLanguage, out var translation))
+            {
+                formatBuilder.Add(id, translation.Value);
+            }
         }
 
         return formatBuilder.Build();
@@ -188,8 +190,8 @@ public static class FormatExtensions
             if (!filter.IsValid(unit)) continue;
 
             var id = unit.Id;
-            var targetTranslationString = unit.TryGet(targetLanguage) as ITranslationString;
-            var sourceTranslationString = unit.TryGet(sourceLanguage) as ITranslationString;
+            var targetTranslationString = unit.Translations.GetTranslation(targetLanguage);
+            var sourceTranslationString = unit.Translations.GetTranslation(sourceLanguage);
 
             formatBuilder.Add(id, sourceTranslationString?.Value ?? string.Empty,
                 targetTranslationString?.Value ?? string.Empty);

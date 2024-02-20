@@ -24,7 +24,10 @@ public class MockFormatWithTranslationUnits : AbstractTranslationUnits, IFormat
         var translationString = new MockTranslationString(id: id, value: value, language: language);
         var translationUnit = new MockTranslationUnit(id: id)
         {
-            [language] = translationString
+            Translations =
+            {
+                translationString
+            }
         };
         Add(translationUnit);
     }
@@ -43,8 +46,7 @@ public class MockFormatWithTranslationUnits : AbstractTranslationUnits, IFormat
         var translationString = new MockTranslationString(id: id, value: value, language: language);
 
         var translationUnit = this[id] ?? new MockTranslationUnit(id: id);
-        translationUnit[language] = translationString;
-
+        translationUnit.Translations.AddOrUpdateTranslation(language, translationString);
         Add(translationUnit);
     }
 

@@ -34,8 +34,8 @@ public class IsEmptyTranslationFilter : ITranslationFilter
     /// </returns>
     public bool IsValid(ITranslationUnit translationUnit)
     {
-        if (Language is not null) return translationUnit.TryGet(Language)?.IsEmpty ?? true;
+        if (Language is not null) return translationUnit.Translations.GetTranslation(Language).IsEmpty;
 
-        return translationUnit.Any(translation => translation.IsEmpty);
+        return translationUnit.Translations.Any(translation => translation.IsEmpty);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
@@ -36,7 +37,7 @@ public class FormatTest : FormatTestBase<ResXFormat>
             await CreateAndReadFromFileAsync("Res.en.resx", new FormatReadOptions { TargetLanguage = "en-US" });
         Assert.Equal(117, format.Count);
         Assert.Equal("en-US", format.Header.TargetLanguage);
-        Assert.Equal("Remove Added Items", (format["Text_RemoveAddedItems"]?["en-US"] as ITranslationString)?.Value);
+        Assert.Equal("Remove Added Items", format["Text_RemoveAddedItems"]?.Translations.GetTranslation("en-US")?.Value);
     }
 
     [Fact]
@@ -61,7 +62,7 @@ public class FormatTest : FormatTestBase<ResXFormat>
         var importedWithUnits = format.ImportMockTranslationWithUnits(language: "en-US", id: id, value: value);
         Assert.NotNull(importedWithUnits);
         Assert.Single(importedWithUnits);
-        Assert.Equal("Import Test", (format[id]?["en-US"] as ITranslationString)?.Value);
+        Assert.Equal("Import Test", format[id]?.Translations.GetTranslation("en-US")?.Value);
     }
 
     [Fact]
@@ -97,8 +98,8 @@ public class FormatTest : FormatTestBase<ResXFormat>
 
         Assert.NotNull(converted);
         Assert.Single(converted);
-        Assert.Single(converted["ID"] ?? Enumerable.Empty<ITranslation>());
-        Assert.Equal("Hello World", (converted["ID"]?["en-US"] as ITranslationString)?.Value);
+        Assert.Single(converted["ID"]?.Translations ?? new HashSet<ITranslation>());
+        Assert.Equal("Hello World", converted["ID"]?.Translations.GetTranslation("en-US")?.Value);
     }
 
     [Fact]
@@ -124,8 +125,8 @@ public class FormatTest : FormatTestBase<ResXFormat>
         Assert.Equal("en-US", convertedEnUs.Header.TargetLanguage);
         Assert.Equal("de-DE", convertedDeDe.Header.TargetLanguage);
 
-        Assert.Equal("Error creating unique file name.", (convertedEnUs[id]?["en-US"] as ITranslationString)?.Value);
+        Assert.Equal("Error creating unique file name.", convertedEnUs[id]?.Translations.GetTranslation("en-US")?.Value);
         Assert.Equal("Fehler beim Erzeugen eines eindeutigen Dateinamens",
-            (convertedDeDe[id]?["de-DE"] as ITranslationString)?.Value);
+            convertedDeDe[id]?.Translations.GetTranslation("de-DE")?.Value);
     }
 }

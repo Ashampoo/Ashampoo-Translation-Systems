@@ -108,7 +108,10 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
         );
         return new TranslationUnit(id)
         {
-            [Header.TargetLanguage] = translation
+            Translations =
+            {
+                translation
+            }
         };
     }
 

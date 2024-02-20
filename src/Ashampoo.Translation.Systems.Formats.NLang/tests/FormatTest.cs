@@ -45,7 +45,7 @@ public class FormatTest : FormatTestBase<NLangFormat>
 
         foreach (var translationUnit in format)
         {
-            Assert.Single(translationUnit);
+            Assert.Single(translationUnit.Translations);
         }
 
 
@@ -54,12 +54,11 @@ public class FormatTest : FormatTestBase<NLangFormat>
         const string id = "Form_BOOT.MenuItem_TASK_Delete";
 
         var foundById = format[id];
-        var translationString = foundById?["de-DE"] as TranslationString;
+        var translationString = foundById?.Translations.GetTranslation("de-DE");
         Assert.NotNull(foundById);
         Assert.NotNull(translationString);
         Assert.Equal("Löschen", translationString.Value);
         Assert.Null(translationString?.Comment);
-        Assert.Equal(id, translationString?.Id);
     }
 
     [Fact]
@@ -88,7 +87,7 @@ public class FormatTest : FormatTestBase<NLangFormat>
         var importedWithUnits = format.ImportMockTranslationWithUnits(language: "de-DE", id: id, value: value);
         Assert.NotNull(importedWithUnits);
         Assert.Single(importedWithUnits);
-        Assert.Equal("Import Test", (format[id]?["de-DE"] as ITranslationString)?.Value);
+        Assert.Equal("Import Test", format[id]?.Translations.GetTranslation("de-DE")?.Value);
     }
 
     [Fact]
@@ -126,6 +125,6 @@ public class FormatTest : FormatTestBase<NLangFormat>
         Assert.NotNull(nlang);
         Assert.Single(nlang);
         Assert.Equal("Convert ID", nlang.First().Id);
-        Assert.Equal("Convert Test", (nlang["Convert ID"]?["en-US"] as ITranslationString)?.Value);
+        Assert.Equal("Convert Test", nlang["Convert ID"]?.Translations.GetTranslation("en-US")?.Value);
     }
 }
