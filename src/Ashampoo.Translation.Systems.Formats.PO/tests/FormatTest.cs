@@ -2,7 +2,6 @@ using System.IO;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
-using Ashampoo.Translation.Systems.Formats.Abstractions.TranslationFilter;
 using Ashampoo.Translation.Systems.TestBase;
 using Xunit;
 
@@ -10,11 +9,11 @@ namespace Ashampoo.Translation.Systems.Formats.PO.Tests;
 
 public class FormatTest : FormatTestBase<POFormat>
 {
-    private readonly IFormatFactory formatFactory;
+    private readonly IFormatFactory _formatFactory;
 
     public FormatTest(IFormatFactory formatFactory)
     {
-        this.formatFactory = formatFactory;
+        _formatFactory = formatFactory;
     }
 
     [Fact]
@@ -111,39 +110,5 @@ public class FormatTest : FormatTestBase<POFormat>
         //FIXME: compare formats like in the other tests, and not the streams!
         //fs.MustBeEqualTo(ms);
         File.Delete($"{temp}normalized_translation_de.po");
-    }
-
-    [Fact]
-    public async Task ConvertTest()
-    {
-        var mockFormat =
-            MockFormatWithTranslationUnits.CreateMockFormatWithTranslationUnits(language: "de", id: "Convert Test",
-                value: "Hallo Welt");
-        var options = new AssignOptions { TargetLanguage = "de", Filter = new DefaultTranslationFilter() };
-        var convertedFormat = await mockFormat.ConvertToAsync<POFormat>(formatFactory, options);
-
-        Assert.NotNull(convertedFormat);
-
-        Assert.Equal("Hallo Welt", convertedFormat["Convert Test"]?.Translations.GetTranslation("de")?.Value);
-    }
-
-    [Fact]
-    public async Task AssignWithSimpleFilter()
-    {
-        var mockFormat =
-            MockFormatWithTranslationUnits.CreateMockFormatWithTranslationUnits(language: "de",
-                id: "Assign Filter test", value: "Hallo Welt");
-
-        var options = new AssignOptions { Filter = new IsEmptyTranslationFilter(), TargetLanguage = "de" };
-        var assignedFormat = await mockFormat.ConvertToAsync<POFormat>(formatFactory, options);
-
-        Assert.Empty(assignedFormat);
-
-        var mockFormatWithEmptyValue =
-            MockFormatWithTranslationUnits.CreateMockFormatWithTranslationUnits(language: "de",
-                id: "Assign Filter test", value: "");
-        assignedFormat = await mockFormatWithEmptyValue.ConvertToAsync<POFormat>(formatFactory, options);
-
-        Assert.Single(assignedFormat);
     }
 }

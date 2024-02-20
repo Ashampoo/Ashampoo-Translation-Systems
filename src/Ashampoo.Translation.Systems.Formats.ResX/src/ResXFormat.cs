@@ -18,7 +18,7 @@ public class ResXFormat : AbstractTranslationUnits, IFormat
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
 
     /// <inheritdoc />
-    public FormatLanguageCount LanguageCount => FormatLanguageCount.OnlyTarget;
+    public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
 
     /// <summary>
     /// The root element for the xml structure.

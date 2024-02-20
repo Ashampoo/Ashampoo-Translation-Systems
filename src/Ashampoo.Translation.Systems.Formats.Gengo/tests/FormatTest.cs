@@ -3,7 +3,6 @@ using System.IO;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
-using Ashampoo.Translation.Systems.Formats.Abstractions.TranslationFilter;
 using Ashampoo.Translation.Systems.TestBase;
 using FluentAssertions;
 using NPOI.XSSF.UserModel;
@@ -13,11 +12,11 @@ namespace Ashampoo.Translation.Systems.Formats.Gengo.Tests;
 
 public class FormatTest : FormatTestBase<GengoFormat>
 {
-    private readonly IFormatFactory formatFactory;
+    private readonly IFormatFactory _formatFactory;
 
     public FormatTest(IFormatFactory formatFactory)
     {
-        this.formatFactory = formatFactory;
+        _formatFactory = formatFactory;
     }
 
     private static XSSFWorkbook CreateFileWithHeaderRow()
@@ -55,7 +54,7 @@ public class FormatTest : FormatTestBase<GengoFormat>
         Assert.Empty(format);
         Assert.Null(format.Header.SourceLanguage);
         Assert.Equal(string.Empty, format.Header.TargetLanguage);
-        Assert.Equal(FormatLanguageCount.SourceAndTarget, format.LanguageCount);
+        Assert.Equal(LanguageSupport.SourceAndTarget, format.LanguageSupport);
 
         format = new GengoFormat { Header = new DefaultFormatHeader() { SourceLanguage = "en-US", TargetLanguage = "de-DE" } };
         Assert.NotNull(format);
@@ -184,37 +183,6 @@ public class FormatTest : FormatTestBase<GengoFormat>
         const string value = "Ashampoo Development GmbH & Co. KG";
         var imported = format.ImportMockTranslationWithUnits(language: "de-DE", id: id, value: value);
         Assert.Empty(imported);
-    }
-
-    [Fact]
-    public async Task ConvertWithSourceSetTest()
-    {
-        var mockFormat =
-            MockFormatWithTranslationUnits.CreateMockFormatWithTranslationUnits(language: "de-DE",
-                id: "Convert Test", value: "Hallo Welt");
-        var options = new AssignOptions
-            { SourceLanguage = "de-DE", TargetLanguage = "en-US", Filter = new DefaultTranslationFilter() };
-        var convertedFormat = await mockFormat.ConvertToAsync<GengoFormat>(formatFactory, options);
-
-        Assert.NotNull(convertedFormat);
-
-        Assert.Single(convertedFormat);
-        Assert.NotNull(convertedFormat["Convert Test"]);
-        Assert.Equal("Hallo Welt", convertedFormat["Convert Test"]?.Translations.GetTranslation("de-DE")?.Value);
-    }
-
-    [Fact]
-    public async Task AssignWithSimpleFilter()
-    {
-        var mockFormat =
-            MockFormatWithTranslationUnits.CreateMockFormatWithTranslationUnits(language: "de-DE",
-                id: "Convert Test", value: "Hallo Welt");
-        var options = new AssignOptions
-            { Filter = new IsEmptyTranslationFilter(), SourceLanguage = "de-DE", TargetLanguage = "en-US" };
-        var assignedFormat = await mockFormat.ConvertToAsync<GengoFormat>(formatFactory, options);
-        Assert.NotNull(assignedFormat);
-
-        Assert.Empty(assignedFormat);
     }
 
     [Fact]

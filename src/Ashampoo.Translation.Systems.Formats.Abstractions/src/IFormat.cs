@@ -58,5 +58,5 @@ public interface IFormat : ITranslationUnits
     /// <summary>
     /// Information about how many languages the format can handle.
     /// </summary>
-    FormatLanguageCount LanguageCount { get; }
+    LanguageSupport LanguageSupport { get; }
 }

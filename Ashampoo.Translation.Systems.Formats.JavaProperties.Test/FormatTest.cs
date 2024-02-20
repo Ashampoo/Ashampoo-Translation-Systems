@@ -1,6 +1,5 @@
 ﻿using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
-using Ashampoo.Translation.Systems.Formats.Abstractions.TranslationFilter;
 using Ashampoo.Translation.Systems.TestBase;
 using FluentAssertions;
 
@@ -93,18 +92,5 @@ public class FormatTest : FormatTestBase<JavaPropertiesFormat>
         var imported = format.ImportMockTranslationWithUnits("en-US", id, value);
 
         imported.Should().BeEmpty();
-    }
-
-    [Fact]
-    public async Task ConvertTest()
-    {
-        var mockFormat =
-            MockFormatWithTranslationUnits.CreateMockFormatWithTranslationUnits("en-US", "Convert ID", "Convert Test");
-        var assignOptions = new AssignOptions { TargetLanguage = "en-US", Filter = new DefaultTranslationFilter() };
-        var javaProperties = await mockFormat.ConvertToAsync<JavaPropertiesFormat>(_formatFactory, assignOptions);
-
-        javaProperties.Should().NotBeNull().And.ContainSingle();
-        javaProperties.First().Id.Should().Be("Convert ID");
-        javaProperties["Convert ID"]?.Translations.GetTranslation("en-US")?.Value.Should().Be("Convert Test");
     }
 }

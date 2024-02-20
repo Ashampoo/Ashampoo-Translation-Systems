@@ -19,7 +19,7 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
 
     /// <inheritdoc />
-    public FormatLanguageCount LanguageCount => FormatLanguageCount.OnlyTarget;
+    public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
 
     /// <inheritdoc />
     public void Read(Stream stream, FormatReadOptions? options = null)

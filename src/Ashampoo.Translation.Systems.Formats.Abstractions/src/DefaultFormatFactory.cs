@@ -5,7 +5,7 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 /// </summary>
 public class DefaultFormatFactory : IFormatFactory
 {
-    private readonly Dictionary<string, IFormatProvider> formatProviders;
+    private readonly Dictionary<string, IFormatProvider> _formatProviders;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="DefaultFormatFactory"/> class.
@@ -15,14 +15,14 @@ public class DefaultFormatFactory : IFormatFactory
     /// </param>
     public DefaultFormatFactory(IEnumerable<IFormatProvider> formatProviders)
     {
-        this.formatProviders = formatProviders.ToDictionary(formatProvider => formatProvider.Id.ToLower(),
+        _formatProviders = formatProviders.ToDictionary(formatProvider => formatProvider.Id.ToLower(),
             formatProvider => formatProvider);
     }
 
     /// <inheritdoc />
     public IFormat CreateFormat(string formatId)
     {
-        return formatProviders[formatId.ToLower()].Create();
+        return _formatProviders[formatId.ToLower()].Create();
     }
 
     /// <inheritdoc />
@@ -38,25 +38,25 @@ public class DefaultFormatFactory : IFormatFactory
     }
 
     /// <inheritdoc />
-    public IEnumerable<IFormatProvider> GetFormatProviders() => formatProviders.Values;
+    public IEnumerable<IFormatProvider> GetFormatProviders() => _formatProviders.Values;
 
     /// <inheritdoc />
     public IFormat? TryCreateFormatByFileName(string fileName)
     {
         // Test every format provider to see if it can handle the file name. Return the first one that can.
-        return formatProviders.Values.FirstOrDefault(provider => provider.SupportsFileName(fileName))?.Create();
+        return _formatProviders.Values.FirstOrDefault(provider => provider.SupportsFileName(fileName))?.Create();
     }
 
     /// <inheritdoc />
     public IFormatProvider? TryGetFormatProvider(IFormat format)
     {
-        return formatProviders.Values.FirstOrDefault(provider => provider.FormatType == format.GetType());
+        return _formatProviders.Values.FirstOrDefault(provider => provider.FormatType == format.GetType());
     }
 
     /// <inheritdoc />
     public IFormatProvider? TryGetFormatProvider(string formatId)
     {
-        return formatProviders.Values.FirstOrDefault(provider =>
+        return _formatProviders.Values.FirstOrDefault(provider =>
             string.Equals(provider.Id, formatId, StringComparison.CurrentCultureIgnoreCase));
     }
 
@@ -73,6 +73,6 @@ public class DefaultFormatFactory : IFormatFactory
     /// <inheritdoc />
     public IFormatProvider? TryGetFormatProvider(Type formatType)
     {
-        return formatProviders.Values.FirstOrDefault(provider => provider.FormatType == formatType);
+        return _formatProviders.Values.FirstOrDefault(provider => provider.FormatType == formatType);
     }
 }

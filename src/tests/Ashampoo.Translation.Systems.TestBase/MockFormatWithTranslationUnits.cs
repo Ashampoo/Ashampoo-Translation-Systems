@@ -39,7 +39,7 @@ public class MockFormatWithTranslationUnits : AbstractTranslationUnits, IFormat
 
     public IFormatHeader Header { get; init; } = new MockHeader();
 
-    public FormatLanguageCount LanguageCount => FormatLanguageCount.OnlyTarget;
+    public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
 
     public void Add(string language, string id, string value)
     {

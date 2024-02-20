@@ -3,7 +3,6 @@ using System.IO;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
-using Ashampoo.Translation.Systems.Formats.Abstractions.TranslationFilter;
 using Ashampoo.Translation.Systems.TestBase;
 using Xunit;
 
@@ -11,11 +10,11 @@ namespace Ashampoo.Translation.Systems.Formats.TsProj.Tests;
 
 public class TsProjFormatTest : FormatTestBase<TsProjFormat>
 {
-    private readonly IFormatFactory formatFactory;
+    private readonly IFormatFactory _formatFactory;
 
     public TsProjFormatTest(IFormatFactory formatFactory)
     {
-        this.formatFactory = formatFactory;
+        _formatFactory = formatFactory;
     }
 
     [Fact]
@@ -125,34 +124,5 @@ public class TsProjFormatTest : FormatTestBase<TsProjFormat>
     {
         await Assert.ThrowsAsync<InvalidOperationException>(async () =>
             await CreateAndReadFromFileAsync("normalized_export_nlang-de-DE.tsproj"));
-    }
-
-    [Fact]
-    public async Task ConvertTest()
-    {
-        var mockFormat =
-            MockFormatWithTranslationUnits.CreateMockFormatWithTranslationUnits(language: "de-DE",
-                id: "Convert test", value: "Hallo Welt");
-        var options = new AssignOptions
-            { SourceLanguage = "de-DE", TargetLanguage = "en-US", Filter = new DefaultTranslationFilter() };
-        var convertedFormat = await mockFormat.ConvertToAsync<TsProjFormat>(formatFactory, options);
-
-        Assert.NotNull(convertedFormat);
-        Assert.Single(convertedFormat);
-        Assert.Equal("Hallo Welt", convertedFormat["Convert test"]?.Translations.GetTranslation("de-DE")?.Value);
-    }
-
-    [Fact]
-    public async Task AssignWithSimpleFilter()
-    {
-        var mockFormat =
-            MockFormatWithTranslationUnits.CreateMockFormatWithTranslationUnits(language: "de-DE",
-                id: "Convert test", value: "Hallo Welt");
-        var options = new AssignOptions
-            { Filter = new IsEmptyTranslationFilter(), SourceLanguage = "de-DE", TargetLanguage = "en-US" };
-        var assignedFormat = await mockFormat.ConvertToAsync<TsProjFormat>(formatFactory, options);
-
-        Assert.NotNull(assignedFormat);
-        Assert.Empty(assignedFormat);
     }
 }

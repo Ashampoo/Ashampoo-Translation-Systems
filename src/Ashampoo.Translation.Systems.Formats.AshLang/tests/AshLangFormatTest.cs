@@ -1,9 +1,7 @@
 using System;
 using System.IO;
-using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
-using Ashampoo.Translation.Systems.Formats.Abstractions.TranslationFilter;
 using Ashampoo.Translation.Systems.TestBase;
 using Xunit;
 
@@ -11,11 +9,11 @@ namespace Ashampoo.Translation.Systems.Formats.AshLang.Tests;
 
 public class AshLangFormatTest : FormatTestBase<AshLangFormat>
 {
-    private readonly IFormatFactory formatFactory;
+    private readonly IFormatFactory _formatFactory;
 
     public AshLangFormatTest(IFormatFactory formatFactory)
     {
-        this.formatFactory = formatFactory;
+        _formatFactory = formatFactory;
     }
 
     [Fact]
@@ -120,34 +118,10 @@ public class AshLangFormatTest : FormatTestBase<AshLangFormat>
     }
 
     [Fact]
-    public async Task ConvertTest()
-    {
-        var mockFormat =
-            MockFormatWithTranslationUnits.CreateMockFormatWithTranslationUnits("en-US", "Convert ID", "Convert Test");
-
-        var assignOptions = new AssignOptions
-        {
-            SourceLanguage = "en-US",
-            TargetLanguage = "de-DE",
-            Filter = new DefaultTranslationFilter()
-        };
-
-        var ashLang = await mockFormat.ConvertToAsync<AshLangFormat>(formatFactory, assignOptions);
-
-        Assert.Equal("en-US", ashLang.Header.SourceLanguage);
-        Assert.Equal("de-DE", ashLang.Header.TargetLanguage);
-
-        Assert.Single(ashLang);
-        Assert.Equal(2, ashLang["Convert ID"]?.Translations.Count);
-        Assert.Equal("Convert Test", ashLang["Convert ID"]?.Translations.GetTranslation("en-US")?.Value);
-        Assert.Null(ashLang["Convert Test"]?.Translations.GetTranslation("de-DE"));
-    }
-
-    [Fact]
     public void FormatBuilderTest()
     {
         var builder =
-            (IFormatBuilderWithSourceAndTarget)formatFactory.GetFormatProvider(typeof(AshLangFormat))
+            (IFormatBuilderWithSourceAndTarget)_formatFactory.GetFormatProvider(typeof(AshLangFormat))
                 .GetFormatBuilder();
 
         builder.SetTargetLanguage("de-DE");
@@ -171,7 +145,7 @@ public class AshLangFormatTest : FormatTestBase<AshLangFormat>
         Assert.Equal("Test Ziel 2", ashLang["Test ID 3"]?.Translations.GetTranslation("de-DE")?.Value);
 
 
-        builder = (IFormatBuilderWithSourceAndTarget)formatFactory.GetFormatProvider(typeof(AshLangFormat))
+        builder = (IFormatBuilderWithSourceAndTarget)_formatFactory.GetFormatProvider(typeof(AshLangFormat))
             .GetFormatBuilder();
         builder.SetSourceLanguage("de-DE");
 

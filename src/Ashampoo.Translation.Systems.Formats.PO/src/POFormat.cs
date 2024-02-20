@@ -19,7 +19,7 @@ public class POFormat : AbstractTranslationUnits, IFormat
     public IFormatHeader Header { get; init; } = new POHeader();
 
     /// <inheritdoc />
-    public FormatLanguageCount LanguageCount => FormatLanguageCount.OnlyTarget;
+    public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
 
     /// <inheritdoc />
     public async Task ReadAsync(Stream stream, FormatReadOptions? options = null)

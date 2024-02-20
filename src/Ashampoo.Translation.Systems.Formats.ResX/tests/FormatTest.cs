@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
-using Ashampoo.Translation.Systems.Formats.Abstractions.TranslationFilter;
 using Ashampoo.Translation.Systems.TestBase;
 using Xunit;
 
@@ -12,11 +10,11 @@ namespace Ashampoo.Translation.Systems.Formats.ResX.Tests;
 
 public class FormatTest : FormatTestBase<ResXFormat>
 {
-    private readonly IFormatFactory formatFactory;
+    private readonly IFormatFactory _formatFactory;
 
     public FormatTest(IFormatFactory formatFactory)
     {
-        this.formatFactory = formatFactory;
+        _formatFactory = formatFactory;
     }
 
     [Fact]
@@ -87,46 +85,5 @@ public class FormatTest : FormatTestBase<ResXFormat>
         var imported = format.ImportMockTranslationWithUnits(language: "en-US", id: id, value: value);
 
         Assert.Empty(imported);
-    }
-
-    [Fact]
-    public async Task SimpleAssign()
-    {
-        var mock = MockFormatWithTranslationUnits.CreateMockFormatWithTranslationUnits("en-US", "ID", "Hello World");
-        var converted = await mock.ConvertToAsync<ResXFormat>(formatFactory,
-            new AssignOptions { TargetLanguage = "en-US", Filter = new DefaultTranslationFilter() });
-
-        Assert.NotNull(converted);
-        Assert.Single(converted);
-        Assert.Single(converted["ID"]?.Translations ?? new HashSet<ITranslation>());
-        Assert.Equal("Hello World", converted["ID"]?.Translations.GetTranslation("en-US")?.Value);
-    }
-
-    [Fact]
-    public async Task ComplexAssign()
-    {
-        const string id = "peru.CSystem.CreateUniqueFileFailed";
-        var mockFormat = new MockFormatWithTranslationUnits
-        {
-            { "en-US", id, "Error creating unique file name." },
-            { "de-DE", id, "Fehler beim Erzeugen eines eindeutigen Dateinamens" }
-        };
-
-        var optionsEn = new AssignOptions { TargetLanguage = "en-US", Filter = new DefaultTranslationFilter() };
-        var optionsDe = new AssignOptions { TargetLanguage = "de-DE", Filter = new DefaultTranslationFilter() };
-
-        var convertedEnUs = await mockFormat.ConvertToAsync<ResXFormat>(formatFactory, optionsEn);
-        var convertedDeDe = await mockFormat.ConvertToAsync<ResXFormat>(formatFactory, optionsDe);
-
-        Assert.NotNull(convertedEnUs);
-        Assert.NotNull(convertedDeDe);
-
-
-        Assert.Equal("en-US", convertedEnUs.Header.TargetLanguage);
-        Assert.Equal("de-DE", convertedDeDe.Header.TargetLanguage);
-
-        Assert.Equal("Error creating unique file name.", convertedEnUs[id]?.Translations.GetTranslation("en-US")?.Value);
-        Assert.Equal("Fehler beim Erzeugen eines eindeutigen Dateinamens",
-            convertedDeDe[id]?.Translations.GetTranslation("de-DE")?.Value);
     }
 }

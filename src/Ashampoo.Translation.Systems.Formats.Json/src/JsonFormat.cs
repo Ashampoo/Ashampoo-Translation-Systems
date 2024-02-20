@@ -18,7 +18,7 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
 
     /// <inheritdoc />
-    public FormatLanguageCount LanguageCount => FormatLanguageCount.OnlyTarget;
+    public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
 
     private const string Divider = "/";
 

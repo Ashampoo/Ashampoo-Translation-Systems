@@ -16,7 +16,7 @@ public class AshLangFormat : AbstractTranslationUnits, IFormat
     public IChunk[] Chunks { get; private set; }
 
     /// <inheritdoc />
-    public FormatLanguageCount LanguageCount => FormatLanguageCount.SourceAndTarget;
+    public LanguageSupport LanguageSupport => LanguageSupport.SourceAndTarget;
 
 
     /// <inheritdoc />

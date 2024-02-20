@@ -21,7 +21,7 @@ public class TsProjFormat : AbstractTranslationUnits, IFormat
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
 
     /// <inheritdoc />
-    public FormatLanguageCount LanguageCount => FormatLanguageCount.SourceAndTarget;
+    public LanguageSupport LanguageSupport => LanguageSupport.SourceAndTarget;
 
     /// <inheritdoc />
     public TsProjFormat()

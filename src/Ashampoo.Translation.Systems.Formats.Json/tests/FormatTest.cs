@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
-using Ashampoo.Translation.Systems.Formats.Abstractions.TranslationFilter;
 using Ashampoo.Translation.Systems.TestBase;
 using Xunit;
 
@@ -14,11 +12,11 @@ namespace Ashampoo.Translation.Systems.Formats.Json.Tests;
 
 public class FormatTest : FormatTestBase<JsonFormat>
 {
-    private readonly IFormatFactory formatFactory;
+    private readonly IFormatFactory _formatFactory;
 
     public FormatTest(IFormatFactory formatFactory)
     {
-        this.formatFactory = formatFactory;
+        _formatFactory = formatFactory;
     }
 
     [Fact]
@@ -39,7 +37,7 @@ public class FormatTest : FormatTestBase<JsonFormat>
         Assert.Empty(format);
         Assert.Null(format.Header.SourceLanguage);
         Assert.Equal(string.Empty, format.Header.TargetLanguage);
-        Assert.Equal(FormatLanguageCount.OnlyTarget, format.LanguageCount);
+        Assert.Equal(LanguageSupport.OnlyTarget, format.LanguageSupport);
     }
 
 
@@ -97,45 +95,6 @@ public class FormatTest : FormatTestBase<JsonFormat>
         var ms = new MemoryStream();
         await format.WriteAsync(ms);
         ms.Seek(0, SeekOrigin.Begin);
-    }
-
-    [Fact]
-    public async Task SimpleAssign()
-    {
-        var mock =
-            MockFormatWithTranslationUnits.CreateMockFormatWithTranslationUnits("en-US", "ID", "Hello World");
-        var converted = await mock.ConvertToAsync<JsonFormat>(formatFactory,
-            new AssignOptions { TargetLanguage = "en-US", Filter = new DefaultTranslationFilter() });
-
-        Assert.Single(converted);
-        Assert.Single(converted["ID"]?.Translations ?? new HashSet<ITranslation>());
-        Assert.Equal("Hello World", converted["ID"]?.Translations.GetTranslation("en-US")?.Value);
-    }
-
-    [Fact]
-    public async Task ComplexAssign()
-    {
-        const string id = "peru.CSystem.CreateUniqueFileFailed";
-        var mockFormat = new MockFormatWithTranslationUnits
-        {
-            { "en-US", id, "Error creating unique file name." },
-            { "de-DE", id, "Fehler beim Erzeugen eines eindeutigen Dateinamens" }
-        };
-
-        var optionsEn = new AssignOptions { TargetLanguage = "en-US", Filter = new DefaultTranslationFilter() };
-        var optionsDe = new AssignOptions { TargetLanguage = "de-DE", Filter = new DefaultTranslationFilter() };
-
-        var convertedEnUs = await mockFormat.ConvertToAsync<JsonFormat>(formatFactory, optionsEn);
-        var convertedDeDe = await mockFormat.ConvertToAsync<JsonFormat>(formatFactory, optionsDe);
-
-
-        Assert.Equal("en-US", convertedEnUs.Header.TargetLanguage);
-        Assert.Equal("de-DE", convertedDeDe.Header.TargetLanguage);
-
-        Assert.Equal("Error creating unique file name.",
-            convertedEnUs[id]?.Translations.GetTranslation("en-US")?.Value);
-        Assert.Equal("Fehler beim Erzeugen eines eindeutigen Dateinamens",
-            convertedDeDe[id]?.Translations.GetTranslation("de-DE")?.Value);
     }
 
     [Fact]

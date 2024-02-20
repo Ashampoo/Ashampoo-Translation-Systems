@@ -6,8 +6,8 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions.IO;
 /// </summary>
 public class LineReader : IDisposable
 {
-    private readonly TextReader textReader;
-    private string? lastLine;
+    private readonly TextReader _textReader;
+    private string? _lastLine;
 
     /// <summary>
     /// The number of the line that is currently being read.
@@ -23,7 +23,7 @@ public class LineReader : IDisposable
     public LineReader(TextReader reader)
     {
         // This should create a Thread-Safe StreamReader.
-        textReader = TextReader.Synchronized(reader);
+        _textReader = TextReader.Synchronized(reader);
     }
 
     /// <summary>
@@ -44,14 +44,14 @@ public class LineReader : IDisposable
     /// </exception>
     public async Task<string?> ReadLineAsync()
     {
-        if (lastLine is null)
+        if (_lastLine is null)
         {
             LineNumber++;
-            return await textReader.ReadLineAsync();
+            return await _textReader.ReadLineAsync();
         }
 
-        var line = lastLine;
-        lastLine = null;
+        var line = _lastLine;
+        _lastLine = null;
         return line;
     }
     
@@ -75,12 +75,12 @@ public class LineReader : IDisposable
     /// </exception>
     public async Task<string?> PeekLineAsync()
     {
-        if (lastLine is not null) return lastLine;
+        if (_lastLine is not null) return _lastLine;
 
         LineNumber++;
-        lastLine = await textReader.ReadLineAsync();
+        _lastLine = await _textReader.ReadLineAsync();
 
-        return lastLine;
+        return _lastLine;
     }
     
     /// <summary>
@@ -112,7 +112,7 @@ public class LineReader : IDisposable
     /// </summary>
     public void Dispose()
     {
-        textReader.Dispose();
+        _textReader.Dispose();
         GC.SuppressFinalize(this);
     }
     

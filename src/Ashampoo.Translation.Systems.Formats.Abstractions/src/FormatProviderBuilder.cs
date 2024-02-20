@@ -5,10 +5,10 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 /// </summary>
 public class FormatProviderBuilder
 {
-    private string formatProviderId = "";
-    private string[] supportedFileExtensions = Array.Empty<string>();
-    private Type formatType = default!;
-    private Type formatBuilderType = default!;
+    private string _formatProviderId = "";
+    private string[] _supportedFileExtensions = Array.Empty<string>();
+    private Type _formatType = default!;
+    private Type _formatBuilderType = default!;
 
     /// <summary>
     /// Sets the format provider id.
@@ -21,7 +21,7 @@ public class FormatProviderBuilder
     /// </returns>
     public FormatProviderBuilder SetId(string id)
     {
-        formatProviderId = id;
+        _formatProviderId = id;
         return this;
     }
 
@@ -36,7 +36,7 @@ public class FormatProviderBuilder
     /// </returns>
     public FormatProviderBuilder SetSupportedFileExtensions(string[] fileExtensions)
     {
-        this.supportedFileExtensions = fileExtensions;
+        this._supportedFileExtensions = fileExtensions;
         return this;
     }
 
@@ -51,7 +51,7 @@ public class FormatProviderBuilder
     /// </returns>
     public FormatProviderBuilder SetFormatType<T>() where T : IFormat
     {
-        formatType = typeof(T);
+        _formatType = typeof(T);
         return this;
     }
 
@@ -66,7 +66,7 @@ public class FormatProviderBuilder
     /// </returns>
     public FormatProviderBuilder SetFormatBuilder<T>() where T : IFormatBuilder
     {
-        formatBuilderType = typeof(T);
+        _formatBuilderType = typeof(T);
         return this;
     }
 
@@ -82,11 +82,11 @@ public class FormatProviderBuilder
     /// </exception>
     public IFormatProvider Create()
     {
-        if (string.IsNullOrEmpty(formatProviderId)) throw new InvalidOperationException("formatProviderId must be set");
-        if (supportedFileExtensions is null || supportedFileExtensions.Length == 0)
+        if (string.IsNullOrEmpty(_formatProviderId)) throw new InvalidOperationException("formatProviderId must be set");
+        if (_supportedFileExtensions is null || _supportedFileExtensions.Length == 0)
             throw new InvalidOperationException("supportedFileExtensions must be set");
-        if (formatType is null) throw new InvalidOperationException("formatType must be set");
+        if (_formatType is null) throw new InvalidOperationException("formatType must be set");
 
-        return new DefaultFormatProvider(formatProviderId, supportedFileExtensions, formatType, formatBuilderType);
+        return new DefaultFormatProvider(_formatProviderId, _supportedFileExtensions, _formatType, _formatBuilderType);
     }
 }

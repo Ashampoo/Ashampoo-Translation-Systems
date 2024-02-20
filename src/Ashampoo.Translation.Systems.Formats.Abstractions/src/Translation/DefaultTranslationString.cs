@@ -1,7 +1,7 @@
 namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 /// <summary>
-/// Default implementation of the <see cref="ITranslationString"/> interface.
+/// Default implementation of the <see cref="ITranslation"/> interface.
 /// </summary>
 public class DefaultTranslationString : AbstractTranslationString
 {

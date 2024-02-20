@@ -1,9 +1,6 @@
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
-using Ashampoo.Translation.Systems.Formats.Abstractions.TranslationFilter;
 using Ashampoo.Translation.Systems.TestBase;
 using Xunit;
 
@@ -11,11 +8,11 @@ namespace Ashampoo.Translation.Systems.Formats.NLang.Tests;
 
 public class FormatTest : FormatTestBase<NLangFormat>
 {
-    private readonly IFormatFactory formatFactory;
+    private readonly IFormatFactory _formatFactory;
 
     public FormatTest(IFormatFactory formatFactory)
     {
-        this.formatFactory = formatFactory;
+        _formatFactory = formatFactory;
     }
 
     [Fact]
@@ -112,19 +109,5 @@ public class FormatTest : FormatTestBase<NLangFormat>
         var imported = format.ImportMockTranslationWithUnits(language: "de-DE", id: id, value: value);
 
         Assert.Empty(imported);
-    }
-
-    [Fact]
-    public async Task ConvertTest()
-    {
-        var mockFormat =
-            MockFormatWithTranslationUnits.CreateMockFormatWithTranslationUnits("en-US", "Convert ID", "Convert Test");
-        var assignOptions = new AssignOptions { TargetLanguage = "en-US", Filter = new DefaultTranslationFilter() };
-        var nlang = await mockFormat.ConvertToAsync<NLangFormat>(formatFactory, assignOptions);
-
-        Assert.NotNull(nlang);
-        Assert.Single(nlang);
-        Assert.Equal("Convert ID", nlang.First().Id);
-        Assert.Equal("Convert Test", nlang["Convert ID"]?.Translations.GetTranslation("en-US")?.Value);
     }
 }
