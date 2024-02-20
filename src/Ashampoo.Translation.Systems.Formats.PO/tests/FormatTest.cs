@@ -1,27 +1,22 @@
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.TestBase;
+using FluentAssertions;
 using Xunit;
 
 namespace Ashampoo.Translation.Systems.Formats.PO.Tests;
 
 public class FormatTest : FormatTestBase<POFormat>
 {
-    private readonly IFormatFactory _formatFactory;
-
-    public FormatTest(IFormatFactory formatFactory)
-    {
-        _formatFactory = formatFactory;
-    }
-
     [Fact]
     public void NewFormat()
     {
         IFormat format = CreateFormat();
 
-        Assert.Equal(0, format.TranslationUnits.Count);
+        format.TranslationUnits.Count.Should().Be(0);
     }
 
     [Fact]
@@ -30,16 +25,17 @@ public class FormatTest : FormatTestBase<POFormat>
         var format = CreateAndReadFromFile("translation_de.po", new FormatReadOptions { SourceLanguage = "en-US" });
 
         var poHeader = format.Header as POHeader;
-        Assert.NotNull(poHeader);
+        poHeader.Should().NotBeNull();
 
-        Assert.Equal(69, format.TranslationUnits.Count);
-        Assert.Equal("de", format.Header.TargetLanguage);
-        Assert.Equal("FULL NAME <EMAIL@ADDRESS>", poHeader.Author);
+        format.TranslationUnits.Count.Should().Be(69);
+        format.Header.TargetLanguage.Should().Be("de");
+        poHeader?.Author.Should().Be("FULL NAME <EMAIL@ADDRESS>");
 
         const string id =
             "{\\\"cxt\\\": \\\"collector_disqualification\\\", \\\"id\\\": 254239623, \\\"checksum\\\": 2373663968}/Thank you for completing our survey!";
-        Assert.Equal("Vielen Dank, dass Sie die Umfrage abgeschlossen haben!",
-            format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation("de").Value);
+
+        format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation("de").Value.Should()
+            .Be("Vielen Dank, dass Sie die Umfrage abgeschlossen haben!");
     }
 
     [Fact]

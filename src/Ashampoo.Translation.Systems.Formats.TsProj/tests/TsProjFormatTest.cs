@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.TestBase;
+using FluentAssertions;
 using Xunit;
 
 namespace Ashampoo.Translation.Systems.Formats.TsProj.Tests;
@@ -14,11 +15,11 @@ public class TsProjFormatTest : FormatTestBase<TsProjFormat>
     public void NewFormat()
     {
         var format = CreateFormat();
-
-        Assert.NotNull(format);
-        Assert.Empty(format.TranslationUnits);
-        Assert.Null(format.Header.SourceLanguage);
-        Assert.Equal(string.Empty, format.Header.TargetLanguage);
+        
+        format.Should().NotBeNull();
+        format.TranslationUnits.Should().BeEmpty();
+        format.Header.SourceLanguage.Should().BeNull();
+        format.Header.TargetLanguage.Should().BeEmpty();
     }
 
     [Fact]
@@ -26,15 +27,16 @@ public class TsProjFormatTest : FormatTestBase<TsProjFormat>
     {
         IFormat format = CreateAndReadFromFile("normalized_export_ashlang-de-DE.tsproj");
 
-        Assert.Equal(67, format.TranslationUnits.Count);
-        Assert.Equal("en-US", format.Header.SourceLanguage);
-        Assert.Equal("de-DE", format.Header.TargetLanguage);
+        format.TranslationUnits.Count.Should().Be(67);
+        format.Header.SourceLanguage.Should().Be("en-US");
+        format.Header.TargetLanguage.Should().Be("de-DE");
         //TODO: add author to tsproj
 
         const string id = "peru.CFileNotFoundError.Desc";
-        Assert.Equal("The file '%FILE%' was not found.", format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation("en-US").Value);
-        Assert.Equal("Die Datei '%FILE%' wurde nicht gefunden.",
-            format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation("de-DE").Value);
+        format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation("en-US").Value.Should()
+            .Be("The file '%FILE%' was not found.");
+        format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation("de-DE").Value.Should()
+            .Be("Die Datei '%FILE%' wurde nicht gefunden.");
     }
 
 
@@ -56,7 +58,7 @@ public class TsProjFormatTest : FormatTestBase<TsProjFormat>
     [Fact]
     public async Task ReadAndWriteNLangExportedFile()
     {
-        await Assert.ThrowsAsync<InvalidOperationException>(async () =>
-            await CreateAndReadFromFileAsync("normalized_export_nlang-de-DE.tsproj"));
+        await CreateAndReadFromFileAsync("normalized_export_nlang-de-DE.tsproj").Invoking(x => x).Should()
+            .ThrowAsync<InvalidOperationException>();
     }
 }

@@ -1,30 +1,25 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.TestBase;
+using FluentAssertions;
 using Xunit;
 
 namespace Ashampoo.Translation.Systems.Formats.ResX.Tests;
 
 public class FormatTest : FormatTestBase<ResXFormat>
 {
-    private readonly IFormatFactory _formatFactory;
-
-    public FormatTest(IFormatFactory formatFactory)
-    {
-        _formatFactory = formatFactory;
-    }
-
     [Fact]
     public void NewFormat()
     {
         var format = CreateFormat();
-
-        Assert.NotNull(format);
-        Assert.Empty(format.TranslationUnits);
-        Assert.Null(format.Header.SourceLanguage);
-        Assert.Equal(string.Empty, format.Header.TargetLanguage);
+        
+        format.Should().NotBeNull();
+        format.TranslationUnits.Should().BeEmpty();
+        format.Header.SourceLanguage.Should().BeNull();
+        format.Header.TargetLanguage.Should().BeEmpty();
     }
 
     [Fact]
@@ -32,11 +27,11 @@ public class FormatTest : FormatTestBase<ResXFormat>
     {
         var format =
             await CreateAndReadFromFileAsync("Res.en.resx", new FormatReadOptions { TargetLanguage = "en-US" });
-        Assert.Equal(117, format.TranslationUnits.Count);
-        Assert.Equal("en-US", format.Header.TargetLanguage);
-        Assert.Equal("Remove Added Items",
-            format.TranslationUnits.GetTranslationUnit("Text_RemoveAddedItems").Translations.GetTranslation("en-US")
-                .Value);
+
+        format.TranslationUnits.Count.Should().Be(117);
+        format.Header.TargetLanguage.Should().Be("en-US");
+        format.TranslationUnits.GetTranslationUnit("Text_RemoveAddedItems").Translations.GetTranslation("en-US")
+            .Value.Should().Be("Remove Added Items");
     }
 
     [Fact]

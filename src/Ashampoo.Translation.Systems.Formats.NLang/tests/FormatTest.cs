@@ -2,6 +2,7 @@ using System.IO;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.TestBase;
+using FluentAssertions;
 using Xunit;
 
 namespace Ashampoo.Translation.Systems.Formats.NLang.Tests;
@@ -12,11 +13,11 @@ public class FormatTest : FormatTestBase<NLangFormat>
     public void NewFormat()
     {
         var format = CreateFormat();
-
-        Assert.NotNull(format);
-        Assert.Empty(format.TranslationUnits);
-        Assert.Null(format.Header.SourceLanguage);
-        Assert.Equal(string.Empty, format.Header.TargetLanguage);
+        
+        format.Should().NotBeNull();
+        format.TranslationUnits.Should().BeEmpty();
+        format.Header.SourceLanguage.Should().BeNull();
+        format.Header.TargetLanguage.Should().BeEmpty();
     }
 
     [Fact]
@@ -26,19 +27,19 @@ public class FormatTest : FormatTestBase<NLangFormat>
 
         foreach (var translationUnit in format.TranslationUnits)
         {
-            Assert.Single(translationUnit.Translations);
+            translationUnit.Translations.Should().ContainSingle();
         }
 
-        Assert.Equal(3223, format.TranslationUnits.Count);
+        format.TranslationUnits.Count.Should().Be(3223);
 
         const string id = "Form_BOOT.MenuItem_TASK_Delete";
 
         var foundById = format.TranslationUnits.GetTranslationUnit(id);
+        foundById.Should().NotBeNull();
         var translationString = foundById.Translations.GetTranslation("de-DE");
-        Assert.NotNull(foundById);
-        Assert.NotNull(translationString);
-        Assert.Equal("Löschen", translationString.Value);
-        Assert.Null(translationString?.Comment);
+        translationString.Should().NotBeNull();
+        translationString!.Value.Should().Be("Löschen");
+        translationString.Comment.Should().BeNull();
     }
 
     [Fact]
