@@ -1,3 +1,5 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
+
 namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 
 /// <summary>
@@ -8,11 +10,11 @@ public class FormatReadOptions
     /// <summary>
     /// The target language of the format.
     /// </summary>
-    public string? TargetLanguage { get; init; }
+    public Language? TargetLanguage { get; init; }
     /// <summary>
     /// The source language of the format.
     /// </summary>
-    public string? SourceLanguage { get; init; }
+    public Language? SourceLanguage { get; init; }
 
     /// <summary>
     /// Indicates whether the read has been cancelled.

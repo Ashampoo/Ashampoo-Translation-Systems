@@ -1,3 +1,5 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
+
 namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 /// <summary>
@@ -20,7 +22,7 @@ public class DefaultTranslationString : AbstractTranslationString
     /// <param name="comment">
     /// The comment of the translation string.
     /// </param>
-    public DefaultTranslationString(string id, string value, string language, string? comment = null) : base(id, value,
+    public DefaultTranslationString(string id, string value, Language language, string? comment = null) : base(id, value,
         language, comment)
     {
     }

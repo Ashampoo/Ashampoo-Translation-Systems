@@ -1,3 +1,4 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.Formats.AshLang.Chunk;
 
@@ -19,7 +20,7 @@ public class TargetTranslationString : ITranslation
     /// <param name="translation">
     /// The <see cref="TranslationChunk.Translation"/> of the translation string.
     /// </param>
-    public TargetTranslationString(string language, TranslationChunk.Translation translation)
+    public TargetTranslationString(Language language, TranslationChunk.Translation translation)
     {
         Language = language;
         _translation = translation;
@@ -40,8 +41,5 @@ public class TargetTranslationString : ITranslation
     }
 
     /// <inheritdoc />
-    public bool IsEmpty => string.IsNullOrWhiteSpace(Value);
-
-    /// <inheritdoc />
-    public string Language { get; set; }
+    public Language Language { get; set; }
 }

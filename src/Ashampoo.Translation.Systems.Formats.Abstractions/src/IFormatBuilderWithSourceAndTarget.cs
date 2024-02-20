@@ -1,3 +1,5 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
+
 namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 
 /// <summary>
@@ -25,5 +27,5 @@ public interface IFormatBuilderWithSourceAndTarget : IFormatBuilder
     /// <param name="language">
     /// The language to set.
     /// </param>
-    void SetSourceLanguage(string language);
+    void SetSourceLanguage(Language language);
 }

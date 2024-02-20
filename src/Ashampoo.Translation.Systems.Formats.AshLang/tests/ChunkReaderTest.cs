@@ -1,5 +1,6 @@
 using System.IO;
 using System.Linq;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.AshLang.Chunk;
 using Ashampoo.Translation.Systems.TestBase;
 using FluentAssertions;
@@ -22,7 +23,7 @@ public class ChunkReaderTest : FormatTestBase<AshLangFormat>
         var chunk = chunkReader.TryGetOrNull<LanguageChunk>(Chunk.LanguageChunk.Id);
 
         chunk.Should().NotBeNull();
-        chunk!.LanguageId.Should().Be("de-DE");
+        chunk!.LanguageId.Should().Be(new Language("de-DE"));
         chunk.Language.Should().Be("Deutsch");
         chunk.Country.Should().Be("Deutschland");
     }

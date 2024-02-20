@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 namespace Ashampoo.Translation.Systems.Formats.Abstractions;
@@ -116,7 +117,7 @@ public static class TranslationUnitCollectionExtensions
     /// <param name="translations">The collection of translations.</param>
     /// <param name="language">The language of the translation to add or update.</param>
     /// <param name="value">The new translation.</param>
-    public static void AddOrUpdateTranslationUnit(this ICollection<ITranslation> translations, string language, ITranslation value)
+    public static void AddOrUpdateTranslationUnit(this ICollection<ITranslation> translations, Language language, ITranslation value)
     {
         var existingTranslation = translations.FirstOrDefault(t => t.Language == language);
 

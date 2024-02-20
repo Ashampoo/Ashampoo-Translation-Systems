@@ -1,3 +1,5 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
+
 namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 /// <summary>
@@ -15,9 +17,9 @@ public abstract class AbstractTranslationString : ITranslation
 
     /// <inheritdoc />
     public virtual string? Comment { get; set; }
-    
+
     /// <inheritdoc />
-    public virtual string Language { get; set; } = "";
+    public virtual Language Language { get; set; } = Language.Empty;
 
     /// <summary>
     /// Base constructor for the <see cref="AbstractTranslationString"/> class.
@@ -34,7 +36,7 @@ public abstract class AbstractTranslationString : ITranslation
     /// <param name="comment">
     /// The comment of the translation string.
     /// </param>
-    protected  AbstractTranslationString(string id, string value, string language, string? comment = null)
+    protected  AbstractTranslationString(string id, string value, Language language, string? comment = null)
     {
         Id = id;
         Value = value;

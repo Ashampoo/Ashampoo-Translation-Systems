@@ -1,3 +1,5 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
+
 namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 
 /// <summary>
@@ -8,12 +10,12 @@ public interface IFormatHeader
     /// <summary>
     /// The target language of the <see cref="IFormat"/>.
     /// </summary>
-    string TargetLanguage { get; set; }
+    Language TargetLanguage { get; set; }
     
     /// <summary>
     /// The source language of the <see cref="IFormat"/>.
     /// </summary>
-    string? SourceLanguage { get; set; }
+    Language? SourceLanguage { get; set; }
     
     /// <summary>
     /// Gets or sets the additional headers associated with the format.

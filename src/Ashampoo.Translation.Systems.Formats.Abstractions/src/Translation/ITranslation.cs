@@ -1,3 +1,5 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
+
 namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 /// <summary>
@@ -18,5 +20,5 @@ public interface ITranslation
     /// <summary>
     /// The language of the translation.
     /// </summary>
-    string Language { get; set; }
+    Language Language { get; set; }
 }

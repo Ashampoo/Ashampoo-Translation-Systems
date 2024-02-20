@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 
 namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
@@ -30,7 +31,7 @@ public static class TranslationCollectionExtensions
     /// <param name="language">The language of the translation to get.</param>
     /// <param name="translation">When this method returns, contains the translation with the specified language, if found; otherwise, null.</param>
     /// <returns>true if a translation with the specified language is found; otherwise, false.</returns>
-    public static bool TryGetTranslation(this ICollection<ITranslation> translations, string language,
+    public static bool TryGetTranslation(this ICollection<ITranslation> translations, Language language,
         [NotNullWhen(true)] out ITranslation? translation)
     {
         var foundTranslation = translations.FirstOrDefault(t => t.Language == language);
@@ -51,7 +52,7 @@ public static class TranslationCollectionExtensions
     /// <param name="language">The language of the translation to get.</param>
     /// <returns>The translation with the specified language.</returns>
     /// <exception cref="InvalidOperationException">No translation with the specified language is found.</exception>
-    public static ITranslation GetTranslation(this ICollection<ITranslation> translations, string language) =>
+    public static ITranslation GetTranslation(this ICollection<ITranslation> translations, Language language) =>
         translations.First(t => t.Language == language);
 
     /// <summary>
@@ -60,7 +61,7 @@ public static class TranslationCollectionExtensions
     /// <param name="translations">The collection of translations.</param>
     /// <param name="language">The language of the translation to add or update.</param>
     /// <param name="value">The new translation.</param>
-    public static void AddOrUpdateTranslation(this ICollection<ITranslation> translations, string language, ITranslation value)
+    public static void AddOrUpdateTranslation(this ICollection<ITranslation> translations, Language language, ITranslation value)
     {
         var existingTranslation = translations.FirstOrDefault(t => t.Language == language);
 
