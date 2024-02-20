@@ -33,4 +33,12 @@ public interface IFormatBuilder
     /// The value of the information.
     /// </param>
     void AddHeaderInformation(string key, string value);
+    
+    /// <summary>
+    /// Set the target language.
+    /// </summary>
+    /// <param name="language">
+    /// The language to set.
+    /// </param>
+    void SetTargetLanguage(string language);
 }

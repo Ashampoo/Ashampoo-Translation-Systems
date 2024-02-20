@@ -15,11 +15,4 @@ public interface IFormatBuilderWithTarget : IFormatBuilder
     /// The translation.
     /// </param>
     void Add(string id, string target);
-    /// <summary>
-    /// Set the target language.
-    /// </summary>
-    /// <param name="language">
-    /// The language to set.
-    /// </param>
-    void SetTargetLanguage(string language);
 }
