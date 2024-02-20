@@ -40,7 +40,8 @@ public abstract class Message : ITranslation
     /// </summary>
     public string Id => !string.IsNullOrWhiteSpace(MsgCtxt) ? $"{MsgCtxt}{Divider}{MsgId}" : MsgId;
 
-    public string Value { get; set; }
+    /// <inheritdoc />
+    public string Value { get; set; } = string.Empty;
 
     /// <summary>
     /// Provides the comment for the ITranslation interface.

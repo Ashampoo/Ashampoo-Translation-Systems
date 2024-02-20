@@ -68,12 +68,24 @@ public interface IFormat
     /// </summary>
     LanguageSupport LanguageSupport { get; }
     
+    /// <summary>
+    /// Gets the collection of translation units associated with the format.
+    /// </summary>
     ICollection<ITranslationUnit> TranslationUnits { get; }
 }
 
-
+/// <summary>
+/// Provides extension methods for collections of translation units.
+/// </summary>
 public static class TranslationUnitCollectionExtensions
 {
+    /// <summary>
+    /// Tries to get a translation unit from the collection by its ID.
+    /// </summary>
+    /// <param name="translationUnits">The collection of translation units.</param>
+    /// <param name="id">The ID of the translation unit to get.</param>
+    /// <param name="translationUnit">When this method returns, contains the translation unit with the specified ID, if found; otherwise, null.</param>
+    /// <returns>true if a translation unit with the specified ID is found; otherwise, false.</returns>
     public static bool TryGetTranslationUnit(this ICollection<ITranslationUnit> translationUnits, string id,
         [NotNullWhen(true)] out ITranslationUnit? translationUnit)
     {
@@ -88,9 +100,22 @@ public static class TranslationUnitCollectionExtensions
         return true;
     }
 
+    /// <summary>
+    /// Gets a translation unit from the collection by its ID.
+    /// </summary>
+    /// <param name="translationUnits">The collection of translation units.</param>
+    /// <param name="id">The ID of the translation unit to get.</param>
+    /// <returns>The translation unit with the specified ID.</returns>
+    /// <exception cref="InvalidOperationException">No translation unit with the specified ID is found.</exception>
     public static ITranslationUnit GetTranslationUnit(this ICollection<ITranslationUnit> translationUnits, string id) =>
         translationUnits.First(t => t.Id == id);
 
+    /// <summary>
+    /// Adds a new translation to the collection or updates an existing one.
+    /// </summary>
+    /// <param name="translations">The collection of translations.</param>
+    /// <param name="language">The language of the translation to add or update.</param>
+    /// <param name="value">The new translation.</param>
     public static void AddOrUpdateTranslationUnit(this ICollection<ITranslation> translations, string language, ITranslation value)
     {
         var existingTranslation = translations.FirstOrDefault(t => t.Language == language);

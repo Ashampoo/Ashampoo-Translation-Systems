@@ -28,6 +28,9 @@ public class ResXFormat :  IFormat
     /// </summary>
     public Root XmlRoot { get; private set; }
 
+    /// <summary>
+    /// Default constructor for the <see cref="ResXFormat"/> class.
+    /// </summary>
     public ResXFormat()
     {
         XmlRoot = new Root();

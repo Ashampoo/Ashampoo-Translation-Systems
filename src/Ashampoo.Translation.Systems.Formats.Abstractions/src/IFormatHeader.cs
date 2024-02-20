@@ -15,5 +15,8 @@ public interface IFormatHeader
     /// </summary>
     string? SourceLanguage { get; set; }
     
+    /// <summary>
+    /// Gets or sets the additional headers associated with the format.
+    /// </summary>
     Dictionary<string, string> AdditionalHeaders { get; set; }
 }

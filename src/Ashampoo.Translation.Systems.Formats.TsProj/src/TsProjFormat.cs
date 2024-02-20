@@ -23,9 +23,12 @@ public class TsProjFormat : IFormat
     /// <inheritdoc />
     public LanguageSupport LanguageSupport => LanguageSupport.SourceAndTarget;
 
+    /// <inheritdoc />
     public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Default constructor for the <see cref="TsProjFormat"/> class.
+    /// </summary>
     public TsProjFormat()
     {
         Project = new Project();
