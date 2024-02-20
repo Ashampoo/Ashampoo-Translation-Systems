@@ -78,7 +78,7 @@ public class AshLangFormatBuilder : IFormatBuilderWithSourceAndTarget
     /// <inheritdoc />
     public void SetHeaderInformation(IFormatHeader header)
     {
-        information = new Dictionary<string, string>(header);
+        information = new Dictionary<string, string>(header.AdditionalHeaders);
     }
 
     /// <inheritdoc />

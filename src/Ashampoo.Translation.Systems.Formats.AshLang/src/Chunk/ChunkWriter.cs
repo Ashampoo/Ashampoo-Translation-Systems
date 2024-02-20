@@ -7,8 +7,8 @@ namespace Ashampoo.Translation.Systems.Formats.AshLang.Chunk;
 /// </summary>
 public class ChunkWriter
 {
-    private readonly BinaryWriter writer;
-    private readonly IChunk[] chunks;
+    private readonly BinaryWriter _writer;
+    private readonly IChunk[] _chunks;
 
     /// <summary>
     /// Initializes a new instance of the ChunkWriter class.
@@ -17,8 +17,8 @@ public class ChunkWriter
     /// <param name="chunks"></param>
     public ChunkWriter(Stream stream, IChunk[] chunks)
     {
-        this.chunks = chunks;
-        writer = new BinaryWriter(stream);
+        _chunks = chunks;
+        _writer = new BinaryWriter(stream);
     }
 
     /// <summary>
@@ -27,12 +27,12 @@ public class ChunkWriter
     public void Write()
     {
         // Header
-        writer.WriteUTF8String("URESFILE");
+        _writer.WriteUTF8String("URESFILE");
 
         // Write all chunks.
-        WriteDataAndUpdateSize(writer, () =>
+        WriteDataAndUpdateSize(_writer, () =>
         {
-            foreach (var chunk in chunks)
+            foreach (var chunk in _chunks)
             {
                 // TODO: Should this be optional?
                 if (chunk.IsEmpty) continue;
@@ -40,7 +40,7 @@ public class ChunkWriter
             }
         });
 
-        writer.Flush();
+        _writer.Flush();
     }
 
     /// <summary>
@@ -49,9 +49,9 @@ public class ChunkWriter
     /// <param name="chunk"></param>
     private void WriteChunk(IChunk chunk)
     {
-        writer.WriteUTF8String(chunk.Id);
+        _writer.WriteUTF8String(chunk.Id);
 
-        WriteDataAndUpdateSize(writer, () => { chunk.Write(writer); });
+        WriteDataAndUpdateSize(_writer, () => { chunk.Write(_writer); });
     }
 
     /// <summary>

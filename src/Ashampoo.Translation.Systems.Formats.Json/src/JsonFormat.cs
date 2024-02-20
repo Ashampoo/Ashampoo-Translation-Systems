@@ -20,6 +20,7 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
     /// <inheritdoc />
     public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
 
+    /// <inheritdoc />
     public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
 
     private const string Divider = "/";

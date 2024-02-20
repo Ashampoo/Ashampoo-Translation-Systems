@@ -13,11 +13,11 @@ public class POHeader : AbstractFormatHeader
     /// <inheritdoc />
     public override string TargetLanguage
     {
-        get => this["Language"] ?? throw new NullReferenceException("TargetLanguage is not set.");
+        get => AdditionalHeaders["Language"] ?? throw new NullReferenceException("TargetLanguage is not set.");
         set
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            this["Language"] = value;
+            AdditionalHeaders["Language"] = value;
         }
     }
 
@@ -26,13 +26,13 @@ public class POHeader : AbstractFormatHeader
     /// </summary>
     public string? Author
     {
-        get => this["Last-Translator"];
+        get => AdditionalHeaders["Last-Translator"];
         set
         {
             if (value is null)
-                Remove("Last-Translator");
+                AdditionalHeaders.Remove("Last-Translator");
             else
-                this["Last-Translator"] = value;
+                AdditionalHeaders["Last-Translator"] = value;
         }
     }
 
@@ -44,7 +44,7 @@ public class POHeader : AbstractFormatHeader
     {
         await writer.WriteLineAsync("msgid \"\"");
         await writer.WriteLineAsync("msgstr \"\"");
-        foreach (var (key, value) in this)
+        foreach (var (key, value) in AdditionalHeaders)
         {
             // skip empty values.
             if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(value)) continue;

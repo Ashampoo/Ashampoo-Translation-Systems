@@ -36,7 +36,7 @@ public class FormatProviderBuilder
     /// </returns>
     public FormatProviderBuilder SetSupportedFileExtensions(string[] fileExtensions)
     {
-        this._supportedFileExtensions = fileExtensions;
+        _supportedFileExtensions = fileExtensions;
         return this;
     }
 

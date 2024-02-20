@@ -103,7 +103,7 @@ public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget
     /// <inheritdoc />
     public void SetHeaderInformation(IFormatHeader header)
     {
-        _information = new Dictionary<string, string>(header);
+        _information = new Dictionary<string, string>(header.AdditionalHeaders);
     }
 
     /// <inheritdoc />

@@ -4,13 +4,13 @@ using Ashampoo.Translation.Systems.Formats.AshLang.Chunk;
 namespace Ashampoo.Translation.Systems.Formats.AshLang;
 
 /// <summary>
-/// Implementation of the <see cref="ITranslationString"/> interface, representing a source translation string for the AshLang format.
+/// Implementation of the <see cref="ITranslation"/> interface, representing a source translation string for the AshLang format.
 /// </summary>
 public class SourceTranslationString : ITranslation
 {
-    private readonly TranslationChunk.Translation translation;
+    private readonly TranslationChunk.Translation _translation;
 
-    private readonly string language;
+    private readonly string _language;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SourceTranslationString"/> class.
@@ -23,14 +23,14 @@ public class SourceTranslationString : ITranslation
     /// </param>
     public SourceTranslationString(string language, TranslationChunk.Translation translation)
     {
-        this.language = language;
-        this.translation = translation;
+        _language = language;
+        _translation = translation;
     }
 
     /// <inheritdoc />
     public string Value
     {
-        get => translation.Fallback;
+        get => _translation.Fallback;
         set
         {
             // Do nothing - Sources in AshLang are readonly.
@@ -38,13 +38,10 @@ public class SourceTranslationString : ITranslation
     }
 
     /// <inheritdoc />
-    public string Id => translation.Id;
-
-    /// <inheritdoc />
     public string? Comment
     {
-        get => translation.Comment;
-        set => translation.Comment = value ?? "";
+        get => _translation.Comment;
+        set => _translation.Comment = value ?? "";
     }
 
     /// <inheritdoc />
@@ -53,7 +50,7 @@ public class SourceTranslationString : ITranslation
     /// <inheritdoc />
     public string Language
     {
-        get => language;
+        get => _language;
         set
         {
             //Do nothing, source language is always en-us

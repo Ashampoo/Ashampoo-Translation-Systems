@@ -3,7 +3,7 @@ using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 namespace Ashampoo.Translation.Systems.Formats.NLang;
 
 /// <summary>
-/// Implementation of the <see cref="ITranslationString"/> interface for the NLang format.
+/// Implementation of the <see cref="ITranslation"/> interface for the NLang format.
 /// </summary>
 public class TranslationString : AbstractTranslationString
 {

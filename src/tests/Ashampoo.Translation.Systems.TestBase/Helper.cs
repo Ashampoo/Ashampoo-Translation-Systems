@@ -1,7 +1,4 @@
-using System.Collections.Generic;
 using System.IO;
-using Ashampoo.Translation.Systems.Formats.Abstractions;
-using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Xunit;
 
 namespace Ashampoo.Translation.Systems.TestBase;

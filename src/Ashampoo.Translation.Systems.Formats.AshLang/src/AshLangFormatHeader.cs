@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.AshLang.Chunk;
@@ -64,6 +63,9 @@ public class AshLangFormatHeader : IFormatHeader
             // Do nothing. SourceLanguage is always "en-US"
         }
     }
+
+    /// <inheritdoc />
+    public Dictionary<string, string> AdditionalHeaders { get; set; } = new();
 
     /// <inheritdoc />
     public ICollection<string> Keys => XDataChunk.Keys;
@@ -135,10 +137,5 @@ public class AshLangFormatHeader : IFormatHeader
     public bool TryGetValue(string key, [MaybeNullWhen(false)] out string value)
     {
         throw new NotImplementedException();
-    }
-
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return XDataChunk.GetEnumerator();
     }
 }

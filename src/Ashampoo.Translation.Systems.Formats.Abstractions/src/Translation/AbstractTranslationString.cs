@@ -1,7 +1,7 @@
 namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 /// <summary>
-/// Abstract base class for the <see cref="ITranslationString"/> interface.
+/// Abstract base class for the <see cref="ITranslation"/> interface.
 /// </summary>
 public abstract class AbstractTranslationString : ITranslation
 {
@@ -9,7 +9,7 @@ public abstract class AbstractTranslationString : ITranslation
     public virtual string Value { get; set; } = "";
 
     /// <inheritdoc />
-    public virtual string Id { get; set; } = "";
+    protected string Id { get; set; }
 
     /// <inheritdoc />
     public virtual string? Comment { get; set; }

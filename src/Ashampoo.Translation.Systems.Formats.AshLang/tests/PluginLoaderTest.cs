@@ -5,16 +5,16 @@ namespace Ashampoo.Translation.Systems.Formats.AshLang.Tests;
 
 public class PluginLoaderTest
 {
-    private readonly IFormatFactory formatFactory;
+    private readonly IFormatFactory _formatFactory;
 
     public PluginLoaderTest(IFormatFactory formatFactory)
     {
-        this.formatFactory = formatFactory;
+        _formatFactory = formatFactory;
     }
     
     [Fact]
     public void LoadTest()
     {
-        Assert.NotEmpty(formatFactory.GetFormatProviders());
+        Assert.NotEmpty(_formatFactory.GetFormatProviders());
     }
 }

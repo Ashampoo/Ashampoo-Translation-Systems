@@ -21,6 +21,7 @@ public class POFormat : AbstractTranslationUnits, IFormat
     /// <inheritdoc />
     public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
 
+    /// <inheritdoc />
     public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
 
     /// <inheritdoc />
@@ -89,7 +90,7 @@ public class POFormat : AbstractTranslationUnits, IFormat
             if (tuple.Length != 2) continue; // skip if not key:value
             var key = tuple[0].Trim();
             var value = tuple[1].Trim();
-            Header.Add(key, value); // add key:value to header
+            Header.AdditionalHeaders.Add(key, value); // add key:value to header
         }
     }
 
