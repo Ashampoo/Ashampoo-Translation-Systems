@@ -41,6 +41,13 @@ public interface IFormat
     void Write(Stream stream);
 
     /// <summary>
+    /// Writes the format to the given stream asynchronously.
+    /// </summary>
+    /// <param name="stream"></param>
+    /// <exception cref="UnsupportedFormatException"></exception>
+    Task WriteAsync(Stream stream);
+
+    /// <summary>
     /// A function to build a <see cref="IFormatProvider"/> for this format.
     /// </summary>
     /// <returns>

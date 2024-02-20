@@ -199,6 +199,12 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
             true); // Write the workbook to the stream, and leave the stream open TODO: Is this correct?
     }
 
+    /// <inheritdoc />
+    public Task WriteAsync(Stream stream)
+    {
+        throw new NotImplementedException();
+    }
+
     private void CreateHeaderRow(ISheet sheet)
     {
         var row = sheet.CreateRow(0); // Create a new row

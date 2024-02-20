@@ -18,7 +18,14 @@ public class AshLangFormat : AbstractTranslationUnits, IFormat
     /// <inheritdoc />
     public LanguageSupport LanguageSupport => LanguageSupport.SourceAndTarget;
 
+    /// <inheritdoc />
     public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
+
+    /// <inheritdoc />
+    public Task WriteAsync(Stream stream)
+    {
+        throw new NotImplementedException();
+    }
 
     /// <inheritdoc />
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()

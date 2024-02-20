@@ -28,6 +28,11 @@ public class MockFormatWithTranslationUnits : AbstractTranslationUnits, IFormat
         TranslationUnits.Add(translationUnit);
     }
 
+    public Task WriteAsync(Stream stream)
+    {
+        throw new NotImplementedException();
+    }
+
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         throw new NotImplementedException();
