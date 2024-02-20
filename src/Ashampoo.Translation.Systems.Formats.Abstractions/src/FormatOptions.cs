@@ -29,26 +29,6 @@ public record FormatStringOption(string Name, bool Required = false) : FormatOpt
 }
 
 /// <summary>
-/// Format option for a boolean value.
-/// Indicates whether a
-/// <see cref="Ashampoo.Translation.Systems.Formats.Abstractions.TranslationFilter.ITranslationFilter"/>
-/// should be applied.
-/// </summary>
-/// <param name="Name">
-/// <inheritdoc cref="FormatOption"/>
-/// </param>
-/// <param name="Required">
-/// <inheritdoc cref="FormatOption"/>
-/// </param>
-public record FormatFilterOption(string Name, bool Required = false) : FormatOption(Name, Required)
-{
-    /// <summary>
-    /// The value of the option.
-    /// </summary>
-    public bool SetFilter { get; set; } = Required;
-}
-
-/// <summary>
 /// Configuration object for a <see cref="IFormat"/> containing a list of <see cref="FormatOption">FormatOptions</see>.
 /// </summary>
 public record FormatOptions

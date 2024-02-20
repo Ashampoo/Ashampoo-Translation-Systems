@@ -11,6 +11,9 @@ public class POHeader : AbstractFormatHeader
     public override string? SourceLanguage { get; set; }
 
     /// <inheritdoc />
+    public override Dictionary<string, string> AdditionalHeaders { get; set; } = new();
+
+    /// <inheritdoc />
     public override string TargetLanguage
     {
         get => AdditionalHeaders["Language"] ?? throw new NullReferenceException("TargetLanguage is not set.");

@@ -48,7 +48,7 @@ public static class DependencyInjection
     /// <returns>
     /// The <see cref="IServiceCollection"/> so that additional calls can be chained.
     /// </returns>
-    public static IServiceCollection AddFormatFactory(this IServiceCollection services,
+    private static IServiceCollection AddFormatFactory(this IServiceCollection services,
         Action<FormatFactoryOptions> configuration)
     {
         FormatFactoryOptions options = new();

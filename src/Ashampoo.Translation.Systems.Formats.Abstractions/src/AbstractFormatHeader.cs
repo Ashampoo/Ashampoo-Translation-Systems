@@ -12,5 +12,5 @@ public abstract class AbstractFormatHeader : IFormatHeader
     public abstract string? SourceLanguage { get; set; }
 
     /// <inheritdoc />
-    public Dictionary<string, string> AdditionalHeaders { get; set; } = new();
+    public abstract Dictionary<string, string> AdditionalHeaders { get; set; }
 }

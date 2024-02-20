@@ -10,4 +10,7 @@ public class DefaultFormatHeader : AbstractFormatHeader
 
     /// <inheritdoc />
     public override string? SourceLanguage { get; set; }
+
+    /// <inheritdoc />
+    public override Dictionary<string, string> AdditionalHeaders { get; set; } = new();
 }

@@ -13,7 +13,6 @@ public interface IFormatBuilder
     /// </returns>
     IFormat Build();
     
-     
     /// <summary>
     /// Set the header information. All information will be added to the header and will overwrite
     /// existing information. All previous information will be removed.

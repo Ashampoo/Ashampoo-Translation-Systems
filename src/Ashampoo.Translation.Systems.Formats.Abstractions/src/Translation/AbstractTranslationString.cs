@@ -12,10 +12,7 @@ public abstract class AbstractTranslationString : ITranslation
 
     /// <inheritdoc />
     public virtual string? Comment { get; set; }
-
-    /// <inheritdoc />
-    public virtual bool IsEmpty => string.IsNullOrWhiteSpace(Value);
-
+    
     /// <inheritdoc />
     public virtual string Language { get; set; } = "";
 
