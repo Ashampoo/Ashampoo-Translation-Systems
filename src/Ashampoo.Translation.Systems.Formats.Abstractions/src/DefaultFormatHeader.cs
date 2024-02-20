@@ -12,5 +12,5 @@ public class DefaultFormatHeader : AbstractFormatHeader
     public override string? SourceLanguage { get; set; }
 
     /// <inheritdoc />
-    public override Dictionary<string, string> AdditionalHeaders { get; set; } = new();
+    public override Dictionary<string, string> AdditionalHeaders { get; set; } = [];
 }

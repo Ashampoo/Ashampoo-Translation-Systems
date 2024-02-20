@@ -78,10 +78,10 @@ public class ResXFormat :  IFormat
             FormatStringOption targetLanguageOption = new("Target language", true);
             FormatOptions formatOptions = new()
             {
-                Options = new FormatOption[]
-                {
+                Options =
+                [
                     targetLanguageOption
-                }
+                ]
             };
 
             await options.FormatOptionsCallback.Invoke(formatOptions); // Ask user for target language
@@ -157,7 +157,7 @@ public class ResXFormat :  IFormat
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         return builder => builder.SetId("resx")
-            .SetSupportedFileExtensions(new[] { ".resx" })
+            .SetSupportedFileExtensions([".resx"])
             .SetFormatType<ResXFormat>()
             .SetFormatBuilder<ResXFormatBuilder>()
             .Create();

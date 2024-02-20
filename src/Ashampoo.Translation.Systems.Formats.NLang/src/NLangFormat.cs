@@ -60,10 +60,10 @@ public class NLangFormat : IFormat
             FormatStringOption targetLanguageOption = new("Target language", true);
             FormatOptions formatOptions = new()
             {
-                Options = new FormatOption[]
-                {
+                Options =
+                [
                     targetLanguageOption
-                }
+                ]
             };
 
             await options.FormatOptionsCallback.Invoke(formatOptions); // Invoke callback
@@ -152,7 +152,7 @@ public class NLangFormat : IFormat
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         return builder => builder.SetId("nlang")
-            .SetSupportedFileExtensions(new[] { ".nlang3" })
+            .SetSupportedFileExtensions([".nlang3"])
             .SetFormatType<NLangFormat>()
             .SetFormatBuilder<NLangFormatBuilder>()
             .Create();

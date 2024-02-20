@@ -53,10 +53,10 @@ public class JsonFormat : IFormat
             FormatStringOption targetLanguageOption = new("Target language", true);
             FormatOptions formatOptions = new()
             {
-                Options = new FormatOption[]
-                {
+                Options =
+                [
                     targetLanguageOption
-                }
+                ]
             };
 
             await options.FormatOptionsCallback.Invoke(formatOptions); // Invoke callback to get format options
@@ -319,7 +319,7 @@ public class JsonFormat : IFormat
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         return builder => builder.SetId("json")
-            .SetSupportedFileExtensions(new[] { ".json" })
+            .SetSupportedFileExtensions([".json"])
             .SetFormatType<JsonFormat>()
             .SetFormatBuilder<JsonFormatBuilder>()
             .Create();

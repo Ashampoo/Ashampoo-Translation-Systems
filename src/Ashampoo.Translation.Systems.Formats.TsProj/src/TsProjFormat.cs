@@ -143,7 +143,7 @@ public class TsProjFormat : IFormat
             var sourceLanguageOption =
                 new FormatStringOption("SourceLanguage", true); // Create a new option for the source language
 
-            List<FormatOption> optionList = new();
+            List<FormatOption> optionList = [];
             if (setSourceLanguage) optionList.Add(sourceLanguageOption);
             if (setTargetLanguage) optionList.Add(targetLanguageOption);
 
@@ -209,7 +209,7 @@ public class TsProjFormat : IFormat
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         return builder => builder.SetId("tsproj")
-            .SetSupportedFileExtensions(new[] { ".tsproj" })
+            .SetSupportedFileExtensions([".tsproj"])
             .SetFormatType<TsProjFormat>()
             .SetFormatBuilder<TsProjFormatBuilder>()
             .Create();

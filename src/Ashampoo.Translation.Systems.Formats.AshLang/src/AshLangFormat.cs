@@ -31,7 +31,7 @@ public class AshLangFormat : IFormat
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         return builder => builder.SetId("ashlang")
-            .SetSupportedFileExtensions(new[] { ".ashlang" })
+            .SetSupportedFileExtensions([".ashlang"])
             .SetFormatType<AshLangFormat>()
             .SetFormatBuilder<AshLangFormatBuilder>()
             .Create();
@@ -53,14 +53,14 @@ public class AshLangFormat : IFormat
         var appIdChunk = new AppIdChunk();
         var versionChunk = new VersionChunk();
         var translationChunk = new TranslationChunk();
-        Chunks = new IChunk[]
-        {
+        Chunks =
+        [
             ashLangFormatHeader.LanguageChunk,
             appIdChunk,
             ashLangFormatHeader.XDataChunk,
             versionChunk,
             translationChunk
-        };
+        ];
     }
 
     /// <inheritdoc />

@@ -51,10 +51,10 @@ public partial class JavaPropertiesFormat : IFormat
             FormatStringOption targetLanguageOption = new("Target language", true);
             FormatOptions formatOptions = new()
             {
-                Options = new FormatOption[]
-                {
+                Options =
+                [
                     targetLanguageOption
-                }
+                ]
             };
 
             await options.FormatOptionsCallback.Invoke(formatOptions); // Invoke callback
@@ -129,7 +129,7 @@ public partial class JavaPropertiesFormat : IFormat
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         return builder => builder.SetId("javaproperties")
-            .SetSupportedFileExtensions(new[] { ".properties" })
+            .SetSupportedFileExtensions([".properties"])
             .SetFormatType<JavaPropertiesFormat>()
             .SetFormatBuilder<JavaPropertiesBuilder>()
             .Create();

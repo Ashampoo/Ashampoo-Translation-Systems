@@ -33,7 +33,7 @@ public static class DependencyInjection
         /// A list of <see cref="string">strings</see> representing
         /// file paths to plugins that will be loaded.
         /// </summary>
-        public List<string> PluginPaths { get; } = new();
+        public List<string> PluginPaths { get; } = [];
     }
 
     /// <summary>

@@ -55,10 +55,10 @@ public class POFormat : IFormat
             FormatStringOption targetLanguageOption = new("Target language", true);
             FormatOptions formatOptions = new()
             {
-                Options = new FormatOption[]
-                {
+                Options =
+                [
                     targetLanguageOption
-                }
+                ]
             };
 
             await options.FormatOptionsCallback.Invoke(formatOptions); // invoke callback
@@ -231,7 +231,7 @@ public class POFormat : IFormat
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         return builder => builder.SetId("po")
-            .SetSupportedFileExtensions(new[] { ".po" })
+            .SetSupportedFileExtensions([".po"])
             .SetFormatType<POFormat>()
             .SetFormatBuilder<POFormatBuilder>()
             .Create();

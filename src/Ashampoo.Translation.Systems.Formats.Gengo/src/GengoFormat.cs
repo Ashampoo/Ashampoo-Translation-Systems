@@ -66,7 +66,7 @@ public class GengoFormat : IFormat
             FormatStringOption sourceLanguageOption = new("Source language");
             FormatStringOption targetLanguageOption = new("Target language", true);
 
-            List<FormatOption> optionList = new();
+            List<FormatOption> optionList = [];
             if (setSourceLanguage) optionList.Add(sourceLanguageOption);
             if (setTargetLanguage) optionList.Add(targetLanguageOption);
 
@@ -231,7 +231,7 @@ public class GengoFormat : IFormat
     public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         return builder => builder.SetId("gengo")
-            .SetSupportedFileExtensions(new[] { ".xlsx", ".xls" })
+            .SetSupportedFileExtensions([".xlsx", ".xls"])
             .SetFormatType<GengoFormat>()
             .SetFormatBuilder<GengoFormatBuilder>()
             .Create();

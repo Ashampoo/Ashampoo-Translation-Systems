@@ -7,7 +7,7 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 internal class FormatProviderLoader
 {
     private readonly ILogger<FormatProviderLoader> _logger;
-    public List<IFormatProvider> FormatProviders { get; } = new();
+    public List<IFormatProvider> FormatProviders { get; } = [];
 
     public FormatProviderLoader(ILogger<FormatProviderLoader> logger)
     {

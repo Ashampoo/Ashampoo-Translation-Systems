@@ -58,7 +58,7 @@ public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget
             PluginGuid = "F0D8F625-2EE3-4C84-96EC-BFBDD4946878", // Guid for the TsProj format
             Translations = new List<Element.Translation>()
         };
-        project.Components = new List<Component> { component }; // Add component to project
+        project.Components = [component]; // Add component to project
 
         foreach (var keyValuePair in _translations)
         {
