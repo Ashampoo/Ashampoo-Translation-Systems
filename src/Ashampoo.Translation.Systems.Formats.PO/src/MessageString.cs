@@ -22,9 +22,6 @@ public class MessageString : Message, ITranslation
     }
 
     /// <inheritdoc />
-    public override bool IsEmpty => string.IsNullOrWhiteSpace(MsgStr);
-
-    /// <inheritdoc />
     public MessageString(string id, string value, string language, string? comment = null, string msgCtxt = "")
     {
         MsgId = id;

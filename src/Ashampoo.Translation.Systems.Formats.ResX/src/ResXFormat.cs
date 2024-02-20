@@ -12,7 +12,7 @@ namespace Ashampoo.Translation.Systems.Formats.ResX;
 /// <summary>
 /// Implementation of <see cref="IFormat"/> interface for the ResX format.
 /// </summary>
-public class ResXFormat : AbstractTranslationUnits, IFormat
+public class ResXFormat :  IFormat
 {
     /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
@@ -20,6 +20,7 @@ public class ResXFormat : AbstractTranslationUnits, IFormat
     /// <inheritdoc />
     public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
 
+    /// <inheritdoc />
     public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
 
     /// <summary>
@@ -27,7 +28,6 @@ public class ResXFormat : AbstractTranslationUnits, IFormat
     /// </summary>
     public Root XmlRoot { get; private set; }
 
-    /// <inheritdoc />
     public ResXFormat()
     {
         XmlRoot = new Root();

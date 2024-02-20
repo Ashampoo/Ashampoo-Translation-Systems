@@ -12,7 +12,7 @@ namespace Ashampoo.Translation.Systems.Formats.Json;
 /// <summary>
 /// Implementation of <see cref="IFormat"/> interface, for JSON files.
 /// </summary>
-public class JsonFormat : AbstractTranslationUnits, IFormat
+public class JsonFormat : IFormat
 {
     /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();

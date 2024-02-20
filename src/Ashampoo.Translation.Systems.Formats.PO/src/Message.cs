@@ -48,9 +48,6 @@ public abstract class Message : ITranslation
     public string? Comment { get; set; }
 
     /// <inheritdoc />
-    public abstract bool IsEmpty { get; }
-
-    /// <inheritdoc />
     public string Language { get; set; } = "";
 
     /// <summary>

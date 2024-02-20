@@ -8,7 +8,7 @@ using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IForma
 
 namespace Ashampoo.Translation.Systems.TestBase;
 
-public class MockFormatWithTranslationUnits : AbstractTranslationUnits, IFormat
+public class MockFormatWithTranslationUnits : IFormat
 {
     public static IFormat CreateMockFormatWithTranslationUnits(string language, string id, string value)
     {

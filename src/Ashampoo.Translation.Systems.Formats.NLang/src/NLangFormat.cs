@@ -11,7 +11,7 @@ namespace Ashampoo.Translation.Systems.Formats.NLang;
 /// <summary>
 /// Implementation of <see cref="IFormat"/> interface for the NLang format.
 /// </summary>
-public class NLangFormat : AbstractTranslationUnits, IFormat
+public class NLangFormat : IFormat
 {
     private static readonly Regex ReMsg = new("(?<key>.*?)=(?<value>.*)");
 

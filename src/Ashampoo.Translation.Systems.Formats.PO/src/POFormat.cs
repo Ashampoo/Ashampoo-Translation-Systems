@@ -11,7 +11,7 @@ namespace Ashampoo.Translation.Systems.Formats.PO;
 /// <summary>
 /// Implementation of the PO (Portable Object) format.
 /// </summary>
-public class POFormat : AbstractTranslationUnits, IFormat
+public class POFormat : IFormat
 {
     private static Regex _reComment = new("#(?<type>[|:,. ]{0,1})(?<content>.*)");
 

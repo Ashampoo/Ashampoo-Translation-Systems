@@ -12,7 +12,7 @@ namespace Ashampoo.Translation.Systems.Formats.Gengo;
 /// <summary>
 /// Implementation of the <see cref="IFormat"/> interface for the Gengo translation format.
 /// </summary>
-public class GengoFormat : AbstractTranslationUnits, IFormat
+public class GengoFormat : IFormat
 {
     /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();

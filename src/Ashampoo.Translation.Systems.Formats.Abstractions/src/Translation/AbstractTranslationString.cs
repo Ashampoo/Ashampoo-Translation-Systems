@@ -8,7 +8,6 @@ public abstract class AbstractTranslationString : ITranslation
     /// <inheritdoc />
     public virtual string Value { get; set; } = "";
 
-    /// <inheritdoc />
     protected string Id { get; set; }
 
     /// <inheritdoc />

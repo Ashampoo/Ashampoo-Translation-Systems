@@ -8,7 +8,7 @@ using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IForma
 
 namespace Ashampoo.Translation.Systems.Formats.JavaProperties;
 
-public partial class JavaPropertiesFormat : AbstractTranslationUnits, IFormat
+public partial class JavaPropertiesFormat : IFormat
 {
     private static readonly Regex KeyValueRegex = MyRegex();
     public IFormatHeader Header { get; } = new DefaultFormatHeader();

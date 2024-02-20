@@ -10,7 +10,7 @@ namespace Ashampoo.Translation.Systems.Formats.TsProj;
 /// <summary>
 /// Implementation of the <see cref="IFormat"/> interface for the TsProj format. 
 /// </summary>
-public class TsProjFormat : AbstractTranslationUnits, IFormat
+public class TsProjFormat : IFormat
 {
     /// <summary>
     /// The project element for the xml structure.

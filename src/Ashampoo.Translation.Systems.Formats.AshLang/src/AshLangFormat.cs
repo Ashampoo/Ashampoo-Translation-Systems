@@ -8,7 +8,7 @@ namespace Ashampoo.Translation.Systems.Formats.AshLang;
 /// <summary>
 /// Provides a format for the AshLang format.
 /// </summary>
-public class AshLangFormat : AbstractTranslationUnits, IFormat
+public class AshLangFormat : IFormat
 {
     /// <summary>
     /// The chunks of the ashlang file.
