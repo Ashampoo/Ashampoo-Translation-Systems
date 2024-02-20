@@ -105,7 +105,7 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
             var translations = CreateTranslations(row); // Create the translations from the row
             if (translations is null) continue;
 
-            var translationUnit = new DefaultTranslationUnit(translations.Item1.Id) // Create the translation unit
+            var translationUnit = new DefaultTranslationUnit(translations.Item3) // Create the translation unit
             {
                 [translations.Item1.Language] = translations.Item1,
                 [translations.Item2.Language] = translations.Item2
@@ -115,7 +115,7 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
         }
     }
 
-    private Tuple<ITranslationString, ITranslationString>? CreateTranslations(IRow row)
+    private Tuple<ITranslationString, ITranslationString, string>? CreateTranslations(IRow row)
     {
         var idCell = row.TryGetCell(0); // Get the first cell
         if (idCell is null) return null; // If the cell is null, return null
@@ -150,7 +150,7 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
             Header.TargetLanguage ?? throw new ArgumentNullException(nameof(Header.TargetLanguage))
         );
 
-        return new Tuple<ITranslationString, ITranslationString>(sourceTranslation, targetTranslation);
+        return new Tuple<ITranslationString, ITranslationString, string>(sourceTranslation, targetTranslation, id);
     }
 
     private string RemoveMarker(string str)

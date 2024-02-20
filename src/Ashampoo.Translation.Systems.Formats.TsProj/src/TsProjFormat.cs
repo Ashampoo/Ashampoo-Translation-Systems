@@ -63,41 +63,25 @@ public class TsProjFormat : AbstractTranslationUnits, IFormat
         {
             if (component.Translations is null) continue; // No translations for this component
 
-            foreach (var (source, target) in ReadTranslations(component.Translations))
-            {
-                var translationUnit =
-                    new DefaultTranslationUnit(target.Id); // Create a new translation unit with the target id
-
-                if (source is not null) translationUnit[source.Language] = source;
-
-                translationUnit[target.Language] = target;
-                Add(translationUnit);
-            }
+            ReadRootTranslations(component.Translations);
         }
     }
 
     private void ReadRootTranslations(List<Element.Translation> translations)
     {
-        foreach (var (source, target) in ReadTranslations(translations))
+        foreach (var unit in ReadTranslations(translations))
         {
-            var translationUnit =
-                new DefaultTranslationUnit(target.Id); // Create a new translation unit with the id of the translation
-
-            if (source is not null)
-                translationUnit[source.Language] = source; // Add the source translation if it exists
-
-            translationUnit[target.Language] = target; // Add the target translation
-            Add(translationUnit); // Add the translation unit to the hash set of translation units
+            Add(unit); // Add the translation unit to the hash set of translation units
         }
     }
 
-    private IEnumerable<(ITranslation?, ITranslation)> ReadTranslations(
+    private IEnumerable<ITranslationUnit> ReadTranslations(
         IEnumerable<Element.Translation> translations)
     {
         return translations.Select(CreateTranslationString);
     }
 
-    private (ITranslation?, ITranslation) CreateTranslationString(Element.Translation translation)
+    private ITranslationUnit CreateTranslationString(Element.Translation translation)
     {
         TranslationStringSource? source = null;
 
@@ -113,7 +97,13 @@ public class TsProjFormat : AbstractTranslationUnits, IFormat
                 ? Header.TargetLanguage
                 : throw new Exception("Target language is missing.")
         };
-        return (source, target);
+
+        var translationUnit = new DefaultTranslationUnit(translation.Id);
+        if (source is not null)
+            translationUnit[source.Language] = source; // Add the source translation if it exists
+
+        translationUnit[target.Language] = target;
+        return translationUnit;
     }
 
     private async Task<bool> ConfigureHeader(FormatReadOptions? options)

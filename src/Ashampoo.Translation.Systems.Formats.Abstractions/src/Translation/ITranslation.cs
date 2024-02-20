@@ -6,9 +6,9 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 public interface ITranslation
 {
     /// <summary>
-    /// Unique id of the translation.
+    /// The value of the translation.
     /// </summary>
-    string Id { get; }
+    string Value { get; set; }
 
     /// <summary>
     /// Optional comment for this translation.

@@ -72,13 +72,11 @@ public partial class JavaPropertiesFormat : AbstractTranslationUnits, IFormat
         await reader.SkipEmptyLinesAsync();
         while (await reader.HasMoreLinesAsync())
         {
-            var translation = ParseLine(await reader.ReadLineAsync(), reader.LineNumber);
-            var unit = new DefaultTranslationUnit(translation.Id) { translation };
-            Add(unit);
+            Add(ParseLine(await reader.ReadLineAsync(), reader.LineNumber));
         }
     }
 
-    private ITranslation ParseLine(string? line, int lineNumber)
+    private ITranslationUnit ParseLine(string? line, int lineNumber)
     {
         Guard.IsNotNullOrWhiteSpace(line);
 
@@ -89,8 +87,8 @@ public partial class JavaPropertiesFormat : AbstractTranslationUnits, IFormat
         var id = match.Groups["key"].Value;
         var value = match.Groups["value"].Value;
 
-
-        return new DefaultTranslationString(id, value, Header.TargetLanguage);
+        var translation = new DefaultTranslationString(id, value, Header.TargetLanguage);
+        return new DefaultTranslationUnit(id) { translation };
     }
 
     /// <inheritdoc/>

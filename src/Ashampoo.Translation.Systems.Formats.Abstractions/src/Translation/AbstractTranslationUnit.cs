@@ -43,7 +43,7 @@ public abstract class AbstractTranslationUnit : HashSet<ITranslation>, ITranslat
             RemoveWhere(x => x.Language == language);
             if (!Add(value))
                 throw new InvalidOperationException(
-                    $"AbstractTranslationUnit: not able to add translation {value.Id}.");
+                    $"AbstractTranslationUnit: not able to add translation {Id}.");
         }
     }
     

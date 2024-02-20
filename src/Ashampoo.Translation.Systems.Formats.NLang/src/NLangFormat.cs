@@ -81,18 +81,13 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
         await lineReader.SkipEmptyLinesAsync();
         while (await lineReader.HasMoreLinesAsync())
         {
-            var translation = await ReadTranslation(lineReader); // Read translation
-            TranslationUnit translationUnit = new(id: translation.Id) // Create translation unit
-            {
-                [translation.Language] = translation
-            };
-            Add(translationUnit);
+            Add(await ReadTranslation(lineReader));
             await lineReader.SkipEmptyLinesAsync();
         }
     }
 
     //TODO: add comment support
-    private async Task<ITranslation> ReadTranslation(LineReader lineReader)
+    private async Task<ITranslationUnit> ReadTranslation(LineReader lineReader)
     {
         var line = await lineReader.ReadLineAsync() ?? string.Empty;
 
@@ -101,15 +96,20 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
             throw new UnsupportedFormatException(this,
                 $"Unsupported line '{line}' at line number {lineReader.LineNumber}.");
 
-        var key = match.Groups["key"].Value;
+        var id = match.Groups["key"].Value;
         var value = match.Groups["value"].Value;
         value = value.Replace("%CRLF", "\n");
-        return new TranslationString // Create translation string
+        
+        var translation =  new TranslationString // Create translation string
         (
-            key,
+            id,
             value,
             Header.TargetLanguage
         );
+        return new TranslationUnit(id)
+        {
+            [Header.TargetLanguage] = translation
+        };
     }
 
     /// <inheritdoc />
