@@ -5,6 +5,9 @@ using CommunityToolkit.Diagnostics;
 
 namespace Ashampoo.Translation.Systems.Formats.JavaProperties;
 
+/// <summary>
+/// Builder for the <see cref="JavaPropertiesFormat"/>.
+/// </summary>
 public class JavaPropertiesFormatBuilder : IFormatBuilderWithTarget<JavaPropertiesFormat>
 {
     private Language _targetLanguage = Language.Empty;

@@ -13,7 +13,7 @@ public interface IFormatBuilder<out T> where T : class, IFormat
     /// <returns>
     /// The instance of <see cref="IFormat"/>.
     /// </returns>
-    new T Build();
+    T Build();
     
     /// <summary>
     /// Set the header information. All information will be added to the header and will overwrite
@@ -22,7 +22,7 @@ public interface IFormatBuilder<out T> where T : class, IFormat
     /// <param name="header">
     /// The <see cref="IFormatHeader"/> containing the information.
     /// </param>
-    new void SetHeaderInformation(IFormatHeader header);
+    void SetHeaderInformation(IFormatHeader header);
     
     /// <summary>
     /// Add a header information. If the key already exists, the value will be overwritten.
@@ -33,7 +33,7 @@ public interface IFormatBuilder<out T> where T : class, IFormat
     /// <param name="value">
     /// The value of the information.
     /// </param>
-    new void AddHeaderInformation(string key, string value);
+    void AddHeaderInformation(string key, string value);
     
     /// <summary>
     /// Set the target language.
@@ -41,5 +41,5 @@ public interface IFormatBuilder<out T> where T : class, IFormat
     /// <param name="language">
     /// The language to set.
     /// </param>
-    new void SetTargetLanguage(Language language);
+    void SetTargetLanguage(Language language);
 }
