@@ -1,6 +1,8 @@
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.TestBase;
+using FluentAssertions;
 using Xunit;
 
 namespace Ashampoo.Translation.Systems.Formats.TsProj.Tests
@@ -10,14 +12,14 @@ namespace Ashampoo.Translation.Systems.Formats.TsProj.Tests
         [Fact]
         public void TranslationTest()
         {
-            IFormat format = CreateAndReadFromFile("normalized_export_ashlang-de-DE.tsproj");
+            var format = CreateAndReadFromFile("normalized_export_ashlang-de-DE.tsproj");
 
             const string id = "peru.CFileNotFoundError.GeneralDesc";
 
-            Assert.Equal("The file was not found.",
-                (format[id]?[format.Header.SourceLanguage ?? ""] as ITranslationString)?.Value);
-            Assert.Equal("Die Datei wurde nicht gefunden.",
-                (format[id]?[format.Header.TargetLanguage] as ITranslationString)?.Value);
+            format.TranslationUnits.GetTranslationUnit(id).Translations
+                .GetTranslation(format.Header.SourceLanguage ?? Language.Empty).Value.Should().Be("The file was not found.");
+            format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation(format.Header.TargetLanguage)
+                .Value.Should().Be("Die Datei wurde nicht gefunden.");
         }
     }
 }

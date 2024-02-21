@@ -1,3 +1,5 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
+
 namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 
 /// <summary>
@@ -6,8 +8,11 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 public class DefaultFormatHeader : AbstractFormatHeader
 {
     /// <inheritdoc />
-    public override string TargetLanguage { get; set; } = "";
+    public override Language TargetLanguage { get; set; } = Language.Empty;
 
     /// <inheritdoc />
-    public override string? SourceLanguage { get; set; }
+    public override Language? SourceLanguage { get; set; }
+
+    /// <inheritdoc />
+    public override Dictionary<string, string> AdditionalHeaders { get; set; } = [];
 }

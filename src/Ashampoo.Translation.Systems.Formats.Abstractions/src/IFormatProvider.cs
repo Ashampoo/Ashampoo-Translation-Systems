@@ -4,7 +4,7 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 /// Interface for a provider for a specific <see cref="IFormat"/>.
 /// Contains additional information about the format.
 /// </summary>
-public interface IFormatProvider
+public interface IFormatProvider<out T> where T : class, IFormat
 {
     /// <summary>
     /// Returns the id of the format provider.
@@ -15,7 +15,7 @@ public interface IFormatProvider
     /// Creates a new instance of the format.
     /// </summary>
     /// <returns></returns>
-    IFormat Create();
+    T Create();
 
     /// <summary>
     /// Returns true if the format provider supports the given file name, otherwise false.
@@ -30,19 +30,8 @@ public interface IFormatProvider
     string[] SupportedFileExtensions { get; }
 
     /// <summary>
-    /// Returns the type of the format implementation.
-    /// </summary>
-    Type FormatType { get; }
-
-    /// <summary>
-    /// Returns the type of the format builder implementation.
-    /// </summary>
-    /// <value></value>
-    Type FormatBuilderType { get; }
-
-    /// <summary>
     /// Creates a new instance of the format builder.
     /// </summary>
     /// <returns></returns>
-    IFormatBuilder GetFormatBuilder();
+    IFormatBuilder<T> GetFormatBuilder();
 }

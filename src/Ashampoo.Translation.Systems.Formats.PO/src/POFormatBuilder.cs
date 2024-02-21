@@ -1,38 +1,39 @@
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using CommunityToolkit.Diagnostics;
 
 namespace Ashampoo.Translation.Systems.Formats.PO;
 
 /// <summary>
-/// Implementation of the <see cref="IFormatBuilderWithTarget"/> for the PO format.
+/// Implementation of the <see cref="IFormatBuilderWithTarget{T}"/> for the PO format.
 /// </summary>
-public class POFormatBuilder : IFormatBuilderWithTarget
+public class POFormatBuilder : IFormatBuilderWithTarget<POFormat>
 {
-    private string? targetLanguage;
-    private readonly Dictionary<string, string> translations = new();
+    private Language? _targetLanguage;
+    private readonly Dictionary<string, string> _translations = new();
     private const string Divider = "/"; // TODO: move to interface?
 
     /// <inheritdoc />
     public void Add(string id, string target)
     {
-        translations.Add(id, target);
+        _translations.Add(id, target);
     }
 
     /// <inheritdoc />
-    public IFormat Build()
+    public POFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(targetLanguage, nameof(targetLanguage));
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage));
 
         //Create new PO format and add translations
         var poFormat = new POFormat
         {
             Header =
             {
-                TargetLanguage = targetLanguage
+                TargetLanguage = (Language)_targetLanguage!
             }
         };
 
-        foreach (var translation in translations)
+        foreach (var translation in _translations)
         {
             var translationUnit = new TranslationUnit(translation.Key);
             var index = translation.Key.LastIndexOf(Divider, StringComparison.Ordinal); 
@@ -40,18 +41,19 @@ public class POFormatBuilder : IFormatBuilderWithTarget
             {
                 var ctxt = translation.Key[..index];
                 var msgId = translation.Key[(index + 1)..];
-                translationUnit.Add(new MessageString(id: msgId, value: translation.Value, language: targetLanguage,
+                translationUnit.Translations.Add(new MessageString(id: msgId, value: translation.Value, language: (Language)_targetLanguage,
                     msgCtxt: ctxt));
             }
             else
-                translationUnit.Add(new MessageString(translation.Key, translation.Value, targetLanguage));
+                translationUnit.Translations.Add(new MessageString(translation.Key, translation.Value, (Language)_targetLanguage));
 
-            poFormat.Add(translationUnit);
+            poFormat.TranslationUnits.Add(translationUnit);
         }
 
         return poFormat;
     }
-    
+
+    /// <inheritdoc />
     public void SetHeaderInformation(IFormatHeader header)
     {
         //TODO: implement
@@ -64,8 +66,8 @@ public class POFormatBuilder : IFormatBuilderWithTarget
     }
 
     /// <inheritdoc />
-    public void SetTargetLanguage(string language)
+    public void SetTargetLanguage(Language language)
     {
-        targetLanguage = language;
+        _targetLanguage = language;
     }
 }

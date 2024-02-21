@@ -1,9 +1,11 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
+
 namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 
 /// <summary>
 /// Interface for a builder for a <see cref="IFormat"/>.
 /// </summary>
-public interface IFormatBuilder
+public interface IFormatBuilder<out T> where T : class, IFormat
 {
     /// <summary>
     /// Builds the instance of <see cref="IFormat"/>.
@@ -11,9 +13,8 @@ public interface IFormatBuilder
     /// <returns>
     /// The instance of <see cref="IFormat"/>.
     /// </returns>
-    IFormat Build();
+    T Build();
     
-     
     /// <summary>
     /// Set the header information. All information will be added to the header and will overwrite
     /// existing information. All previous information will be removed.
@@ -33,4 +34,12 @@ public interface IFormatBuilder
     /// The value of the information.
     /// </param>
     void AddHeaderInformation(string key, string value);
+    
+    /// <summary>
+    /// Set the target language.
+    /// </summary>
+    /// <param name="language">
+    /// The language to set.
+    /// </param>
+    void SetTargetLanguage(Language language);
 }

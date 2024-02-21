@@ -1,4 +1,5 @@
 ﻿using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.Formats.ResX.Elements;
 using CommunityToolkit.Diagnostics;
@@ -6,23 +7,23 @@ using CommunityToolkit.Diagnostics;
 namespace Ashampoo.Translation.Systems.Formats.ResX;
 
 /// <summary>
-/// Implementation of the <see cref="IFormatBuilderWithTarget"/> interface for the ResX format.
+/// Implementation of the <see cref="IFormatBuilderWithTarget{T}"/> interface for the ResX format.
 /// </summary>
-public class ResXFormatBuilder : IFormatBuilderWithTarget
+public class ResXFormatBuilder : IFormatBuilderWithTarget<ResXFormat>
 {
-    private string? targetLanguage;
-    private readonly Dictionary<string, string> translations = new();
+    private Language? _targetLanguage;
+    private readonly Dictionary<string, string> _translations = new();
 
     /// <inheritdoc />
-    public IFormat Build()
+    public ResXFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(targetLanguage, nameof(targetLanguage));
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage));
 
         var format = new ResXFormat
         {
             Header =
             {
-                TargetLanguage = targetLanguage
+                TargetLanguage = (Language)_targetLanguage!
             },
             XmlRoot =
             {
@@ -30,7 +31,7 @@ public class ResXFormatBuilder : IFormatBuilderWithTarget
             }
         };
 
-        foreach (var (id, value) in translations)
+        foreach (var (id, value) in _translations)
         {
             var data = new Data
             {
@@ -39,9 +40,15 @@ public class ResXFormatBuilder : IFormatBuilderWithTarget
             };
             format.XmlRoot.Data.Add(data);
 
-            var translationString = new DefaultTranslationString(id, value, targetLanguage);
-            var translationUnit = new DefaultTranslationUnit(id) { translationString };
-            format.Add(translationUnit);
+            var translationString = new DefaultTranslationString(id, value, (Language)_targetLanguage);
+            var translationUnit = new DefaultTranslationUnit(id)
+            {
+                Translations =
+                {
+                    translationString
+                }
+            };
+            format.TranslationUnits.Add(translationUnit);
         }
 
         return format;
@@ -50,13 +57,13 @@ public class ResXFormatBuilder : IFormatBuilderWithTarget
     /// <inheritdoc />
     public void Add(string id, string target)
     {
-        translations.Add(id, target);
+        _translations.Add(id, target);
     }
 
     /// <inheritdoc />
-    public void SetTargetLanguage(string language)
+    public void SetTargetLanguage(Language language)
     {
-        targetLanguage = language;
+        _targetLanguage = language;
     }
     
     /// <summary>

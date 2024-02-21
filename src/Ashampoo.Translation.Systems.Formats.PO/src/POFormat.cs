@@ -2,24 +2,27 @@
 using System.Text.RegularExpressions;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.IO;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using CommunityToolkit.Diagnostics;
-using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
 namespace Ashampoo.Translation.Systems.Formats.PO;
 
 /// <summary>
 /// Implementation of the PO (Portable Object) format.
 /// </summary>
-public class POFormat : AbstractTranslationUnits, IFormat
+public class POFormat : IFormat
 {
-    private static Regex reComment = new(@"#(?<type>[|:,. ]{0,1})(?<content>.*)");
+    private static Regex _reComment = new("#(?<type>[|:,. ]{0,1})(?<content>.*)");
 
     /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new POHeader();
 
     /// <inheritdoc />
-    public FormatLanguageCount LanguageCount => FormatLanguageCount.OnlyTarget;
+    public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
+
+    /// <inheritdoc />
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
 
     /// <inheritdoc />
     public async Task ReadAsync(Stream stream, FormatReadOptions? options = null)
@@ -36,15 +39,15 @@ public class POFormat : AbstractTranslationUnits, IFormat
             return;
         }
 
-        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage, nameof(Header.TargetLanguage)); // check if target language is set
+        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.Value, nameof(Header.TargetLanguage)); // check if target language is set
 
         await ReadMessagesAsTranslationsAsync(lineReader);
     }
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
     {
-        if (!string.IsNullOrWhiteSpace(Header.TargetLanguage)) return true;
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage))
+        if (!Header.TargetLanguage.IsNullOrWhitespace()) return true;
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.Value))
         {
             if (options?.FormatOptionsCallback is null)
                 throw new InvalidOperationException("Callback for Format options required.");
@@ -52,21 +55,21 @@ public class POFormat : AbstractTranslationUnits, IFormat
             FormatStringOption targetLanguageOption = new("Target language", true);
             FormatOptions formatOptions = new()
             {
-                Options = new FormatOption[]
-                {
+                Options =
+                [
                     targetLanguageOption
-                }
+                ]
             };
 
             await options.FormatOptionsCallback.Invoke(formatOptions); // invoke callback
             if (formatOptions.IsCanceled) return false;
 
-            Header.TargetLanguage = targetLanguageOption.Value;
+            Header.TargetLanguage = Language.Parse(targetLanguageOption.Value);
         }
 
         else
         {
-            Header.TargetLanguage = options.TargetLanguage;
+            Header.TargetLanguage = (Language)options.TargetLanguage!;
         }
 
         return true;
@@ -87,7 +90,7 @@ public class POFormat : AbstractTranslationUnits, IFormat
             if (tuple.Length != 2) continue; // skip if not key:value
             var key = tuple[0].Trim();
             var value = tuple[1].Trim();
-            Header.Add(key, value); // add key:value to header
+            Header.AdditionalHeaders.Add(key, value); // add key:value to header
         }
     }
 
@@ -105,9 +108,12 @@ public class POFormat : AbstractTranslationUnits, IFormat
 
             var translationUnit = new TranslationUnit(messageString.Id) // Create translation unit
             {
-                [Header.TargetLanguage] = messageString
+                Translations =
+                {
+                    messageString
+                }
             };
-            Add(translationUnit);
+            TranslationUnits.Add(translationUnit);
         }
     }
 
@@ -133,7 +139,7 @@ public class POFormat : AbstractTranslationUnits, IFormat
 
         var comment = comments.Count > 0 ? string.Join("", comments) : null;
 
-        var language = omitTargetLanguage ? "" : Header.TargetLanguage;
+        var language = omitTargetLanguage ? Language.Empty : Header.TargetLanguage;
         return new MessageString(id: msgId, value: msgStr, language: language, comment: comment, msgCtxt: msgCtxt);
     }
 
@@ -210,7 +216,7 @@ public class POFormat : AbstractTranslationUnits, IFormat
         await poHeader.WriteAsync(writer);
 
         // write messages.
-        foreach (var unit in this)
+        foreach (var unit in TranslationUnits)
         {
             if (unit is not TranslationUnit poTranslationUnit)
                 throw new Exception($"Unexpected translation unit: {unit.GetType()}");
@@ -219,15 +225,5 @@ public class POFormat : AbstractTranslationUnits, IFormat
         }
 
         await writer.FlushAsync();
-    }
-
-    /// <inheritdoc />
-    public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
-    {
-        return builder => builder.SetId("po")
-            .SetSupportedFileExtensions(new[] { ".po" })
-            .SetFormatType<POFormat>()
-            .SetFormatBuilder<POFormatBuilder>()
-            .Create();
     }
 }

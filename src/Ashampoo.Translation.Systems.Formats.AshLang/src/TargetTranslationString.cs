@@ -1,14 +1,15 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.Formats.AshLang.Chunk;
 
 namespace Ashampoo.Translation.Systems.Formats.AshLang;
 
 /// <summary>
-/// Implementation of the <see cref="ITranslationString"/> interface, representing a target translation string for the AshLang format.
+/// Implementation of the <see cref="ITranslation"/> interface, representing a target translation string for the AshLang format.
 /// </summary>
-public class TargetTranslationString : ITranslationString
+public class TargetTranslationString : ITranslation
 {
-    private readonly TranslationChunk.Translation translation;
+    private readonly TranslationChunk.Translation _translation;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TargetTranslationString"/> class.
@@ -19,32 +20,26 @@ public class TargetTranslationString : ITranslationString
     /// <param name="translation">
     /// The <see cref="TranslationChunk.Translation"/> of the translation string.
     /// </param>
-    public TargetTranslationString(string language, TranslationChunk.Translation translation)
+    public TargetTranslationString(Language language, TranslationChunk.Translation translation)
     {
         Language = language;
-        this.translation = translation;
+        _translation = translation;
     }
 
     /// <inheritdoc />
     public string Value
     {
-        get => translation.Value;
-        set => translation.Value = value;
+        get => _translation.Value;
+        set => _translation.Value = value;
     }
-
-    /// <inheritdoc />
-    public string Id => translation.Id;
 
     /// <inheritdoc />
     public string? Comment
     {
-        get => translation.Comment;
-        set => translation.Comment = value ?? "";
+        get => _translation.Comment;
+        set => _translation.Comment = value ?? "";
     }
 
     /// <inheritdoc />
-    public bool IsEmpty => string.IsNullOrWhiteSpace(Value);
-
-    /// <inheritdoc />
-    public string Language { get; set; }
+    public Language Language { get; set; }
 }

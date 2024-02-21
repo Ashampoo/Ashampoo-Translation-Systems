@@ -1,8 +1,9 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 namespace Ashampoo.Translation.Systems.TestBase;
 
-public class MockTranslationString : ITranslationString
+public class MockTranslationString : ITranslation
 {
     public string Value { get; set; }
 
@@ -12,9 +13,9 @@ public class MockTranslationString : ITranslationString
 
     public bool IsEmpty => string.IsNullOrWhiteSpace(Value);
 
-    public string Language { get; set; }
+    public Language Language { get; set; }
 
-    public MockTranslationString(string id, string value, string language = "")
+    public MockTranslationString(string id, string value, Language language = new())
     {
         Id = id;
         Value = value;

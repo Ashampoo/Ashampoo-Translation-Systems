@@ -1,31 +1,29 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 namespace Ashampoo.Translation.Systems.Formats.PO;
 
 /// <summary>
-/// Implementation of ITranslationString and a PO message string.
+/// Implementation of <see cref="ITranslation"/> and a PO message string.
 /// </summary>
-public class MessageString : Message, ITranslationString
+public class MessageString : Message, ITranslation
 {
     /// <summary>
     /// Message string of the po format.
     /// </summary>
-    public string MsgStr { get; set; } = "";
+    public string MsgStr { get; private set; } = "";
 
     /// <summary>
-    /// Provides the value for the ITranslationString interface.
+    /// Provides the value for the <see cref="ITranslation"/> interface.
     /// </summary>
-    public string Value
+    public new string Value
     {
         get => MsgStr;
         set => MsgStr = value;
     }
 
     /// <inheritdoc />
-    public override bool IsEmpty => string.IsNullOrWhiteSpace(MsgStr);
-
-    /// <inheritdoc />
-    public MessageString(string id, string value, string language, string? comment = null, string msgCtxt = "")
+    public MessageString(string id, string value, Language language, string? comment = null, string msgCtxt = "")
     {
         MsgId = id;
         Value = value;

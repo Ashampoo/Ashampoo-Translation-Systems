@@ -1,4 +1,5 @@
 ﻿using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.Formats.AshLang.Chunk;
 using CommunityToolkit.Diagnostics;
@@ -8,46 +9,49 @@ namespace Ashampoo.Translation.Systems.Formats.AshLang;
 /// <summary>
 /// Builder for <see cref="AshLangFormat"/>
 /// </summary>
-public class AshLangFormatBuilder : IFormatBuilderWithSourceAndTarget
+public class AshLangFormatBuilder : IFormatBuilderWithSourceAndTarget<AshLangFormat>
 {
-    private const string SourceLanguage = "en-US"; // AshLang source is always in English
-    private string? targetLanguage;
-    private readonly Dictionary<string, (string source, string target)> translations = new();
-    private Dictionary<string, string> information = new();
+    private static readonly Language SourceLanguage = new("en-US"); // AshLang source is always in English
+    private Language _targetLanguage = Language.Empty;
+    private readonly Dictionary<string, (string source, string target)> _translations = new();
+    private Dictionary<string, string> _information = new();
 
     /// <inheritdoc />
-    public IFormat Build()
+    public AshLangFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(targetLanguage, nameof(targetLanguage));
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage.Value, nameof(_targetLanguage));
 
         var ashLang = new AshLangFormat
         {
             Header =
             {
-                TargetLanguage = targetLanguage
+                TargetLanguage = _targetLanguage
             }
         };
 
         var appIdChunk = ashLang.Chunks.OfType<AppIdChunk>().FirstOrDefault();
-        if ( appIdChunk is not null && information.TryGetValue("Name", out var name))
+        if (appIdChunk is not null && _information.TryGetValue("Name", out var name))
         {
             appIdChunk.Name = name;
-            information.Remove("Name");
+            _information.Remove("Name");
         }
 
         var translationChunk = (TranslationChunk)ashLang.Chunks.Last();
 
-        foreach (var (id, (source, target)) in translations)
+        foreach (var (id, (source, target)) in _translations)
         {
             var translation = new TranslationChunk.Translation(0, id, target, source, "");
             translationChunk.Translations.Add(translation);
 
             var translationUnit = new DefaultTranslationUnit(id)
             {
-                new SourceTranslationString(SourceLanguage, translation),
-                new TargetTranslationString(targetLanguage, translation)
+                Translations =
+                {
+                    new SourceTranslationString(SourceLanguage, translation),
+                    new TargetTranslationString(_targetLanguage, translation)
+                }
             };
-            ashLang.Add(translationUnit);
+            ashLang.TranslationUnits.Add(translationUnit);
         }
 
 
@@ -57,30 +61,30 @@ public class AshLangFormatBuilder : IFormatBuilderWithSourceAndTarget
     /// <inheritdoc />
     public void Add(string id, string source, string target)
     {
-        translations.Add(id, (source, target));
+        _translations.Add(id, (source, target));
     }
 
     /// <inheritdoc />
-    public void SetSourceLanguage(string language)
+    public void SetSourceLanguage(Language language)
     {
         // AshLang source is always in English
     }
 
     /// <inheritdoc />
-    public void SetTargetLanguage(string language)
+    public void SetTargetLanguage(Language language)
     {
-        targetLanguage = language;
+        _targetLanguage = language;
     }
 
     /// <inheritdoc />
     public void SetHeaderInformation(IFormatHeader header)
     {
-        information = new Dictionary<string, string>(header);
+        _information = new Dictionary<string, string>(header.AdditionalHeaders);
     }
 
     /// <inheritdoc />
     public void AddHeaderInformation(string key, string value)
     {
-        information.Add(key, value);
+        _information.Add(key, value);
     }
 }

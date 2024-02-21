@@ -1,4 +1,5 @@
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 
 namespace Ashampoo.Translation.Systems.Formats.PO;
 
@@ -8,17 +9,16 @@ namespace Ashampoo.Translation.Systems.Formats.PO;
 public class POHeader : AbstractFormatHeader
 {
     /// <inheritdoc />
-    public override string? SourceLanguage { get; set; }
+    public override Language? SourceLanguage { get; set; }
 
     /// <inheritdoc />
-    public override string TargetLanguage
+    public override Dictionary<string, string> AdditionalHeaders { get; set; } = new();
+
+    /// <inheritdoc />
+    public override Language TargetLanguage
     {
-        get => this["Language"] ?? throw new NullReferenceException("TargetLanguage is not set.");
-        set
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            this["Language"] = value;
-        }
+        get => Language.Parse(AdditionalHeaders["Language"]);
+        set => AdditionalHeaders["Language"] = value.ToString();
     }
 
     /// <summary>
@@ -26,13 +26,13 @@ public class POHeader : AbstractFormatHeader
     /// </summary>
     public string? Author
     {
-        get => this["Last-Translator"];
+        get => AdditionalHeaders["Last-Translator"];
         set
         {
             if (value is null)
-                Remove("Last-Translator");
+                AdditionalHeaders.Remove("Last-Translator");
             else
-                this["Last-Translator"] = value;
+                AdditionalHeaders["Last-Translator"] = value;
         }
     }
 
@@ -44,7 +44,7 @@ public class POHeader : AbstractFormatHeader
     {
         await writer.WriteLineAsync("msgid \"\"");
         await writer.WriteLineAsync("msgstr \"\"");
-        foreach (var (key, value) in this)
+        foreach (var (key, value) in AdditionalHeaders)
         {
             // skip empty values.
             if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(value)) continue;

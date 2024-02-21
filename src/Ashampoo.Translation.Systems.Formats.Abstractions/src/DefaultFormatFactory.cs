@@ -5,7 +5,7 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 /// </summary>
 public class DefaultFormatFactory : IFormatFactory
 {
-    private readonly Dictionary<string, IFormatProvider> formatProviders;
+    private readonly Dictionary<string, IFormatProvider<IFormat>> _formatProviders;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="DefaultFormatFactory"/> class.
@@ -13,66 +13,50 @@ public class DefaultFormatFactory : IFormatFactory
     /// <param name="formatProviders">
     /// The format providers to use.
     /// </param>
-    public DefaultFormatFactory(IEnumerable<IFormatProvider> formatProviders)
+    public DefaultFormatFactory(IEnumerable<IFormatProvider<IFormat>> formatProviders)
     {
-        this.formatProviders = formatProviders.ToDictionary(formatProvider => formatProvider.Id.ToLower(),
+        _formatProviders = formatProviders.ToDictionary(formatProvider => formatProvider.Id.ToLower(),
             formatProvider => formatProvider);
     }
 
     /// <inheritdoc />
     public IFormat CreateFormat(string formatId)
     {
-        return formatProviders[formatId.ToLower()].Create();
+        return _formatProviders[formatId.ToLower()].Create();
     }
 
     /// <inheritdoc />
-    public IFormatProvider GetFormatProvider(IFormat format)
+    public IFormatProvider<T> GetFormatProvider<T>(T format) where T : class, IFormat
     {
         return TryGetFormatProvider(format) ?? throw new Exception("Format provider not found"); // TODO: throw specific exception
     }
 
     /// <inheritdoc />
-    public IFormatProvider GetFormatProvider(string formatId)
+    public IFormatProvider<IFormat> GetFormatProvider(string formatId)
     {
         return TryGetFormatProvider(formatId) ?? throw new Exception("Format provider not found"); // TODO: throw specific exception
     }
 
     /// <inheritdoc />
-    public IEnumerable<IFormatProvider> GetFormatProviders() => formatProviders.Values;
+    public IEnumerable<IFormatProvider<IFormat>> GetFormatProviders() => _formatProviders.Values;
 
     /// <inheritdoc />
     public IFormat? TryCreateFormatByFileName(string fileName)
     {
         // Test every format provider to see if it can handle the file name. Return the first one that can.
-        return formatProviders.Values.FirstOrDefault(provider => provider.SupportsFileName(fileName))?.Create();
+        return _formatProviders.Values.FirstOrDefault(provider => provider.SupportsFileName(fileName))?.Create();
     }
 
     /// <inheritdoc />
-    public IFormatProvider? TryGetFormatProvider(IFormat format)
+    public IFormatProvider<T>? TryGetFormatProvider<T>(T format) where T : class, IFormat
     {
-        return formatProviders.Values.FirstOrDefault(provider => provider.FormatType == format.GetType());
+        return _formatProviders.Values.OfType<IFormatProvider<T>>().FirstOrDefault();
     }
 
     /// <inheritdoc />
-    public IFormatProvider? TryGetFormatProvider(string formatId)
+    public IFormatProvider<IFormat>? TryGetFormatProvider(string formatId)
     {
-        return formatProviders.Values.FirstOrDefault(provider =>
+        return _formatProviders.Values.FirstOrDefault(provider =>
             string.Equals(provider.Id, formatId, StringComparison.CurrentCultureIgnoreCase));
-    }
-
-
-    /// <inheritdoc />
-    public IFormatProvider GetFormatProvider(Type formatType)
-    {
-        if (!typeof(IFormat).IsAssignableFrom(formatType))
-            throw new ArgumentException($"Expected Type of IFormat, got: {formatType} instead.");
-        return TryGetFormatProvider(formatType) ?? throw new Exception( "Format provider not found"); // TODO: throw specific exception
-    }
-
-
-    /// <inheritdoc />
-    public IFormatProvider? TryGetFormatProvider(Type formatType)
-    {
-        return formatProviders.Values.FirstOrDefault(provider => provider.FormatType == formatType);
     }
 }

@@ -3,22 +3,26 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using CommunityToolkit.Diagnostics;
-using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
 namespace Ashampoo.Translation.Systems.Formats.Json;
 
 /// <summary>
 /// Implementation of <see cref="IFormat"/> interface, for JSON files.
 /// </summary>
-public class JsonFormat : AbstractTranslationUnits, IFormat
+public class JsonFormat : IFormat
 {
     /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
 
     /// <inheritdoc />
-    public FormatLanguageCount LanguageCount => FormatLanguageCount.OnlyTarget;
+    public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
+
+    /// <inheritdoc />
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
+
     private const string Divider = "/";
 
     private static readonly Regex ArrayIdentifierRegex = new(@"\[\d+\]");
@@ -33,7 +37,7 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
             return;
         }
 
-        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage, nameof(Header.TargetLanguage)); //Target language is required
+        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.Value, nameof(Header.TargetLanguage)); //Target language is required
 
         var root = await JsonSerializer.DeserializeAsync<JsonElement>(stream); // Deserialize JSON
         Parse(root); // Parse JSON to TranslationUnits
@@ -41,7 +45,7 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
     {
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage))
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.Value))
         {
             ArgumentNullException.ThrowIfNull(options?.FormatOptionsCallback,
                 nameof(options.FormatOptionsCallback)); // Format options callback is required
@@ -49,20 +53,20 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
             FormatStringOption targetLanguageOption = new("Target language", true);
             FormatOptions formatOptions = new()
             {
-                Options = new FormatOption[]
-                {
+                Options =
+                [
                     targetLanguageOption
-                }
+                ]
             };
 
             await options.FormatOptionsCallback.Invoke(formatOptions); // Invoke callback to get format options
             if (formatOptions.IsCanceled) return false; // If user cancelled, return false
 
-            Header.TargetLanguage = targetLanguageOption.Value;
+            Header.TargetLanguage = Language.Parse(targetLanguageOption.Value);
         }
         else
         {
-            Header.TargetLanguage = options.TargetLanguage;
+            Header.TargetLanguage = (Language)options.TargetLanguage!;
         }
 
         return true;
@@ -106,10 +110,13 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
 
                 var translationUnit = new DefaultTranslationUnit(nextId) // Create translation unit
                 {
-                    translationString
+                    Translations =
+                    {
+                        translationString
+                    }
                 };
 
-                Add(translationUnit); // Add translation unit to list
+                TranslationUnits.Add(translationUnit); // Add translation unit to list
             }
             else
                 Parse(nextId, property.Value); // Parse next element
@@ -139,8 +146,13 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
                     );
 
                     var translationUnit = new DefaultTranslationUnit(nextId)
-                        { translationString }; // Create translation unit
-                    Add(translationUnit); // Add translation unit to list
+                    {
+                        Translations =
+                        {
+                            translationString
+                        }
+                    }; 
+                    TranslationUnits.Add(translationUnit); // Add translation unit to list
                     break;
                 }
                 case JsonValueKind.Array:
@@ -181,7 +193,7 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
 
     private void CreateJsonObjects(JsonObject obj)
     {
-        foreach (var unit in this)
+        foreach (var unit in TranslationUnits)
         {
             var id = unit.Id;
             var index = id.IndexOf(Divider,
@@ -199,8 +211,8 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
     {
         if (trailing.Length == 0) // If trailing is empty, element has no nested elements
         {
-            var value = (unit[Header.TargetLanguage] as ITranslationString)?.Value ??
-                        throw new ArgumentNullException(nameof(ITranslationString.Value));
+            var value = unit.Translations.GetTranslation(Header.TargetLanguage).Value ??
+                        throw new ArgumentNullException(nameof(ITranslation.Value));
             var jsonValue = JsonValue.Create(value); // create json element from value
             obj.Add(id, jsonValue);
             return;
@@ -212,18 +224,18 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
         {
             > 0 => trailing[(index + Divider.Length)..],
             _ => string.Empty
-        }; 
+        };
 
         if (ArrayIdentifierRegex.IsMatch(front)) // Check if next element is an array item
         {
             // Next element is an array item, so current element is an array
-            
+
             foreach (var (key, value) in obj)
             {
                 if (key != id) continue; // find the array element with the same id as the current element
 
                 var array = value?.AsArray() ?? throw new Exception("Expected array."); // get the array
-                CreateJsonArray(front, newTrailing, array, unit); 
+                CreateJsonArray(front, newTrailing, array, unit);
                 return;
             }
 
@@ -232,9 +244,9 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
             obj.Add(id, newArray);
             return;
         }
-        
+
         // Next element is an object element
-        
+
         foreach (var pair in obj) // Check if object element with the same id exists
         {
             if (pair.Key != id) continue;
@@ -243,7 +255,7 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
             CreateJsonObject(front, newTrailing, jsonObj, unit);
             return;
         }
-        
+
         // Object element doesn't exist, create new object
 
         var newJsonObj = new JsonObject();
@@ -257,19 +269,24 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
         {
             if (trailing.Length == 0) // Current element does not have nested elements
             {
-                var value = (unit[Header.TargetLanguage] as ITranslationString)?.Value ??
-                            throw new ArgumentNullException(nameof(ITranslationString.Value));
+                var value = unit.Translations.GetTranslation(Header.TargetLanguage).Value ??
+                            throw new ArgumentNullException(nameof(ITranslation.Value));
                 var jsonValue = JsonValue.Create(value);
                 array.Add(jsonValue);
                 return;
             }
-            
+
             // Current element has nested elements
 
             var position = int.Parse(id.Trim('[', ']')); // Get array index from id
             var index = trailing.IndexOf(Divider, StringComparison.Ordinal); // Get index of next divider
-            var front = index > 0 ? trailing[..index] : trailing; // Front part of trailing is the id for the next element
-            var newTrailing = index > 0 ? trailing[(index + Divider.Length)..] : ""; // Trailing part of trailing is the trailing part of the next element
+            var front = index > 0
+                ? trailing[..index]
+                : trailing; // Front part of trailing is the id for the next element
+            var newTrailing =
+                index > 0
+                    ? trailing[(index + Divider.Length)..]
+                    : ""; // Trailing part of trailing is the trailing part of the next element
 
             var element = array.ElementAtOrDefault(position); // Get array element at position
 
@@ -296,15 +313,5 @@ public class JsonFormat : AbstractTranslationUnits, IFormat
 
             break;
         }
-    }
-
-    /// <inheritdoc />
-    public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
-    {
-        return builder => builder.SetId("json")
-            .SetSupportedFileExtensions(new[] { ".json" })
-            .SetFormatType<JsonFormat>()
-            .SetFormatBuilder<JsonFormatBuilder>()
-            .Create();
     }
 }

@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.AshLang.Chunk;
 
 namespace Ashampoo.Translation.Systems.Formats.AshLang;
@@ -36,34 +36,26 @@ public class AshLangFormatHeader : IFormatHeader
     public LanguageChunk LanguageChunk { get; }
 
     /// <inheritdoc />
-    public string this[string key]
-    {
-        get => XDataChunk[key];
-        set => XDataChunk[key] = value;
-    }
-
-    /// <inheritdoc />
-    public string TargetLanguage
+    public Language TargetLanguage
     {
         get => LanguageChunk.LanguageId;
-        set
-        {
-            if (value is null) throw new ArgumentNullException(nameof(TargetLanguage));
-
+        set =>
             // TODO: set Language and Country
             LanguageChunk.LanguageId = value;
-        }
     }
 
     /// <inheritdoc />
-    public string? SourceLanguage
+    public Language? SourceLanguage
     {
-        get => "en-US";
+        get => new("en-US");
         set
         {
             // Do nothing. SourceLanguage is always "en-US"
         }
     }
+
+    /// <inheritdoc />
+    public Dictionary<string, string> AdditionalHeaders { get; set; } = new();
 
     /// <inheritdoc />
     public ICollection<string> Keys => XDataChunk.Keys;
@@ -135,10 +127,5 @@ public class AshLangFormatHeader : IFormatHeader
     public bool TryGetValue(string key, [MaybeNullWhen(false)] out string value)
     {
         throw new NotImplementedException();
-    }
-
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return XDataChunk.GetEnumerator();
     }
 }
