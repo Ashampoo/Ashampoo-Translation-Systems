@@ -91,7 +91,7 @@ public class TsProjFormat : IFormat
     {
         TranslationStringSource? source = null;
 
-        if (!string.IsNullOrWhiteSpace(Header.SourceLanguage?.Value))
+        if (!Header.SourceLanguage.IsNullOrWhitespace())
             source = new TranslationStringSource(translation)
             {
                 Language = (Language)Header.SourceLanguage!
@@ -99,7 +99,7 @@ public class TsProjFormat : IFormat
 
         var target = new TranslationStringTarget(translation) // Create a target translation string
         {
-            Language = !string.IsNullOrWhiteSpace(Header.TargetLanguage.Value)
+            Language = !Header.TargetLanguage.IsNullOrWhitespace()
                 ? Header.TargetLanguage
                 : throw new Exception("Target language is missing.")
         };
@@ -122,8 +122,8 @@ public class TsProjFormat : IFormat
             Header.TargetLanguage =
                 Language.Parse(Project.TargetLanguage); // Set the target language if it is specified in the project file
 
-        if (!string.IsNullOrWhiteSpace(Header.SourceLanguage?.Value) &&
-            !string.IsNullOrWhiteSpace(Header.TargetLanguage.Value))
+        if (!Header.SourceLanguage.IsNullOrWhitespace() &&
+            !Header.TargetLanguage.IsNullOrWhitespace())
             return true; // If both source and target languages are specified, return true
 
 

@@ -47,7 +47,7 @@ public class POFormat : IFormat
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
     {
-        if (!string.IsNullOrWhiteSpace(Header.TargetLanguage.Value)) return true;
+        if (Header.TargetLanguage.IsNullOrWhitespace()) return true;
         if (string.IsNullOrWhiteSpace(options?.TargetLanguage?.Value))
         {
             if (options?.FormatOptionsCallback is null)

@@ -55,10 +55,11 @@ public class GengoFormat : IFormat
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions options)
     {
+        
         var setTargetLanguage =
-            string.IsNullOrWhiteSpace(options.TargetLanguage?.Value); // Check if the target language needs to be set
+            options.TargetLanguage.IsNullOrWhitespace(); // Check if the target language needs to be set
         var setSourceLanguage =
-            string.IsNullOrWhiteSpace(options.SourceLanguage?.Value); // Check if the source language needs to be set
+            options.SourceLanguage.IsNullOrWhitespace(); // Check if the source language needs to be set
         if (setTargetLanguage || setSourceLanguage)
         {
             if (options.FormatOptionsCallback is null)
