@@ -27,48 +27,11 @@ jobs:
         run: |
           TAG=${{ needs.generate-version.outputs.version }}
           echo ::set-output name=version::${TAG#v}
-          
-  create-release-branch:
-    needs: generate-version
-    if: ${{ contains(github.event.pull_request.labels.*.name, 'release') }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-      - name: Create Release Branch
-        run: git checkout -b release/${{ needs.generate-version.outputs.version }}
-      - name: Initialize mandatory git config
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email noreply@github.com
-      - name: Push new branch
-        run: git push origin release/${{ needs.generate-version.outputs.version}}
   
-  set-matrix:
-    needs: [ generate-version ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: set-matrix
-        id: set-matrix
-        run: echo "::set-output name=matrix::$(ls src/Ashampoo.Translation.Systems.*/src/Ashampoo.Translation.Systems.*.csproj | sed -r 's/.*\/(.*).csproj$/\1/' | jq -R -s -c 'split("\n")[:-1]'))"
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
-
   publish-nuget-packages:
-    needs: [ generate-version, remove-prefix-from-version ,set-matrix ]
-    strategy:
-      matrix:
-        project_name: ${{ fromJson(needs.set-matrix.outputs.matrix) }}
+    needs: [ generate-version, remove-prefix-from-version ]
     uses: ./.github/workflows/reuse-publish-nuget-package.yml
     with:
-      project_name: ${{ matrix.project_name }}
+      project_name: "Ashampoo.Translation.Systems.Formats"
       version: ${{ needs.remove-prefix-from-version.outputs.version }}
     secrets: inherit
