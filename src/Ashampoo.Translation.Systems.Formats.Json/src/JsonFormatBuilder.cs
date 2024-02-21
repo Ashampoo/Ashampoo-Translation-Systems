@@ -1,4 +1,5 @@
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using CommunityToolkit.Diagnostics;
 
@@ -9,7 +10,7 @@ namespace Ashampoo.Translation.Systems.Formats.Json;
 /// </summary>
 public class JsonFormatBuilder : IFormatBuilderWithTarget
 {
-    private string? _targetLanguage;
+    private Language? _targetLanguage;
     private readonly Dictionary<string, string> _translations = new();
 
     /// <inheritdoc />
@@ -21,21 +22,21 @@ public class JsonFormatBuilder : IFormatBuilderWithTarget
     /// <inheritdoc />
     public IFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(_targetLanguage, nameof(_targetLanguage));
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage.ToString(), nameof(_targetLanguage));
 
         //create new json format and add translations
         var jsonFormat = new JsonFormat
         {
             Header =
             {
-                TargetLanguage = _targetLanguage
+                TargetLanguage = (Language)_targetLanguage!
             }
         };
 
         foreach (var translation in _translations)
         {
             var translationUnit = new DefaultTranslationUnit(translation.Key);
-            var translationString = new DefaultTranslationString(translation.Key, translation.Value, _targetLanguage);
+            var translationString = new DefaultTranslationString(translation.Key, translation.Value, (Language)_targetLanguage);
             translationUnit.Translations.Add(translationString);
             jsonFormat.TranslationUnits.Add(translationUnit);
         }
@@ -63,7 +64,7 @@ public class JsonFormatBuilder : IFormatBuilderWithTarget
     }
 
     /// <inheritdoc />
-    public void SetTargetLanguage(string language)
+    public void SetTargetLanguage(Language language)
     {
         _targetLanguage = language;
     }

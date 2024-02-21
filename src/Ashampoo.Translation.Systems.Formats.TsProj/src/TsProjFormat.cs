@@ -1,6 +1,7 @@
 ﻿using System.Xml;
 using System.Xml.Serialization;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.Formats.TsProj.Element;
 using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
@@ -90,15 +91,15 @@ public class TsProjFormat : IFormat
     {
         TranslationStringSource? source = null;
 
-        if (!string.IsNullOrWhiteSpace(Header.SourceLanguage))
+        if (!string.IsNullOrWhiteSpace(Header.SourceLanguage.ToString()))
             source = new TranslationStringSource(translation)
             {
-                Language = Header.SourceLanguage
+                Language = (Language)Header.SourceLanguage!
             }; // Create a source translation string, if a source language is specified in the header
 
         var target = new TranslationStringTarget(translation) // Create a target translation string
         {
-            Language = !string.IsNullOrWhiteSpace(Header.TargetLanguage)
+            Language = !string.IsNullOrWhiteSpace(Header.TargetLanguage.ToString())
                 ? Header.TargetLanguage
                 : throw new Exception("Target language is missing.")
         };
@@ -115,23 +116,23 @@ public class TsProjFormat : IFormat
     {
         if (!string.IsNullOrWhiteSpace(Project.SourceLanguage))
             Header.SourceLanguage =
-                Project.SourceLanguage; // Set the source language if it is specified in the project file
+                Language.Parse(Project.SourceLanguage); // Set the source language if it is specified in the project file
 
         if (!string.IsNullOrWhiteSpace(Project.TargetLanguage))
             Header.TargetLanguage =
-                Project.TargetLanguage; // Set the target language if it is specified in the project file
+                Language.Parse(Project.TargetLanguage); // Set the target language if it is specified in the project file
 
-        if (!string.IsNullOrWhiteSpace(Header.SourceLanguage) &&
-            !string.IsNullOrWhiteSpace(Header.TargetLanguage))
+        if (!string.IsNullOrWhiteSpace(Header.SourceLanguage.ToString()) &&
+            !string.IsNullOrWhiteSpace(Header.TargetLanguage.ToString()))
             return true; // If both source and target languages are specified, return true
 
 
         var setTargetLanguage =
             string.IsNullOrWhiteSpace(options
-                ?.TargetLanguage); // If the target language is not specified, ask the user to specify it
+                ?.TargetLanguage.ToString()); // If the target language is not specified, ask the user to specify it
         var setSourceLanguage =
             string.IsNullOrWhiteSpace(options
-                ?.SourceLanguage); // If the source language is not specified, ask the user to specify it
+                ?.SourceLanguage.ToString()); // If the source language is not specified, ask the user to specify it
         if (setTargetLanguage || setSourceLanguage)
         {
             if (options?.FormatOptionsCallback is null)
@@ -157,14 +158,14 @@ public class TsProjFormat : IFormat
 
             if (setSourceLanguage)
                 Header.SourceLanguage =
-                    sourceLanguageOption.Value; // Set the source language if it is specified in the options
+                    Language.Parse(sourceLanguageOption.Value); // Set the source language if it is specified in the options
             if (setTargetLanguage)
                 Header.TargetLanguage =
-                    targetLanguageOption.Value; // Set the target language if it is specified in the options
+                    Language.Parse(targetLanguageOption.Value); // Set the target language if it is specified in the options
         }
         else
         {
-            Header.TargetLanguage = options!.TargetLanguage!;
+            Header.TargetLanguage = (Language)options!.TargetLanguage!;
             Header.SourceLanguage = options.SourceLanguage;
         }
 

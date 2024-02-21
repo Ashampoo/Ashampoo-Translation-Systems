@@ -1,4 +1,5 @@
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using CommunityToolkit.Diagnostics;
 
 namespace Ashampoo.Translation.Systems.Formats.PO;
@@ -8,7 +9,7 @@ namespace Ashampoo.Translation.Systems.Formats.PO;
 /// </summary>
 public class POFormatBuilder : IFormatBuilderWithTarget
 {
-    private string? _targetLanguage;
+    private Language? _targetLanguage;
     private readonly Dictionary<string, string> _translations = new();
     private const string Divider = "/"; // TODO: move to interface?
 
@@ -21,14 +22,14 @@ public class POFormatBuilder : IFormatBuilderWithTarget
     /// <inheritdoc />
     public IFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(_targetLanguage, nameof(_targetLanguage));
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage.ToString(), nameof(_targetLanguage));
 
         //Create new PO format and add translations
         var poFormat = new POFormat
         {
             Header =
             {
-                TargetLanguage = _targetLanguage
+                TargetLanguage = (Language)_targetLanguage!
             }
         };
 
@@ -40,11 +41,11 @@ public class POFormatBuilder : IFormatBuilderWithTarget
             {
                 var ctxt = translation.Key[..index];
                 var msgId = translation.Key[(index + 1)..];
-                translationUnit.Translations.Add(new MessageString(id: msgId, value: translation.Value, language: _targetLanguage,
+                translationUnit.Translations.Add(new MessageString(id: msgId, value: translation.Value, language: (Language)_targetLanguage,
                     msgCtxt: ctxt));
             }
             else
-                translationUnit.Translations.Add(new MessageString(translation.Key, translation.Value, _targetLanguage));
+                translationUnit.Translations.Add(new MessageString(translation.Key, translation.Value, (Language)_targetLanguage));
 
             poFormat.TranslationUnits.Add(translationUnit);
         }
@@ -65,7 +66,7 @@ public class POFormatBuilder : IFormatBuilderWithTarget
     }
 
     /// <inheritdoc />
-    public void SetTargetLanguage(string language)
+    public void SetTargetLanguage(Language language)
     {
         _targetLanguage = language;
     }

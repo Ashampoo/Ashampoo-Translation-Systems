@@ -1,4 +1,5 @@
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 
 namespace Ashampoo.Translation.Systems.Formats.PO;
 
@@ -8,20 +9,16 @@ namespace Ashampoo.Translation.Systems.Formats.PO;
 public class POHeader : AbstractFormatHeader
 {
     /// <inheritdoc />
-    public override string? SourceLanguage { get; set; }
+    public override Language? SourceLanguage { get; set; }
 
     /// <inheritdoc />
     public override Dictionary<string, string> AdditionalHeaders { get; set; } = new();
 
     /// <inheritdoc />
-    public override string TargetLanguage
+    public override Language TargetLanguage
     {
-        get => AdditionalHeaders["Language"] ?? throw new NullReferenceException("TargetLanguage is not set.");
-        set
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            AdditionalHeaders["Language"] = value;
-        }
+        get => Language.Parse(AdditionalHeaders["Language"]);
+        set => AdditionalHeaders["Language"] = value.ToString();
     }
 
     /// <summary>

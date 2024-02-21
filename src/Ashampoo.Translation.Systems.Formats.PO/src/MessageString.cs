@@ -1,3 +1,4 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 namespace Ashampoo.Translation.Systems.Formats.PO;
@@ -22,7 +23,7 @@ public class MessageString : Message, ITranslation
     }
 
     /// <inheritdoc />
-    public MessageString(string id, string value, string language, string? comment = null, string msgCtxt = "")
+    public MessageString(string id, string value, Language language, string? comment = null, string msgCtxt = "")
     {
         MsgId = id;
         Value = value;

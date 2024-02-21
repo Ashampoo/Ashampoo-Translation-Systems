@@ -1,5 +1,6 @@
 using System.Text.RegularExpressions;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Microsoft.Toolkit.Diagnostics;
 using NPOI.SS.UserModel;
@@ -47,7 +48,7 @@ public class GengoFormat : IFormat
         var workbook = WorkbookFactory.Create(stream); // Create the workbook from the stream
         var sheet = workbook.GetSheetAt(0); // Get the first sheet
 
-        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage,
+        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.ToString(),
             nameof(Header.TargetLanguage)); // The target language has to be set
         ReadTranslations(sheet); // Read the translations from the sheet
     }
@@ -55,9 +56,9 @@ public class GengoFormat : IFormat
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions options)
     {
         var setTargetLanguage =
-            string.IsNullOrWhiteSpace(options.TargetLanguage); // Check if the target language needs to be set
+            string.IsNullOrWhiteSpace(options.TargetLanguage.ToString()); // Check if the target language needs to be set
         var setSourceLanguage =
-            string.IsNullOrWhiteSpace(options.SourceLanguage); // Check if the source language needs to be set
+            string.IsNullOrWhiteSpace(options.SourceLanguage.ToString()); // Check if the source language needs to be set
         if (setTargetLanguage || setSourceLanguage)
         {
             if (options.FormatOptionsCallback is null)
@@ -82,17 +83,17 @@ public class GengoFormat : IFormat
 
             Header.SourceLanguage =
                 setSourceLanguage
-                    ? sourceLanguageOption.Value
+                    ? Language.Parse(sourceLanguageOption.Value)
                     : options.SourceLanguage; // Set the source language if it was not set
             Header.TargetLanguage =
-                setTargetLanguage
-                    ? targetLanguageOption.Value
-                    : options.TargetLanguage!; // Set the target language if it was not set
+                (Language)(setTargetLanguage
+                    ? Language.Parse(targetLanguageOption.Value)
+                    : options.TargetLanguage)!; // Set the target language if it was not set
         }
         else
         {
             Header.SourceLanguage = options.SourceLanguage;
-            Header.TargetLanguage = options.TargetLanguage!;
+            Header.TargetLanguage = (Language)options.TargetLanguage!;
         }
 
         return true;
@@ -152,7 +153,7 @@ public class GengoFormat : IFormat
         (
             id,
             target,
-            Header.TargetLanguage ?? throw new ArgumentNullException(nameof(Header.TargetLanguage))
+            Header.TargetLanguage
         );
 
         return new Tuple<ITranslation, ITranslation, string>(sourceTranslation, targetTranslation, id);
@@ -186,7 +187,7 @@ public class GengoFormat : IFormat
             }
 
             row.Cells[0].SetCellValue($"[[[{translationUnit.Id}]]]"); // Set the id with square brackets around it
-            row.Cells[1].SetCellValue(translationUnit.Translations.GetTranslation(Header.SourceLanguage!).Value);
+            row.Cells[1].SetCellValue(translationUnit.Translations.GetTranslation((Language)Header.SourceLanguage!).Value);
             row.Cells[2].SetCellValue(translationUnit.Translations.GetTranslation(Header.TargetLanguage).Value);
 
             rowCount++;

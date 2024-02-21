@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.IO;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using CommunityToolkit.Diagnostics;
 using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
@@ -33,7 +34,7 @@ public partial class JavaPropertiesFormat : IFormat
             return;
         }
 
-        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage);
+        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.ToString());
 
         using StreamReader reader = new(stream);
         using LineReader lineReader = new(reader);
@@ -44,7 +45,7 @@ public partial class JavaPropertiesFormat : IFormat
     // TODO: Can this be made Protected in a abstract class to avoid duplicate code?
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
     {
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage))
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.ToString()))
         {
             Guard.IsNotNull(options?.FormatOptionsCallback);
 
@@ -60,11 +61,11 @@ public partial class JavaPropertiesFormat : IFormat
             await options.FormatOptionsCallback.Invoke(formatOptions); // Invoke callback
             if (formatOptions.IsCanceled) return false;
 
-            Header.TargetLanguage = targetLanguageOption.Value;
+            Header.TargetLanguage = Language.Parse(targetLanguageOption.Value);
         }
         else
         {
-            Header.TargetLanguage = options.TargetLanguage;
+            Header.TargetLanguage = (Language)options.TargetLanguage!;
         }
 
         return true;

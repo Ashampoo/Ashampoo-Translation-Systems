@@ -1,4 +1,5 @@
 ﻿using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.Formats.ResX.Elements;
 using CommunityToolkit.Diagnostics;
@@ -10,19 +11,19 @@ namespace Ashampoo.Translation.Systems.Formats.ResX;
 /// </summary>
 public class ResXFormatBuilder : IFormatBuilderWithTarget
 {
-    private string? _targetLanguage;
+    private Language? _targetLanguage;
     private readonly Dictionary<string, string> _translations = new();
 
     /// <inheritdoc />
     public IFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(_targetLanguage, nameof(_targetLanguage));
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage.ToString(), nameof(_targetLanguage));
 
         var format = new ResXFormat
         {
             Header =
             {
-                TargetLanguage = _targetLanguage
+                TargetLanguage = (Language)_targetLanguage!
             },
             XmlRoot =
             {
@@ -39,7 +40,7 @@ public class ResXFormatBuilder : IFormatBuilderWithTarget
             };
             format.XmlRoot.Data.Add(data);
 
-            var translationString = new DefaultTranslationString(id, value, _targetLanguage);
+            var translationString = new DefaultTranslationString(id, value, (Language)_targetLanguage);
             var translationUnit = new DefaultTranslationUnit(id)
             {
                 Translations =
@@ -60,7 +61,7 @@ public class ResXFormatBuilder : IFormatBuilderWithTarget
     }
 
     /// <inheritdoc />
-    public void SetTargetLanguage(string language)
+    public void SetTargetLanguage(Language language)
     {
         _targetLanguage = language;
     }

@@ -2,6 +2,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.TestBase;
 using FluentAssertions;
@@ -22,19 +23,19 @@ public class FormatTest : FormatTestBase<POFormat>
     [Fact]
     public void ReadFromFile()
     {
-        var format = CreateAndReadFromFile("translation_de.po", new FormatReadOptions { SourceLanguage = "en-US" });
+        var format = CreateAndReadFromFile("translation_de.po", new FormatReadOptions { SourceLanguage = new Language("en-US") });
 
         var poHeader = format.Header as POHeader;
         poHeader.Should().NotBeNull();
 
         format.TranslationUnits.Count.Should().Be(69);
-        format.Header.TargetLanguage.Should().Be("de");
+        format.Header.TargetLanguage.Should().Be(new Language("de"));
         poHeader?.Author.Should().Be("FULL NAME <EMAIL@ADDRESS>");
 
         const string id =
             "{\\\"cxt\\\": \\\"collector_disqualification\\\", \\\"id\\\": 254239623, \\\"checksum\\\": 2373663968}/Thank you for completing our survey!";
 
-        format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation("de").Value.Should()
+        format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation(new Language("de")).Value.Should()
             .Be("Vielen Dank, dass Sie die Umfrage abgeschlossen haben!");
     }
 
@@ -42,7 +43,7 @@ public class FormatTest : FormatTestBase<POFormat>
     public async Task ReadAndWrite()
     {
         var format = await CreateAndReadFromFileAsync("normalized_translation_de.po",
-            new FormatReadOptions { TargetLanguage = "de" });
+            new FormatReadOptions { TargetLanguage = new Language("de") });
 
         var temp = Path.GetTempPath();
         var outStream = new FileStream($"{temp}normalized_translation_de.po", FileMode.Create, FileAccess.Write,

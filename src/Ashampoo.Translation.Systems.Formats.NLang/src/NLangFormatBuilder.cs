@@ -1,4 +1,5 @@
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using CommunityToolkit.Diagnostics;
 
 namespace Ashampoo.Translation.Systems.Formats.NLang;
@@ -8,7 +9,7 @@ namespace Ashampoo.Translation.Systems.Formats.NLang;
 /// </summary>
 public class NLangFormatBuilder : IFormatBuilderWithTarget
 {
-    private string? _targetLanguage;
+    private Language? _targetLanguage;
     private readonly Dictionary<string, string> _translations = new();
 
     /// <inheritdoc />
@@ -20,21 +21,21 @@ public class NLangFormatBuilder : IFormatBuilderWithTarget
     /// <inheritdoc />
     public IFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(_targetLanguage, nameof(_targetLanguage));
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage.ToString(), nameof(_targetLanguage));
 
         //Create new NLang format and add translations
         var nLangFormat = new NLangFormat
         {
             Header =
             {
-                TargetLanguage = _targetLanguage
+                TargetLanguage = (Language)_targetLanguage!
             }
         };
 
         foreach (var translation in _translations)
         {
             var translationUnit = new TranslationUnit(translation.Key);
-            var translationString = new TranslationString(translation.Key, translation.Value, _targetLanguage);
+            var translationString = new TranslationString(translation.Key, translation.Value, (Language)_targetLanguage);
             translationUnit.Translations.Add(translationString);
             nLangFormat.TranslationUnits.Add(translationUnit);
         }
@@ -43,7 +44,7 @@ public class NLangFormatBuilder : IFormatBuilderWithTarget
     }
 
     /// <inheritdoc />
-    public void SetTargetLanguage(string language)
+    public void SetTargetLanguage(Language language)
     {
         _targetLanguage = language;
     }

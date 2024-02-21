@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.TestBase;
 using FluentAssertions;
@@ -19,7 +20,7 @@ public class TsProjFormatTest : FormatTestBase<TsProjFormat>
         format.Should().NotBeNull();
         format.TranslationUnits.Should().BeEmpty();
         format.Header.SourceLanguage.Should().BeNull();
-        format.Header.TargetLanguage.Should().BeEmpty();
+        format.Header.TargetLanguage.ToString().Should().BeEmpty();
     }
 
     [Fact]
@@ -28,14 +29,14 @@ public class TsProjFormatTest : FormatTestBase<TsProjFormat>
         IFormat format = CreateAndReadFromFile("normalized_export_ashlang-de-DE.tsproj");
 
         format.TranslationUnits.Count.Should().Be(67);
-        format.Header.SourceLanguage.Should().Be("en-US");
-        format.Header.TargetLanguage.Should().Be("de-DE");
+        format.Header.SourceLanguage.Should().Be(new Language("en-US"));
+        format.Header.TargetLanguage.Should().Be(new Language("de-DE"));
         //TODO: add author to tsproj
 
         const string id = "peru.CFileNotFoundError.Desc";
-        format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation("en-US").Value.Should()
+        format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation(new Language("en-US")).Value.Should()
             .Be("The file '%FILE%' was not found.");
-        format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation("de-DE").Value.Should()
+        format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation(new Language("de-DE")).Value.Should()
             .Be("Die Datei '%FILE%' wurde nicht gefunden.");
     }
 

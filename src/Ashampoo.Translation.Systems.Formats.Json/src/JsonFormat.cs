@@ -3,6 +3,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using CommunityToolkit.Diagnostics;
 using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
@@ -37,7 +38,7 @@ public class JsonFormat : IFormat
             return;
         }
 
-        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage, nameof(Header.TargetLanguage)); //Target language is required
+        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.ToString(), nameof(Header.TargetLanguage)); //Target language is required
 
         var root = await JsonSerializer.DeserializeAsync<JsonElement>(stream); // Deserialize JSON
         Parse(root); // Parse JSON to TranslationUnits
@@ -45,7 +46,7 @@ public class JsonFormat : IFormat
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
     {
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage))
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.ToString()))
         {
             ArgumentNullException.ThrowIfNull(options?.FormatOptionsCallback,
                 nameof(options.FormatOptionsCallback)); // Format options callback is required
@@ -62,11 +63,11 @@ public class JsonFormat : IFormat
             await options.FormatOptionsCallback.Invoke(formatOptions); // Invoke callback to get format options
             if (formatOptions.IsCanceled) return false; // If user cancelled, return false
 
-            Header.TargetLanguage = targetLanguageOption.Value;
+            Header.TargetLanguage = Language.Parse(targetLanguageOption.Value);
         }
         else
         {
-            Header.TargetLanguage = options.TargetLanguage;
+            Header.TargetLanguage = (Language)options.TargetLanguage!;
         }
 
         return true;

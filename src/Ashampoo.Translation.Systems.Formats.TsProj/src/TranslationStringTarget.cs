@@ -1,3 +1,4 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 namespace Ashampoo.Translation.Systems.Formats.TsProj;
@@ -24,7 +25,7 @@ public class TranslationStringTarget : ITranslation
     }
 
     /// <inheritdoc />
-    public string Language { get; set; } = string.Empty;
+    public Language Language { get; set; } = Language.Empty;
 
     /// <summary>
     /// Implementation of <see cref="ITranslation"/> interface

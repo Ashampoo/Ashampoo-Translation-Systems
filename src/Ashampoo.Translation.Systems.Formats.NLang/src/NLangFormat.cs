@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.IO;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using CommunityToolkit.Diagnostics;
 using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
@@ -40,7 +41,7 @@ public class NLangFormat : IFormat
             return;
         }
 
-        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage,
+        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.ToString(),
             nameof(Header.TargetLanguage)); // Target language is required
 
         // TODO: Dispose of streams and readers?
@@ -52,7 +53,7 @@ public class NLangFormat : IFormat
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
     {
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage))
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.ToString()))
         {
             if (options?.FormatOptionsCallback is null)
                 throw new InvalidOperationException("Callback for Format options required.");
@@ -69,11 +70,11 @@ public class NLangFormat : IFormat
             await options.FormatOptionsCallback.Invoke(formatOptions); // Invoke callback
             if (formatOptions.IsCanceled) return false;
 
-            Header.TargetLanguage = targetLanguageOption.Value;
+            Header.TargetLanguage = Language.Parse(targetLanguageOption.Value);
         }
         else
         {
-            Header.TargetLanguage = options.TargetLanguage;
+            Header.TargetLanguage = (Language)options.TargetLanguage!;
         }
 
         return true;

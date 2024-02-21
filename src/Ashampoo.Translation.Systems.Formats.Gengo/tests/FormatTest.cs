@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.TestBase;
 using FluentAssertions;
@@ -38,15 +39,15 @@ public class FormatTest : FormatTestBase<GengoFormat>
         format.Should().NotBeNull();
         format.TranslationUnits.Should().BeEmpty();
         format.Header.SourceLanguage.Should().BeNull();
-        format.Header.TargetLanguage.Should().BeEmpty();
+        format.Header.TargetLanguage.ToString().Should().BeEmpty();
         format.LanguageSupport.Should().Be(LanguageSupport.SourceAndTarget);
 
         format = new GengoFormat
-            { Header = new DefaultFormatHeader() { SourceLanguage = "en-US", TargetLanguage = "de-DE" } };
+            { Header = new DefaultFormatHeader() { SourceLanguage = new Language("en-US"), TargetLanguage = new Language("de-DE") } };
         format.Should().NotBeNull();
         format.TranslationUnits.Should().BeEmpty();
-        format.Header.SourceLanguage.Should().Be("en-US");
-        format.Header.TargetLanguage.Should().Be("de-DE");
+        format.Header.SourceLanguage.Should().Be(new Language("en-US"));
+        format.Header.TargetLanguage.Should().Be(new Language("de-DE"));
     }
 
 
@@ -54,13 +55,13 @@ public class FormatTest : FormatTestBase<GengoFormat>
     public void ReadFromFile()
     {
         var format = CreateAndReadFromFile("normalized-excel-test.xlsx",
-            new FormatReadOptions { SourceLanguage = "de-DE", TargetLanguage = "en-US" });
+            new FormatReadOptions { SourceLanguage = new Language("de-DE"), TargetLanguage = new Language("en-US") });
 
         format.TranslationUnits.Count.Should().Be(4);
 
         const string id = "MESSAGES.MESSAGE_BETAVERSION_EXPIRED";
         var foundById = format.TranslationUnits.GetTranslationUnit(id);
-        var translationString = foundById.Translations.GetTranslation("en-US");
+        var translationString = foundById.Translations.GetTranslation(new Language("en-US"));
 
         const string target =
             "Unfortunately, the beta version of the software has expired. Please install the final version of this software.%CRLFYou can download it from ‘www.ashampoo.com’.";
@@ -73,10 +74,10 @@ public class FormatTest : FormatTestBase<GengoFormat>
     public void ReadFromFileWithoutTarget()
     {
         IFormat format = CreateAndReadFromFile("empty-target-excel-test.xlsx",
-            new FormatReadOptions { SourceLanguage = "de-DE", TargetLanguage = "en-US" });
+            new FormatReadOptions { SourceLanguage = new Language("de-DE"), TargetLanguage = new Language("en-US") });
 
-        format.Header.TargetLanguage.Should().Be("en-US");
-        format.Header.SourceLanguage.Should().Be("de-DE");
+        format.Header.TargetLanguage.Should().Be(new Language("en-US"));
+        format.Header.SourceLanguage.Should().Be(new Language("de-DE"));
 
         format.TranslationUnits.Count.Should().Be(4);
         foreach (var unit in format.TranslationUnits)
@@ -89,7 +90,7 @@ public class FormatTest : FormatTestBase<GengoFormat>
             "Diese Betaversion der Software ist leider abgelaufen. Bitte installieren Sie die finale Version dieser Software.%CRLFSie können diese z.B. von \"www.ashampoo.com\" herunterladen.";
         var foundById = format.TranslationUnits.GetTranslationUnit(id);
         foundById.Should().NotBeNull();
-        foundById.Translations.TryGetTranslation("de-DE", out var translation).Should().BeTrue();
+        foundById.Translations.TryGetTranslation(new Language("de-DE"), out var translation).Should().BeTrue();
         translation?.Value.Should().Be(value);
     }
 
@@ -97,7 +98,7 @@ public class FormatTest : FormatTestBase<GengoFormat>
     public void ReadAndWrite()
     {
         IFormat format = CreateAndReadFromFile("normalized-excel-test.xlsx",
-            new FormatReadOptions { SourceLanguage = "de-DE", TargetLanguage = "en-US" });
+            new FormatReadOptions { SourceLanguage = new Language("de-DE"), TargetLanguage = new Language("en-US") });
 
         var temp = Path.GetTempPath();
         using var outStream = new FileStream($"{temp}temp-normalized-excel-test.xlsx", FileMode.Create,
@@ -114,7 +115,7 @@ public class FormatTest : FormatTestBase<GengoFormat>
     public void ReadWithoutTargetAndWrite()
     {
         IFormat format = CreateAndReadFromFile("empty-target-excel-test.xlsx",
-            new FormatReadOptions { SourceLanguage = "de-DE", TargetLanguage = "en-US" });
+            new FormatReadOptions { SourceLanguage = new Language("de-DE"), TargetLanguage = new Language("en-US") });
         var temp = Path.GetTempPath();
         var outStream = new FileStream($"{temp}temp-empty-target-excel-test.xlsx", FileMode.Create,
             FileAccess.Write, FileShare.ReadWrite);
@@ -141,7 +142,7 @@ public class FormatTest : FormatTestBase<GengoFormat>
         ms.Seek(0, SeekOrigin.Begin);
 
         var format = CreateFormat();
-        var options = new FormatReadOptions { SourceLanguage = "en-US", TargetLanguage = "de-DE" };
+        var options = new FormatReadOptions { SourceLanguage = new Language("en-US"), TargetLanguage = new Language("de-DE") };
         await format.ReadAsync(ms, options);
     }
 
@@ -162,7 +163,7 @@ public class FormatTest : FormatTestBase<GengoFormat>
         ms.Seek(0, SeekOrigin.Begin);
 
         var format = CreateFormat();
-        var options = new FormatReadOptions { SourceLanguage = "en-US", TargetLanguage = "de-DE" };
+        var options = new FormatReadOptions { SourceLanguage = new Language("en-US"), TargetLanguage = new Language("de-DE") };
         await format.ReadAsync(ms, options);
 
         format.TranslationUnits.Should().BeEmpty();
@@ -172,7 +173,7 @@ public class FormatTest : FormatTestBase<GengoFormat>
     public async Task EmptyCellsTest()
     {
         var format = await CreateAndReadFromFileAsync("empty-cells-excel-test.xlsx",
-            new FormatReadOptions { SourceLanguage = "en-US", TargetLanguage = "de-DE" });
+            new FormatReadOptions { SourceLanguage = new Language("en-US"), TargetLanguage = new Language("de-DE") });
         format.TranslationUnits.Should().BeEmpty();
     }
 
@@ -254,13 +255,13 @@ public class FormatTest : FormatTestBase<GengoFormat>
         var options = new FormatReadOptions { FormatOptionsCallback = OptionsCallback };
         await format.ReadAsync(ms, options);
 
-        format.Header.SourceLanguage.Should().Be("en-US");
-        format.Header.TargetLanguage.Should().Be("de-DE");
+        format.Header.SourceLanguage.Should().Be(new Language("en-US"));
+        format.Header.TargetLanguage.Should().Be(new Language("de-DE"));
         format.TranslationUnits.Should().ContainSingle();
         format.TranslationUnits.GetTranslationUnit("ID Test").Should().NotBeNull();
-        format.TranslationUnits.GetTranslationUnit("ID Test").Translations.GetTranslation("en-US").Value.Should()
+        format.TranslationUnits.GetTranslationUnit("ID Test").Translations.GetTranslation(new Language("en-US")).Value.Should()
             .Be("Test source");
-        format.TranslationUnits.GetTranslationUnit("ID Test").Translations.GetTranslation("de-DE").Value.Should()
+        format.TranslationUnits.GetTranslationUnit("ID Test").Translations.GetTranslation(new Language("de-DE")).Value.Should()
             .Be("Test target");
     }
 }

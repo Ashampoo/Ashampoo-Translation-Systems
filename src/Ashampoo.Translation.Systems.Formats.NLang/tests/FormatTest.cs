@@ -1,5 +1,6 @@
 using System.IO;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.TestBase;
 using FluentAssertions;
@@ -17,13 +18,13 @@ public class FormatTest : FormatTestBase<NLangFormat>
         format.Should().NotBeNull();
         format.TranslationUnits.Should().BeEmpty();
         format.Header.SourceLanguage.Should().BeNull();
-        format.Header.TargetLanguage.Should().BeEmpty();
+        format.Header.TargetLanguage.ToString().Should().BeEmpty();
     }
 
     [Fact]
     public void ReadFromFile()
     {
-        IFormat format = CreateAndReadFromFile("de-de.nlang3", new FormatReadOptions { TargetLanguage = "de-DE" });
+        IFormat format = CreateAndReadFromFile("de-de.nlang3", new FormatReadOptions { TargetLanguage = new Language("de-DE") });
 
         foreach (var translationUnit in format.TranslationUnits)
         {
@@ -36,7 +37,7 @@ public class FormatTest : FormatTestBase<NLangFormat>
 
         var foundById = format.TranslationUnits.GetTranslationUnit(id);
         foundById.Should().NotBeNull();
-        var translationString = foundById.Translations.GetTranslation("de-DE");
+        var translationString = foundById.Translations.GetTranslation(new Language("de-DE"));
         translationString.Should().NotBeNull();
         translationString!.Value.Should().Be("Löschen");
         translationString.Comment.Should().BeNull();
@@ -45,7 +46,7 @@ public class FormatTest : FormatTestBase<NLangFormat>
     [Fact]
     public void ReadAndWrite()
     {
-        IFormat format = CreateAndReadFromFile("de-de.nlang3", new FormatReadOptions { TargetLanguage = "de-DE" });
+        IFormat format = CreateAndReadFromFile("de-de.nlang3", new FormatReadOptions { TargetLanguage = new Language("de-DE") });
 
         var ms = new MemoryStream();
         format.Write(ms);

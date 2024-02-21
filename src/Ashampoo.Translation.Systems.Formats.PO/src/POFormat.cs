@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.IO;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using CommunityToolkit.Diagnostics;
 using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
@@ -39,15 +40,15 @@ public class POFormat : IFormat
             return;
         }
 
-        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage, nameof(Header.TargetLanguage)); // check if target language is set
+        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.ToString(), nameof(Header.TargetLanguage)); // check if target language is set
 
         await ReadMessagesAsTranslationsAsync(lineReader);
     }
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
     {
-        if (!string.IsNullOrWhiteSpace(Header.TargetLanguage)) return true;
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage))
+        if (!string.IsNullOrWhiteSpace(Header.TargetLanguage.ToString())) return true;
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.ToString()))
         {
             if (options?.FormatOptionsCallback is null)
                 throw new InvalidOperationException("Callback for Format options required.");
@@ -64,12 +65,12 @@ public class POFormat : IFormat
             await options.FormatOptionsCallback.Invoke(formatOptions); // invoke callback
             if (formatOptions.IsCanceled) return false;
 
-            Header.TargetLanguage = targetLanguageOption.Value;
+            Header.TargetLanguage = Language.Parse(targetLanguageOption.Value);
         }
 
         else
         {
-            Header.TargetLanguage = options.TargetLanguage;
+            Header.TargetLanguage = (Language)options.TargetLanguage!;
         }
 
         return true;
@@ -139,7 +140,7 @@ public class POFormat : IFormat
 
         var comment = comments.Count > 0 ? string.Join("", comments) : null;
 
-        var language = omitTargetLanguage ? "" : Header.TargetLanguage;
+        var language = omitTargetLanguage ? Language.Empty : Header.TargetLanguage;
         return new MessageString(id: msgId, value: msgStr, language: language, comment: comment, msgCtxt: msgCtxt);
     }
 

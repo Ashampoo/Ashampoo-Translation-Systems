@@ -1,4 +1,5 @@
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.TestBase;
 using FluentAssertions;
@@ -16,7 +17,7 @@ namespace Ashampoo.Translation.Systems.Formats.TsProj.Tests
             const string id = "peru.CFileNotFoundError.GeneralDesc";
 
             format.TranslationUnits.GetTranslationUnit(id).Translations
-                .GetTranslation(format.Header.SourceLanguage ?? "").Value.Should().Be("The file was not found.");
+                .GetTranslation(format.Header.SourceLanguage ?? Language.Empty).Value.Should().Be("The file was not found.");
             format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation(format.Header.TargetLanguage)
                 .Value.Should().Be("Die Datei wurde nicht gefunden.");
         }

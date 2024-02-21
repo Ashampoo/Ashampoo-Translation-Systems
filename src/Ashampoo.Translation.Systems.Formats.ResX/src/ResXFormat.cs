@@ -2,6 +2,7 @@
 using System.Xml;
 using System.Xml.Serialization;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.Formats.ResX.Elements;
 using CommunityToolkit.Diagnostics;
@@ -71,7 +72,7 @@ public class ResXFormat :  IFormat
 
     private async Task<bool> ConfigureOptions(FormatReadOptions? options)
     {
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage))
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.ToString()))
         {
             ArgumentNullException.ThrowIfNull(options?.FormatOptionsCallback, nameof(options.FormatOptionsCallback));
 
@@ -87,11 +88,11 @@ public class ResXFormat :  IFormat
             await options.FormatOptionsCallback.Invoke(formatOptions); // Ask user for target language
             if (formatOptions.IsCanceled) return false;
 
-            Header.TargetLanguage = targetLanguageOption.Value;
+            Header.TargetLanguage = Language.Parse(targetLanguageOption.Value);
         }
         else
         {
-            Header.TargetLanguage = options.TargetLanguage;
+            Header.TargetLanguage = (Language)options.TargetLanguage!;
         }
 
         return true;

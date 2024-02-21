@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.TestBase;
 using FluentAssertions;
@@ -19,18 +20,18 @@ public class FormatTest : FormatTestBase<ResXFormat>
         format.Should().NotBeNull();
         format.TranslationUnits.Should().BeEmpty();
         format.Header.SourceLanguage.Should().BeNull();
-        format.Header.TargetLanguage.Should().BeEmpty();
+        format.Header.TargetLanguage.ToString().Should().BeEmpty();
     }
 
     [Fact]
     public async Task ReadFromFile()
     {
         var format =
-            await CreateAndReadFromFileAsync("Res.en.resx", new FormatReadOptions { TargetLanguage = "en-US" });
+            await CreateAndReadFromFileAsync("Res.en.resx", new FormatReadOptions { TargetLanguage = new Language("en-US") });
 
         format.TranslationUnits.Count.Should().Be(117);
-        format.Header.TargetLanguage.Should().Be("en-US");
-        format.TranslationUnits.GetTranslationUnit("Text_RemoveAddedItems").Translations.GetTranslation("en-US")
+        format.Header.TargetLanguage.Should().Be(new Language("en-US"));
+        format.TranslationUnits.GetTranslationUnit("Text_RemoveAddedItems").Translations.GetTranslation(new Language("en-US"))
             .Value.Should().Be("Remove Added Items");
     }
 
@@ -38,7 +39,7 @@ public class FormatTest : FormatTestBase<ResXFormat>
     public async Task ReadAndWrite()
     {
         var format =
-            await CreateAndReadFromFileAsync("Res.en.resx", new FormatReadOptions { TargetLanguage = "en-US" });
+            await CreateAndReadFromFileAsync("Res.en.resx", new FormatReadOptions { TargetLanguage = new Language("en-US") });
 
         await using var ms = new MemoryStream();
         await format.WriteAsync(ms);

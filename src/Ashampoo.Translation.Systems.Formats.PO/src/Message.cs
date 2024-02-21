@@ -1,3 +1,4 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 namespace Ashampoo.Translation.Systems.Formats.PO;
@@ -49,7 +50,7 @@ public abstract class Message : ITranslation
     public string? Comment { get; set; }
 
     /// <inheritdoc />
-    public string Language { get; set; } = "";
+    public Language Language { get; set; } = Language.Empty;
 
     /// <summary>
     /// Write the message to the given writer.

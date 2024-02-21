@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.TestBase;
 using FluentAssertions;
@@ -21,7 +22,7 @@ public class FormatTest : FormatTestBase<JsonFormat>
         format.Should().NotBeNull();
         format.TranslationUnits.Should().BeEmpty();
         format.Header.SourceLanguage.Should().BeNull();
-        format.Header.TargetLanguage.Should().BeEmpty();
+        format.Header.TargetLanguage.ToString().Should().BeEmpty();
         format.LanguageSupport.Should().Be(LanguageSupport.OnlyTarget);
     }
 
@@ -29,18 +30,18 @@ public class FormatTest : FormatTestBase<JsonFormat>
     [Fact]
     public void ReadFromFile()
     {
-        IFormat format = CreateAndReadFromFile("en-us.json", new FormatReadOptions { TargetLanguage = "en-US" });
+        IFormat format = CreateAndReadFromFile("en-us.json", new FormatReadOptions { TargetLanguage = new Language("en-US") });
         
         format.TranslationUnits.Should().HaveCount(301);
-        format.Header.TargetLanguage.Should().Be("en-US");
+        format.Header.TargetLanguage.Should().Be(new Language("en-US"));
         format.Header.SourceLanguage.Should().BeNull();
-        format.TranslationUnits.GetTranslationUnit("settings/save").Translations.GetTranslation("en-US").Value.Should().Be("Save");
+        format.TranslationUnits.GetTranslationUnit("settings/save").Translations.GetTranslation(new Language("en-US")).Value.Should().Be("Save");
     }
 
     [Fact]
     public void ReadAndWrite()
     {
-        IFormat format = CreateAndReadFromFile("de-DE.json", new FormatReadOptions { TargetLanguage = "de-DE" });
+        IFormat format = CreateAndReadFromFile("de-DE.json", new FormatReadOptions { TargetLanguage = new Language("de-DE") });
 
         var ms = new MemoryStream();
         format.Write(ms);
@@ -59,7 +60,7 @@ public class FormatTest : FormatTestBase<JsonFormat>
     [InlineData("json-value-kind-number-test.json")]
     public async Task InvalidValueKindsTest(string filename)
     {
-        var options = new FormatReadOptions { TargetLanguage = "de-DE" };
+        var options = new FormatReadOptions { TargetLanguage = new Language("de-DE") };
         var exception =
             await Assert.ThrowsAsync<JsonException>(async () => await CreateAndReadFromFileAsync(filename, options));
         exception.Message.Should().Be("Array element must be either an object, array or a string.");
@@ -68,7 +69,7 @@ public class FormatTest : FormatTestBase<JsonFormat>
     [Fact]
     public async Task ReadAndWriteWithReorder()
     {
-        var format = await CreateAndReadFromFileAsync("de-DE.json", new FormatReadOptions { TargetLanguage = "de-DE" });
+        var format = await CreateAndReadFromFileAsync("de-DE.json", new FormatReadOptions { TargetLanguage = new Language("de-DE") });
 
         var units = format.TranslationUnits.OrderBy(u => u.Id);
         format = new JsonFormat { Header = format.Header };
@@ -94,7 +95,7 @@ public class FormatTest : FormatTestBase<JsonFormat>
         var format = await CreateAndReadFromFileAsync("en-us.json",
             new FormatReadOptions { FormatOptionsCallback = OptionsCallback });
         format.Header.SourceLanguage.Should().BeNull();
-        format.Header.TargetLanguage.Should().BeEmpty();
+        format.Header.TargetLanguage.ToString().Should().BeEmpty();
         format.TranslationUnits.Should().BeEmpty();
     }
 
@@ -119,7 +120,7 @@ public class FormatTest : FormatTestBase<JsonFormat>
         var options = new FormatReadOptions { FormatOptionsCallback = OptionsCallback };
         var format = await CreateAndReadFromFileAsync("de-DE.json", options);
 
-        format.Header.TargetLanguage.Should().Be("de-DE");
+        format.Header.TargetLanguage.Should().Be(new Language("de-DE"));
         format.Header.SourceLanguage.Should().BeNull();
         format.TranslationUnits.Should().HaveCount(189);
     }

@@ -1,4 +1,5 @@
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.Formats.TsProj.Element;
 using CommunityToolkit.Diagnostics;
@@ -10,8 +11,8 @@ namespace Ashampoo.Translation.Systems.Formats.TsProj;
 /// </summary>
 public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget
 {
-    private string? _sourceLanguage;
-    private string? _targetLanguage;
+    private Language? _sourceLanguage;
+    private Language? _targetLanguage;
     private readonly Dictionary<string, (string, string)> _translations = new();
     private Dictionary<string, string> _information = new();
 
@@ -24,17 +25,17 @@ public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget
     /// <inheritdoc />
     public IFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(_sourceLanguage, nameof(_sourceLanguage)); // sourceLanguage is required
-        Guard.IsNotNullOrWhiteSpace(_targetLanguage, nameof(_targetLanguage)); // targetLanguage is required
+        Guard.IsNotNullOrWhiteSpace(_sourceLanguage.ToString(), nameof(_sourceLanguage)); // sourceLanguage is required
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage.ToString(), nameof(_targetLanguage)); // targetLanguage is required
 
         //Create new TsProj format and add translations
         var tsProjFormat = new TsProjFormat();
         var project = tsProjFormat.Project;
 
-        project.SourceLanguage = _sourceLanguage; // Set source language for xml object
-        project.TargetLanguage = _targetLanguage; // Set target language for xml object
+        project.SourceLanguage = _sourceLanguage.ToString(); // Set source language for xml object
+        project.TargetLanguage = _targetLanguage.ToString()!; // Set target language for xml object
         tsProjFormat.Header.SourceLanguage = _sourceLanguage; // Set source language for format object
-        tsProjFormat.Header.TargetLanguage = _targetLanguage; // Set target language for format object
+        tsProjFormat.Header.TargetLanguage = (Language)_targetLanguage!; // Set target language for format object
         
         // Add information to header
         var nameFound = _information.TryGetValue("Name", out var name);
@@ -70,8 +71,8 @@ public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget
             };
             component.Translations.Add(translationElement);
 
-            var sourceTranslationString = new TranslationStringSource(translationElement) { Language = _sourceLanguage }; // Create new source translation string
-            var targetTranslationString = new TranslationStringTarget(translationElement) { Language = _targetLanguage }; // Create new target translation string
+            var sourceTranslationString = new TranslationStringSource(translationElement) { Language = (Language)_sourceLanguage! }; // Create new source translation string
+            var targetTranslationString = new TranslationStringTarget(translationElement) { Language = (Language)_targetLanguage }; // Create new target translation string
 
             var translationUnit = new DefaultTranslationUnit(keyValuePair.Key) // Create new translation unit
             {
@@ -89,13 +90,13 @@ public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget
     }
 
     /// <inheritdoc />
-    public void SetSourceLanguage(string language)
+    public void SetSourceLanguage(Language language)
     {
         _sourceLanguage = language;
     }
 
     /// <inheritdoc />
-    public void SetTargetLanguage(string language)
+    public void SetTargetLanguage(Language language)
     {
         _targetLanguage = language;
     }

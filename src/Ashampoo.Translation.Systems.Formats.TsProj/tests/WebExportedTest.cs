@@ -1,4 +1,5 @@
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.TestBase;
 using FluentAssertions;
@@ -16,7 +17,7 @@ public class WebExportedTest : FormatTestBase<TsProjFormat>
         const string id = "textids.content.T_1904_SUBMIT_80";
         const string value = "Auf Windows 11 Systemvoraussetzungen testen und Installation ermöglichen";
 
-        format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation(format.Header.SourceLanguage!).Value
+        format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation((Language)format.Header.SourceLanguage!).Value
             .Should().Be(value);
         format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation(format.Header.TargetLanguage).Value
             .Should().BeEmpty();
