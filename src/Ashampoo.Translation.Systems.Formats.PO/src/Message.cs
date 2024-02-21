@@ -1,3 +1,4 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 namespace Ashampoo.Translation.Systems.Formats.PO;
@@ -40,16 +41,16 @@ public abstract class Message : ITranslation
     /// </summary>
     public string Id => !string.IsNullOrWhiteSpace(MsgCtxt) ? $"{MsgCtxt}{Divider}{MsgId}" : MsgId;
 
+    /// <inheritdoc />
+    public string Value { get; set; } = string.Empty;
+
     /// <summary>
     /// Provides the comment for the ITranslation interface.
     /// </summary>
     public string? Comment { get; set; }
 
     /// <inheritdoc />
-    public abstract bool IsEmpty { get; }
-
-    /// <inheritdoc />
-    public string Language { get; set; } = "";
+    public Language Language { get; set; } = Language.Empty;
 
     /// <summary>
     /// Write the message to the given writer.

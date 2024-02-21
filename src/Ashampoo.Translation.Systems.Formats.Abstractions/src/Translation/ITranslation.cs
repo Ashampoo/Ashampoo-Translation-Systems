@@ -1,3 +1,5 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
+
 namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 /// <summary>
@@ -6,9 +8,9 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 public interface ITranslation
 {
     /// <summary>
-    /// Unique id of the translation.
+    /// The value of the translation.
     /// </summary>
-    string Id { get; }
+    string Value { get; set; }
 
     /// <summary>
     /// Optional comment for this translation.
@@ -16,12 +18,7 @@ public interface ITranslation
     string? Comment { get; set; }
 
     /// <summary>
-    /// Indicates whether this translation is empty.
-    /// </summary>
-    bool IsEmpty { get; }
-
-    /// <summary>
     /// The language of the translation.
     /// </summary>
-    string Language { get; set; }
+    Language Language { get; set; }
 }

@@ -5,6 +5,8 @@ Language:
 [LanguageId ][Language Name][Country Name]
 */
 
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
+
 namespace Ashampoo.Translation.Systems.Formats.AshLang.Chunk;
 
 /// <summary>
@@ -17,10 +19,11 @@ public class LanguageChunk : IChunk
     /// </summary>
     public const string Id = "lang";
     string IChunk.Id => Id;
+
     /// <summary>
     /// The language id.
     /// </summary>
-    public string LanguageId { get; set; } = "";
+    public Language LanguageId { get; set; } = Abstractions.Models.Language.Empty;
     /// <summary>
     /// The language name.
     /// </summary>
@@ -31,13 +34,13 @@ public class LanguageChunk : IChunk
     public string Country { get; set; } = "";
 
     /// <inheritdoc />
-    public bool IsEmpty => string.IsNullOrEmpty(LanguageId) && string.IsNullOrEmpty(Language) &&
+    public bool IsEmpty => string.IsNullOrEmpty(LanguageId.ToString()) && string.IsNullOrEmpty(Language) &&
                            string.IsNullOrEmpty(Country);
 
     /// <inheritdoc />
     public void Read(BinaryReader reader)
     {
-        LanguageId = ChunkString.Read(reader);
+        LanguageId = new Language(ChunkString.Read(reader));
         Language = ChunkString.Read(reader);
         Country = ChunkString.Read(reader);
     }
@@ -45,7 +48,7 @@ public class LanguageChunk : IChunk
     /// <inheritdoc />
     public void Write(BinaryWriter writer)
     {
-        ChunkString.Write(writer, LanguageId);
+        ChunkString.Write(writer, LanguageId.ToString());
         ChunkString.Write(writer, Language);
         ChunkString.Write(writer, Country);
     }

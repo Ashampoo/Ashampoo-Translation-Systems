@@ -1,25 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <PackageId>Ashampoo.Translation.Systems.Formats.PO</PackageId>
-        <Authors>tjorvenK</Authors>
-        <Company>ashampoo</Company>
-        <Description>Package containing the implementation for the PO format.</Description>
-        <PackageLicenseFile>LICENSE</PackageLicenseFile>
-        <PackageTags>localization;translation;po</PackageTags>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <IncludeSymbols>true</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <PackageIcon>ash-logo-icon-big-128x.png</PackageIcon>
-        <MinVerTagPrefix>v</MinVerTagPrefix>
-        <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
-        <MinVerDefaultPreReleaseIdentifiers>prerelease.0</MinVerDefaultPreReleaseIdentifiers>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -33,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
         <PackageReference Include="MinVer" Version="4.3.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

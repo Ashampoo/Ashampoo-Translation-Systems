@@ -2,30 +2,35 @@
 using System.Xml;
 using System.Xml.Serialization;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.Formats.ResX.Elements;
 using CommunityToolkit.Diagnostics;
-using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
 namespace Ashampoo.Translation.Systems.Formats.ResX;
 
 /// <summary>
 /// Implementation of <see cref="IFormat"/> interface for the ResX format.
 /// </summary>
-public class ResXFormat : AbstractTranslationUnits, IFormat
+public class ResXFormat :  IFormat
 {
     /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
 
     /// <inheritdoc />
-    public FormatLanguageCount LanguageCount => FormatLanguageCount.OnlyTarget;
+    public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
+
+    /// <inheritdoc />
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
 
     /// <summary>
     /// The root element for the xml structure.
     /// </summary>
     public Root XmlRoot { get; private set; }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Default constructor for the <see cref="ResXFormat"/> class.
+    /// </summary>
     public ResXFormat()
     {
         XmlRoot = new Root();
@@ -66,27 +71,27 @@ public class ResXFormat : AbstractTranslationUnits, IFormat
 
     private async Task<bool> ConfigureOptions(FormatReadOptions? options)
     {
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage))
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.Value))
         {
             ArgumentNullException.ThrowIfNull(options?.FormatOptionsCallback, nameof(options.FormatOptionsCallback));
 
             FormatStringOption targetLanguageOption = new("Target language", true);
             FormatOptions formatOptions = new()
             {
-                Options = new FormatOption[]
-                {
+                Options =
+                [
                     targetLanguageOption
-                }
+                ]
             };
 
             await options.FormatOptionsCallback.Invoke(formatOptions); // Ask user for target language
             if (formatOptions.IsCanceled) return false;
 
-            Header.TargetLanguage = targetLanguageOption.Value;
+            Header.TargetLanguage = Language.Parse(targetLanguageOption.Value);
         }
         else
         {
-            Header.TargetLanguage = options.TargetLanguage;
+            Header.TargetLanguage = (Language)options.TargetLanguage!;
         }
 
         return true;
@@ -104,9 +109,15 @@ public class ResXFormat : AbstractTranslationUnits, IFormat
             var comment = data.Comment;
 
             var translationString = new DefaultTranslationString(id, value, Header.TargetLanguage, comment);
-            var translationUnit = new DefaultTranslationUnit(id) { translationString };
+            var translationUnit = new DefaultTranslationUnit(id)
+            {
+                Translations =
+                {
+                    translationString
+                }
+            };
 
-            Add(translationUnit);
+            TranslationUnits.Add(translationUnit);
         }
     }
 
@@ -140,15 +151,5 @@ public class ResXFormat : AbstractTranslationUnits, IFormat
         xmlSerializer.Serialize(xmlWriter, XmlRoot, ns);
 
         await xmlWriter.FlushAsync();
-    }
-
-    /// <inheritdoc />
-    public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
-    {
-        return builder => builder.SetId("resx")
-            .SetSupportedFileExtensions(new[] { ".resx" })
-            .SetFormatType<ResXFormat>()
-            .SetFormatBuilder<ResXFormatBuilder>()
-            .Create();
     }
 }

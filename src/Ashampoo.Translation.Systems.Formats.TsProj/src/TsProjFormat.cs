@@ -1,16 +1,16 @@
 ﻿using System.Xml;
 using System.Xml.Serialization;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.Formats.TsProj.Element;
-using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
 namespace Ashampoo.Translation.Systems.Formats.TsProj;
 
 /// <summary>
 /// Implementation of the <see cref="IFormat"/> interface for the TsProj format. 
 /// </summary>
-public class TsProjFormat : AbstractTranslationUnits, IFormat
+public class TsProjFormat : IFormat
 {
     /// <summary>
     /// The project element for the xml structure.
@@ -21,9 +21,14 @@ public class TsProjFormat : AbstractTranslationUnits, IFormat
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
 
     /// <inheritdoc />
-    public FormatLanguageCount LanguageCount => FormatLanguageCount.SourceAndTarget;
+    public LanguageSupport LanguageSupport => LanguageSupport.SourceAndTarget;
 
     /// <inheritdoc />
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
+
+    /// <summary>
+    /// Default constructor for the <see cref="TsProjFormat"/> class.
+    /// </summary>
     public TsProjFormat()
     {
         Project = new Project();
@@ -63,80 +68,70 @@ public class TsProjFormat : AbstractTranslationUnits, IFormat
         {
             if (component.Translations is null) continue; // No translations for this component
 
-            foreach (var (source, target) in ReadTranslations(component.Translations))
-            {
-                var translationUnit =
-                    new DefaultTranslationUnit(target.Id); // Create a new translation unit with the target id
-
-                if (source is not null) translationUnit[source.Language] = source;
-
-                translationUnit[target.Language] = target;
-                Add(translationUnit);
-            }
+            ReadRootTranslations(component.Translations);
         }
     }
 
     private void ReadRootTranslations(List<Element.Translation> translations)
     {
-        foreach (var (source, target) in ReadTranslations(translations))
+        foreach (var unit in ReadTranslations(translations))
         {
-            var translationUnit =
-                new DefaultTranslationUnit(target.Id); // Create a new translation unit with the id of the translation
-
-            if (source is not null)
-                translationUnit[source.Language] = source; // Add the source translation if it exists
-
-            translationUnit[target.Language] = target; // Add the target translation
-            Add(translationUnit); // Add the translation unit to the hash set of translation units
+            TranslationUnits.Add(unit); // Add the translation unit to the hash set of translation units
         }
     }
 
-    private IEnumerable<(ITranslation?, ITranslation)> ReadTranslations(
+    private IEnumerable<ITranslationUnit> ReadTranslations(
         IEnumerable<Element.Translation> translations)
     {
         return translations.Select(CreateTranslationString);
     }
 
-    private (ITranslation?, ITranslation) CreateTranslationString(Element.Translation translation)
+    private ITranslationUnit CreateTranslationString(Element.Translation translation)
     {
         TranslationStringSource? source = null;
 
-        if (!string.IsNullOrWhiteSpace(Header.SourceLanguage))
+        if (!Header.SourceLanguage.IsNullOrWhitespace())
             source = new TranslationStringSource(translation)
             {
-                Language = Header.SourceLanguage
+                Language = (Language)Header.SourceLanguage!
             }; // Create a source translation string, if a source language is specified in the header
 
         var target = new TranslationStringTarget(translation) // Create a target translation string
         {
-            Language = !string.IsNullOrWhiteSpace(Header.TargetLanguage)
+            Language = !Header.TargetLanguage.IsNullOrWhitespace()
                 ? Header.TargetLanguage
                 : throw new Exception("Target language is missing.")
         };
-        return (source, target);
+
+        var translationUnit = new DefaultTranslationUnit(translation.Id);
+        if (source is not null)
+            translationUnit.Translations.AddOrUpdateTranslation(source.Language, source); // Add the source translation if it exists
+
+        translationUnit.Translations.AddOrUpdateTranslation(target.Language, target);
+        return translationUnit;
     }
 
     private async Task<bool> ConfigureHeader(FormatReadOptions? options)
     {
         if (!string.IsNullOrWhiteSpace(Project.SourceLanguage))
             Header.SourceLanguage =
-                Project.SourceLanguage; // Set the source language if it is specified in the project file
+                Language.Parse(Project.SourceLanguage); // Set the source language if it is specified in the project file
 
         if (!string.IsNullOrWhiteSpace(Project.TargetLanguage))
             Header.TargetLanguage =
-                Project.TargetLanguage; // Set the target language if it is specified in the project file
+                Language.Parse(Project.TargetLanguage); // Set the target language if it is specified in the project file
 
-        if (!string.IsNullOrWhiteSpace(Header.SourceLanguage) &&
-            !string.IsNullOrWhiteSpace(Header.TargetLanguage))
+        if (!Header.SourceLanguage.IsNullOrWhitespace() &&
+            !Header.TargetLanguage.IsNullOrWhitespace())
             return true; // If both source and target languages are specified, return true
 
 
         var setTargetLanguage =
             string.IsNullOrWhiteSpace(options
-                ?.TargetLanguage); // If the target language is not specified, ask the user to specify it
+                ?.TargetLanguage.Value); // If the target language is not specified, ask the user to specify it
         var setSourceLanguage =
             string.IsNullOrWhiteSpace(options
-                ?.SourceLanguage); // If the source language is not specified, ask the user to specify it
+                ?.SourceLanguage?.Value); // If the source language is not specified, ask the user to specify it
         if (setTargetLanguage || setSourceLanguage)
         {
             if (options?.FormatOptionsCallback is null)
@@ -148,7 +143,7 @@ public class TsProjFormat : AbstractTranslationUnits, IFormat
             var sourceLanguageOption =
                 new FormatStringOption("SourceLanguage", true); // Create a new option for the source language
 
-            List<FormatOption> optionList = new();
+            List<FormatOption> optionList = [];
             if (setSourceLanguage) optionList.Add(sourceLanguageOption);
             if (setTargetLanguage) optionList.Add(targetLanguageOption);
 
@@ -162,14 +157,14 @@ public class TsProjFormat : AbstractTranslationUnits, IFormat
 
             if (setSourceLanguage)
                 Header.SourceLanguage =
-                    sourceLanguageOption.Value; // Set the source language if it is specified in the options
+                    Language.Parse(sourceLanguageOption.Value); // Set the source language if it is specified in the options
             if (setTargetLanguage)
                 Header.TargetLanguage =
-                    targetLanguageOption.Value; // Set the target language if it is specified in the options
+                    Language.Parse(targetLanguageOption.Value); // Set the target language if it is specified in the options
         }
         else
         {
-            Header.TargetLanguage = options!.TargetLanguage!;
+            Header.TargetLanguage = (Language)options!.TargetLanguage!;
             Header.SourceLanguage = options.SourceLanguage;
         }
 
@@ -208,15 +203,5 @@ public class TsProjFormat : AbstractTranslationUnits, IFormat
         xml.Serialize(writer, Project, ns); // Serialize the project to the writer
 
         await writer.FlushAsync(); 
-    }
-
-    /// <inheritdoc />
-    public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
-    {
-        return builder => builder.SetId("tsproj")
-            .SetSupportedFileExtensions(new[] { ".tsproj" })
-            .SetFormatType<TsProjFormat>()
-            .SetFormatBuilder<TsProjFormatBuilder>()
-            .Create();
     }
 }

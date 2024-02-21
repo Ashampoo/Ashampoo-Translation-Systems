@@ -1,14 +1,13 @@
 ﻿using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.Formats.AshLang.Chunk;
-using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
 namespace Ashampoo.Translation.Systems.Formats.AshLang;
 
 /// <summary>
 /// Provides a format for the AshLang format.
 /// </summary>
-public class AshLangFormat : AbstractTranslationUnits, IFormat
+public class AshLangFormat : IFormat
 {
     /// <summary>
     /// The chunks of the ashlang file.
@@ -16,24 +15,21 @@ public class AshLangFormat : AbstractTranslationUnits, IFormat
     public IChunk[] Chunks { get; private set; }
 
     /// <inheritdoc />
-    public FormatLanguageCount LanguageCount => FormatLanguageCount.SourceAndTarget;
-
+    public LanguageSupport LanguageSupport => LanguageSupport.SourceAndTarget;
 
     /// <inheritdoc />
-    public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
+
+    /// <inheritdoc />
+    public Task WriteAsync(Stream stream)
     {
-        return builder => builder.SetId("ashlang")
-            .SetSupportedFileExtensions(new[] { ".ashlang" })
-            .SetFormatType<AshLangFormat>()
-            .SetFormatBuilder<AshLangFormatBuilder>()
-            .Create();
+        throw new NotImplementedException();
     }
 
     /// <inheritdoc />
     public IFormatHeader Header { get; private set; }
 
 
-    
     /// <summary>
     /// Initializes a new instance of the <see cref="AshLangFormat"/> class.
     /// </summary>
@@ -46,14 +42,14 @@ public class AshLangFormat : AbstractTranslationUnits, IFormat
         var appIdChunk = new AppIdChunk();
         var versionChunk = new VersionChunk();
         var translationChunk = new TranslationChunk();
-        Chunks = new IChunk[]
-        {
+        Chunks =
+        [
             ashLangFormatHeader.LanguageChunk,
             appIdChunk,
             ashLangFormatHeader.XDataChunk,
             versionChunk,
             translationChunk
-        };
+        ];
     }
 
     /// <inheritdoc />
@@ -83,10 +79,13 @@ public class AshLangFormat : AbstractTranslationUnits, IFormat
             {
                 var translationUnit = new DefaultTranslationUnit(translation.Id)
                 {
-                    new SourceTranslationString(sourceLanguage, translation),
-                    new TargetTranslationString(Header.TargetLanguage, translation)
+                    Translations =
+                    {
+                        new SourceTranslationString(sourceLanguage, translation),
+                        new TargetTranslationString(Header.TargetLanguage, translation)
+                    }
                 };
-                Add(translationUnit);
+                TranslationUnits.Add(translationUnit);
             }
 
             Chunks = reader.Chunks;

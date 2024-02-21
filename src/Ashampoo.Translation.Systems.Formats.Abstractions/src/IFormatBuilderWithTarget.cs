@@ -1,9 +1,9 @@
 namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 
 /// <summary>
-/// Interface for a <see cref="IFormatBuilder"/> for formats that only support one language.
+/// Interface for a <see cref="IFormatBuilder{T}"/> for formats that only support one language.
 /// </summary>
-public interface IFormatBuilderWithTarget : IFormatBuilder
+public interface IFormatBuilderWithTarget<out T> : IFormatBuilder<T> where T : class, IFormat
 {
     /// <summary>
     /// Add a translation for the target language.
@@ -15,11 +15,4 @@ public interface IFormatBuilderWithTarget : IFormatBuilder
     /// The translation.
     /// </param>
     void Add(string id, string target);
-    /// <summary>
-    /// Set the target language.
-    /// </summary>
-    /// <param name="language">
-    /// The language to set.
-    /// </param>
-    void SetTargetLanguage(string language);
 }

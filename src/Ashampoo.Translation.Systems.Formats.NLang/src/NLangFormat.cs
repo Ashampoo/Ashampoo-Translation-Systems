@@ -2,24 +2,27 @@
 using System.Text.RegularExpressions;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.IO;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using CommunityToolkit.Diagnostics;
-using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
 namespace Ashampoo.Translation.Systems.Formats.NLang;
 
 /// <summary>
 /// Implementation of <see cref="IFormat"/> interface for the NLang format.
 /// </summary>
-public class NLangFormat : AbstractTranslationUnits, IFormat
+public class NLangFormat : IFormat
 {
-    private static readonly Regex ReMsg = new(@"(?<key>.*?)=(?<value>.*)");
+    private static readonly Regex ReMsg = new("(?<key>.*?)=(?<value>.*)");
 
     /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
 
     /// <inheritdoc />
-    public FormatLanguageCount LanguageCount => FormatLanguageCount.OnlyTarget;
+    public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
+
+    /// <inheritdoc />
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
 
     /// <inheritdoc />
     public void Read(Stream stream, FormatReadOptions? options = null)
@@ -37,7 +40,7 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
             return;
         }
 
-        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage,
+        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.Value,
             nameof(Header.TargetLanguage)); // Target language is required
 
         // TODO: Dispose of streams and readers?
@@ -49,7 +52,7 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
     {
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage))
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.Value))
         {
             if (options?.FormatOptionsCallback is null)
                 throw new InvalidOperationException("Callback for Format options required.");
@@ -57,20 +60,20 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
             FormatStringOption targetLanguageOption = new("Target language", true);
             FormatOptions formatOptions = new()
             {
-                Options = new FormatOption[]
-                {
+                Options =
+                [
                     targetLanguageOption
-                }
+                ]
             };
 
             await options.FormatOptionsCallback.Invoke(formatOptions); // Invoke callback
             if (formatOptions.IsCanceled) return false;
 
-            Header.TargetLanguage = targetLanguageOption.Value;
+            Header.TargetLanguage = Language.Parse(targetLanguageOption.Value);
         }
         else
         {
-            Header.TargetLanguage = options.TargetLanguage;
+            Header.TargetLanguage = (Language)options.TargetLanguage!;
         }
 
         return true;
@@ -81,18 +84,13 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
         await lineReader.SkipEmptyLinesAsync();
         while (await lineReader.HasMoreLinesAsync())
         {
-            var translation = await ReadTranslation(lineReader); // Read translation
-            TranslationUnit translationUnit = new(id: translation.Id) // Create translation unit
-            {
-                [translation.Language] = translation
-            };
-            Add(translationUnit);
+            TranslationUnits.Add(await ReadTranslation(lineReader));
             await lineReader.SkipEmptyLinesAsync();
         }
     }
 
     //TODO: add comment support
-    private async Task<ITranslation> ReadTranslation(LineReader lineReader)
+    private async Task<ITranslationUnit> ReadTranslation(LineReader lineReader)
     {
         var line = await lineReader.ReadLineAsync() ?? string.Empty;
 
@@ -101,15 +99,23 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
             throw new UnsupportedFormatException(this,
                 $"Unsupported line '{line}' at line number {lineReader.LineNumber}.");
 
-        var key = match.Groups["key"].Value;
+        var id = match.Groups["key"].Value;
         var value = match.Groups["value"].Value;
         value = value.Replace("%CRLF", "\n");
-        return new TranslationString // Create translation string
+        
+        var translation =  new TranslationString // Create translation string
         (
-            key,
+            id,
             value,
             Header.TargetLanguage
         );
+        return new TranslationUnit(id)
+        {
+            Translations =
+            {
+                translation
+            }
+        };
     }
 
     /// <inheritdoc />
@@ -132,7 +138,7 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
         // NLang is UTF16 LE
         var writer = new StreamWriter(stream, Encoding.Unicode);
 
-        foreach (var translationUnit in this)
+        foreach (var translationUnit in TranslationUnits)
         {
             if (translationUnit is not TranslationUnit nLangTranslationUnit)
                 throw new Exception($"Unexpected translation unit: {translationUnit.GetType()}");
@@ -140,15 +146,5 @@ public class NLangFormat : AbstractTranslationUnits, IFormat
         }
 
         await writer.FlushAsync();
-    }
-
-    /// <inheritdoc />
-    public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
-    {
-        return builder => builder.SetId("nlang")
-            .SetSupportedFileExtensions(new[] { ".nlang3" })
-            .SetFormatType<NLangFormat>()
-            .SetFormatBuilder<NLangFormatBuilder>()
-            .Create();
     }
 }

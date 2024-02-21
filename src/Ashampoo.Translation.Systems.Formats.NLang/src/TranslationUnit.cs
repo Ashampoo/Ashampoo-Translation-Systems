@@ -20,7 +20,7 @@ public class TranslationUnit : AbstractTranslationUnit
     /// </param>
     public async Task WriteAsync(TextWriter writer)
     {
-        foreach (var translation in this)
+        foreach (var translation in Translations)
         {
             if (translation is TranslationString translationString) await translationString.WriteAsync(writer);
         }

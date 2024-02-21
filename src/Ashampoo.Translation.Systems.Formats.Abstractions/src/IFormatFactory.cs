@@ -11,7 +11,7 @@ public interface IFormatFactory
     /// <returns>
     /// A collection of all available format providers.
     /// </returns>
-    IEnumerable<IFormatProvider> GetFormatProviders();
+    IEnumerable<IFormatProvider<IFormat>> GetFormatProviders();
 
     /// <summary>
     /// Creates a new instance of <see cref="IFormat" /> by the given <paramref name="formatId" />. 
@@ -45,7 +45,7 @@ public interface IFormatFactory
     /// <exception cref="Exception">
     /// Thrown if the format provider for the specified format is not found.
     /// </exception>
-    IFormatProvider GetFormatProvider(IFormat format);
+    IFormatProvider<T> GetFormatProvider<T>(T format) where T : class, IFormat;
     
     /// <summary>
     /// Try to get the <see cref="IFormatProvider"/> for the specified <see cref="IFormat"/>.
@@ -56,7 +56,7 @@ public interface IFormatFactory
     /// <returns>
     /// The <see cref="IFormatProvider"/> for the specified <see cref="IFormat"/>, or null if not found.
     /// </returns>
-    IFormatProvider? TryGetFormatProvider(IFormat format);
+    IFormatProvider<T>? TryGetFormatProvider<T>(T format) where T : class, IFormat ;
     
     /// <summary>
     /// Gets the format provider for a format with the specified id.
@@ -68,7 +68,7 @@ public interface IFormatFactory
     /// <exception cref="Exception">
     /// Thrown if the format provider for the specified format is not found.
     /// </exception>
-    IFormatProvider GetFormatProvider(string formatId);
+    IFormatProvider<IFormat> GetFormatProvider(string formatId);
     
     /// <summary>
     /// Try to get the <see cref="IFormatProvider"/> for the specified format id.
@@ -79,33 +79,5 @@ public interface IFormatFactory
     /// <returns>
     /// The <see cref="IFormatProvider"/> for the specified format id, or null if not found.
     /// </returns>
-    IFormatProvider? TryGetFormatProvider(string formatId);
-    
-    /// <summary>
-    /// Get the <see cref="IFormatProvider"/> for the specified <see cref="Type"/>.
-    /// </summary>
-    /// <param name="formatType">
-    /// The format type to get the format provider for.
-    /// </param>
-    /// <returns>
-    /// The <see cref="IFormatProvider"/> for the specified <see cref="Type"/>.
-    /// </returns>
-    /// <exception cref="ArgumentException">
-    /// Thrown if the specified <see cref="Type"/> is not a supported format.
-    /// </exception>
-    /// <exception cref="Exception">
-    /// Thrown if the format provider for the specified format is not found.
-    /// </exception>
-    IFormatProvider GetFormatProvider(Type formatType);
-    
-    /// <summary>
-    /// Try to get the <see cref="IFormatProvider"/> for the specified <see cref="Type"/>.
-    /// </summary>
-    /// <param name="formatType">
-    /// The format type to get the format provider for.
-    /// </param>
-    /// <returns>
-    /// The <see cref="IFormatProvider"/> for the specified <see cref="Type"/>, or null if not found.
-    /// </returns>
-    IFormatProvider? TryGetFormatProvider(Type formatType);
+    IFormatProvider<IFormat>? TryGetFormatProvider(string formatId);
 }

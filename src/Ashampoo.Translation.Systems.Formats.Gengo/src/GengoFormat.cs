@@ -1,10 +1,10 @@
 using System.Text.RegularExpressions;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Microsoft.Toolkit.Diagnostics;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
 
 namespace Ashampoo.Translation.Systems.Formats.Gengo;
@@ -12,21 +12,23 @@ namespace Ashampoo.Translation.Systems.Formats.Gengo;
 /// <summary>
 /// Implementation of the <see cref="IFormat"/> interface for the Gengo translation format.
 /// </summary>
-public class GengoFormat : AbstractTranslationUnits, IFormat
+public partial class GengoFormat : IFormat
 {
     /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
 
     /// <inheritdoc />
-    public FormatLanguageCount LanguageCount => FormatLanguageCount.SourceAndTarget;
+    public LanguageSupport LanguageSupport => LanguageSupport.SourceAndTarget;
+
+    /// <inheritdoc />
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
 
     private static readonly Regex
         RegexMarker =
-            new(@"^\[{3}(?<id>.*)\]{3}$",
-                RegexOptions.Singleline); // Regex to get the id with square brackets around it.
+            RegexMarkerGenerator(); // Regex to get the id with square brackets around it.
 
     private static readonly Regex
-        RegexWithoutMarker = new(@"^(?<id>.*)$"); // Regex to get the id without square brackets around it.
+        RegexWithoutMarker = RegexWithoutMarkerGenerator(); // Regex to get the id without square brackets around it.
 
     /// <inheritdoc />
     public async Task ReadAsync(Stream stream, FormatReadOptions? options = null)
@@ -44,17 +46,18 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
         var workbook = WorkbookFactory.Create(stream); // Create the workbook from the stream
         var sheet = workbook.GetSheetAt(0); // Get the first sheet
 
-        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage,
+        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.Value,
             nameof(Header.TargetLanguage)); // The target language has to be set
         ReadTranslations(sheet); // Read the translations from the sheet
     }
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions options)
     {
+        
         var setTargetLanguage =
-            string.IsNullOrWhiteSpace(options.TargetLanguage); // Check if the target language needs to be set
+            options.TargetLanguage.IsNullOrWhitespace(); // Check if the target language needs to be set
         var setSourceLanguage =
-            string.IsNullOrWhiteSpace(options.SourceLanguage); // Check if the source language needs to be set
+            options.SourceLanguage.IsNullOrWhitespace(); // Check if the source language needs to be set
         if (setTargetLanguage || setSourceLanguage)
         {
             if (options.FormatOptionsCallback is null)
@@ -63,7 +66,7 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
             FormatStringOption sourceLanguageOption = new("Source language");
             FormatStringOption targetLanguageOption = new("Target language", true);
 
-            List<FormatOption> optionList = new();
+            List<FormatOption> optionList = [];
             if (setSourceLanguage) optionList.Add(sourceLanguageOption);
             if (setTargetLanguage) optionList.Add(targetLanguageOption);
 
@@ -79,12 +82,12 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
 
             Header.SourceLanguage =
                 setSourceLanguage
-                    ? sourceLanguageOption.Value
+                    ? Language.Parse(sourceLanguageOption.Value)
                     : options.SourceLanguage; // Set the source language if it was not set
             Header.TargetLanguage =
-                setTargetLanguage
-                    ? targetLanguageOption.Value
-                    : options.TargetLanguage!; // Set the target language if it was not set
+                (setTargetLanguage
+                    ? Language.Parse(targetLanguageOption.Value)
+                    : options.TargetLanguage)!; // Set the target language if it was not set
         }
         else
         {
@@ -105,21 +108,23 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
             var translations = CreateTranslations(row); // Create the translations from the row
             if (translations is null) continue;
 
-            var translationUnit = new DefaultTranslationUnit(translations.Item1.Id) // Create the translation unit
+            var translationUnit = new DefaultTranslationUnit(translations.Item3) // Create the translation unit
             {
-                [translations.Item1.Language] = translations.Item1,
-                [translations.Item2.Language] = translations.Item2
+                Translations =
+                {
+                    translations.Item1,
+                    translations.Item2
+                }
             };
-
-            Add(translationUnit); // Add the translation unit to the hash set of translation units
+            TranslationUnits.Add(translationUnit); // Add the translation unit to the hash set of translation units
         }
     }
 
-    private Tuple<ITranslationString, ITranslationString>? CreateTranslations(IRow row)
+    private Tuple<ITranslation, ITranslation, string>? CreateTranslations(IRow row)
     {
         var idCell = row.TryGetCell(0); // Get the first cell
         if (idCell is null) return null; // If the cell is null, return null
-        if(idCell.Address.Column != 0) return null; // If the first cell is not in the first column, skip the row
+        if (idCell.Address.Column != 0) return null; // If the first cell is not in the first column, skip the row
         var id = idCell.StringCellValue ?? string.Empty; // Get the id from the cell
         if (string.IsNullOrWhiteSpace(id)) return null; // If the id is empty, skip the row
 
@@ -128,7 +133,7 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
 
         var sourceCell = row.TryGetCell(1); // Get the second cell
         if (sourceCell is null) return null; // If the cell is null, return null
-        if(sourceCell.Address.Column != 1) return null; // If the second cell is not in the second column, skip the row
+        if (sourceCell.Address.Column != 1) return null; // If the second cell is not in the second column, skip the row
         var source = sourceCell.StringCellValue ?? string.Empty; // Get the source from the cell
         if (string.IsNullOrWhiteSpace(source)) return null; // If the source is empty, skip the row
 
@@ -147,10 +152,10 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
         (
             id,
             target,
-            Header.TargetLanguage ?? throw new ArgumentNullException(nameof(Header.TargetLanguage))
+            Header.TargetLanguage
         );
 
-        return new Tuple<ITranslationString, ITranslationString>(sourceTranslation, targetTranslation);
+        return new Tuple<ITranslation, ITranslation, string>(sourceTranslation, targetTranslation, id);
     }
 
     private string RemoveMarker(string str)
@@ -171,7 +176,7 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
         CreateHeaderRow(sheet); // Create the header row
         var rowCount = 1; // The row count
 
-        foreach (var translationUnit in this) // Loop through all translation units
+        foreach (var translationUnit in TranslationUnits) // Loop through all translation units
         {
             var row = sheet.CreateRow(rowCount); // Create a new row
 
@@ -181,8 +186,8 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
             }
 
             row.Cells[0].SetCellValue($"[[[{translationUnit.Id}]]]"); // Set the id with square brackets around it
-            row.Cells[1].SetCellValue((translationUnit.TryGet(Header.SourceLanguage!) as ITranslationString)?.Value);
-            row.Cells[2].SetCellValue((translationUnit.TryGet(Header.TargetLanguage) as ITranslationString)?.Value);
+            row.Cells[1].SetCellValue(translationUnit.Translations.GetTranslation((Language)Header.SourceLanguage!).Value);
+            row.Cells[2].SetCellValue(translationUnit.Translations.GetTranslation(Header.TargetLanguage).Value);
 
             rowCount++;
         }
@@ -190,10 +195,17 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
         AutosizeColumns(sheet, 0, 3); // Autosize the columns
 
 
-        workbook.Write(stream, true); // Write the workbook to the stream, and leave the stream open TODO: Is this correct?
+        workbook.Write(stream,
+            true); // Write the workbook to the stream, and leave the stream open TODO: Is this correct?
     }
 
-    private void CreateHeaderRow(ISheet sheet) 
+    /// <inheritdoc />
+    public Task WriteAsync(Stream stream)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void CreateHeaderRow(ISheet sheet)
     {
         var row = sheet.CreateRow(0); // Create a new row
 
@@ -215,13 +227,8 @@ public class GengoFormat : AbstractTranslationUnits, IFormat
         }
     }
 
-    /// <inheritdoc />
-    public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
-    {
-        return builder => builder.SetId("gengo")
-            .SetSupportedFileExtensions(new[] { ".xlsx", ".xls" })
-            .SetFormatType<GengoFormat>()
-            .SetFormatBuilder<GengoFormatBuilder>()
-            .Create();
-    }
+    [GeneratedRegex(@"^\[{3}(?<id>.*)\]{3}$", RegexOptions.Singleline)]
+    private static partial Regex RegexMarkerGenerator();
+    [GeneratedRegex(@"^(?<id>.*)$")]
+    private static partial Regex RegexWithoutMarkerGenerator();
 }

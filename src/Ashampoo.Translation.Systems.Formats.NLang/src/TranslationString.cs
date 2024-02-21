@@ -1,20 +1,21 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 namespace Ashampoo.Translation.Systems.Formats.NLang;
 
 /// <summary>
-/// Implementation of the <see cref="ITranslationString"/> interface for the NLang format.
+/// Implementation of the <see cref="ITranslation"/> interface for the NLang format.
 /// </summary>
 public class TranslationString : AbstractTranslationString
 {
     /// <inheritdoc />
-    public TranslationString(string id, string value, string language, string comment) : base(id, value, language,
+    public TranslationString(string id, string value, Language language, string comment) : base(id, value, language,
         comment)
     {
     }
 
     /// <inheritdoc />
-    public TranslationString(string id, string value, string language) : base(id, value, language)
+    public TranslationString(string id, string value, Language language) : base(id, value, language)
     {
     }
 

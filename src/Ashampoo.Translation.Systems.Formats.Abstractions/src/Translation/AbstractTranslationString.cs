@@ -1,24 +1,25 @@
+using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
+
 namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 /// <summary>
-/// Abstract base class for the <see cref="ITranslationString"/> interface.
+/// Abstract base class for the <see cref="ITranslation"/> interface.
 /// </summary>
-public abstract class AbstractTranslationString : ITranslationString
+public abstract class AbstractTranslationString : ITranslation
 {
     /// <inheritdoc />
-    public virtual string Value { get; set; } = "";
+    public string Value { get; set; }
+
+    /// <summary>
+    /// Gets or sets the ID of the translation string.
+    /// </summary>
+    protected string Id { get; set; }
 
     /// <inheritdoc />
-    public virtual string Id { get; set; } = "";
+    public string? Comment { get; set; }
 
     /// <inheritdoc />
-    public virtual string? Comment { get; set; }
-
-    /// <inheritdoc />
-    public virtual bool IsEmpty => string.IsNullOrWhiteSpace(Value);
-
-    /// <inheritdoc />
-    public virtual string Language { get; set; } = "";
+    public Language Language { get; set; }
 
     /// <summary>
     /// Base constructor for the <see cref="AbstractTranslationString"/> class.
@@ -35,7 +36,7 @@ public abstract class AbstractTranslationString : ITranslationString
     /// <param name="comment">
     /// The comment of the translation string.
     /// </param>
-    protected  AbstractTranslationString(string id, string value, string language, string? comment = null)
+    protected  AbstractTranslationString(string id, string value, Language language, string? comment = null)
     {
         Id = id;
         Value = value;
