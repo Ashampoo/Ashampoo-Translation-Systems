@@ -53,7 +53,7 @@ public class NLangFormat : IFormat
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
     {
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage?.Value))
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.Value))
         {
             if (options?.FormatOptionsCallback is null)
                 throw new InvalidOperationException("Callback for Format options required.");

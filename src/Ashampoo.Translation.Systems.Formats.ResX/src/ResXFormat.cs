@@ -72,7 +72,7 @@ public class ResXFormat :  IFormat
 
     private async Task<bool> ConfigureOptions(FormatReadOptions? options)
     {
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage?.Value))
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.Value))
         {
             ArgumentNullException.ThrowIfNull(options?.FormatOptionsCallback, nameof(options.FormatOptionsCallback));
 

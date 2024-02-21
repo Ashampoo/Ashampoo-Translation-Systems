@@ -10,7 +10,7 @@ public class FormatReadOptions
     /// <summary>
     /// The target language of the format.
     /// </summary>
-    public Language? TargetLanguage { get; init; }
+    public Language TargetLanguage { get; init; } = Language.Empty;
     /// <summary>
     /// The source language of the format.
     /// </summary>

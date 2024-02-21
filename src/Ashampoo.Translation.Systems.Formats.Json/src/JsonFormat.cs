@@ -46,7 +46,7 @@ public class JsonFormat : IFormat
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
     {
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage?.Value))
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.Value))
         {
             ArgumentNullException.ThrowIfNull(options?.FormatOptionsCallback,
                 nameof(options.FormatOptionsCallback)); // Format options callback is required

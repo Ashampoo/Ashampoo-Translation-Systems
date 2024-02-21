@@ -129,7 +129,7 @@ public class TsProjFormat : IFormat
 
         var setTargetLanguage =
             string.IsNullOrWhiteSpace(options
-                ?.TargetLanguage?.Value); // If the target language is not specified, ask the user to specify it
+                ?.TargetLanguage.Value); // If the target language is not specified, ask the user to specify it
         var setSourceLanguage =
             string.IsNullOrWhiteSpace(options
                 ?.SourceLanguage?.Value); // If the source language is not specified, ask the user to specify it

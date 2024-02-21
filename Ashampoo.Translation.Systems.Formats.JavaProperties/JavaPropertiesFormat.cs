@@ -45,7 +45,7 @@ public partial class JavaPropertiesFormat : IFormat
     // TODO: Can this be made Protected in a abstract class to avoid duplicate code?
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
     {
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage?.Value))
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.Value))
         {
             Guard.IsNotNull(options?.FormatOptionsCallback);
 
