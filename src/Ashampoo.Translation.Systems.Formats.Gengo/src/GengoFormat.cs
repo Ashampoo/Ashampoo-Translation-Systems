@@ -5,7 +5,6 @@ using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Microsoft.Toolkit.Diagnostics;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
 
 namespace Ashampoo.Translation.Systems.Formats.Gengo;
@@ -13,7 +12,7 @@ namespace Ashampoo.Translation.Systems.Formats.Gengo;
 /// <summary>
 /// Implementation of the <see cref="IFormat"/> interface for the Gengo translation format.
 /// </summary>
-public class GengoFormat : IFormat
+public partial class GengoFormat : IFormat
 {
     /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
@@ -26,11 +25,10 @@ public class GengoFormat : IFormat
 
     private static readonly Regex
         RegexMarker =
-            new(@"^\[{3}(?<id>.*)\]{3}$",
-                RegexOptions.Singleline); // Regex to get the id with square brackets around it.
+            RegexMarkerGenerator(); // Regex to get the id with square brackets around it.
 
     private static readonly Regex
-        RegexWithoutMarker = new(@"^(?<id>.*)$"); // Regex to get the id without square brackets around it.
+        RegexWithoutMarker = RegexWithoutMarkerGenerator(); // Regex to get the id without square brackets around it.
 
     /// <inheritdoc />
     public async Task ReadAsync(Stream stream, FormatReadOptions? options = null)
@@ -87,14 +85,14 @@ public class GengoFormat : IFormat
                     ? Language.Parse(sourceLanguageOption.Value)
                     : options.SourceLanguage; // Set the source language if it was not set
             Header.TargetLanguage =
-                (Language)(setTargetLanguage
+                (setTargetLanguage
                     ? Language.Parse(targetLanguageOption.Value)
                     : options.TargetLanguage)!; // Set the target language if it was not set
         }
         else
         {
             Header.SourceLanguage = options.SourceLanguage;
-            Header.TargetLanguage = (Language)options.TargetLanguage!;
+            Header.TargetLanguage = options.TargetLanguage!;
         }
 
         return true;
@@ -229,13 +227,8 @@ public class GengoFormat : IFormat
         }
     }
 
-    /// <inheritdoc />
-    public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
-    {
-        return builder => builder.SetId("gengo")
-            .SetSupportedFileExtensions([".xlsx", ".xls"])
-            .SetFormatType<GengoFormat>()
-            .SetFormatBuilder<GengoFormatBuilder>()
-            .Create();
-    }
+    [GeneratedRegex(@"^\[{3}(?<id>.*)\]{3}$", RegexOptions.Singleline)]
+    private static partial Regex RegexMarkerGenerator();
+    [GeneratedRegex(@"^(?<id>.*)$")]
+    private static partial Regex RegexWithoutMarkerGenerator();
 }

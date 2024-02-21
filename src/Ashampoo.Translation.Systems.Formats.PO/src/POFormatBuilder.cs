@@ -5,9 +5,9 @@ using CommunityToolkit.Diagnostics;
 namespace Ashampoo.Translation.Systems.Formats.PO;
 
 /// <summary>
-/// Implementation of the <see cref="IFormatBuilderWithTarget"/> for the PO format.
+/// Implementation of the <see cref="IFormatBuilderWithTarget{T}"/> for the PO format.
 /// </summary>
-public class POFormatBuilder : IFormatBuilderWithTarget
+public class POFormatBuilder : IFormatBuilderWithTarget<POFormat>
 {
     private Language? _targetLanguage;
     private readonly Dictionary<string, string> _translations = new();
@@ -20,7 +20,7 @@ public class POFormatBuilder : IFormatBuilderWithTarget
     }
 
     /// <inheritdoc />
-    public IFormat Build()
+    public POFormat Build()
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage));
 

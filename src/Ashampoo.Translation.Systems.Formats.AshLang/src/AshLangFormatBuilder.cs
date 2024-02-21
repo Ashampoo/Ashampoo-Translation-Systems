@@ -9,7 +9,7 @@ namespace Ashampoo.Translation.Systems.Formats.AshLang;
 /// <summary>
 /// Builder for <see cref="AshLangFormat"/>
 /// </summary>
-public class AshLangFormatBuilder : IFormatBuilderWithSourceAndTarget
+public class AshLangFormatBuilder : IFormatBuilderWithSourceAndTarget<AshLangFormat>
 {
     private static readonly Language SourceLanguage = new("en-US"); // AshLang source is always in English
     private Language _targetLanguage = Language.Empty;
@@ -17,7 +17,7 @@ public class AshLangFormatBuilder : IFormatBuilderWithSourceAndTarget
     private Dictionary<string, string> _information = new();
 
     /// <inheritdoc />
-    public IFormat Build()
+    public AshLangFormat Build()
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage.Value, nameof(_targetLanguage));
 

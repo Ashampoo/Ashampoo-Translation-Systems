@@ -56,5 +56,6 @@ public class FormatTest : FormatTestBase<NLangFormat>
 
         //FIXME: compare formats like in the other tests, and not the streams!
         //fs.MustBeEqualTo(ms);
+        
     }
 }

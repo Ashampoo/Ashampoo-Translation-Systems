@@ -6,7 +6,6 @@ using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.Formats.ResX.Elements;
 using CommunityToolkit.Diagnostics;
-using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
 namespace Ashampoo.Translation.Systems.Formats.ResX;
 
@@ -152,15 +151,5 @@ public class ResXFormat :  IFormat
         xmlSerializer.Serialize(xmlWriter, XmlRoot, ns);
 
         await xmlWriter.FlushAsync();
-    }
-
-    /// <inheritdoc />
-    public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
-    {
-        return builder => builder.SetId("resx")
-            .SetSupportedFileExtensions([".resx"])
-            .SetFormatType<ResXFormat>()
-            .SetFormatBuilder<ResXFormatBuilder>()
-            .Create();
     }
 }

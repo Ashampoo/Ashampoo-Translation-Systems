@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
-using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
 namespace Ashampoo.Translation.Systems.TestBase;
 
@@ -30,11 +29,6 @@ public class MockFormatWithTranslationUnits : IFormat
     }
 
     public Task WriteAsync(Stream stream)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
     {
         throw new NotImplementedException();
     }

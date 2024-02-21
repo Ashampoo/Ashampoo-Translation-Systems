@@ -12,7 +12,7 @@ namespace Ashampoo.Translation.Systems.Formats.TsProj.Tests
         [Fact]
         public void TranslationTest()
         {
-            IFormat format = CreateAndReadFromFile("normalized_export_ashlang-de-DE.tsproj");
+            var format = CreateAndReadFromFile("normalized_export_ashlang-de-DE.tsproj");
 
             const string id = "peru.CFileNotFoundError.GeneralDesc";
 

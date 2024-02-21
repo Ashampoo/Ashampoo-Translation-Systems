@@ -1,7 +1,6 @@
 ﻿using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.Formats.AshLang.Chunk;
-using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
 namespace Ashampoo.Translation.Systems.Formats.AshLang;
 
@@ -25,16 +24,6 @@ public class AshLangFormat : IFormat
     public Task WriteAsync(Stream stream)
     {
         throw new NotImplementedException();
-    }
-
-    /// <inheritdoc />
-    public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
-    {
-        return builder => builder.SetId("ashlang")
-            .SetSupportedFileExtensions([".ashlang"])
-            .SetFormatType<AshLangFormat>()
-            .SetFormatBuilder<AshLangFormatBuilder>()
-            .Create();
     }
 
     /// <inheritdoc />

@@ -11,12 +11,6 @@ namespace Ashampoo.Translation.Systems.Formats.AshLang.Tests;
 
 public class AshLangFormatTest : FormatTestBase<AshLangFormat>
 {
-    private readonly IFormatFactory _formatFactory;
-
-    public AshLangFormatTest(IFormatFactory formatFactory)
-    {
-        _formatFactory = formatFactory;
-    }
 
     [Fact]
     public void NewFormat()
@@ -77,9 +71,7 @@ public class AshLangFormatTest : FormatTestBase<AshLangFormat>
     [Fact]
     public void FormatBuilderTest()
     {
-        var builder =
-            (IFormatBuilderWithSourceAndTarget)_formatFactory.GetFormatProvider(typeof(AshLangFormat))
-                .GetFormatBuilder();
+        var builder = new AshLangFormatBuilder();
 
         builder.SetTargetLanguage(new Language("de-DE"));
         builder.Add("Test ID 1", "Test Source 1", "Test Ziel 1");
@@ -103,9 +95,8 @@ public class AshLangFormatTest : FormatTestBase<AshLangFormat>
             .BeEmpty();
         ashLang.TranslationUnits.GetTranslationUnit("Test ID 3").Translations.GetTranslation(new Language("de-DE")).Value.Should()
             .Be("Test Ziel 2");
-        
-        builder = (IFormatBuilderWithSourceAndTarget)_formatFactory.GetFormatProvider(typeof(AshLangFormat))
-            .GetFormatBuilder();
+
+        builder = new AshLangFormatBuilder();
         builder.SetSourceLanguage(new Language("de-DE"));
 
         builder.Invoking(x => x.Build()).Should().Throw<ArgumentException>();

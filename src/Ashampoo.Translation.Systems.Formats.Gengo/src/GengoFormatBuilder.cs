@@ -8,7 +8,7 @@ namespace Ashampoo.Translation.Systems.Formats.Gengo;
 /// <summary>
 /// Builder for the <see cref="GengoFormat"/>.
 /// </summary>
-public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
+public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget<GengoFormat>
 {
     private Language? _sourceLanguage;
     private Language? _targetLanguage;
@@ -21,7 +21,7 @@ public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
     }
 
     /// <inheritdoc />
-    public IFormat Build()
+    public GengoFormat Build()
     {
         Guard.IsNotNullOrWhiteSpace(_sourceLanguage?.Value, nameof(_sourceLanguage));
         Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage));
@@ -33,7 +33,7 @@ public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
             Header =
             {
                 SourceLanguage = _sourceLanguage,
-                TargetLanguage = (Language)_targetLanguage!
+                TargetLanguage = _targetLanguage.Value
             }
         };
 
@@ -42,10 +42,10 @@ public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
         {
             var sourceTranslationString =
                 new DefaultTranslationString(keyValuePair.Key, keyValuePair.Value.Item1,
-                    (Language)_sourceLanguage!); //Create new translation string
+                    _sourceLanguage.Value); //Create new translation string
             var targetTranslationString =
                 new DefaultTranslationString(keyValuePair.Key, keyValuePair.Value.Item2,
-                    (Language)_targetLanguage); //Create new translation string
+                    _targetLanguage.Value); //Create new translation string
 
             var translationUnit = new DefaultTranslationUnit(keyValuePair.Key) //Create new translation unit
             {
@@ -73,7 +73,7 @@ public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
     {
         _targetLanguage = language;
     }
-    
+
     /// <summary>
     /// This method is not supported because <see cref="GengoFormat"/> does not support header information,
     /// it will do nothing.

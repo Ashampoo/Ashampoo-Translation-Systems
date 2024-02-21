@@ -6,7 +6,6 @@ using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using CommunityToolkit.Diagnostics;
-using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
 namespace Ashampoo.Translation.Systems.Formats.Json;
 
@@ -314,15 +313,5 @@ public class JsonFormat : IFormat
 
             break;
         }
-    }
-
-    /// <inheritdoc />
-    public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
-    {
-        return builder => builder.SetId("json")
-            .SetSupportedFileExtensions([".json"])
-            .SetFormatType<JsonFormat>()
-            .SetFormatBuilder<JsonFormatBuilder>()
-            .Create();
     }
 }

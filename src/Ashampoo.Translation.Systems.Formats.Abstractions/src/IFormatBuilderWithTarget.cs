@@ -3,7 +3,7 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 /// <summary>
 /// Interface for a <see cref="IFormatBuilder"/> for formats that only support one language.
 /// </summary>
-public interface IFormatBuilderWithTarget : IFormatBuilder
+public interface IFormatBuilderWithTarget<out T> : IFormatBuilder<T> where T : class, IFormat
 {
     /// <summary>
     /// Add a translation for the target language.

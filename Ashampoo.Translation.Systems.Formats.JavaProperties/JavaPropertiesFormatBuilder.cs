@@ -5,13 +5,13 @@ using CommunityToolkit.Diagnostics;
 
 namespace Ashampoo.Translation.Systems.Formats.JavaProperties;
 
-public class JavaPropertiesBuilder : IFormatBuilderWithTarget
+public class JavaPropertiesFormatBuilder : IFormatBuilderWithTarget<JavaPropertiesFormat>
 {
     private Language _targetLanguage = Language.Empty;
     private readonly Dictionary<string, string> _translations = new();
     
     /// <inheritdoc/>
-    public IFormat Build()
+    public JavaPropertiesFormat Build()
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage.Value);
 
@@ -53,7 +53,7 @@ public class JavaPropertiesBuilder : IFormatBuilderWithTarget
     /// <exception cref="NotSupportedException"></exception>
     public void SetHeaderInformation(IFormatHeader header)
     {
-        throw new NotSupportedException("Header information's are not supported by the JavaProperties format");
+        // Do nothing, JavaPropertiesFormat does not support header information
     }
 
     /// <summary>
@@ -64,6 +64,6 @@ public class JavaPropertiesBuilder : IFormatBuilderWithTarget
     /// <exception cref="NotSupportedException"></exception>
     public void AddHeaderInformation(string key, string value)
     {
-        throw new NotSupportedException("Header information's are not supported by the JavaProperties format");
+        // Do nothing, JavaPropertiesFormat does not support header information
     }
 }

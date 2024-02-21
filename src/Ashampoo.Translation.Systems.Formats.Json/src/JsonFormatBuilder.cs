@@ -8,7 +8,7 @@ namespace Ashampoo.Translation.Systems.Formats.Json;
 /// <summary>
 /// Builder for the <see cref="JsonFormat"/>.
 /// </summary>
-public class JsonFormatBuilder : IFormatBuilderWithTarget
+public class JsonFormatBuilder : IFormatBuilderWithTarget<JsonFormat>
 {
     private Language? _targetLanguage;
     private readonly Dictionary<string, string> _translations = new();
@@ -20,7 +20,7 @@ public class JsonFormatBuilder : IFormatBuilderWithTarget
     }
 
     /// <inheritdoc />
-    public IFormat Build()
+    public JsonFormat Build()
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage));
 

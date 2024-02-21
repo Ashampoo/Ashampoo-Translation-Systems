@@ -24,6 +24,7 @@
 
     
     <ItemGroup>
+        <ProjectReference Include="..\..\..\Ashampoo.Translation.Systems.Formats.JavaProperties\Ashampoo.Translation.Systems.Formats.JavaProperties.csproj" />
         <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj" />
         <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.AshLang\src\Ashampoo.Translation.Systems.Formats.AshLang.csproj" />
         <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Gengo\src\Ashampoo.Translation.Systems.Formats.Gengo.csproj" />

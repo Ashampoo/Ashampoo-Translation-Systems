@@ -5,7 +5,6 @@ using Ashampoo.Translation.Systems.Formats.Abstractions.IO;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using CommunityToolkit.Diagnostics;
-using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
 namespace Ashampoo.Translation.Systems.Formats.PO;
 
@@ -226,15 +225,5 @@ public class POFormat : IFormat
         }
 
         await writer.FlushAsync();
-    }
-
-    /// <inheritdoc />
-    public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
-    {
-        return builder => builder.SetId("po")
-            .SetSupportedFileExtensions([".po"])
-            .SetFormatType<POFormat>()
-            .SetFormatBuilder<POFormatBuilder>()
-            .Create();
     }
 }

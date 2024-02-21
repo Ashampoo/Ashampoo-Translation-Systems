@@ -4,7 +4,6 @@ using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using Ashampoo.Translation.Systems.Formats.TsProj.Element;
-using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
 namespace Ashampoo.Translation.Systems.Formats.TsProj;
 
@@ -204,15 +203,5 @@ public class TsProjFormat : IFormat
         xml.Serialize(writer, Project, ns); // Serialize the project to the writer
 
         await writer.FlushAsync(); 
-    }
-
-    /// <inheritdoc />
-    public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
-    {
-        return builder => builder.SetId("tsproj")
-            .SetSupportedFileExtensions([".tsproj"])
-            .SetFormatType<TsProjFormat>()
-            .SetFormatBuilder<TsProjFormatBuilder>()
-            .Create();
     }
 }

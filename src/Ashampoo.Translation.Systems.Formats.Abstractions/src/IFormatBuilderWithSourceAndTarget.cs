@@ -3,9 +3,10 @@ using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 
 /// <summary>
-/// Interface for a <see cref="IFormatBuilder"/> for formats that support two languages.
+/// Interface for a <see cref="IFormatBuilder{T}"/> for formats that support two languages.
 /// </summary>
-public interface IFormatBuilderWithSourceAndTarget : IFormatBuilder
+/// <typeparam name="T"> is of type <see cref="IFormat"/>. </typeparam>
+public interface IFormatBuilderWithSourceAndTarget<out T> : IFormatBuilder<T> where T : class, IFormat
 {
     /// <summary>
     /// Add a translation for the source and target language.

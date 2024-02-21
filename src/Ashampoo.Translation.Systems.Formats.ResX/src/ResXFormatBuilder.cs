@@ -7,15 +7,15 @@ using CommunityToolkit.Diagnostics;
 namespace Ashampoo.Translation.Systems.Formats.ResX;
 
 /// <summary>
-/// Implementation of the <see cref="IFormatBuilderWithTarget"/> interface for the ResX format.
+/// Implementation of the <see cref="IFormatBuilderWithTarget{T}"/> interface for the ResX format.
 /// </summary>
-public class ResXFormatBuilder : IFormatBuilderWithTarget
+public class ResXFormatBuilder : IFormatBuilderWithTarget<ResXFormat>
 {
     private Language? _targetLanguage;
     private readonly Dictionary<string, string> _translations = new();
 
     /// <inheritdoc />
-    public IFormat Build()
+    public ResXFormat Build()
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage));
 

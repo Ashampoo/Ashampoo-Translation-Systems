@@ -7,7 +7,7 @@ namespace Ashampoo.Translation.Systems.Formats.NLang;
 /// <summary>
 /// Builder for <see cref="NLangFormat"/>.
 /// </summary>
-public class NLangFormatBuilder : IFormatBuilderWithTarget
+public class NLangFormatBuilder : IFormatBuilderWithTarget<NLangFormat>
 {
     private Language? _targetLanguage;
     private readonly Dictionary<string, string> _translations = new();
@@ -19,7 +19,7 @@ public class NLangFormatBuilder : IFormatBuilderWithTarget
     }
 
     /// <inheritdoc />
-    public IFormat Build()
+    public NLangFormat Build()
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage));
 

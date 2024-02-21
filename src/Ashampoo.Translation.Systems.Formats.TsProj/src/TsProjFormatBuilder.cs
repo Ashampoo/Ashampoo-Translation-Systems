@@ -7,9 +7,9 @@ using CommunityToolkit.Diagnostics;
 namespace Ashampoo.Translation.Systems.Formats.TsProj;
 
 /// <summary>
-/// Implementation of the <see cref="IFormatBuilderWithSourceAndTarget"/> interface for the <see cref="TsProj"/> format.
+/// Implementation of the <see cref="IFormatBuilderWithSourceAndTarget{T}"/> interface for the <see cref="TsProj"/> format.
 /// </summary>
-public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget
+public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget<TsProjFormat>
 {
     private Language? _sourceLanguage;
     private Language? _targetLanguage;
@@ -23,7 +23,7 @@ public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget
     }
 
     /// <inheritdoc />
-    public IFormat Build()
+    public TsProjFormat Build()
     {
         Guard.IsNotNullOrWhiteSpace(_sourceLanguage?.Value, nameof(_sourceLanguage)); // sourceLanguage is required
         Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage)); // targetLanguage is required

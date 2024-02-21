@@ -5,14 +5,20 @@ using Ashampoo.Translation.Systems.Formats.Abstractions.IO;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using CommunityToolkit.Diagnostics;
-using IFormatProvider = Ashampoo.Translation.Systems.Formats.Abstractions.IFormatProvider;
 
 namespace Ashampoo.Translation.Systems.Formats.JavaProperties;
 
+/// <summary>
+/// Represents a Java properties file format.
+/// </summary>
 public partial class JavaPropertiesFormat : IFormat
 {
     private static readonly Regex KeyValueRegex = MyRegex();
+
+    /// <inheritdoc />
     public IFormatHeader Header { get; } = new DefaultFormatHeader();
+
+    /// <inheritdoc />
     public LanguageSupport LanguageSupport => LanguageSupport.OnlyTarget;
 
     /// <inheritdoc/>
@@ -124,16 +130,6 @@ public partial class JavaPropertiesFormat : IFormat
         }
 
         await writer.FlushAsync();
-    }
-
-    /// <inheritdoc/>
-    public Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider()
-    {
-        return builder => builder.SetId("javaproperties")
-            .SetSupportedFileExtensions([".properties"])
-            .SetFormatType<JavaPropertiesFormat>()
-            .SetFormatBuilder<JavaPropertiesBuilder>()
-            .Create();
     }
 
     [GeneratedRegex("(?<key>.*?)=(?<value>.*)")]

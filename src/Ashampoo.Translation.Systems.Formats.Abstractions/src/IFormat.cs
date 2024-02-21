@@ -49,17 +49,6 @@ public interface IFormat
     Task WriteAsync(Stream stream);
 
     /// <summary>
-    /// A function to build a <see cref="IFormatProvider"/> for this format.
-    /// </summary>
-    /// <returns>
-    /// A function that takes a <see cref="FormatProviderBuilder"/> and returns a new <see cref="IFormatProvider"/>.
-    /// </returns>
-    /// <exception cref="NotImplementedException">
-    /// If the format does not support building a <see cref="IFormatProvider"/>.
-    /// </exception>
-    Func<FormatProviderBuilder, IFormatProvider> BuildFormatProvider();
-
-    /// <summary>
     /// The <see cref="IFormatHeader"/> containing the header information for this format.
     /// </summary>
     IFormatHeader Header { get; }
