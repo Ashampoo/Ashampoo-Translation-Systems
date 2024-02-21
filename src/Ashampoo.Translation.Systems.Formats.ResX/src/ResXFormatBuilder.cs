@@ -17,7 +17,7 @@ public class ResXFormatBuilder : IFormatBuilderWithTarget
     /// <inheritdoc />
     public IFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(_targetLanguage.ToString(), nameof(_targetLanguage));
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage));
 
         var format = new ResXFormat
         {

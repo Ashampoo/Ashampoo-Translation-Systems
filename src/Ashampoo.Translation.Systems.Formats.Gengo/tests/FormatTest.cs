@@ -39,7 +39,7 @@ public class FormatTest : FormatTestBase<GengoFormat>
         format.Should().NotBeNull();
         format.TranslationUnits.Should().BeEmpty();
         format.Header.SourceLanguage.Should().BeNull();
-        format.Header.TargetLanguage.ToString().Should().BeEmpty();
+        format.Header.TargetLanguage.Value.Should().BeEmpty();
         format.LanguageSupport.Should().Be(LanguageSupport.SourceAndTarget);
 
         format = new GengoFormat

@@ -38,7 +38,7 @@ public class JsonFormat : IFormat
             return;
         }
 
-        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.ToString(), nameof(Header.TargetLanguage)); //Target language is required
+        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.Value, nameof(Header.TargetLanguage)); //Target language is required
 
         var root = await JsonSerializer.DeserializeAsync<JsonElement>(stream); // Deserialize JSON
         Parse(root); // Parse JSON to TranslationUnits
@@ -46,7 +46,7 @@ public class JsonFormat : IFormat
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
     {
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.ToString()))
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage?.Value))
         {
             ArgumentNullException.ThrowIfNull(options?.FormatOptionsCallback,
                 nameof(options.FormatOptionsCallback)); // Format options callback is required

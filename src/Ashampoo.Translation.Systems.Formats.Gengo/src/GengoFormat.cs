@@ -48,7 +48,7 @@ public class GengoFormat : IFormat
         var workbook = WorkbookFactory.Create(stream); // Create the workbook from the stream
         var sheet = workbook.GetSheetAt(0); // Get the first sheet
 
-        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.ToString(),
+        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.Value,
             nameof(Header.TargetLanguage)); // The target language has to be set
         ReadTranslations(sheet); // Read the translations from the sheet
     }
@@ -56,9 +56,9 @@ public class GengoFormat : IFormat
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions options)
     {
         var setTargetLanguage =
-            string.IsNullOrWhiteSpace(options.TargetLanguage.ToString()); // Check if the target language needs to be set
+            string.IsNullOrWhiteSpace(options.TargetLanguage?.Value); // Check if the target language needs to be set
         var setSourceLanguage =
-            string.IsNullOrWhiteSpace(options.SourceLanguage.ToString()); // Check if the source language needs to be set
+            string.IsNullOrWhiteSpace(options.SourceLanguage?.Value); // Check if the source language needs to be set
         if (setTargetLanguage || setSourceLanguage)
         {
             if (options.FormatOptionsCallback is null)

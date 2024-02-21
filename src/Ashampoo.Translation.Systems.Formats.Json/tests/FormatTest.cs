@@ -22,7 +22,7 @@ public class FormatTest : FormatTestBase<JsonFormat>
         format.Should().NotBeNull();
         format.TranslationUnits.Should().BeEmpty();
         format.Header.SourceLanguage.Should().BeNull();
-        format.Header.TargetLanguage.ToString().Should().BeEmpty();
+        format.Header.TargetLanguage.Value.Should().BeEmpty();
         format.LanguageSupport.Should().Be(LanguageSupport.OnlyTarget);
     }
 
@@ -95,7 +95,7 @@ public class FormatTest : FormatTestBase<JsonFormat>
         var format = await CreateAndReadFromFileAsync("en-us.json",
             new FormatReadOptions { FormatOptionsCallback = OptionsCallback });
         format.Header.SourceLanguage.Should().BeNull();
-        format.Header.TargetLanguage.ToString().Should().BeEmpty();
+        format.Header.TargetLanguage.Value.Should().BeEmpty();
         format.TranslationUnits.Should().BeEmpty();
     }
 

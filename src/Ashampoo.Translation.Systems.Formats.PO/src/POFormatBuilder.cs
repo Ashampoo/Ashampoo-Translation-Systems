@@ -22,7 +22,7 @@ public class POFormatBuilder : IFormatBuilderWithTarget
     /// <inheritdoc />
     public IFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(_targetLanguage.ToString(), nameof(_targetLanguage));
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage));
 
         //Create new PO format and add translations
         var poFormat = new POFormat

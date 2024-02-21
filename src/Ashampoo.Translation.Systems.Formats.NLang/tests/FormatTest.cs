@@ -18,7 +18,7 @@ public class FormatTest : FormatTestBase<NLangFormat>
         format.Should().NotBeNull();
         format.TranslationUnits.Should().BeEmpty();
         format.Header.SourceLanguage.Should().BeNull();
-        format.Header.TargetLanguage.ToString().Should().BeEmpty();
+        format.Header.TargetLanguage.Value.Should().BeEmpty();
     }
 
     [Fact]

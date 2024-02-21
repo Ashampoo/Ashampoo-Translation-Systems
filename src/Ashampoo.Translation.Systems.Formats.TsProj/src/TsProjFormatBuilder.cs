@@ -25,15 +25,15 @@ public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget
     /// <inheritdoc />
     public IFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(_sourceLanguage.ToString(), nameof(_sourceLanguage)); // sourceLanguage is required
-        Guard.IsNotNullOrWhiteSpace(_targetLanguage.ToString(), nameof(_targetLanguage)); // targetLanguage is required
+        Guard.IsNotNullOrWhiteSpace(_sourceLanguage?.Value, nameof(_sourceLanguage)); // sourceLanguage is required
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage)); // targetLanguage is required
 
         //Create new TsProj format and add translations
         var tsProjFormat = new TsProjFormat();
         var project = tsProjFormat.Project;
 
-        project.SourceLanguage = _sourceLanguage.ToString(); // Set source language for xml object
-        project.TargetLanguage = _targetLanguage.ToString()!; // Set target language for xml object
+        project.SourceLanguage = _sourceLanguage?.Value; // Set source language for xml object
+        project.TargetLanguage = _targetLanguage?.Value!; // Set target language for xml object
         tsProjFormat.Header.SourceLanguage = _sourceLanguage; // Set source language for format object
         tsProjFormat.Header.TargetLanguage = (Language)_targetLanguage!; // Set target language for format object
         

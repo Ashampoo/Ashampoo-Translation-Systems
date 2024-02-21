@@ -23,8 +23,8 @@ public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget
     /// <inheritdoc />
     public IFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(_sourceLanguage.ToString(), nameof(_sourceLanguage));
-        Guard.IsNotNullOrWhiteSpace(_targetLanguage.ToString(), nameof(_targetLanguage));
+        Guard.IsNotNullOrWhiteSpace(_sourceLanguage?.Value, nameof(_sourceLanguage));
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage));
 
 
         //Create new Gengo format and add translations

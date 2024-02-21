@@ -13,7 +13,7 @@ public class JavaPropertiesBuilder : IFormatBuilderWithTarget
     /// <inheritdoc/>
     public IFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(_targetLanguage.ToString());
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage.Value);
 
         JavaPropertiesFormat format = new()
         {

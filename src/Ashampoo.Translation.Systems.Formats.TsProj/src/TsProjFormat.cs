@@ -91,7 +91,7 @@ public class TsProjFormat : IFormat
     {
         TranslationStringSource? source = null;
 
-        if (!string.IsNullOrWhiteSpace(Header.SourceLanguage.ToString()))
+        if (!string.IsNullOrWhiteSpace(Header.SourceLanguage?.Value))
             source = new TranslationStringSource(translation)
             {
                 Language = (Language)Header.SourceLanguage!
@@ -99,7 +99,7 @@ public class TsProjFormat : IFormat
 
         var target = new TranslationStringTarget(translation) // Create a target translation string
         {
-            Language = !string.IsNullOrWhiteSpace(Header.TargetLanguage.ToString())
+            Language = !string.IsNullOrWhiteSpace(Header.TargetLanguage.Value)
                 ? Header.TargetLanguage
                 : throw new Exception("Target language is missing.")
         };
@@ -122,17 +122,17 @@ public class TsProjFormat : IFormat
             Header.TargetLanguage =
                 Language.Parse(Project.TargetLanguage); // Set the target language if it is specified in the project file
 
-        if (!string.IsNullOrWhiteSpace(Header.SourceLanguage.ToString()) &&
-            !string.IsNullOrWhiteSpace(Header.TargetLanguage.ToString()))
+        if (!string.IsNullOrWhiteSpace(Header.SourceLanguage?.Value) &&
+            !string.IsNullOrWhiteSpace(Header.TargetLanguage.Value))
             return true; // If both source and target languages are specified, return true
 
 
         var setTargetLanguage =
             string.IsNullOrWhiteSpace(options
-                ?.TargetLanguage.ToString()); // If the target language is not specified, ask the user to specify it
+                ?.TargetLanguage?.Value); // If the target language is not specified, ask the user to specify it
         var setSourceLanguage =
             string.IsNullOrWhiteSpace(options
-                ?.SourceLanguage.ToString()); // If the source language is not specified, ask the user to specify it
+                ?.SourceLanguage?.Value); // If the source language is not specified, ask the user to specify it
         if (setTargetLanguage || setSourceLanguage)
         {
             if (options?.FormatOptionsCallback is null)

@@ -41,7 +41,7 @@ public class NLangFormat : IFormat
             return;
         }
 
-        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.ToString(),
+        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.Value,
             nameof(Header.TargetLanguage)); // Target language is required
 
         // TODO: Dispose of streams and readers?
@@ -53,7 +53,7 @@ public class NLangFormat : IFormat
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
     {
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.ToString()))
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage?.Value))
         {
             if (options?.FormatOptionsCallback is null)
                 throw new InvalidOperationException("Callback for Format options required.");

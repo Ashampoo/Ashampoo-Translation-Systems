@@ -40,15 +40,15 @@ public class POFormat : IFormat
             return;
         }
 
-        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.ToString(), nameof(Header.TargetLanguage)); // check if target language is set
+        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.Value, nameof(Header.TargetLanguage)); // check if target language is set
 
         await ReadMessagesAsTranslationsAsync(lineReader);
     }
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
     {
-        if (!string.IsNullOrWhiteSpace(Header.TargetLanguage.ToString())) return true;
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.ToString()))
+        if (!string.IsNullOrWhiteSpace(Header.TargetLanguage.Value)) return true;
+        if (string.IsNullOrWhiteSpace(options?.TargetLanguage?.Value))
         {
             if (options?.FormatOptionsCallback is null)
                 throw new InvalidOperationException("Callback for Format options required.");

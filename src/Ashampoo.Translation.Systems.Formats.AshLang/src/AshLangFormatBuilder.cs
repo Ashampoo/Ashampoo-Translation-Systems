@@ -19,7 +19,7 @@ public class AshLangFormatBuilder : IFormatBuilderWithSourceAndTarget
     /// <inheritdoc />
     public IFormat Build()
     {
-        Guard.IsNotNullOrWhiteSpace(_targetLanguage.ToString(), nameof(_targetLanguage));
+        Guard.IsNotNullOrWhiteSpace(_targetLanguage.Value, nameof(_targetLanguage));
 
         var ashLang = new AshLangFormat
         {
