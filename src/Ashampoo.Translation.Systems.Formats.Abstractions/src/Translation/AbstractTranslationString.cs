@@ -8,7 +8,7 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 public abstract class AbstractTranslationString : ITranslation
 {
     /// <inheritdoc />
-    public virtual string Value { get; set; } = "";
+    public string Value { get; set; }
 
     /// <summary>
     /// Gets or sets the ID of the translation string.
@@ -16,10 +16,10 @@ public abstract class AbstractTranslationString : ITranslation
     protected string Id { get; set; }
 
     /// <inheritdoc />
-    public virtual string? Comment { get; set; }
+    public string? Comment { get; set; }
 
     /// <inheritdoc />
-    public virtual Language Language { get; set; } = Language.Empty;
+    public Language Language { get; set; }
 
     /// <summary>
     /// Base constructor for the <see cref="AbstractTranslationString"/> class.
