@@ -20,29 +20,67 @@
         <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
         <MinVerDefaultPreReleaseIdentifiers>prerelease.0</MinVerDefaultPreReleaseIdentifiers>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
     </PropertyGroup>
 
-    
+    <Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
+        <ItemGroup>
+            <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))"/>
+        </ItemGroup>
+    </Target>
+
+
     <ItemGroup>
-        <ProjectReference Include="..\..\..\Ashampoo.Translation.Systems.Formats.JavaProperties\Ashampoo.Translation.Systems.Formats.JavaProperties.csproj" />
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj" />
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.AshLang\src\Ashampoo.Translation.Systems.Formats.AshLang.csproj" />
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Gengo\src\Ashampoo.Translation.Systems.Formats.Gengo.csproj" />
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Json\src\Ashampoo.Translation.Systems.Formats.Json.csproj" />
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.NLang\src\Ashampoo.Translation.Systems.Formats.NLang.csproj" />
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.PO\src\Ashampoo.Translation.Systems.Formats.PO.csproj" />
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.ResX\src\Ashampoo.Translation.Systems.Formats.ResX.csproj" />
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.TsProj\src\Ashampoo.Translation.Systems.Formats.TsProj.csproj" />
+        <ProjectReference Include="..\..\..\Ashampoo.Translation.Systems.Formats.JavaProperties\Ashampoo.Translation.Systems.Formats.JavaProperties.csproj" PrivateAssets="all">
+            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+            <IncludeAssets>Ashampoo.Translation.Systems.Formats.JavaProperties.dll</IncludeAssets>
+        </ProjectReference>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj" PrivateAssets="all">
+            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+            <IncludeAssets>Ashampoo.Translation.Systems.Formats.Abstractions.dll</IncludeAssets>
+        </ProjectReference>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.AshLang\src\Ashampoo.Translation.Systems.Formats.AshLang.csproj" PrivateAssets="all">
+            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+            <IncludeAssets>Ashampoo.Translation.Systems.Formats.AshLang.dll</IncludeAssets>
+        </ProjectReference>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Gengo\src\Ashampoo.Translation.Systems.Formats.Gengo.csproj" PrivateAssets="all">
+            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+            <IncludeAssets>Ashampoo.Translation.Systems.Formats.Gengo.dll</IncludeAssets>
+        </ProjectReference>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Json\src\Ashampoo.Translation.Systems.Formats.Json.csproj" PrivateAssets="all">
+            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+            <IncludeAssets>Ashampoo.Translation.Systems.Formats.Json.dll</IncludeAssets>
+        </ProjectReference>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.NLang\src\Ashampoo.Translation.Systems.Formats.NLang.csproj" PrivateAssets="all">
+            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+            <IncludeAssets>Ashampoo.Translation.Systems.Formats.NLang.dll</IncludeAssets>
+        </ProjectReference>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.PO\src\Ashampoo.Translation.Systems.Formats.PO.csproj" PrivateAssets="all">
+            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+            <IncludeAssets>Ashampoo.Translation.Systems.Formats.PO.dll</IncludeAssets>
+        </ProjectReference>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.ResX\src\Ashampoo.Translation.Systems.Formats.ResX.csproj" PrivateAssets="all">
+            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+            <IncludeAssets>Ashampoo.Translation.Systems.Formats.ResX.dll</IncludeAssets>
+        </ProjectReference>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.TsProj\src\Ashampoo.Translation.Systems.Formats.TsProj.csproj" PrivateAssets="all">
+            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+            <IncludeAssets>Ashampoo.Translation.Systems.Formats.TsProj.dll</IncludeAssets>
+        </ProjectReference>
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="../../../LICENSE" Pack="true" PackagePath="" />
-        <None Include="../../../ash-logo-icon-big-128x.png" Pack="true" PackagePath="" />
-        <None Include="README.md" Pack="true" PackagePath="" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+        <None Include="../../../LICENSE" Pack="true" PackagePath=""/>
+        <None Include="../../../ash-logo-icon-big-128x.png" Pack="true" PackagePath=""/>
+        <None Include="README.md" Pack="true" PackagePath=""/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
         <PackageReference Include="MinVer" Version="4.3.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
