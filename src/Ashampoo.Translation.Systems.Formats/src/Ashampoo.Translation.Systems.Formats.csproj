@@ -27,20 +27,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj"/>
+        <ProjectReference Include="../../Ashampoo.Translation.Systems.Formats.Abstractions/src/Ashampoo.Translation.Systems.Formats.Abstractions.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
         <None Include="../../../LICENSE" Pack="true" PackagePath=""/>
         <None Include="../../../ash-logo-icon-big-128x.png" Pack="true" PackagePath=""/>
         <None Include="README.md" Pack="true" PackagePath=""/>
-        <None Include="AshLang/README.md"/>
-        <None Update="Gengo/README.md" />
-        <None Update="Json/README.md" />
-        <None Update="NLang/README.md" />
-        <None Update="PO/README.md" />
-        <None Update="ResX/README.md" />
-        <None Update="TsProj/README.md" />
     </ItemGroup>
 
     <ItemGroup>
