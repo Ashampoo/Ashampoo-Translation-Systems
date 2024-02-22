@@ -20,63 +20,27 @@
         <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
         <MinVerDefaultPreReleaseIdentifiers>prerelease.0</MinVerDefaultPreReleaseIdentifiers>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
     </PropertyGroup>
 
-    <Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
-        <ItemGroup>
-            <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))"/>
-        </ItemGroup>
-    </Target>
-
-
     <ItemGroup>
-        <ProjectReference Include="..\..\..\Ashampoo.Translation.Systems.Formats.JavaProperties\Ashampoo.Translation.Systems.Formats.JavaProperties.csproj" PrivateAssets="all">
-            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-            <IncludeAssets>Ashampoo.Translation.Systems.Formats.JavaProperties.dll</IncludeAssets>
-        </ProjectReference>
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj" PrivateAssets="all">
-            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-            <IncludeAssets>Ashampoo.Translation.Systems.Formats.Abstractions.dll</IncludeAssets>
-        </ProjectReference>
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.AshLang\src\Ashampoo.Translation.Systems.Formats.AshLang.csproj" PrivateAssets="all">
-            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-            <IncludeAssets>Ashampoo.Translation.Systems.Formats.AshLang.dll</IncludeAssets>
-        </ProjectReference>
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Gengo\src\Ashampoo.Translation.Systems.Formats.Gengo.csproj" PrivateAssets="all">
-            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-            <IncludeAssets>Ashampoo.Translation.Systems.Formats.Gengo.dll</IncludeAssets>
-        </ProjectReference>
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Json\src\Ashampoo.Translation.Systems.Formats.Json.csproj" PrivateAssets="all">
-            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-            <IncludeAssets>Ashampoo.Translation.Systems.Formats.Json.dll</IncludeAssets>
-        </ProjectReference>
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.NLang\src\Ashampoo.Translation.Systems.Formats.NLang.csproj" PrivateAssets="all">
-            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-            <IncludeAssets>Ashampoo.Translation.Systems.Formats.NLang.dll</IncludeAssets>
-        </ProjectReference>
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.PO\src\Ashampoo.Translation.Systems.Formats.PO.csproj" PrivateAssets="all">
-            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-            <IncludeAssets>Ashampoo.Translation.Systems.Formats.PO.dll</IncludeAssets>
-        </ProjectReference>
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.ResX\src\Ashampoo.Translation.Systems.Formats.ResX.csproj" PrivateAssets="all">
-            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-            <IncludeAssets>Ashampoo.Translation.Systems.Formats.ResX.dll</IncludeAssets>
-        </ProjectReference>
-        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.TsProj\src\Ashampoo.Translation.Systems.Formats.TsProj.csproj" PrivateAssets="all">
-            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-            <IncludeAssets>Ashampoo.Translation.Systems.Formats.TsProj.dll</IncludeAssets>
-        </ProjectReference>
+        <PackageReference Include="NPOI" Version="2.6.2"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0"/>
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats.Abstractions\src\Ashampoo.Translation.Systems.Formats.Abstractions.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
         <None Include="../../../LICENSE" Pack="true" PackagePath=""/>
         <None Include="../../../ash-logo-icon-big-128x.png" Pack="true" PackagePath=""/>
         <None Include="README.md" Pack="true" PackagePath=""/>
+        <None Include="AshLang/README.md"/>
+        <None Update="Gengo/README.md" />
+        <None Update="Json/README.md" />
+        <None Update="NLang/README.md" />
+        <None Update="PO/README.md" />
+        <None Update="ResX/README.md" />
+        <None Update="TsProj/README.md" />
     </ItemGroup>
 
     <ItemGroup>
@@ -87,4 +51,10 @@
         </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+        <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.2.2" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+    </ItemGroup>
+    
 </Project>

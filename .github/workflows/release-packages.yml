@@ -28,10 +28,18 @@ jobs:
           TAG=${{ needs.generate-version.outputs.version }}
           echo ::set-output name=version::${TAG#v}
   
-  publish-nuget-packages:
+  publish-formats-package:
     needs: [ generate-version, remove-prefix-from-version ]
     uses: ./.github/workflows/reuse-publish-nuget-package.yml
     with:
       project_name: "Ashampoo.Translation.Systems.Formats"
+      version: ${{ needs.remove-prefix-from-version.outputs.version }}
+    secrets: inherit
+    
+  publish-abstractions-package:
+    needs: [ generate-version, remove-prefix-from-version ]
+    uses: ./.github/workflows/reuse-publish-nuget-package.yml
+    with:
+      project_name: "Ashampoo.Translation.Systems.Formats.Abstractions"
       version: ${{ needs.remove-prefix-from-version.outputs.version }}
     secrets: inherit
