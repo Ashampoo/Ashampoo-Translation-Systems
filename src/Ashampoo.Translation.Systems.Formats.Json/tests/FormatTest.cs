@@ -52,6 +52,21 @@ public class FormatTest : FormatTestBase<JsonFormat>
         //FIXME: compare formats like in the other tests, and not the streams!
         //fs.MustBeEqualTo(ms);
     }
+    
+    [Fact]
+    public async Task ReadAndWriteAsync()
+    {
+        var format = await CreateAndReadFromFileAsync("de-DE.json", new FormatReadOptions { TargetLanguage = new Language("de-DE") });
+
+        var ms = new MemoryStream();
+        await format.WriteAsync(ms);
+        ms.Seek(0, SeekOrigin.Begin);
+
+        // var fs = createFileInStream("de-DE.json");
+
+        //FIXME: compare formats like in the other tests, and not the streams!
+        //fs.MustBeEqualTo(ms);
+    }
 
     [Theory]
     [InlineData("json-value-kind-false-test.json")]
@@ -123,5 +138,27 @@ public class FormatTest : FormatTestBase<JsonFormat>
         format.Header.TargetLanguage.Should().Be(new Language("de-DE"));
         format.Header.SourceLanguage.Should().BeNull();
         format.TranslationUnits.Should().HaveCount(189);
+    }
+    
+    [Fact]
+    public void WriteFormatLeavesStreamOpen()
+    {
+        var format = CreateAndReadFromFile("de-DE.json", new FormatReadOptions { TargetLanguage = new Language("de-DE") });
+        
+        var memoryStream = new MemoryStream();
+        format.Write(memoryStream);
+        memoryStream.CanRead.Should().BeTrue();
+        memoryStream.CanWrite.Should().BeTrue();
+    }
+    
+    [Fact]
+    public async Task WriteFormatLeavesStreamOpenAsync()
+    {
+        var format = await CreateAndReadFromFileAsync("de-DE.json", new FormatReadOptions { TargetLanguage = new Language("de-DE") });
+        
+        var memoryStream = new MemoryStream();
+        await format.WriteAsync(memoryStream);
+        memoryStream.CanRead.Should().BeTrue();
+        memoryStream.CanWrite.Should().BeTrue();
     }
 }

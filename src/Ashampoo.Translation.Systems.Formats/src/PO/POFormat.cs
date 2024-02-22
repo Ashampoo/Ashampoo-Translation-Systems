@@ -195,7 +195,22 @@ public class POFormat : IFormat
     /// <inheritdoc />
     public void Write(Stream stream)
     {
-        WriteAsync(stream).Wait();
+        using var writer = new StreamWriter(stream, Encoding.UTF8, leaveOpen: true);
+
+        // write header.
+        if (Header is not POHeader poHeader) throw new Exception($"Unexpected format header {Header.GetType()}");
+        poHeader.Write(writer);
+
+        // write messages.
+        foreach (var unit in TranslationUnits)
+        {
+            if (unit is not TranslationUnit poTranslationUnit)
+                throw new Exception($"Unexpected translation unit: {unit.GetType()}");
+            poTranslationUnit.Write(writer);
+            writer.WriteLine();
+        }
+
+        writer.Flush();
     }
 
     /// <summary>
@@ -209,7 +224,7 @@ public class POFormat : IFormat
     /// </exception>
     public async Task WriteAsync(Stream stream)
     {
-        var writer = new StreamWriter(stream, Encoding.UTF8);
+        await using var writer = new StreamWriter(stream, Encoding.UTF8, leaveOpen: true);
 
         // write header.
         if (Header is not POHeader poHeader) throw new Exception($"Unexpected format header {Header.GetType()}");

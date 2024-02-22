@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
@@ -106,5 +107,27 @@ public class AshLangFormatTest : FormatTestBase<AshLangFormat>
 
         format.Header.SourceLanguage.Should().Be(new Language("en-US"));
         format.Header.TargetLanguage.Should().Be(new Language("de-DE"));
+    }
+    
+    [Fact]
+    public void WriteFormatLeavesStreamOpen()
+    {
+        var format = CreateAndReadFromFile("normalized_peru-de-DE.ashLang");
+        
+        var memoryStream = new MemoryStream();
+        format.Write(memoryStream);
+        memoryStream.CanRead.Should().BeTrue();
+        memoryStream.CanWrite.Should().BeTrue();
+    }
+    
+    [Fact]
+    public async Task WriteFormatLeavesStreamOpenAsync()
+    {
+        var format = await CreateAndReadFromFileAsync("normalized_peru-de-DE.ashLang");
+        
+        var memoryStream = new MemoryStream();
+        await format.WriteAsync(memoryStream);
+        memoryStream.CanRead.Should().BeTrue();
+        memoryStream.CanWrite.Should().BeTrue();
     }
 }

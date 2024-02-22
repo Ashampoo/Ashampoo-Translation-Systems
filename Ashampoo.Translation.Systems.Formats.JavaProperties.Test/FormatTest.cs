@@ -23,7 +23,8 @@ public class FormatTest : FormatTestBase<JavaPropertiesFormat>
     public void ReadFromFile()
     {
         IFormat format =
-            CreateAndReadFromFile("messages_de.properties", new FormatReadOptions() { TargetLanguage = new Language("de-DE") });
+            CreateAndReadFromFile("messages_de.properties",
+                new FormatReadOptions() { TargetLanguage = new Language("de-DE") });
         const string id = "aboutTheApp";
 
         foreach (var unit in format.TranslationUnits)
@@ -39,5 +40,29 @@ public class FormatTest : FormatTestBase<JavaPropertiesFormat>
         translationString.Should().NotBeNull();
         translationString!.Value.Should().Be("Über Photos");
         translationString.Comment.Should().BeNull();
+    }
+
+    [Fact]
+    public void WriteFormatLeavesStreamOpen()
+    {
+        var format = CreateAndReadFromFile("messages_de.properties",
+            new FormatReadOptions { TargetLanguage = new Language("de-DE") });
+        
+        var memoryStream = new MemoryStream();
+        format.Write(memoryStream);
+        memoryStream.CanRead.Should().BeTrue();
+        memoryStream.CanWrite.Should().BeTrue();
+    }
+    
+    [Fact]
+    public async Task WriteFormatLeavesStreamOpenAsync()
+    {
+        var format = await CreateAndReadFromFileAsync("messages_de.properties",
+            new FormatReadOptions { TargetLanguage = new Language("de-DE") });
+        
+        var memoryStream = new MemoryStream();
+        await format.WriteAsync(memoryStream);
+        memoryStream.CanRead.Should().BeTrue();
+        memoryStream.CanWrite.Should().BeTrue();
     }
 }

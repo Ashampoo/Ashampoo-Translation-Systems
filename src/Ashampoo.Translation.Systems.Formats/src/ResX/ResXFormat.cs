@@ -12,7 +12,7 @@ namespace Ashampoo.Translation.Systems.Formats.ResX;
 /// <summary>
 /// Implementation of <see cref="IFormat"/> interface for the ResX format.
 /// </summary>
-public class ResXFormat :  IFormat
+public class ResXFormat : IFormat
 {
     /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new DefaultFormatHeader();
@@ -124,15 +124,6 @@ public class ResXFormat :  IFormat
     /// <inheritdoc />
     public void Write(Stream stream)
     {
-        WriteAsync(stream).Wait();
-    }
-
-    /// <summary>
-    /// Asynchronously writes the current instance to the given <paramref name="stream"/>.
-    /// </summary>
-    /// <param name="stream"></param>
-    public async Task WriteAsync(Stream stream)
-    {
         //Add an empty namespace and empty value
         var ns = new XmlSerializerNamespaces();
         ns.Add("", "");
@@ -149,7 +140,29 @@ public class ResXFormat :  IFormat
         var xmlWriter = XmlWriter.Create(stream, xmlSettings);
         var xmlSerializer = new XmlSerializer(typeof(Root));
         xmlSerializer.Serialize(xmlWriter, XmlRoot, ns);
+    }
 
+    /// <summary>
+    /// Asynchronously writes the current instance to the given <paramref name="stream"/>.
+    /// </summary>
+    /// <param name="stream"></param>
+    public async Task WriteAsync(Stream stream)
+    {
+        var ns = new XmlSerializerNamespaces();
+        ns.Add("", "");
+
+        var xmlSettings = new XmlWriterSettings
+        {
+            Async = true,
+            Indent = true,
+            IndentChars = "\t",
+            NewLineChars = "\r\n",
+            NewLineHandling = NewLineHandling.Replace,
+            Encoding = Encoding.UTF8
+        };
+        var xmlWriter = XmlWriter.Create(stream, xmlSettings);
+        var xmlSerializer = new XmlSerializer(typeof(Root));
+        xmlSerializer.Serialize(xmlWriter, XmlRoot, ns);
         await xmlWriter.FlushAsync();
     }
 }

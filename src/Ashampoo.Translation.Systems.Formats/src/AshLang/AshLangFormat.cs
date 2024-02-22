@@ -21,12 +21,6 @@ public class AshLangFormat : IFormat
     public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
 
     /// <inheritdoc />
-    public Task WriteAsync(Stream stream)
-    {
-        throw new NotImplementedException();
-    }
-
-    /// <inheritdoc />
     public IFormatHeader Header { get; private set; }
 
 
@@ -57,6 +51,13 @@ public class AshLangFormat : IFormat
     {
         var chunkWriter = new ChunkWriter(stream, Chunks);
         chunkWriter.Write();
+    }
+    
+    /// <inheritdoc />
+    public Task WriteAsync(Stream stream)
+    {
+        Write(stream);
+        return Task.CompletedTask;
     }
 
     /// <inheritdoc />

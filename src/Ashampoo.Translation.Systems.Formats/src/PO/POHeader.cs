@@ -35,9 +35,8 @@ public class POHeader : AbstractFormatHeader
                 AdditionalHeaders["Last-Translator"] = value;
         }
     }
-
     /// <summary>
-    /// 
+    /// Write the header to the given <paramref name="writer"/>.
     /// </summary>
     /// <param name="writer"></param>
     public async Task WriteAsync(TextWriter writer)
@@ -53,5 +52,24 @@ public class POHeader : AbstractFormatHeader
         }
 
         await writer.WriteLineAsync();
+    }
+    
+    /// <summary>
+    /// Write the header to the given <paramref name="writer"/>.
+    /// </summary>
+    /// <param name="writer"></param>
+    public void Write(TextWriter writer)
+    {
+        writer.WriteLine("msgid \"\"");
+        writer.WriteLine("msgstr \"\"");
+        foreach (var (key, value) in AdditionalHeaders)
+        {
+            // skip empty values.
+            if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(value)) continue;
+
+            writer.WriteLine($"\"{key}: {value}\\n\"");
+        }
+
+        writer.WriteLine();
     }
 }

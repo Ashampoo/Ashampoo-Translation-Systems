@@ -25,4 +25,16 @@ public class TranslationUnit : AbstractTranslationUnit
             await message.WriteAsync(writer);
         }
     }
+    
+    /// <summary>
+    /// Writes the translation unit to the specified <see cref="TextWriter"/>.
+    /// </summary>
+    /// <param name="writer"></param>
+    public void Write(TextWriter writer)
+    {
+        if (Translations.FirstOrDefault() is Message message)
+        {
+            message.Write(writer);
+        }
+    }
 }

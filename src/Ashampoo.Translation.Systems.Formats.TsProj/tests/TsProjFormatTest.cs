@@ -62,4 +62,26 @@ public class TsProjFormatTest : FormatTestBase<TsProjFormat>
         await CreateAndReadFromFileAsync("normalized_export_nlang-de-DE.tsproj").Invoking(x => x).Should()
             .ThrowAsync<InvalidOperationException>();
     }
+    
+    [Fact]
+    public void WriteFormatLeavesStreamOpen()
+    {
+        var format = CreateAndReadFromFile("normalized_export_ashlang-de-DE.tsproj");
+
+        var memoryStream = new MemoryStream();
+        format.Write(memoryStream);
+        memoryStream.CanRead.Should().BeTrue();
+        memoryStream.CanWrite.Should().BeTrue();
+    }
+
+    [Fact]
+    public async Task WriteFormatLeavesStreamOpenAsync()
+    {
+        var format = await CreateAndReadFromFileAsync("normalized_export_ashlang-de-DE.tsproj");
+
+        var memoryStream = new MemoryStream();
+        await format.WriteAsync(memoryStream);
+        memoryStream.CanRead.Should().BeTrue();
+        memoryStream.CanWrite.Should().BeTrue();
+    }
 }
