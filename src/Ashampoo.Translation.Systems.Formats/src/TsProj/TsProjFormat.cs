@@ -174,17 +174,6 @@ public class TsProjFormat : IFormat
     /// <inheritdoc />
     public void Write(Stream stream)
     {
-        WriteAsync(stream).Wait();
-    }
-
-    /// <summary>
-    /// Asynchronously writes the current instance to the specified stream.
-    /// </summary>
-    /// <param name="stream">
-    /// The stream to write to.
-    /// </param>
-    public async Task WriteAsync(Stream stream)
-    {
         //Add an empty namespace and empty value
         var ns = new XmlSerializerNamespaces();
         ns.Add("", "");
@@ -202,6 +191,35 @@ public class TsProjFormat : IFormat
         var xml = new XmlSerializer(typeof(Project)); // Create a xml serializer for the project
         xml.Serialize(writer, Project, ns); // Serialize the project to the writer
 
-        await writer.FlushAsync(); 
+        writer.Flush(); 
+    }
+
+    /// <summary>
+    /// Asynchronously writes the current instance to the specified stream.
+    /// </summary>
+    /// <param name="stream">
+    /// The stream to write to.
+    /// </param>
+    public async Task WriteAsync(Stream stream)
+    {
+        
+        //Add an empty namespace and empty value
+        var ns = new XmlSerializerNamespaces();
+        ns.Add("", "");
+
+        // We need a xml-writer to use settings.
+        XmlWriterSettings settings = new()
+        {
+            Async = true,
+            Indent = true,
+            NewLineHandling = NewLineHandling.Replace,
+            NewLineChars = "\r\n"
+        };
+        var writer = XmlWriter.Create(stream, settings); // Create a xml writer with the settings
+
+        var xml = new XmlSerializer(typeof(Project)); // Create a xml serializer for the project
+        xml.Serialize(writer, Project, ns); // Serialize the project to the writer
+
+        await writer.FlushAsync();
     }
 }

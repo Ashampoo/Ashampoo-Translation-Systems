@@ -136,7 +136,7 @@ public class NLangFormat : IFormat
     public async Task WriteAsync(Stream stream)
     {
         // NLang is UTF16 LE
-        var writer = new StreamWriter(stream, Encoding.Unicode);
+        await using var writer = new StreamWriter(stream, Encoding.Unicode, leaveOpen: true);
 
         foreach (var translationUnit in TranslationUnits)
         {

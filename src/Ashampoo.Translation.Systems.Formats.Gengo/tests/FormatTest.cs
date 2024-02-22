@@ -264,4 +264,28 @@ public class FormatTest : FormatTestBase<GengoFormat>
         format.TranslationUnits.GetTranslationUnit("ID Test").Translations.GetTranslation(new Language("de-DE")).Value.Should()
             .Be("Test target");
     }
+    
+    [Fact]
+    public void WriteFormatLeavesStreamOpen()
+    {
+        var format = CreateAndReadFromFile("normalized-excel-test.xlsx",
+            new FormatReadOptions { SourceLanguage = new Language("de-DE"), TargetLanguage = new Language("en-US") });
+        
+        var memoryStream = new MemoryStream();
+        format.Write(memoryStream);
+        memoryStream.CanRead.Should().BeTrue();
+        memoryStream.CanWrite.Should().BeTrue();
+    }
+    
+    [Fact]
+    public async Task WriteFormatLeavesStreamOpenAsync()
+    {
+        var format = await CreateAndReadFromFileAsync("normalized-excel-test.xlsx",
+            new FormatReadOptions { SourceLanguage = new Language("de-DE"), TargetLanguage = new Language("en-US") });
+        
+        var memoryStream = new MemoryStream();
+        await format.WriteAsync(memoryStream);
+        memoryStream.CanRead.Should().BeTrue();
+        memoryStream.CanWrite.Should().BeTrue();
+    }
 }

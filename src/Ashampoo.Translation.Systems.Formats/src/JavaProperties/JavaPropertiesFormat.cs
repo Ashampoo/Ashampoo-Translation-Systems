@@ -110,7 +110,17 @@ public partial class JavaPropertiesFormat : IFormat
     /// <inheritdoc/>
     public void Write(Stream stream)
     {
-        WriteAsync(stream).Wait();
+        using StreamWriter writer = new(stream, leaveOpen: true);
+
+        foreach (var translationUnit in TranslationUnits)
+        {
+            foreach (var translation in translationUnit.Translations)
+            {
+                writer.WriteLine($"{translationUnit.Id}={translation.Value}");
+            }
+        }
+
+        writer.Flush();
     }
 
     /// <summary>
@@ -119,7 +129,7 @@ public partial class JavaPropertiesFormat : IFormat
     /// <param name="stream"></param>
     public async Task WriteAsync(Stream stream)
     {
-        await using StreamWriter writer = new(stream, Encoding.Latin1);
+        await using StreamWriter writer = new(stream, leaveOpen: true);
 
         foreach (var translationUnit in TranslationUnits)
         {

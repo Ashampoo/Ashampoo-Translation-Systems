@@ -196,13 +196,14 @@ public partial class GengoFormat : IFormat
 
 
         workbook.Write(stream,
-            true); // Write the workbook to the stream, and leave the stream open TODO: Is this correct?
+            true); // Write the workbook to the stream, and leave the stream open
     }
 
     /// <inheritdoc />
     public Task WriteAsync(Stream stream)
     {
-        throw new NotImplementedException();
+        Write(stream);
+        return Task.CompletedTask;
     }
 
     private void CreateHeaderRow(ISheet sheet)

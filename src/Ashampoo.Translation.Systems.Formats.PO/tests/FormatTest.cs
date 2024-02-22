@@ -23,7 +23,8 @@ public class FormatTest : FormatTestBase<POFormat>
     [Fact]
     public void ReadFromFile()
     {
-        var format = CreateAndReadFromFile("translation_de.po", new FormatReadOptions { SourceLanguage = new Language("en-US") });
+        var format = CreateAndReadFromFile("translation_de.po",
+            new FormatReadOptions { SourceLanguage = new Language("en-US") });
 
         var poHeader = format.Header as POHeader;
         poHeader.Should().NotBeNull();
@@ -40,7 +41,7 @@ public class FormatTest : FormatTestBase<POFormat>
     }
 
     [Fact]
-    public async Task ReadAndWrite()
+    public async Task ReadAndWriteAsync()
     {
         var format = await CreateAndReadFromFileAsync("normalized_translation_de.po",
             new FormatReadOptions { TargetLanguage = new Language("de") });
@@ -64,5 +65,56 @@ public class FormatTest : FormatTestBase<POFormat>
         //FIXME: compare formats like in the other tests, and not the streams!
         //fs.MustBeEqualTo(ms);
         File.Delete($"{temp}normalized_translation_de.po");
+    }
+    
+    [Fact]
+    public void ReadAndWrite()
+    {
+        var format = CreateAndReadFromFile("normalized_translation_de.po",
+            new FormatReadOptions { TargetLanguage = new Language("de") });
+
+        var temp = Path.GetTempPath();
+        var outStream = new FileStream($"{temp}normalized_translation_de.po", FileMode.Create, FileAccess.Write,
+            FileShare.ReadWrite);
+        format.Write(outStream);
+        outStream.Flush();
+        outStream.Close();
+
+        var ms = new MemoryStream();
+        format.Write(ms);
+        ms.Seek(0, SeekOrigin.Begin);
+
+        // var reader = new StreamReader(ms);
+        // var text = await reader.ReadToEndAsync();
+        //
+        // var fs = createFileInStream("normalized_translation_de.po");
+
+        //FIXME: compare formats like in the other tests, and not the streams!
+        //fs.MustBeEqualTo(ms);
+        File.Delete($"{temp}normalized_translation_de.po");
+    }
+
+    [Fact]
+    public void WriteFormatLeavesStreamOpen()
+    {
+        var format = CreateAndReadFromFile("translation_de.po",
+            new FormatReadOptions { SourceLanguage = new Language("en-US") });
+
+        var memoryStream = new MemoryStream();
+        format.Write(memoryStream);
+        memoryStream.CanRead.Should().BeTrue();
+        memoryStream.CanWrite.Should().BeTrue();
+    }
+    
+    [Fact]
+    public async Task WriteFormatLeavesStreamOpenAsync()
+    {
+        var format = await CreateAndReadFromFileAsync("translation_de.po",
+            new FormatReadOptions { SourceLanguage = new Language("en-US") });
+
+        var memoryStream = new MemoryStream();
+        await format.WriteAsync(memoryStream);
+        memoryStream.CanRead.Should().BeTrue();
+        memoryStream.CanWrite.Should().BeTrue();
     }
 }
