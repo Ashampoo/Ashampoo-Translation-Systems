@@ -4,7 +4,21 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <PackageId>Ashampoo.Translation.Systems.Formats.Abstractions</PackageId>
+        <Authors>tjorvenK</Authors>
+        <Company>ashampoo</Company>
+        <Description>Abstraction package for interfaces, default and base implementations</Description>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageTags>localization;translation;po;gengo</PackageTags>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageIcon>ash-logo-icon-big-128x.png</PackageIcon>
+        <MinVerTagPrefix>v</MinVerTagPrefix>
+        <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
+        <MinVerDefaultPreReleaseIdentifiers>prerelease.0</MinVerDefaultPreReleaseIdentifiers>
     </PropertyGroup>
     
     <ItemGroup>
