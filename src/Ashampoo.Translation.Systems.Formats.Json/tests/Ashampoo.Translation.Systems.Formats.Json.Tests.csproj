@@ -15,7 +15,7 @@
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\tests\Ashampoo.Translation.Systems.TestBase\Ashampoo.Translation.Systems.TestBase.csproj" />
-        <ProjectReference Include="..\src\Ashampoo.Translation.Systems.Formats.Json.csproj" />
+        <ProjectReference Include="..\..\Ashampoo.Translation.Systems.Formats\src\Ashampoo.Translation.Systems.Formats.csproj" />
     </ItemGroup>
     <ItemGroup>
         <None Include="_TestFiles_/**" />

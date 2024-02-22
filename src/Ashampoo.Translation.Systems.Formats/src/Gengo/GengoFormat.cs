@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
-using Microsoft.Toolkit.Diagnostics;
+using CommunityToolkit.Diagnostics;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 

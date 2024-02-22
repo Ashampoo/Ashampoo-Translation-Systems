@@ -34,9 +34,4 @@
         </PackageReference>
         <PackageReference Include="StronglyTypedId" Version="1.0.0-beta07" />
     </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.2.2" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
-    </ItemGroup>
 </Project>
