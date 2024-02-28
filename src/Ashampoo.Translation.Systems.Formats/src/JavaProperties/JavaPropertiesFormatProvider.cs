@@ -8,7 +8,8 @@ namespace Ashampoo.Translation.Systems.Formats.JavaProperties;
 public sealed class JavaPropertiesFormatProvider : IFormatProvider<JavaPropertiesFormat>
 {
     /// <inheritdoc />
-    public string Id { get; } = "javaProperties";
+    public string Id => "javaProperties";
+
     /// <inheritdoc />
     public JavaPropertiesFormat Create() => new();
 
@@ -19,7 +20,7 @@ public sealed class JavaPropertiesFormatProvider : IFormatProvider<JavaPropertie
     }
 
     /// <inheritdoc />
-    public string[] SupportedFileExtensions { get; } = [".properties"];
+    public IEnumerable<string> SupportedFileExtensions { get; } = [".properties"];
     /// <inheritdoc />
     public IFormatBuilder<JavaPropertiesFormat> GetFormatBuilder() => new JavaPropertiesFormatBuilder();
 }

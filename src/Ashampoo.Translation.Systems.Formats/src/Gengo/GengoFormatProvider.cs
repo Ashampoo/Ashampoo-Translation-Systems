@@ -8,7 +8,7 @@ namespace Ashampoo.Translation.Systems.Formats.Gengo;
 public sealed class GengoFormatProvider : IFormatProvider<GengoFormat>
 {
     /// <inheritdoc />
-    public string Id { get; } = "gengo";
+    public string Id => "gengo";
 
     /// <inheritdoc />
     public GengoFormat Create() => new();
@@ -20,7 +20,7 @@ public sealed class GengoFormatProvider : IFormatProvider<GengoFormat>
     }
 
     /// <inheritdoc />
-    public string[] SupportedFileExtensions { get; } = [".xlsx", ".xls"];
+    public IEnumerable<string> SupportedFileExtensions { get; } = [".xlsx", ".xls"];
 
     /// <inheritdoc />
     public IFormatBuilder<GengoFormat> GetFormatBuilder() => new GengoFormatBuilder();
