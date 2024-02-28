@@ -9,7 +9,7 @@ namespace Ashampoo.Translation.Systems.Formats.PO;
 public sealed class POFormatProvider : IFormatProvider<POFormat>
 {
     /// <inheritdoc />
-    public string Id { get; } = "po";
+    public string Id => "po";
 
     /// <inheritdoc />
     public POFormat Create() => new();
@@ -21,7 +21,7 @@ public sealed class POFormatProvider : IFormatProvider<POFormat>
     }
 
     /// <inheritdoc />
-    public string[] SupportedFileExtensions { get; } = [".po"];
+    public IEnumerable<string> SupportedFileExtensions { get; } = [".po"];
 
     /// <inheritdoc />
     public IFormatBuilder<POFormat> GetFormatBuilder() => new POFormatBuilder();

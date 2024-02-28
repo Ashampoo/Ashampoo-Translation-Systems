@@ -3,12 +3,12 @@
 namespace Ashampoo.Translation.Systems.Formats.NLang;
 
 /// <summary>
-/// Implementation of <see cref="IFormatProvider"/> for the NLang format.
+/// Implementation of <see cref="IFormatProvider{T}"/> for the NLang format.
 /// </summary>
 public sealed class NLangFormatProvider : IFormatProvider<NLangFormat>
 {
     /// <inheritdoc />
-    public string Id { get; } = "nlang";
+    public string Id => "nlang";
 
     /// <inheritdoc />
     public NLangFormat Create() => new();
@@ -20,7 +20,7 @@ public sealed class NLangFormatProvider : IFormatProvider<NLangFormat>
     }
 
     /// <inheritdoc />
-    public string[] SupportedFileExtensions { get; } = [".nlang3"];
+    public IEnumerable<string> SupportedFileExtensions { get; } = [".nlang3"];
 
     /// <inheritdoc />
     public IFormatBuilder<NLangFormat> GetFormatBuilder() => new NLangFormatBuilder();

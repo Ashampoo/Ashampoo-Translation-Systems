@@ -8,7 +8,7 @@ namespace Ashampoo.Translation.Systems.Formats.Json;
 public sealed class JsonFormatProvider : IFormatProvider<JsonFormat>
 {
     /// <inheritdoc />
-    public string Id { get; } = "json";
+    public string Id => "json";
 
     /// <inheritdoc />
     public JsonFormat Create() => new();
@@ -20,7 +20,7 @@ public sealed class JsonFormatProvider : IFormatProvider<JsonFormat>
     }
 
     /// <inheritdoc />
-    public string[] SupportedFileExtensions { get; } = [".json"];
+    public IEnumerable<string> SupportedFileExtensions { get; } = [".json"];
 
     /// <inheritdoc />
     public IFormatBuilder<JsonFormat> GetFormatBuilder() => new JsonFormatBuilder();

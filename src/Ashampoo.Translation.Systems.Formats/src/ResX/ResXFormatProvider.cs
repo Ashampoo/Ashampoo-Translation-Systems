@@ -3,12 +3,12 @@
 namespace Ashampoo.Translation.Systems.Formats.ResX;
 
 /// <summary>
-/// Implementation of <see cref="IFormatProvider"/> interface for the ResX format.
+/// Implementation of <see cref="IFormatProvider{T}"/> interface for the ResX format.
 /// </summary>
 public sealed class ResXFormatProvider : IFormatProvider<ResXFormat>
 {
     /// <inheritdoc />
-    public string Id { get; } = "resx";
+    public string Id => "resx";
 
     /// <inheritdoc />
     public ResXFormat Create() => new();
@@ -20,7 +20,7 @@ public sealed class ResXFormatProvider : IFormatProvider<ResXFormat>
     }
 
     /// <inheritdoc />
-    public string[] SupportedFileExtensions { get; } = [".resx"];
+    public IEnumerable<string> SupportedFileExtensions { get; } = [".resx"];
 
     /// <inheritdoc />
     public IFormatBuilder<ResXFormat> GetFormatBuilder() => new ResXFormatBuilder();

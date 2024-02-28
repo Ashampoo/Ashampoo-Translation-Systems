@@ -1,11 +1,11 @@
-﻿using StronglyTypedIds;
+﻿using Strongly;
 
 namespace Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 
 /// <summary>
 /// Represents a strongly typed identifier for a language.
 /// </summary>
-[StronglyTypedId(Template.String)]
+[Strongly(StronglyType.String, StronglyConverter.SystemTextJson, StronglyImplementations.IEquatable |StronglyImplementations.Parsable)]
 public readonly partial struct Language;
 
 /// <summary>

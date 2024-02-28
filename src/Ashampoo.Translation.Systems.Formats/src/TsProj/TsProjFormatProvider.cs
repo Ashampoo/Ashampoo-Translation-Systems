@@ -6,7 +6,7 @@ namespace Ashampoo.Translation.Systems.Formats.TsProj;
 public sealed class TsProjFormatProvider : IFormatProvider<TsProjFormat>
 {
     /// <inheritdoc />
-    public string Id { get; } = "tsproj";
+    public string Id => "tsproj";
 
     /// <inheritdoc />
     public TsProjFormat Create() => new();
@@ -18,7 +18,7 @@ public sealed class TsProjFormatProvider : IFormatProvider<TsProjFormat>
     }
 
     /// <inheritdoc />
-    public string[] SupportedFileExtensions { get; } = [".tsproj"];
+    public IEnumerable<string> SupportedFileExtensions { get; } = [".tsproj"];
 
     /// <inheritdoc />
     public IFormatBuilder<TsProjFormat> GetFormatBuilder() => new TsProjFormatBuilder();

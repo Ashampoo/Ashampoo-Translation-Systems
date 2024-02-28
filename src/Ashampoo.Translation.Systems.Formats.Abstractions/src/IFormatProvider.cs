@@ -27,7 +27,7 @@ public interface IFormatProvider<out T> where T : class, IFormat
     /// <summary>
     /// Returns the supported file extensions of the format provider.
     /// </summary>
-    string[] SupportedFileExtensions { get; }
+    IEnumerable<string> SupportedFileExtensions { get; }
 
     /// <summary>
     /// Creates a new instance of the format builder.

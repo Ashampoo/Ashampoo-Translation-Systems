@@ -8,7 +8,7 @@ namespace Ashampoo.Translation.Systems.Formats.AshLang;
 public sealed class AshLangFormatProvider : IFormatProvider<AshLangFormat>
 {
     /// <inheritdoc />
-    public string Id { get; } = "ashlang";
+    public string Id => "ashlang";
 
     /// <inheritdoc />
     public AshLangFormat Create() => new();
@@ -20,7 +20,7 @@ public sealed class AshLangFormatProvider : IFormatProvider<AshLangFormat>
     }
 
     /// <inheritdoc />
-    public string[] SupportedFileExtensions => [".ashlang"];
+    public IEnumerable<string> SupportedFileExtensions => [".ashlang"];
 
     /// <inheritdoc />
     public IFormatBuilder<AshLangFormat> GetFormatBuilder() => new AshLangFormatBuilder();
