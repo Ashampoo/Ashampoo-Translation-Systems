@@ -32,6 +32,6 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="StronglyTypedId" Version="1.0.0-beta07" />
+        <PackageReference Include="Strongly" Version="1.5.1" />
     </ItemGroup>
 </Project>

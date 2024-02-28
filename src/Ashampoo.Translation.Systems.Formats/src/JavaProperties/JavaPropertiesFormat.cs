@@ -71,7 +71,7 @@ public partial class JavaPropertiesFormat : IFormat
         }
         else
         {
-            Header.TargetLanguage = (Language)options.TargetLanguage!;
+            Header.TargetLanguage = options.TargetLanguage!;
         }
 
         return true;
