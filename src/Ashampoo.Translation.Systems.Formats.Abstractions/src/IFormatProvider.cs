@@ -34,4 +34,15 @@ public interface IFormatProvider<out T> where T : class, IFormat
     /// </summary>
     /// <returns></returns>
     IFormatBuilder<T> GetFormatBuilder();
+
+    /// <summary>
+    /// Checks if the format provider supports the given format.
+    /// </summary>
+    /// <param name="format">
+    /// The format to check.
+    /// </param>
+    /// <returns>
+    /// True if the format provider supports the given format, otherwise false.
+    /// </returns>
+    bool SupportsFormat(IFormat format) => format is T;
 }
