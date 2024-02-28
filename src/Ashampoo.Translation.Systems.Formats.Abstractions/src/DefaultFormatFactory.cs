@@ -6,7 +6,7 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 public class DefaultFormatFactory : IFormatFactory
 {
     private readonly Dictionary<string, IFormatProvider<IFormat>> _formatProviders;
-    
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DefaultFormatFactory"/> class.
     /// </summary>
@@ -28,13 +28,15 @@ public class DefaultFormatFactory : IFormatFactory
     /// <inheritdoc />
     public IFormatProvider<T> GetFormatProvider<T>(T format) where T : class, IFormat
     {
-        return TryGetFormatProvider(format) ?? throw new Exception("Format provider not found"); // TODO: throw specific exception
+        return TryGetFormatProvider(format) ??
+               throw new Exception("Format provider not found"); // TODO: throw specific exception
     }
 
     /// <inheritdoc />
     public IFormatProvider<IFormat> GetFormatProvider(string formatId)
     {
-        return TryGetFormatProvider(formatId) ?? throw new Exception("Format provider not found"); // TODO: throw specific exception
+        return TryGetFormatProvider(formatId) ??
+               throw new Exception("Format provider not found"); // TODO: throw specific exception
     }
 
     /// <inheritdoc />
@@ -50,7 +52,7 @@ public class DefaultFormatFactory : IFormatFactory
     /// <inheritdoc />
     public IFormatProvider<T>? TryGetFormatProvider<T>(T format) where T : class, IFormat
     {
-        return _formatProviders.Values.OfType<IFormatProvider<T>>().FirstOrDefault();
+        return _formatProviders.Values.OfType<IFormatProvider<T>>().FirstOrDefault(p => p.SupportsFormat(format));
     }
 
     /// <inheritdoc />
