@@ -9,13 +9,13 @@ namespace Ashampoo.Translation.Systems.Formats.NLang;
 public class TranslationString : AbstractTranslationString
 {
     /// <inheritdoc />
-    public TranslationString(string id, string value, Language language, string comment) : base(id, value, language,
+    public TranslationString(string id, string value, Language language, string comment) : base(value, language,
         comment)
     {
     }
 
     /// <inheritdoc />
-    public TranslationString(string id, string value, Language language) : base(id, value, language)
+    public TranslationString(string id, string value, Language language) : base(value, language)
     {
     }
 
@@ -27,7 +27,7 @@ public class TranslationString : AbstractTranslationString
     /// </param>
     public async Task WriteAsync(TextWriter writer)
     {
-        await writer.WriteLineAsync($"{Id}={Escape(Value)}");
+        await writer.WriteLineAsync(Escape(Value));
     }
 
     private static string Escape(string input)

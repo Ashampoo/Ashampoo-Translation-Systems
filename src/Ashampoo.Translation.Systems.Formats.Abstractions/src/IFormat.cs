@@ -39,7 +39,10 @@ public interface IFormat
     /// </summary>
     /// <param name="stream"></param>
     /// <exception cref="UnsupportedFormatException"></exception>
-    void Write(Stream stream);
+    void Write(Stream stream)
+    {
+        WriteAsync(stream).Wait();
+    }
 
     /// <summary>
     /// Writes the format to the given stream asynchronously.

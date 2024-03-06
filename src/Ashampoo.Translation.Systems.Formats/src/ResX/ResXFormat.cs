@@ -108,7 +108,7 @@ public class ResXFormat : IFormat
             var value = data.Value ?? string.Empty;
             var comment = data.Comment;
 
-            var translationString = new DefaultTranslationString(id, value, Header.TargetLanguage, comment);
+            var translationString = new DefaultTranslationString(value, Header.TargetLanguage, comment);
             var translationUnit = new DefaultTranslationUnit(id)
             {
                 Translations =

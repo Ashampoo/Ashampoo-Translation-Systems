@@ -143,14 +143,12 @@ public partial class GengoFormat : IFormat
 
         var sourceTranslation = new DefaultTranslationString
         (
-            id,
             source,
             Header.SourceLanguage ?? throw new ArgumentNullException(nameof(Header.SourceLanguage))
         );
 
         var targetTranslation = new DefaultTranslationString
         (
-            id,
             target,
             Header.TargetLanguage
         );

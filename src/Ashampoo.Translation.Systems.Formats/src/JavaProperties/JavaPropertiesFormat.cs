@@ -25,12 +25,6 @@ public partial class JavaPropertiesFormat : IFormat
     public ICollection<ITranslationUnit> TranslationUnits { get; } = new List<ITranslationUnit>();
 
     /// <inheritdoc/>
-    public void Read(Stream stream, FormatReadOptions? options = null)
-    {
-        ReadAsync(stream, options).Wait();
-    }
-
-    /// <inheritdoc/>
     public async Task ReadAsync(Stream stream, FormatReadOptions? options = null)
     {
         if (!await ConfigureOptionsAsync(options))
@@ -97,7 +91,7 @@ public partial class JavaPropertiesFormat : IFormat
         var id = match.Groups["key"].Value;
         var value = match.Groups["value"].Value;
 
-        var translation = new DefaultTranslationString(id, value, Header.TargetLanguage);
+        var translation = new DefaultTranslationString(value, Header.TargetLanguage);
         return new DefaultTranslationUnit(id)
         {
             Translations =
