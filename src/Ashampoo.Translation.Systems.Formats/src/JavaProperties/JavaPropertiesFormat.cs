@@ -91,7 +91,7 @@ public partial class JavaPropertiesFormat : IFormat
         var id = match.Groups["key"].Value;
         var value = match.Groups["value"].Value;
 
-        var translation = new DefaultTranslationString(value, Header.TargetLanguage);
+        var translation = new DefaultTranslationString(value, Header.TargetLanguage, []);
         return new DefaultTranslationUnit(id)
         {
             Translations =

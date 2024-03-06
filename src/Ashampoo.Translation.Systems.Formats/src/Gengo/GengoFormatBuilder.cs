@@ -42,10 +42,10 @@ public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget<GengoFormat>
         {
             var sourceTranslationString =
                 new DefaultTranslationString(keyValuePair.Value.Item1,
-                    _sourceLanguage.Value); //Create new translation string
+                    _sourceLanguage.Value, []); //Create new translation string
             var targetTranslationString =
                 new DefaultTranslationString(keyValuePair.Value.Item2,
-                    _targetLanguage.Value); //Create new translation string
+                    _targetLanguage.Value, []); //Create new translation string
 
             var translationUnit = new DefaultTranslationUnit(keyValuePair.Key) //Create new translation unit
             {

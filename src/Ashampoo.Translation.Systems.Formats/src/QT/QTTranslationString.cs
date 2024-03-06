@@ -5,7 +5,7 @@ namespace Ashampoo.Translation.Systems.Formats.QT;
 
 public class QTTranslationString : AbstractTranslationString 
 {
-    public QTTranslationString(string value, Language language, string? comment = null) : base(value, language, comment)
+    public QTTranslationString(string value, Language language, List<string> comment) : base(value, language, comment)
     {
     }
 }

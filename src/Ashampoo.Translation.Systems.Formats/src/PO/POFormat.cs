@@ -137,10 +137,8 @@ public class POFormat : IFormat
                     $"Unsupported line '{line}' at line number {lineReader.LineNumber}.");
         }
 
-        var comment = comments.Count > 0 ? string.Join("", comments) : null;
-
         var language = omitTargetLanguage ? Language.Empty : Header.TargetLanguage;
-        return new MessageString(id: msgId, value: msgStr, language: language, comment: comment, msgCtxt: msgCtxt);
+        return new MessageString(id: msgId, value: msgStr, language: language, comments: comments, msgCtxt: msgCtxt);
     }
 
     private async Task<string> ReadMsgCtxtAsync(LineReader lineReader)

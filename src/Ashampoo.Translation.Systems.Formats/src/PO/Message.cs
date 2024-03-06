@@ -47,7 +47,7 @@ public abstract class Message : ITranslation
     /// <summary>
     /// Provides the comment for the ITranslation interface.
     /// </summary>
-    public string? Comment { get; set; }
+    public IList<string> Comments { get; set; }
 
     /// <inheritdoc />
     public Language Language { get; set; } = Language.Empty;
@@ -71,7 +71,8 @@ public abstract class Message : ITranslation
     /// </param>
     public virtual async Task WriteAsync(TextWriter writer)
     {
-        if (!string.IsNullOrWhiteSpace(Comment)) await writer.WriteLineAsync($"{Escape(Comment)}");
+        // TODO: Check if this is still working with multiple comments
+        if (Comments.Count > 0) await writer.WriteLineAsync($"{Escape(Comments.First())}");
         if (!string.IsNullOrWhiteSpace(MsgCtxt))
             await writer.WriteLineAsync($"{TypeMsgCtxt}\"{Escape(MsgCtxt)}\"");
         await writer.WriteLineAsync($"{TypeMsgId}\"{Escape(MsgId)}\"");

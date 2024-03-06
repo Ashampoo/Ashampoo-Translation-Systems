@@ -40,7 +40,7 @@ public class FormatTest : FormatTestBase<NLangFormat>
         var translationString = foundById.Translations.GetTranslation(new Language("de-DE"));
         translationString.Should().NotBeNull();
         translationString!.Value.Should().Be("Löschen");
-        translationString.Comment.Should().BeNull();
+        translationString.Comments.Should().BeEmpty();
     }
 
     [Fact]

@@ -38,8 +38,8 @@ public class FormatTest : FormatTestBase<JavaPropertiesFormat>
         foundById.Should().NotBeNull();
         var translationString = foundById.Translations.GetTranslation(new Language("de-DE"));
         translationString.Should().NotBeNull();
-        translationString!.Value.Should().Be("Über Photos");
-        translationString.Comment.Should().BeNull();
+        translationString.Value.Should().Be("Über Photos");
+        translationString.Comments.Should().BeEmpty();
     }
 
     [Fact]

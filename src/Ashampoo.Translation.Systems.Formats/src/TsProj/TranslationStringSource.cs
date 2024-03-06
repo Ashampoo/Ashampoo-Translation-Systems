@@ -8,21 +8,11 @@ namespace Ashampoo.Translation.Systems.Formats.TsProj;
 /// </summary>
 public class TranslationStringSource : ITranslation
 {
-    private readonly Element.Translation _translationElement;
+    /// <inheritdoc />
+    public string Value { get; set; }
 
     /// <inheritdoc />
-    public string Value
-    {
-        get => _translationElement.Source ?? string.Empty;
-        set => _translationElement.Source = value;
-    }
-    
-    /// <inheritdoc />
-    public string? Comment
-    {
-        get => _translationElement.Comment;
-        set => _translationElement.Comment = value;
-    }
+    public IList<string> Comments { get; set; }
 
     /// <inheritdoc />
     public Language Language { get; set; } = Language.Empty;
@@ -35,6 +25,7 @@ public class TranslationStringSource : ITranslation
     /// </param>
     public TranslationStringSource(Element.Translation translationElement)
     {
-        _translationElement = translationElement;
+        Comments = [translationElement.Comment ?? string.Empty];
+        Value = translationElement.Source ?? string.Empty;
     }
 }

@@ -42,10 +42,10 @@ public class POFormatBuilder : IFormatBuilderWithTarget<POFormat>
                 var ctxt = translation.Key[..index];
                 var msgId = translation.Key[(index + 1)..];
                 translationUnit.Translations.Add(new MessageString(id: msgId, value: translation.Value, language: (Language)_targetLanguage,
-                    msgCtxt: ctxt));
+                    msgCtxt: ctxt, comments: []));
             }
             else
-                translationUnit.Translations.Add(new MessageString(translation.Key, translation.Value, (Language)_targetLanguage));
+                translationUnit.Translations.Add(new MessageString(translation.Key, translation.Value, (Language)_targetLanguage, []));
 
             poFormat.TranslationUnits.Add(translationUnit);
         }

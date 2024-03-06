@@ -105,7 +105,6 @@ public class NLangFormat : IFormat
         
         var translation =  new TranslationString // Create translation string
         (
-            id,
             value,
             Header.TargetLanguage
         );
