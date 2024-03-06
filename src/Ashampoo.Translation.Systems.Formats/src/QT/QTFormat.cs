@@ -1,4 +1,5 @@
 ﻿using System.Xml;
+using System.Xml.Linq;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
@@ -9,13 +10,13 @@ namespace Ashampoo.Translation.Systems.Formats.QT;
 public class QTFormat : IFormat
 {
     /// <inheritdoc />
-    public IFormatHeader Header { get; }
+    public IFormatHeader Header { get; } = new DefaultFormatHeader();
 
     /// <inheritdoc />
-    public LanguageSupport LanguageSupport { get; }
+    public LanguageSupport LanguageSupport { get; } = LanguageSupport.OnlyTarget;
 
     /// <inheritdoc />
-    public ICollection<ITranslationUnit> TranslationUnits { get; }
+    public ICollection<ITranslationUnit> TranslationUnits { get; } = [];
 
     /// <inheritdoc />
     public async Task ReadAsync(Stream stream, FormatReadOptions? options = null)
@@ -28,32 +29,34 @@ public class QTFormat : IFormat
 
         Guard.IsNotNull(Header.TargetLanguage.Value);
 
-        using var reader = XmlReader.Create(stream,
-            new XmlReaderSettings() { Async = true, IgnoreComments = true, IgnoreWhitespace = true });
 
-        await ReadTranslations(reader);
+        var doc = XDocument.Load(stream);
+        var messageElements = doc.Descendants().Where(e => e.Name == "message");
+
+        await ReadTranslations(messageElements);
     }
 
-    private async Task ReadTranslations(XmlReader reader)
+    private Task ReadTranslations(IEnumerable<XElement> elements)
     {
-        while (await reader.ReadAsync())
+        foreach (var element in elements)
         {
-            switch (reader.NodeType)
+            if (element.IsEmpty || element.NodeType is XmlNodeType.EndElement)
             {
-                case XmlNodeType.Element:
-                    Console.WriteLine("Start Element {0}", reader.Name);
-                    break;
-                case XmlNodeType.Text:
-                    Console.WriteLine("Text Node: {0}", await reader.GetValueAsync());
-                    break;
-                case XmlNodeType.EndElement:
-                    Console.WriteLine("End Element {0}", reader.Name);
-                    break;
-                default:
-                    Console.WriteLine("Other node {0} with value {1}", reader.NodeType, reader.Value);
-                    break;
+                continue;
+            }
+            var sourceElement = element.Element("source");
+            var translationElement = element.Element("translation");
+            if (!string.IsNullOrWhiteSpace(sourceElement?.Value))
+            {
+                var unit = new DefaultTranslationUnit(sourceElement.Value);
+                var translation = new QTTranslationString(translationElement?.Value ?? string.Empty, Header.TargetLanguage, []);
+                unit.Translations.Add(translation);
+                TranslationUnits.Add(unit);
+                Console.WriteLine("Add translation with id {0} and value {1}", unit.Id, translation.Value);
             }
         }
+
+        return Task.CompletedTask;
     }
 
     /// <inheritdoc />
