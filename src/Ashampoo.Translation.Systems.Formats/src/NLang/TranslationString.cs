@@ -9,13 +9,13 @@ namespace Ashampoo.Translation.Systems.Formats.NLang;
 public class TranslationString : AbstractTranslationString
 {
     /// <inheritdoc />
-    public TranslationString(string id, string value, Language language, string comment) : base(value, language,
+    public TranslationString(string value, Language language, List<string> comment) : base(value, language,
         comment)
     {
     }
 
     /// <inheritdoc />
-    public TranslationString(string id, string value, Language language) : base(value, language)
+    public TranslationString(string value, Language language) : base(value, language, [])
     {
     }
 

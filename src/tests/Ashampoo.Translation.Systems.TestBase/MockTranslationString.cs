@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
@@ -9,7 +10,7 @@ public class MockTranslationString : ITranslation
 
     public string Id { get; }
 
-    public string? Comment { get; set; }
+    public IList<string> Comments { get; set; }
 
     public bool IsEmpty => string.IsNullOrWhiteSpace(Value);
 

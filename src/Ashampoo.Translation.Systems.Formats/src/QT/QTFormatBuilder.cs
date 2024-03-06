@@ -26,7 +26,7 @@ public class QTFormatBuilder : IFormatBuilderWithTarget<QTFormat>
         foreach (var (id, value) in _translations)
         {
             var unit = new DefaultTranslationUnit(id);
-            var translation = new DefaultTranslationString(value, _targetLanguage);
+            var translation = new DefaultTranslationString(value, _targetLanguage, []);
             unit.Translations.Add(translation);
             format.TranslationUnits.Add(unit);
         }

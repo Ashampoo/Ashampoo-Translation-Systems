@@ -16,7 +16,7 @@ public class DefaultTranslationString : AbstractTranslationString
     /// <param name="comment">
     /// The comment of the translation string.
     /// </param>
-    public DefaultTranslationString(string value, Language language, string? comment = null) : base( value,
+    public DefaultTranslationString(string value, Language language, List<string> comment) : base( value,
         language, comment)
     {
     }

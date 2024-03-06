@@ -36,7 +36,7 @@ public class JsonFormatBuilder : IFormatBuilderWithTarget<JsonFormat>
         foreach (var translation in _translations)
         {
             var translationUnit = new DefaultTranslationUnit(translation.Key);
-            var translationString = new DefaultTranslationString(translation.Value, (Language)_targetLanguage);
+            var translationString = new DefaultTranslationString(translation.Value, (Language)_targetLanguage, []);
             translationUnit.Translations.Add(translationString);
             jsonFormat.TranslationUnits.Add(translationUnit);
         }

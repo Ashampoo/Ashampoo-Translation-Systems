@@ -23,12 +23,12 @@ public class MessageString : Message, ITranslation
     }
 
     /// <inheritdoc />
-    public MessageString(string id, string value, Language language, string? comment = null, string msgCtxt = "")
+    public MessageString(string id, string value, Language language, IList<string> comments, string msgCtxt = "")
     {
         MsgId = id;
         Value = value;
         Language = language;
-        Comment = comment;
+        Comments = comments;
         MsgCtxt = msgCtxt;
     }
 

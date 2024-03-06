@@ -15,7 +15,7 @@ public interface ITranslation
     /// <summary>
     /// Optional comment for this translation.
     /// </summary>
-    string? Comment { get; set; }
+    IList<string> Comments { get; set; }
 
     /// <summary>
     /// The language of the translation.
