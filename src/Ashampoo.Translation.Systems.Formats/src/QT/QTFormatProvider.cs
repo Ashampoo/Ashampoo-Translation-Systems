@@ -1,24 +1,24 @@
 ﻿using Ashampoo.Translation.Systems.Formats.Abstractions;
-using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 
 namespace Ashampoo.Translation.Systems.Formats.QT;
 
 public class QTFormatProvider : IFormatProvider<QTFormat>
 {
-    public string Id { get; }
-    public QTFormat Create()
-    {
-        throw new NotImplementedException();
-    }
+    /// <inheritdoc />
+    public string Id => "ts";
 
+    /// <inheritdoc />
+    public QTFormat Create() => new();
+
+    /// <inheritdoc />
     public bool SupportsFileName(string fileName)
     {
-        throw new NotImplementedException();
+        return SupportedFileExtensions.Any(ext => ext.EndsWith(ext, StringComparison.OrdinalIgnoreCase));
     }
 
-    public IEnumerable<string> SupportedFileExtensions { get; }
-    public IFormatBuilder<QTFormat> GetFormatBuilder()
-    {
-        throw new NotImplementedException();
-    }
+    /// <inheritdoc />
+    public IEnumerable<string> SupportedFileExtensions { get; } = [".ts"];
+
+    /// <inheritdoc />
+    public IFormatBuilder<QTFormat> GetFormatBuilder() => new QTFormatBuilder();
 }
