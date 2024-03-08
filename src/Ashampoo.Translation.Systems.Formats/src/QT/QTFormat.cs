@@ -29,14 +29,13 @@ public class QTFormat : IFormat
 
         Guard.IsNotNull(Header.TargetLanguage.Value);
 
-
         var doc = XDocument.Load(stream);
         var messageElements = doc.Descendants().Where(e => e.Name == "message");
 
         await ReadTranslations(messageElements);
     }
 
-    private Task ReadTranslations(IEnumerable<XElement> elements)
+    private async Task ReadTranslations(IEnumerable<XElement> elements)
     {
         foreach (var element in elements)
         {
@@ -44,25 +43,79 @@ public class QTFormat : IFormat
             {
                 continue;
             }
+
             var sourceElement = element.Element("source");
             var translationElement = element.Element("translation");
+            var comments = await SetComments(element);
+
             if (!string.IsNullOrWhiteSpace(sourceElement?.Value))
             {
                 var unit = new DefaultTranslationUnit(sourceElement.Value);
-                var translation = new QTTranslationString(translationElement?.Value ?? string.Empty, Header.TargetLanguage, []);
+                var translation = new QTTranslationString(translationElement?.Value ?? string.Empty,
+                    Header.TargetLanguage, comments);
                 unit.Translations.Add(translation);
                 TranslationUnits.Add(unit);
-                Console.WriteLine("Add translation with id {0} and value {1}", unit.Id, translation.Value);
+                Console.WriteLine("Add translation with id {0} and value {1}. Comments: {2}", unit.Id,
+                    translation.Value, string.Join(",", translation.Comments));
             }
         }
+    }
 
-        return Task.CompletedTask;
+    private Task<List<string>> SetComments(XElement element)
+    {
+        List<string> comments = [];
+        if (element.TryGetElement("translatorcomment", out var translatorComment))
+        {
+            if (translatorComment?.Value != null) comments.Add(translatorComment.Value);
+        }
+
+        if (element.TryGetElement("extracomment", out var extraComment))
+        {
+            if (extraComment?.Value != null) comments.Add(extraComment.Value);
+        }
+
+        return Task.FromResult(comments);
     }
 
     /// <inheritdoc />
     public Task WriteAsync(Stream stream)
     {
-        throw new NotImplementedException();
+        var layout = $"""
+                      <?xml version="1.0" encoding="utf-8"?>
+                      <!DOCTYPE TS>
+                      <TS version="2.0" language="{Header.TargetLanguage.Value.Replace('-', '_')}">
+                      </TS>
+                      """;
+
+        var doc = XDocument.Parse(layout);
+        var tsElement = doc.Descendants().First(e => e.Name == "TS");
+        var writer = tsElement.CreateWriter();
+        writer.WriteStartElement("context");
+        foreach (var unit in TranslationUnits)
+        {
+            foreach (var translation in unit.Translations)
+            {
+                writer.WriteStartElement("message");
+                writer.WriteStartElement("source");
+                writer.WriteString(unit.Id);
+                writer.WriteEndElement();
+                if (translation.Comments.Any())
+                {
+                    writer.WriteStartElement("translatorcomment");
+                    writer.WriteString(string.Join(", ", translation.Comments));
+                    writer.WriteEndElement();
+                }
+                writer.WriteStartElement("translation");
+                writer.WriteString(translation.Value);
+                writer.WriteEndElement();
+                writer.WriteEndElement();
+            }
+        }
+        writer.Flush();
+        writer.Close();
+        doc.Save(stream);
+
+        return Task.CompletedTask;
     }
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
@@ -91,5 +144,14 @@ public class QTFormat : IFormat
         }
 
         return true;
+    }
+}
+
+file static class XElementExtensions
+{
+    public static bool TryGetElement(this XElement element, XName name, out XElement? outElement)
+    {
+        outElement = element.Element(name);
+        return outElement is not null;
     }
 }
