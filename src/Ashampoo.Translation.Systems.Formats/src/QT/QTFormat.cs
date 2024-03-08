@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Xml;
 using System.Xml.Linq;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
@@ -78,7 +79,7 @@ public class QTFormat : IFormat
     }
 
     /// <inheritdoc />
-    public Task WriteAsync(Stream stream)
+    public async Task WriteAsync(Stream stream)
     {
         var layout = $"""
                       <?xml version="1.0" encoding="utf-8"?>
@@ -90,6 +91,13 @@ public class QTFormat : IFormat
         var doc = XDocument.Parse(layout);
         var tsElement = doc.Descendants().First(e => e.Name == "TS");
         var writer = tsElement.CreateWriter();
+        await WriteTranslations(writer);
+        doc.Save(stream);
+    }
+
+    [SuppressMessage("ReSharper", "MethodHasAsyncOverload")]
+    private async Task WriteTranslations(XmlWriter writer)
+    {
         writer.WriteStartElement("context");
         foreach (var unit in TranslationUnits)
         {
@@ -99,21 +107,26 @@ public class QTFormat : IFormat
                 writer.WriteStartElement("source");
                 writer.WriteString(unit.Id);
                 writer.WriteEndElement();
-                if (translation.Comments.Any())
-                {
-                    writer.WriteStartElement("translatorcomment");
-                    writer.WriteString(string.Join(", ", translation.Comments));
-                    writer.WriteEndElement();
-                }
+                await WriteTranslationComments(writer, translation.Comments);
                 writer.WriteStartElement("translation");
                 writer.WriteString(translation.Value);
                 writer.WriteEndElement();
                 writer.WriteEndElement();
             }
         }
+
         writer.Flush();
         writer.Close();
-        doc.Save(stream);
+    }
+
+    private Task WriteTranslationComments(XmlWriter writer, IList<string> comments)
+    {
+        if (comments.Any())
+        {
+            writer.WriteStartElement("translatorcomment");
+            writer.WriteString(string.Join(", ", comments));
+            writer.WriteEndElement();
+        }
 
         return Task.CompletedTask;
     }
