@@ -28,6 +28,7 @@ public class FormatTest : FormatTestBase<QTFormat>
 
         format.Header.TargetLanguage.Should().Be(new Language("de-DE"));
         format.TranslationUnits.Should().NotBeEmpty();
+        format.TranslationUnits.Count.Should().Be(11636);
         foreach (var unit in format.TranslationUnits)
         {
             unit.Translations.Should().ContainSingle();
@@ -51,5 +52,6 @@ public class FormatTest : FormatTestBase<QTFormat>
         await format.WriteAsync(memoryStream);
         memoryStream.CanRead.Should().BeTrue();
         memoryStream.CanWrite.Should().BeTrue();
+        memoryStream.Length.Should().BeGreaterThan(0);
     }
 }
