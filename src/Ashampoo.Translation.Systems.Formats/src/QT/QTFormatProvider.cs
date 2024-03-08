@@ -5,7 +5,7 @@ namespace Ashampoo.Translation.Systems.Formats.QT;
 public class QTFormatProvider : IFormatProvider<QTFormat>
 {
     /// <inheritdoc />
-    public string Id => "ts";
+    public string Id => "QT";
 
     /// <inheritdoc />
     public QTFormat Create() => new();
