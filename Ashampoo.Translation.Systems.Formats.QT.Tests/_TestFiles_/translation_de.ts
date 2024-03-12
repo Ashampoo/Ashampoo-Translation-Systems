@@ -6,7 +6,7 @@
     <message>
         <location filename="ActivationWindow.cpp" line="27"/>
         <source>Lizenz Aktivieren/Deaktivieren</source>
-        <translation>Lizenz Aktivieren/Deaktivieren</translation>
+        <translation type="finished">Lizenz Aktivieren/Deaktivieren</translation>
     </message>
     <message>
         <location filename="ActivationWindow.cpp" line="48"/>

@@ -24,7 +24,7 @@ public class FormatTest : FormatTestBase<QTFormat>
     {
         IFormat format =
             CreateAndReadFromFile("translation_de.ts", new FormatReadOptions() { TargetLanguage = new Language("de-DE") });
-        const string id = "Verbleibende Testzeit:";
+        const string id = "Lizenz Aktivieren/Deaktivieren";
 
         format.Header.TargetLanguage.Should().Be(new Language("de-DE"));
         format.TranslationUnits.Should().NotBeEmpty();
@@ -38,8 +38,23 @@ public class FormatTest : FormatTestBase<QTFormat>
         foundById.Should().NotBeNull();
         var translationString = foundById.Translations.GetTranslation(new Language("de-DE"));
         translationString.Should().NotBeNull();
-        translationString.Value.Should().Be("Verbleibende Testzeit:");
+        translationString.Value.Should().Be("Lizenz Aktivieren/Deaktivieren");
         translationString.Comments.Should().BeEmpty();
+        translationString.Should().BeOfType<QtTranslationString>();
+        var translation = translationString as QtTranslationString;
+        translation?.Type.Should().Be(QtTranslationType.Finished);
+    }
+    
+    [Fact]
+    public void WriteFormatLeavesStreamOpen()
+    {
+        var format = CreateAndReadFromFile("translation_de.ts",
+            new FormatReadOptions { TargetLanguage = new Language("de-DE") }) as IFormat;
+
+        var memoryStream = new MemoryStream();
+        format.Write(memoryStream);
+        memoryStream.CanRead.Should().BeTrue();
+        memoryStream.CanWrite.Should().BeTrue();
     }
     
     [Fact]
