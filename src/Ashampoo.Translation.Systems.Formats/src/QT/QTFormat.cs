@@ -47,13 +47,20 @@ public class QTFormat : IFormat
 
             var sourceElement = element.Element("source");
             var translationElement = element.Element("translation");
+            var translationType = translationElement?.Attribute("type");
             var comments = await SetComments(element);
 
             if (!string.IsNullOrWhiteSpace(sourceElement?.Value))
             {
                 var unit = new DefaultTranslationUnit(sourceElement.Value);
-                var translation = new QTTranslationString(translationElement?.Value ?? string.Empty,
+                var translation = new QtTranslationString(translationElement?.Value ?? string.Empty,
                     Header.TargetLanguage, comments);
+                if (translationType is not null &&
+                    Enum.TryParse<QtTranslationType>(translationType.Value, true, out var result))
+                {
+                    translation.Type = result;
+                }
+
                 unit.Translations.Add(translation);
                 TranslationUnits.Add(unit);
                 Console.WriteLine("Add translation with id {0} and value {1}. Comments: {2}", unit.Id,
