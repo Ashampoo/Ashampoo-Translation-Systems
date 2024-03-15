@@ -1,7 +1,7 @@
 ﻿namespace Ashampoo.Translation.Systems.Formats.PO;
 
 /// <summary>
-/// 
+/// Provides constants for PO file formatting.
 /// </summary>
 public static class POConstants
 {
@@ -25,5 +25,8 @@ public static class POConstants
     /// </summary>
     public const string TypeMsgStr = "msgstr ";
 
+    /// <summary>
+    /// Represents the divider used in PO file formatting.
+    /// </summary>
     public const string Divider = "/"; // TODO: move to interface?
 }

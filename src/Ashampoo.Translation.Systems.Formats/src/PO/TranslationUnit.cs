@@ -20,7 +20,7 @@ public class TranslationUnit : AbstractTranslationUnit
     /// </param>
     public async Task WriteAsync(TextWriter writer)
     {
-        if (Translations.FirstOrDefault() is Message message)
+        if (Translations.FirstOrDefault() is MessageString message)
         {
             await message.WriteAsync(writer);
         }
@@ -32,7 +32,7 @@ public class TranslationUnit : AbstractTranslationUnit
     /// <param name="writer"></param>
     public void Write(TextWriter writer)
     {
-        if (Translations.FirstOrDefault() is Message message)
+        if (Translations.FirstOrDefault() is MessageString message)
         {
             message.Write(writer);
         }

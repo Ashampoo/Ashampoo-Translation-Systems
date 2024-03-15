@@ -101,23 +101,21 @@ public class POFormat : IFormat
             await lineReader.SkipEmptyLinesAsync();
             
             var message = await ReadMessageAsync(lineReader);
-            if (message is not MessageString messageString)
-                throw new Exception($"Unexpected message {message.GetType()} .");
             
-            if (string.IsNullOrWhiteSpace(messageString.Id)) continue; // skip if id is empty
+            if (string.IsNullOrWhiteSpace(message.Id)) continue; // skip if id is empty
 
-            var translationUnit = new TranslationUnit(messageString.Id) // Create translation unit
+            var translationUnit = new TranslationUnit(message.Id) // Create translation unit
             {
                 Translations =
                 {
-                    messageString
+                    message
                 }
             };
             TranslationUnits.Add(translationUnit);
         }
     }
 
-    private async Task<Message> ReadMessageAsync(LineReader lineReader, bool omitTargetLanguage = false)
+    private async Task<MessageString> ReadMessageAsync(LineReader lineReader, bool omitTargetLanguage = false)
     {
         IList<string> comments = new List<string>();
         var msgId = "";
