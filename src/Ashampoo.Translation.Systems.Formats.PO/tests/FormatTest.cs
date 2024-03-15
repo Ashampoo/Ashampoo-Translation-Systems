@@ -1,5 +1,5 @@
+using System;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
