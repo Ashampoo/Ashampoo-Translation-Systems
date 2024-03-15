@@ -20,10 +20,12 @@ msgctxt "{\"cxt\": \"survey_next\", \"id\": 277297361, \"checksum\": 1120704038}
 msgid "Next"
 msgstr "Weiter"
 
+#. My test comment
 msgctxt "{\"cxt\": \"survey_prev\", \"id\": 277297361, \"checksum\": 4265115762}"
 msgid "Prev"
 msgstr "Zurück"
 
+# My second test comment
 msgctxt "{\"cxt\": \"survey_done\", \"id\": 277297361, \"checksum\": 3426106465}"
 msgid "Done"
 msgstr "Fertig"

@@ -22,6 +22,7 @@ public class TranslationUnit : AbstractTranslationUnit
     {
         foreach (var translation in Translations)
         {
+            await writer.WriteAsync($"{Id}=");
             if (translation is TranslationString translationString) await translationString.WriteAsync(writer);
         }
     }

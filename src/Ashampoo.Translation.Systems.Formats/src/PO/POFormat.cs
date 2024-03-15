@@ -101,23 +101,21 @@ public class POFormat : IFormat
             await lineReader.SkipEmptyLinesAsync();
             
             var message = await ReadMessageAsync(lineReader);
-            if (message is not MessageString messageString)
-                throw new Exception($"Unexpected message {message.GetType()} .");
             
-            if (string.IsNullOrWhiteSpace(messageString.Id)) continue; // skip if id is empty
+            if (string.IsNullOrWhiteSpace(message.Id)) continue; // skip if id is empty
 
-            var translationUnit = new TranslationUnit(messageString.Id) // Create translation unit
+            var translationUnit = new TranslationUnit(message.Id) // Create translation unit
             {
                 Translations =
                 {
-                    messageString
+                    message
                 }
             };
             TranslationUnits.Add(translationUnit);
         }
     }
 
-    private async Task<Message> ReadMessageAsync(LineReader lineReader, bool omitTargetLanguage = false)
+    private async Task<MessageString> ReadMessageAsync(LineReader lineReader, bool omitTargetLanguage = false)
     {
         IList<string> comments = new List<string>();
         var msgId = "";
@@ -128,34 +126,32 @@ public class POFormat : IFormat
         while (!string.IsNullOrWhiteSpace(line = await lineReader.PeekLineAsync()))
         {
             // TODO: interpret comments as flags, options and so on.
-            if (line.StartsWith("#")) comments = await ReadCommentsAsync(lineReader);
-            else if (line.StartsWith(Message.TypeMsgId)) msgId = await ReadMsgIdAsync(lineReader);
-            else if (line.StartsWith(Message.TypeMsgStr)) msgStr = await ReadMsgStrAsync(lineReader);
-            else if (line.StartsWith(Message.TypeMsgCtxt)) msgCtxt = await ReadMsgCtxtAsync(lineReader);
+            if (line.StartsWith('#')) comments = await ReadCommentsAsync(lineReader);
+            else if (line.StartsWith(POConstants.TypeMsgId)) msgId = await ReadMsgIdAsync(lineReader);
+            else if (line.StartsWith(POConstants.TypeMsgStr)) msgStr = await ReadMsgStrAsync(lineReader);
+            else if (line.StartsWith(POConstants.TypeMsgCtxt)) msgCtxt = await ReadMsgCtxtAsync(lineReader);
             else
                 throw new UnsupportedFormatException(this,
                     $"Unsupported line '{line}' at line number {lineReader.LineNumber}.");
         }
 
-        var comment = comments.Count > 0 ? string.Join("", comments) : null;
-
         var language = omitTargetLanguage ? Language.Empty : Header.TargetLanguage;
-        return new MessageString(id: msgId, value: msgStr, language: language, comment: comment, msgCtxt: msgCtxt);
+        return new MessageString(id: msgId, value: msgStr, language: language, comments: comments, msgCtxt: msgCtxt);
     }
 
     private async Task<string> ReadMsgCtxtAsync(LineReader lineReader)
     {
-        return await ReadMsgXAsync(lineReader, Message.TypeMsgCtxt);
+        return await ReadMsgXAsync(lineReader, POConstants.TypeMsgCtxt);
     }
 
     private async Task<string> ReadMsgStrAsync(LineReader lineReader)
     {
-        return await ReadMsgXAsync(lineReader, Message.TypeMsgStr);
+        return await ReadMsgXAsync(lineReader, POConstants.TypeMsgStr);
     }
 
     private async Task<string> ReadMsgIdAsync(LineReader lineReader)
     {
-        return await ReadMsgXAsync(lineReader, Message.TypeMsgId);
+        return await ReadMsgXAsync(lineReader, POConstants.TypeMsgId);
     }
 
     private async Task<string> ReadMsgXAsync(LineReader lineReader, string msgType)
@@ -184,7 +180,7 @@ public class POFormat : IFormat
     {
         var comments = new List<string>();
 
-        while ((await lineReader.PeekLineAsync() ?? "").StartsWith("#"))
+        while ((await lineReader.PeekLineAsync() ?? string.Empty).StartsWith('#'))
         {
             if (await lineReader.ReadLineAsync() is { } line) comments.Add(line);
         }

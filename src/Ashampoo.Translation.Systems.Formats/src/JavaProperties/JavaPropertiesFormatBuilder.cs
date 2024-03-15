@@ -29,7 +29,7 @@ public class JavaPropertiesFormatBuilder : IFormatBuilderWithTarget<JavaProperti
         foreach (var translation in _translations)
         {
             DefaultTranslationUnit unit = new(translation.Key);
-            DefaultTranslationString translationString = new(translation.Key, translation.Value, _targetLanguage);
+            DefaultTranslationString translationString = new(translation.Value, _targetLanguage, []);
             unit.Translations.Add(translationString);
             format.TranslationUnits.Add(unit);
         }

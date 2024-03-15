@@ -24,6 +24,7 @@ public class TargetTranslationString : ITranslation
     {
         Language = language;
         _translation = translation;
+        Comments = [_translation.Comment];
     }
 
     /// <inheritdoc />
@@ -34,11 +35,7 @@ public class TargetTranslationString : ITranslation
     }
 
     /// <inheritdoc />
-    public string? Comment
-    {
-        get => _translation.Comment;
-        set => _translation.Comment = value ?? "";
-    }
+    public IList<string> Comments { get; set; }
 
     /// <inheritdoc />
     public Language Language { get; set; }

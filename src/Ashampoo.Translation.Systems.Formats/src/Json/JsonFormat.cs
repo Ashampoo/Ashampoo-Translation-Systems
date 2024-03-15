@@ -103,9 +103,9 @@ public class JsonFormat : IFormat
             {
                 var translationString = new DefaultTranslationString // Create translation string
                 (
-                    nextId,
                     property.Value.GetString() ?? throw new ArgumentNullException(nameof(property.Value)),
-                    Header.TargetLanguage
+                    Header.TargetLanguage,
+                    []
                 );
 
                 var translationUnit = new DefaultTranslationUnit(nextId) // Create translation unit
@@ -140,9 +140,9 @@ public class JsonFormat : IFormat
                 {
                     var translationString = new DefaultTranslationString // Create translation string
                     (
-                        nextId,
                         element[i].GetString() ?? throw new ArgumentNullException(nameof(element)),
-                        Header.TargetLanguage
+                        Header.TargetLanguage,
+                        []
                     );
 
                     var translationUnit = new DefaultTranslationUnit(nextId)
