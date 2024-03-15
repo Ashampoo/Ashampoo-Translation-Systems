@@ -8,7 +8,10 @@ using CommunityToolkit.Diagnostics;
 
 namespace Ashampoo.Translation.Systems.Formats.QT;
 
-public class QTFormat : IFormat
+/// <summary>
+/// Implementation of <see cref="IFormat"/> interface for the QT format.
+/// </summary>
+public class QtFormat : IFormat
 {
     /// <inheritdoc />
     public IFormatHeader Header { get; } = new DefaultFormatHeader();
@@ -33,10 +36,10 @@ public class QTFormat : IFormat
         var doc = XDocument.Load(stream);
         var messageElements = doc.Descendants().Where(e => e.Name == "message");
 
-        await ReadTranslations(messageElements);
+        ReadTranslations(messageElements);
     }
 
-    private async Task ReadTranslations(IEnumerable<XElement> elements)
+    private void ReadTranslations(IEnumerable<XElement> elements)
     {
         foreach (var element in elements)
         {
@@ -48,7 +51,7 @@ public class QTFormat : IFormat
             var sourceElement = element.Element("source");
             var translationElement = element.Element("translation");
             var translationType = translationElement?.Attribute("type");
-            var comments = await SetComments(element);
+            var comments = GetComments(element);
 
             if (!string.IsNullOrWhiteSpace(sourceElement?.Value))
             {
@@ -63,13 +66,11 @@ public class QTFormat : IFormat
 
                 unit.Translations.Add(translation);
                 TranslationUnits.Add(unit);
-                Console.WriteLine("Add translation with id {0} and value {1}. Comments: {2}", unit.Id,
-                    translation.Value, string.Join(",", translation.Comments));
             }
         }
     }
 
-    private Task<List<string>> SetComments(XElement element)
+    private List<string> GetComments(XElement element)
     {
         List<string> comments = [];
         if (element.TryGetElement("translatorcomment", out var translatorComment))
@@ -82,7 +83,7 @@ public class QTFormat : IFormat
             if (extraComment?.Value != null) comments.Add(extraComment.Value);
         }
 
-        return Task.FromResult(comments);
+        return comments;
     }
 
     /// <inheritdoc />
@@ -99,7 +100,7 @@ public class QTFormat : IFormat
         var tsElement = doc.Descendants().First(e => e.Name == "TS");
         var writer = tsElement.CreateWriter();
         await WriteTranslations(writer);
-        doc.Save(stream);
+        await doc.SaveAsync(stream, SaveOptions.None, default);
     }
 
     [SuppressMessage("ReSharper", "MethodHasAsyncOverload")]

@@ -2,13 +2,16 @@
 
 namespace Ashampoo.Translation.Systems.Formats.QT;
 
-public class QTFormatProvider : IFormatProvider<QTFormat>
+/// <summary>
+/// Implementation of <see cref="IFormatProvider{T}"/> interface for the QT format.
+/// </summary>
+public class QtFormatProvider : IFormatProvider<QtFormat>
 {
     /// <inheritdoc />
     public string Id => "QT";
 
     /// <inheritdoc />
-    public QTFormat Create() => new();
+    public QtFormat Create() => new();
 
     /// <inheritdoc />
     public bool SupportsFileName(string fileName)
@@ -20,5 +23,5 @@ public class QTFormatProvider : IFormatProvider<QTFormat>
     public IEnumerable<string> SupportedFileExtensions { get; } = [".ts"];
 
     /// <inheritdoc />
-    public IFormatBuilder<QTFormat> GetFormatBuilder() => new QTFormatBuilder();
+    public IFormatBuilder<QtFormat> GetFormatBuilder() => new QtFormatBuilder();
 }

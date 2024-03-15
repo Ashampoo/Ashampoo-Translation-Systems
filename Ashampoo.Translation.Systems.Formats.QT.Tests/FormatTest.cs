@@ -6,7 +6,7 @@ using FluentAssertions;
 
 namespace Ashampoo.Translation.Systems.Formats.QT.Tests;
 
-public class FormatTest : FormatTestBase<QTFormat>
+public class FormatTest : FormatTestBase<QtFormat>
 {
     [Fact]
     public void NewFormat()

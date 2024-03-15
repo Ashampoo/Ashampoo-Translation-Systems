@@ -5,17 +5,20 @@ using CommunityToolkit.Diagnostics;
 
 namespace Ashampoo.Translation.Systems.Formats.QT;
 
-public class QTFormatBuilder : IFormatBuilderWithTarget<QTFormat>
+/// <summary>
+/// Implementation of the <see cref="IFormatBuilderWithTarget{T}"/> interface for the QT format.
+/// </summary>
+public class QtFormatBuilder : IFormatBuilderWithTarget<QtFormat>
 {
     private Language _targetLanguage = Language.Empty;
     private readonly Dictionary<string, string> _translations = new();
 
     /// <inheritdoc />
-    public QTFormat Build()
+    public QtFormat Build()
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage.Value);
         
-        var format = new QTFormat()
+        var format = new QtFormat()
         {
             Header =
             {
