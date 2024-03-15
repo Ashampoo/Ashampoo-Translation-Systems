@@ -9,24 +9,6 @@ namespace Ashampoo.Translation.Systems.Formats.PO;
 public abstract class Message : ITranslation
 {
     /// <summary>
-    /// Identifier for the message context.
-    /// </summary>
-    public const string TypeMsgCtxt = "msgctxt ";
-    /// <summary>
-    /// Identifier for the message id.
-    /// </summary>
-    public const string TypeMsgId = "msgid ";
-    /// <summary>
-    /// Identifier for the message id plural.
-    /// </summary>
-    public const string TypeMsgIdPlural = "msgid_plural ";
-    /// <summary>
-    /// Identifier for the message string.
-    /// </summary>
-    public const string TypeMsgStr = "msgstr ";
-    private const string Divider = "/"; // TODO: move to interface?
-
-    /// <summary>
     /// Message id of the translation in the po format.
     /// </summary>
     public string MsgId { get; init; } = "";
@@ -39,15 +21,15 @@ public abstract class Message : ITranslation
     /// <summary>
     /// Provides the id for the ITranslation interface.
     /// </summary>
-    public string Id => !string.IsNullOrWhiteSpace(MsgCtxt) ? $"{MsgCtxt}{Divider}{MsgId}" : MsgId;
+    public string Id => !string.IsNullOrWhiteSpace(MsgCtxt) ? $"{MsgCtxt}{POConstants.Divider}{MsgId}" : MsgId;
 
     /// <inheritdoc />
-    public string Value { get; set; } = string.Empty;
+    public abstract string Value { get; set; }
 
     /// <summary>
     /// Provides the comment for the ITranslation interface.
     /// </summary>
-    public IList<string> Comments { get; set; }
+    public IList<string> Comments { get; set; } = [];
 
     /// <inheritdoc />
     public Language Language { get; set; } = Language.Empty;
@@ -72,10 +54,17 @@ public abstract class Message : ITranslation
     public virtual async Task WriteAsync(TextWriter writer)
     {
         // TODO: Check if this is still working with multiple comments
-        if (Comments.Count > 0) await writer.WriteLineAsync($"{Escape(Comments.First())}");
+        var comments = Comments.Where(c => c.StartsWith("# ") || c.StartsWith("#. ")).ToList();
+        if (comments.Count != 0)
+        {
+            foreach (var comment in comments)
+            {
+                await writer.WriteLineAsync($"{Escape(comment)}");
+            }
+        }
         if (!string.IsNullOrWhiteSpace(MsgCtxt))
-            await writer.WriteLineAsync($"{TypeMsgCtxt}\"{Escape(MsgCtxt)}\"");
-        await writer.WriteLineAsync($"{TypeMsgId}\"{Escape(MsgId)}\"");
+            await writer.WriteLineAsync($"{POConstants.TypeMsgCtxt}\"{Escape(MsgCtxt)}\"");
+        await writer.WriteLineAsync($"{POConstants.TypeMsgId}\"{Escape(MsgId)}\"");
     }
 
     /// <summary>

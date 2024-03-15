@@ -6,7 +6,7 @@ namespace Ashampoo.Translation.Systems.Formats.PO;
 /// <summary>
 /// Implementation of <see cref="ITranslation"/> and a PO message string.
 /// </summary>
-public class MessageString : Message, ITranslation
+public class MessageString : Message
 {
     /// <summary>
     /// Message string of the po format.
@@ -16,7 +16,7 @@ public class MessageString : Message, ITranslation
     /// <summary>
     /// Provides the value for the <see cref="ITranslation"/> interface.
     /// </summary>
-    public new string Value
+    public override string Value
     {
         get => MsgStr;
         set => MsgStr = value;
@@ -36,6 +36,6 @@ public class MessageString : Message, ITranslation
     public override async Task WriteAsync(TextWriter writer)
     {
         await base.WriteAsync(writer);
-        await writer.WriteLineAsync($"{TypeMsgStr}\"{Escape(MsgStr)}\"");
+        await writer.WriteLineAsync($"{POConstants.TypeMsgStr}\"{Escape(MsgStr)}\"");
     }
 }
