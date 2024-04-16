@@ -53,20 +53,18 @@ public class QtFormat : IFormat
             var translationType = translationElement?.Attribute("type");
             var comments = GetComments(element);
 
-            if (!string.IsNullOrWhiteSpace(sourceElement?.Value))
+            if (string.IsNullOrWhiteSpace(sourceElement?.Value)) continue;
+            var unit = new DefaultTranslationUnit(sourceElement.Value);
+            var translation = new QtTranslationString(translationElement?.Value ?? string.Empty,
+                Header.TargetLanguage, comments);
+            if (translationType is not null &&
+                Enum.TryParse<QtTranslationType>(translationType.Value, true, out var result))
             {
-                var unit = new DefaultTranslationUnit(sourceElement.Value);
-                var translation = new QtTranslationString(translationElement?.Value ?? string.Empty,
-                    Header.TargetLanguage, comments);
-                if (translationType is not null &&
-                    Enum.TryParse<QtTranslationType>(translationType.Value, true, out var result))
-                {
-                    translation.Type = result;
-                }
-
-                unit.Translations.Add(translation);
-                TranslationUnits.Add(unit);
+                translation.Type = result;
             }
+
+            unit.Translations.Add(translation);
+            TranslationUnits.Add(unit);
         }
     }
 
@@ -78,10 +76,8 @@ public class QtFormat : IFormat
             if (translatorComment?.Value != null) comments.Add(translatorComment.Value);
         }
 
-        if (element.TryGetElement("extracomment", out var extraComment))
-        {
-            if (extraComment?.Value != null) comments.Add(extraComment.Value);
-        }
+        if (!element.TryGetElement("extracomment", out var extraComment)) return comments;
+        if (extraComment?.Value != null) comments.Add(extraComment.Value);
 
         return comments;
     }
@@ -89,23 +85,17 @@ public class QtFormat : IFormat
     /// <inheritdoc />
     public async Task WriteAsync(Stream stream)
     {
-        var layout = $"""
-                      <?xml version="1.0" encoding="utf-8"?>
-                      <!DOCTYPE TS>
-                      <TS version="2.0" language="{Header.TargetLanguage.Value.Replace('-', '_')}">
-                      </TS>
-                      """;
-
-        var doc = XDocument.Parse(layout);
-        var tsElement = doc.Descendants().First(e => e.Name == "TS");
-        var writer = tsElement.CreateWriter();
-        await WriteTranslations(writer);
-        await doc.SaveAsync(stream, SaveOptions.None, default);
+        var test = XmlWriter.Create(stream, new XmlWriterSettings
+        {
+            Async = true
+        });
+        await WriteTranslations(test);
     }
 
     [SuppressMessage("ReSharper", "MethodHasAsyncOverload")]
     private async Task WriteTranslations(XmlWriter writer)
     {
+        await WriteTypeData(writer);
         writer.WriteStartElement("context");
         foreach (var unit in TranslationUnits)
         {
@@ -123,18 +113,26 @@ public class QtFormat : IFormat
             }
         }
 
+        writer.WriteEndElement();
+        writer.WriteEndElement();
         writer.Flush();
         writer.Close();
     }
 
+    private async Task WriteTypeData(XmlWriter writer)
+    {
+        await writer.WriteDocTypeAsync("TS", null, null, null);
+        await writer.WriteStartElementAsync(null, "TS", null);
+        await writer.WriteAttributeStringAsync(null, "version", null, "2.0");
+        await writer.WriteAttributeStringAsync(null, "language", null, Header.TargetLanguage.Value.Replace('-', '_'));
+    }
+
     private Task WriteTranslationComments(XmlWriter writer, IList<string> comments)
     {
-        if (comments.Any())
-        {
-            writer.WriteStartElement("translatorcomment");
-            writer.WriteString(string.Join(", ", comments));
-            writer.WriteEndElement();
-        }
+        if (!comments.Any()) return Task.CompletedTask;
+        writer.WriteStartElement("translatorcomment");
+        writer.WriteString(string.Join(", ", comments));
+        writer.WriteEndElement();
 
         return Task.CompletedTask;
     }
