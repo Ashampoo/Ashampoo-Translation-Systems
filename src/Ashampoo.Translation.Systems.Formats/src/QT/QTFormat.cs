@@ -96,26 +96,26 @@ public class QtFormat : IFormat
     private async Task WriteTranslations(XmlWriter writer)
     {
         await WriteTypeData(writer);
-        writer.WriteStartElement("context");
+        await writer.WriteStartElementAsync(null, "context", null);
         foreach (var unit in TranslationUnits)
         {
             foreach (var translation in unit.Translations)
             {
-                writer.WriteStartElement("message");
-                writer.WriteStartElement("source");
-                writer.WriteString(unit.Id);
-                writer.WriteEndElement();
+                await writer.WriteStartElementAsync(null, "message", null);
+                await writer.WriteStartElementAsync(null, "source", null);
+                await writer.WriteStringAsync(unit.Id);
+                await writer.WriteEndElementAsync();
                 await WriteTranslationComments(writer, translation.Comments);
-                writer.WriteStartElement("translation");
-                writer.WriteString(translation.Value);
-                writer.WriteEndElement();
-                writer.WriteEndElement();
+                await writer.WriteStartElementAsync(null, "translation", null);
+                await writer.WriteStringAsync(translation.Value);
+                await writer.WriteEndElementAsync();
+                await writer.WriteEndElementAsync();
             }
         }
 
-        writer.WriteEndElement();
-        writer.WriteEndElement();
-        writer.Flush();
+        await writer.WriteEndElementAsync();
+        await writer.WriteEndElementAsync();
+        await writer.FlushAsync();
         writer.Close();
     }
 
@@ -127,14 +127,12 @@ public class QtFormat : IFormat
         await writer.WriteAttributeStringAsync(null, "language", null, Header.TargetLanguage.Value.Replace('-', '_'));
     }
 
-    private Task WriteTranslationComments(XmlWriter writer, IList<string> comments)
+    private async Task WriteTranslationComments(XmlWriter writer, IList<string> comments)
     {
-        if (!comments.Any()) return Task.CompletedTask;
-        writer.WriteStartElement("translatorcomment");
-        writer.WriteString(string.Join(", ", comments));
-        writer.WriteEndElement();
-
-        return Task.CompletedTask;
+        if (!comments.Any()) return;
+        await writer.WriteStartElementAsync(null, "translatorcomment", null);
+        await writer.WriteStringAsync(string.Join(", ", comments));
+        await writer.WriteEndElementAsync();
     }
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
