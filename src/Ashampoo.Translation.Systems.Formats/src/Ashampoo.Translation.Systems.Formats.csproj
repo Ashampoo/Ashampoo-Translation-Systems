@@ -23,7 +23,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="NPOI" Version="2.6.2"/>
+        <PackageReference Include="NPOI" Version="2.7.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -47,7 +47,7 @@
     <ItemGroup>
         <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.2.2" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
     </ItemGroup>
     
 </Project>
