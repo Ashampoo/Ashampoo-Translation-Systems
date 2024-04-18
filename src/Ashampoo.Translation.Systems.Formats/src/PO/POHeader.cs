@@ -26,7 +26,11 @@ public class POHeader : AbstractFormatHeader
     /// </summary>
     public string? Author
     {
-        get => AdditionalHeaders["Last-Translator"];
+        get
+        {
+            var found = AdditionalHeaders.TryGetValue("Last-Translator", out var value);
+            return found ? value : null;
+        }
         set
         {
             if (value is null)
@@ -35,6 +39,7 @@ public class POHeader : AbstractFormatHeader
                 AdditionalHeaders["Last-Translator"] = value;
         }
     }
+
     /// <summary>
     /// Write the header to the given <paramref name="writer"/>.
     /// </summary>

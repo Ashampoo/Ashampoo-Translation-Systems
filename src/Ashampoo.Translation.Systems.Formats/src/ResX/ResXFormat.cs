@@ -106,9 +106,9 @@ public class ResXFormat : IFormat
             Guard.IsNotNullOrWhiteSpace(data.Name, nameof(data.Name));
             var id = data.Name; // TODO: check if id is valid
             var value = data.Value ?? string.Empty;
-            var comment = data.Comment;
+            List<string> comments = [data.Comment ?? string.Empty];
 
-            var translationString = new DefaultTranslationString(id, value, Header.TargetLanguage, comment);
+            var translationString = new DefaultTranslationString(value, Header.TargetLanguage, comments);
             var translationUnit = new DefaultTranslationUnit(id)
             {
                 Translations =

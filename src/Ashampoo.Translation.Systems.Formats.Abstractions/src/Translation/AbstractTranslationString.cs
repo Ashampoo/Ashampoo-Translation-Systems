@@ -10,13 +10,8 @@ public abstract class AbstractTranslationString : ITranslation
     /// <inheritdoc />
     public string Value { get; set; }
 
-    /// <summary>
-    /// Gets or sets the ID of the translation string.
-    /// </summary>
-    protected string Id { get; set; }
-
     /// <inheritdoc />
-    public string? Comment { get; set; }
+    public IList<string> Comments { get; set; }
 
     /// <inheritdoc />
     public Language Language { get; set; }
@@ -36,11 +31,10 @@ public abstract class AbstractTranslationString : ITranslation
     /// <param name="comment">
     /// The comment of the translation string.
     /// </param>
-    protected  AbstractTranslationString(string id, string value, Language language, string? comment = null)
+    protected  AbstractTranslationString(string value, Language language, List<string> comment)
     {
-        Id = id;
         Value = value;
         Language = language;
-        Comment = comment;
+        Comments = comment;
     }
 }
