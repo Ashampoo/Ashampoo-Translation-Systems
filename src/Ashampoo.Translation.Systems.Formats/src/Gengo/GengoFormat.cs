@@ -53,7 +53,6 @@ public partial class GengoFormat : IFormat
 
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions options)
     {
-        
         var setTargetLanguage =
             options.TargetLanguage.IsNullOrWhitespace(); // Check if the target language needs to be set
         var setSourceLanguage =
@@ -143,16 +142,16 @@ public partial class GengoFormat : IFormat
 
         var sourceTranslation = new DefaultTranslationString
         (
-            id,
             source,
-            Header.SourceLanguage ?? throw new ArgumentNullException(nameof(Header.SourceLanguage))
+            Header.SourceLanguage ?? throw new ArgumentNullException(nameof(Header.SourceLanguage)),
+            []
         );
 
         var targetTranslation = new DefaultTranslationString
         (
-            id,
             target,
-            Header.TargetLanguage
+            Header.TargetLanguage,
+            []
         );
 
         return new Tuple<ITranslation, ITranslation, string>(sourceTranslation, targetTranslation, id);
@@ -186,13 +185,21 @@ public partial class GengoFormat : IFormat
             }
 
             row.Cells[0].SetCellValue($"[[[{translationUnit.Id}]]]"); // Set the id with square brackets around it
-            row.Cells[1].SetCellValue(translationUnit.Translations.GetTranslation((Language)Header.SourceLanguage!).Value);
+            row.Cells[1]
+                .SetCellValue(translationUnit.Translations.GetTranslation((Language)Header.SourceLanguage!).Value);
             row.Cells[2].SetCellValue(translationUnit.Translations.GetTranslation(Header.TargetLanguage).Value);
 
             rowCount++;
         }
 
-        AutosizeColumns(sheet, 0, 3); // Autosize the columns
+        try
+        {
+            AutosizeColumns(sheet, 0, 3); // Autosize the columns
+        }
+        catch (Exception)
+        {
+            // ignore exceptions, autosize is not that important
+        }
 
 
         workbook.Write(stream,
@@ -230,6 +237,7 @@ public partial class GengoFormat : IFormat
 
     [GeneratedRegex(@"^\[{3}(?<id>.*)\]{3}$", RegexOptions.Singleline)]
     private static partial Regex RegexMarkerGenerator();
+
     [GeneratedRegex(@"^(?<id>.*)$")]
     private static partial Regex RegexWithoutMarkerGenerator();
 }

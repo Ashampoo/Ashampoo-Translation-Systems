@@ -18,11 +18,7 @@ public class TranslationStringTarget : ITranslation
     }
 
     /// <inheritdoc />
-    public string? Comment
-    {
-        get => _translationElement.Comment;
-        set => _translationElement.Comment = value;
-    }
+    public IList<string> Comments { get; set; }
 
     /// <inheritdoc />
     public Language Language { get; set; } = Language.Empty;
@@ -36,8 +32,6 @@ public class TranslationStringTarget : ITranslation
     public TranslationStringTarget(Element.Translation translationElement)
     {
         _translationElement = translationElement;
+        Comments = [_translationElement.Comment];
     }
-
-    /// <inheritdoc />
-    public bool IsEmpty => string.IsNullOrWhiteSpace(Value);
 }

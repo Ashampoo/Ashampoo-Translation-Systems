@@ -25,6 +25,7 @@ public class SourceTranslationString : ITranslation
     public SourceTranslationString(Language language, TranslationChunk.Translation translation)
     {
         _language = language;
+        Comments = [translation.Comment];
         _translation = translation;
     }
 
@@ -39,11 +40,7 @@ public class SourceTranslationString : ITranslation
     }
 
     /// <inheritdoc />
-    public string? Comment
-    {
-        get => _translation.Comment;
-        set => _translation.Comment = value ?? "";
-    }
+    public IList<string> Comments { get; set; }
 
     /// <inheritdoc />
     public bool IsEmpty => string.IsNullOrWhiteSpace(Value);
