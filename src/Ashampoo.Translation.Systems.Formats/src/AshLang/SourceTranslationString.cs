@@ -25,7 +25,7 @@ public class SourceTranslationString : ITranslation
     public SourceTranslationString(Language language, TranslationChunk.Translation translation)
     {
         _language = language;
-        Comments = [translation.Comment];
+        Comments = string.IsNullOrWhiteSpace(translation.Comment) ? [] : [translation.Comment];
         _translation = translation;
     }
 

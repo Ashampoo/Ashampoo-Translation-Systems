@@ -32,6 +32,6 @@ public class TranslationStringTarget : ITranslation
     public TranslationStringTarget(Element.Translation translationElement)
     {
         _translationElement = translationElement;
-        Comments = [_translationElement.Comment];
+        Comments = string.IsNullOrWhiteSpace(translationElement.Comment) ? [] : [translationElement.Comment];
     }
 }

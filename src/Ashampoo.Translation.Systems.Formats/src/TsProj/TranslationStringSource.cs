@@ -25,7 +25,7 @@ public class TranslationStringSource : ITranslation
     /// </param>
     public TranslationStringSource(Element.Translation translationElement)
     {
-        Comments = [translationElement.Comment ?? string.Empty];
+        Comments = string.IsNullOrWhiteSpace(translationElement.Comment) ? [] : [translationElement.Comment];
         Value = translationElement.Source ?? string.Empty;
     }
 }
