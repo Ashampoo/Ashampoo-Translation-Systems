@@ -24,7 +24,7 @@ public class TargetTranslationString : ITranslation
     {
         Language = language;
         _translation = translation;
-        Comments = [_translation.Comment];
+        Comments = string.IsNullOrWhiteSpace(translation.Comment) ? [] : [translation.Comment];
     }
 
     /// <inheritdoc />
