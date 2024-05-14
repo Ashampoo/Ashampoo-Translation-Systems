@@ -28,5 +28,5 @@ public static class POConstants
     /// <summary>
     /// Represents the divider used in PO file formatting.
     /// </summary>
-    public const string Divider = "/"; // TODO: move to interface?
+    public const string Divider = "||";
 }

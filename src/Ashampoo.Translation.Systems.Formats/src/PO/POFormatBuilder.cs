@@ -11,7 +11,6 @@ public class POFormatBuilder : IFormatBuilderWithTarget<POFormat>
 {
     private Language? _targetLanguage;
     private readonly Dictionary<string, string> _translations = new();
-    private const string Divider = "/"; // TODO: move to interface?
 
     /// <inheritdoc />
     public void Add(string id, string target)
@@ -29,23 +28,27 @@ public class POFormatBuilder : IFormatBuilderWithTarget<POFormat>
         {
             Header =
             {
-                TargetLanguage = (Language)_targetLanguage!
+                TargetLanguage = _targetLanguage.Value
             }
         };
 
         foreach (var translation in _translations)
         {
             var translationUnit = new TranslationUnit(translation.Key);
-            var index = translation.Key.LastIndexOf(Divider, StringComparison.Ordinal); 
+            var index = translation.Key.IndexOf(POConstants.Divider, StringComparison.InvariantCulture);
             if (index > 0) // if divider exists, then a message context is used
             {
                 var ctxt = translation.Key[..index];
-                var msgId = translation.Key[(index + 1)..];
-                translationUnit.Translations.Add(new MessageString(id: msgId, value: translation.Value, language: (Language)_targetLanguage,
+                var msgId = translation.Key[(index + POConstants.Divider.Length)..];
+                translationUnit.Translations.Add(new MessageString(id: msgId, value: translation.Value,
+                    language: _targetLanguage.Value,
                     msgCtxt: ctxt, comments: []));
             }
             else
-                translationUnit.Translations.Add(new MessageString(translation.Key, translation.Value, (Language)_targetLanguage, []));
+            {
+                translationUnit.Translations.Add(new MessageString(translation.Key, translation.Value,
+                    _targetLanguage.Value, []));
+            }
 
             poFormat.TranslationUnits.Add(translationUnit);
         }
