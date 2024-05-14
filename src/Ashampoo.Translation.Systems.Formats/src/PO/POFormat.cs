@@ -11,9 +11,9 @@ namespace Ashampoo.Translation.Systems.Formats.PO;
 /// <summary>
 /// Implementation of the PO (Portable Object) format.
 /// </summary>
-public class POFormat : IFormat
+public partial class POFormat : IFormat
 {
-    private static Regex _reComment = new("#(?<type>[|:,. ]{0,1})(?<content>.*)");
+    private static Regex _reComment = MyRegex();
 
     /// <inheritdoc />
     public IFormatHeader Header { get; init; } = new POHeader();
@@ -39,7 +39,8 @@ public class POFormat : IFormat
             return;
         }
 
-        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.Value, nameof(Header.TargetLanguage)); // check if target language is set
+        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.Value,
+            nameof(Header.TargetLanguage)); // check if target language is set
 
         await ReadMessagesAsTranslationsAsync(lineReader);
     }
@@ -69,7 +70,7 @@ public class POFormat : IFormat
 
         else
         {
-            Header.TargetLanguage = (Language)options.TargetLanguage!;
+            Header.TargetLanguage = options.TargetLanguage!;
         }
 
         return true;
@@ -77,13 +78,15 @@ public class POFormat : IFormat
 
     private async Task ReadFirstMessageAsHeaderAsync(LineReader lineReader)
     {
-        await lineReader.SkipEmptyLinesAsync(); 
+        await lineReader.SkipEmptyLinesAsync();
 
         var message = await ReadMessageAsync(lineReader, true); // read header as first message
-        if (message is not MessageString { MsgId: "" } messageString)
+        if (!string.IsNullOrWhiteSpace(message.MsgId))
+        {
             throw new UnsupportedFormatException(this, "Header is missing.");
+        }
 
-        var lines = messageString.MsgStr.Split('\n'); // split header into lines
+        var lines = message.MsgStr.Split('\n'); // split header into lines
         foreach (var line in lines)
         {
             var tuple = line.Split(':'); // split line into key and value
@@ -99,9 +102,9 @@ public class POFormat : IFormat
         while (await lineReader.HasMoreLinesAsync())
         {
             await lineReader.SkipEmptyLinesAsync();
-            
+
             var message = await ReadMessageAsync(lineReader);
-            
+
             if (string.IsNullOrWhiteSpace(message.Id)) continue; // skip if id is empty
 
             var translationUnit = new TranslationUnit(message.Id) // Create translation unit
@@ -118,9 +121,9 @@ public class POFormat : IFormat
     private async Task<MessageString> ReadMessageAsync(LineReader lineReader, bool omitTargetLanguage = false)
     {
         IList<string> comments = new List<string>();
-        var msgId = "";
-        var msgStr = "";
-        var msgCtxt = "";
+        var msgId = string.Empty;
+        var msgStr = string.Empty;
+        var msgCtxt = string.Empty;
 
         string? line;
         while (!string.IsNullOrWhiteSpace(line = await lineReader.PeekLineAsync()))
@@ -180,9 +183,16 @@ public class POFormat : IFormat
     {
         var comments = new List<string>();
 
+        string? line;
         while ((await lineReader.PeekLineAsync() ?? string.Empty).StartsWith('#'))
         {
-            if (await lineReader.ReadLineAsync() is { } line) comments.Add(line);
+            line = await lineReader.ReadLineAsync();
+            if (string.IsNullOrWhiteSpace(line))
+            {
+                continue;
+            }
+
+            comments.Add(line);
         }
 
         return comments;
@@ -237,4 +247,7 @@ public class POFormat : IFormat
 
         await writer.FlushAsync();
     }
+
+    [GeneratedRegex("#(?<type>[|:,. ]{0,1})(?<content>.*)")]
+    private static partial Regex MyRegex();
 }

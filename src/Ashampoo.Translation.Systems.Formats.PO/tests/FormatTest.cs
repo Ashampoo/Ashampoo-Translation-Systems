@@ -34,7 +34,7 @@ public class FormatTest : FormatTestBase<POFormat>
         poHeader?.Author.Should().Be("FULL NAME <EMAIL@ADDRESS>");
 
         const string id =
-            "{\\\"cxt\\\": \\\"collector_disqualification\\\", \\\"id\\\": 254239623, \\\"checksum\\\": 2373663968}/Thank you for completing our survey!";
+            "{\\\"cxt\\\": \\\"collector_disqualification\\\", \\\"id\\\": 254239623, \\\"checksum\\\": 2373663968}||Thank you for completing our survey!";
 
         format.TranslationUnits.GetTranslationUnit(id).Translations.GetTranslation(new Language("de")).Value.Should()
             .Be("Vielen Dank, dass Sie die Umfrage abgeschlossen haben!");
