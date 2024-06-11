@@ -26,7 +26,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.System
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.Systems.Formats.QT.Tests", "Ashampoo.Translation.Systems.Formats.QT.Tests\Ashampoo.Translation.Systems.Formats.QT.Tests.csproj", "{6211EE8F-701F-46D4-B0A8-EE7FC8561228}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.Systems.Formats.Abstractions.Tests", "Ashampoo.Translation.Systems.Formats.Abstractions.Tests\Ashampoo.Translation.Systems.Formats.Abstractions.Tests.csproj", "{3ADD944B-93A3-431F-9516-DBA159F3343C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashampoo.Translation.Systems.Formats.Csv.Tests", "Ashampoo.Translation.Systems.Formats.Csv.Tests\Ashampoo.Translation.Systems.Formats.Csv.Tests.csproj", "{4C6BA8AE-3D43-4643-8B29-1C63D7A92802}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -90,9 +90,9 @@ Global
 		{6211EE8F-701F-46D4-B0A8-EE7FC8561228}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6211EE8F-701F-46D4-B0A8-EE7FC8561228}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6211EE8F-701F-46D4-B0A8-EE7FC8561228}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3ADD944B-93A3-431F-9516-DBA159F3343C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3ADD944B-93A3-431F-9516-DBA159F3343C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3ADD944B-93A3-431F-9516-DBA159F3343C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3ADD944B-93A3-431F-9516-DBA159F3343C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C6BA8AE-3D43-4643-8B29-1C63D7A92802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C6BA8AE-3D43-4643-8B29-1C63D7A92802}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C6BA8AE-3D43-4643-8B29-1C63D7A92802}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C6BA8AE-3D43-4643-8B29-1C63D7A92802}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

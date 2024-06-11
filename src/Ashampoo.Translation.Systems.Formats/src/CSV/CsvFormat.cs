@@ -1,18 +1,30 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 using Ashampoo.Translation.Systems.Formats.Abstractions;
+using Ashampoo.Translation.Systems.Formats.Abstractions.IO;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using CommunityToolkit.Diagnostics;
+using CsvHelper;
+using CsvHelper.Configuration;
 
 namespace Ashampoo.Translation.Systems.Formats.CSV;
 
-internal sealed class CsvFormat : IFormat
+/// <inheritdoc />
+public sealed class CsvFormat : IFormat
 {
+    /// <inheritdoc />
     public IFormatHeader Header { get; } = new DefaultFormatHeader();
+
+    /// <inheritdoc />
     public LanguageSupport LanguageSupport => LanguageSupport.SourceAndTarget;
+
+    /// <inheritdoc />
     public ICollection<ITranslationUnit> TranslationUnits { get; } = [];
+
     private char Delimiter { get; set; } = ';';
 
+    /// <inheritdoc />
     public async Task ReadAsync(Stream stream, FormatReadOptions? options = null)
     {
         if (!await ConfigureOptionsAsync(options))
@@ -21,34 +33,111 @@ internal sealed class CsvFormat : IFormat
             return;
         }
 
-        Guard.IsNullOrWhiteSpace(Header.TargetLanguage.Value);
-        Guard.IsNullOrWhiteSpace(Header.SourceLanguage?.Value);
+        Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.Value);
+        Guard.IsNotNullOrWhiteSpace(Header.SourceLanguage?.Value);
+
+        using StreamReader reader = new(stream);
+        await GetHeaderInformation(reader);
+        using var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
+        {
+            TrimOptions = TrimOptions.Trim
+        });
+        await ReadCsv(csv);
     }
 
+    private async Task GetHeaderInformation(StreamReader reader)
+    {
+        var lineReader = new LineReader(reader);
+        await lineReader.SkipEmptyLinesAsync();
+        while (await lineReader.HasMoreLinesAsync())
+        {
+            var line = await lineReader.ReadLineAsync();
+            if (string.IsNullOrWhiteSpace(line) || !line.StartsWith('#')) return;
+            var headerLine = line.Split(':');
+            Delimiter = headerLine[0].Trim() switch
+            {
+                "#Delimiter" => headerLine[1].Trim().ToCharArray().First(),
+                _ => Delimiter
+            };
+        }
+    }
+
+    private async Task ReadCsv(CsvReader reader)
+    {
+        await reader.ReadAsync();
+        reader.ReadHeader();
+        while (await reader.ReadAsync())
+        {
+            TranslationUnits.Add(await ReadLine(reader));
+        }
+    }
+
+    private Task<ITranslationUnit> ReadLine(CsvReader line)
+    {
+        var id = line.GetField<string>(0);
+        var sourceTranslation = line.GetField<string>(1);
+        var translation = line.GetField<string>(2);
+        var comments = line.GetField<string>(3);
+
+        var translationString = new DefaultTranslationString(translation, Header.TargetLanguage, []);
+
+        var unit = new DefaultTranslationUnit(id)
+        {
+            Translations =
+            {
+                translationString
+            }
+        };
+
+        if (Header.SourceLanguage is null) return Task.FromResult<ITranslationUnit>(unit);
+        var sourceTranslationString = new DefaultTranslationString(sourceTranslation, (Language)Header.SourceLanguage, []);
+        unit.Translations.Add(sourceTranslationString);
+
+        return Task.FromResult<ITranslationUnit>(unit);
+    }
+
+    /// <inheritdoc />
     public async Task WriteAsync(Stream stream)
     {
+        ApplyDelimiter();
         await using StreamWriter writer = new(stream, leaveOpen: true, encoding: Encoding.UTF8);
         await WriteHeader(writer);
+        var csvWriter = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture)
+        {
+            Delimiter = Delimiter.ToString(),
+            DetectDelimiter = false,
+            TrimOptions = TrimOptions.Trim,
+        });
         foreach (var translationUnit in TranslationUnits)
         {
-            foreach (var translation in translationUnit.Translations)
+            foreach (var translation in translationUnit.Translations.Where(t =>
+                         t.Language.Value == Header.TargetLanguage.Value))
             {
-                var sourceTranslation =
-                    translationUnit.Translations.FirstOrDefault(t => t.Language == Header.SourceLanguage);
-                await writer.WriteLineAsync(
-                    $"{translationUnit.Id}{Delimiter}{sourceTranslation?.Value}{Delimiter}{translation.Value}" +
-                    $"{Delimiter}{string.Join(". ", translation.Comments)}");
+                await WriteRow(translationUnit, translation, csvWriter);
             }
         }
 
+        await csvWriter.FlushAsync();
         await writer.FlushAsync();
+    }
+
+    private async Task WriteRow(ITranslationUnit unit, ITranslation translation, CsvWriter writer)
+    {
+        var sourceTranslation =
+            unit.Translations.FirstOrDefault(t => t.Language == Header.SourceLanguage);
+        writer.WriteRecord(new
+        {
+            id = unit.Id, original = sourceTranslation?.Value, translation = translation.Value,
+            comments = string.Join(", ", translation.Comments)
+        });
+        await writer.NextRecordAsync();
     }
 
     private async Task WriteHeader(StreamWriter writer)
     {
-        await writer.WriteLineAsync($"Target Language: {Header.TargetLanguage.Value}");
-        await writer.WriteLineAsync($"Source Language: {Header.SourceLanguage?.Value}");
-        await writer.WriteLineAsync($"Delimiter: {Delimiter}");
+        await writer.WriteLineAsync($"#Target Language: {Header.TargetLanguage.Value}");
+        await writer.WriteLineAsync($"#Source Language: {Header.SourceLanguage?.Value}");
+        await writer.WriteLineAsync($"#Delimiter: {Delimiter}");
         await writer.WriteLineAsync();
         await writer.WriteLineAsync($"id{Delimiter}original{Delimiter}translation{Delimiter}comments");
     }
@@ -79,11 +168,17 @@ internal sealed class CsvFormat : IFormat
             Header.TargetLanguage = options.TargetLanguage;
         }
 
-        if (Header.AdditionalHeaders.TryGetValue("delimiter", out var delimiter))
-        {
-            Delimiter = delimiter.ToCharArray().First();
-        }
-
+        Header.SourceLanguage = options.SourceLanguage;
         return true;
+    }
+
+    private void ApplyDelimiter()
+    {
+        if (!Header.AdditionalHeaders.TryGetValue("delimiter", out var delimiter)) return;
+        var actualDelimiter = delimiter.ToCharArray().FirstOrDefault();
+        if (actualDelimiter is ',' or ';' or '|')
+        {
+            Delimiter = delimiter.ToCharArray().FirstOrDefault();
+        }
     }
 }
