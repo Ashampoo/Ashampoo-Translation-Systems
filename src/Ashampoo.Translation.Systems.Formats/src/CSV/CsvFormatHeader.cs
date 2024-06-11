@@ -9,7 +9,7 @@ namespace Ashampoo.Translation.Systems.Formats.CSV;
 public sealed class CsvFormatHeader : IFormatHeader
 {
     /// <inheritdoc />
-    public Language TargetLanguage { get; set; }
+    public Language TargetLanguage { get; set; } = Language.Empty;
 
     /// <inheritdoc />
     public Language? SourceLanguage { get; set; }

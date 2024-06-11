@@ -36,7 +36,7 @@ public class FormatTests : FormatTestBase<CsvFormat>
         var translationString = foundById.Translations.GetTranslation(new Language("de-DE"));
         translationString.Should().NotBeNull();
         translationString.Value.Should().Be("Haus, Zuhause");
-        translationString.Comments.Should().BeEmpty();
+        translationString.Comments.Should().AllBe(string.Empty);
         var sourceTranslation = foundById.Translations.GetTranslation(new Language("en-US"));
         sourceTranslation.Should().NotBeNull();
         sourceTranslation.Value.Should().Be("Home");
