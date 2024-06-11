@@ -27,9 +27,11 @@ public sealed class FormatBuilderTests
                 "Parameter \"_targetLanguage\" (string) must not be null or whitespace, was null. (Parameter '_targetLanguage')");
     }
 
+    [Fact]
     public void Build_WithMsgContext_Success()
     {
         var builder = new POFormatBuilder();
+        builder.SetTargetLanguage(new Language("de-DE"));
         builder.Add(
             "{\\\"cxt\\\": \\\"survey_title_html\\\", \\\"id\\\": 518150496, \\\"checksum\\\": \"\n\"3594429271}||User Experience Survey for Our Website",
             "Umfrage zur Nutzererfahrung unserer Website");
