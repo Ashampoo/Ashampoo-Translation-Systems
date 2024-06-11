@@ -20,7 +20,6 @@ public interface IFormatProvider<out T> where T : class, IFormat
     /// <summary>
     /// Returns true if the format provider supports the given file name, otherwise false.
     /// </summary>
-    /// <param name="fileName"></param>
     /// <returns></returns>
     bool SupportsFileName(string fileName);
 

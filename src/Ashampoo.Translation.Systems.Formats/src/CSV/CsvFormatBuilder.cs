@@ -5,13 +5,17 @@ using CommunityToolkit.Diagnostics;
 
 namespace Ashampoo.Translation.Systems.Formats.CSV;
 
-internal sealed class CsvFormatBuilder : IFormatBuilderWithSourceAndTarget<CsvFormat>
+/// <summary>
+/// Builder for the <see cref="CsvFormat"/>.
+/// </summary>
+public sealed class CsvFormatBuilder : IFormatBuilderWithSourceAndTarget<CsvFormat>
 {
     private Language _targetLanguage = Language.Empty;
     private Language _sourceLanguage = Language.Empty;
     private readonly Dictionary<string, (string, string)> _translations = new();
-    private readonly Dictionary<string, string> _customHeaderInformation = new();
-    
+    private Dictionary<string, string> CustomHeaderInformation { get; set; } = new();
+
+    /// <inheritdoc />
     public CsvFormat Build()
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage.Value);
@@ -22,7 +26,7 @@ internal sealed class CsvFormatBuilder : IFormatBuilderWithSourceAndTarget<CsvFo
             {
                 TargetLanguage = _targetLanguage,
                 SourceLanguage = _sourceLanguage,
-                AdditionalHeaders = _customHeaderInformation
+                AdditionalHeaders = CustomHeaderInformation
             }
         };
 
@@ -44,18 +48,22 @@ internal sealed class CsvFormatBuilder : IFormatBuilderWithSourceAndTarget<CsvFo
         return format;
     }
 
+    /// <inheritdoc />
     public void SetHeaderInformation(IFormatHeader header)
     {
-        throw new NotImplementedException();
+        _sourceLanguage = header.SourceLanguage ?? new Language("en-US");
+        _targetLanguage = header.TargetLanguage;
+        CustomHeaderInformation = header.AdditionalHeaders;
     }
 
+    /// <inheritdoc />
     public void AddHeaderInformation(string key, string value)
     {
         if (key is "delimiter")
         {
-            if (_customHeaderInformation.TryAdd(key, value)) return;
-            _customHeaderInformation.Remove(key);
-            _customHeaderInformation.Add(key, value);
+            if (CustomHeaderInformation.TryAdd(key, value)) return;
+            CustomHeaderInformation.Remove(key);
+            CustomHeaderInformation.Add(key, value);
         }
         else
         {
@@ -63,16 +71,19 @@ internal sealed class CsvFormatBuilder : IFormatBuilderWithSourceAndTarget<CsvFo
         }
     }
 
+    /// <inheritdoc />
     public void SetTargetLanguage(Language language)
     {
         _targetLanguage = language;
     }
 
+    /// <inheritdoc />
     public void Add(string id, string source, string target)
     {
         _translations.Add(id, (source, target));
     }
 
+    /// <inheritdoc />
     public void SetSourceLanguage(Language language)
     {
         _sourceLanguage = language;
