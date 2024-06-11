@@ -1,0 +1,7 @@
+﻿#Target Language: de-DE
+#Source Language: en-US
+#Delimiter: ,
+
+id,original,translation,comments
+HOME.TEST,Test,Test; Testen,
+HOME.HOME,Home,"Haus, Zuhause",
