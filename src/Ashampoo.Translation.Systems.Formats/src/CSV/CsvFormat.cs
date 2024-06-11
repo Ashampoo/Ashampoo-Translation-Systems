@@ -7,6 +7,7 @@ using Ashampoo.Translation.Systems.Formats.Abstractions.Translation;
 using CommunityToolkit.Diagnostics;
 using CsvHelper;
 using CsvHelper.Configuration;
+using CsvHelper.Configuration.Attributes;
 
 namespace Ashampoo.Translation.Systems.Formats.CSV;
 
@@ -82,14 +83,11 @@ public sealed class CsvFormat : IFormat
 
     private Task<ITranslationUnit> ReadLine(CsvReader line)
     {
-        var id = line.GetField<string>(0);
-        var sourceTranslation = line.GetField<string>(1);
-        var translation = line.GetField<string>(2);
-        var comment = line.GetField<string>(3);
+        var record = line.GetRecord<CsvRecordFormat>();
+        var translationString = new DefaultTranslationString(record.Translation, Header.TargetLanguage,
+            record.Comments.Split('|').ToList());
 
-        var translationString = new DefaultTranslationString(translation, Header.TargetLanguage, [comment]);
-
-        var unit = new DefaultTranslationUnit(id)
+        var unit = new DefaultTranslationUnit(record.Id)
         {
             Translations =
             {
@@ -99,7 +97,8 @@ public sealed class CsvFormat : IFormat
 
         if (Header.SourceLanguage is null) return Task.FromResult<ITranslationUnit>(unit);
         var sourceTranslationString =
-            new DefaultTranslationString(sourceTranslation, (Language)Header.SourceLanguage, [comment]);
+            new DefaultTranslationString(record.Original, (Language)Header.SourceLanguage,
+                record.Comments.Split('|').ToList());
         unit.Translations.Add(sourceTranslationString);
 
         return Task.FromResult<ITranslationUnit>(unit);
@@ -117,6 +116,8 @@ public sealed class CsvFormat : IFormat
             DetectDelimiter = false,
             TrimOptions = TrimOptions.Trim,
         });
+        csvWriter.WriteHeader<CsvRecordFormat>();
+        await csvWriter.NextRecordAsync();
         foreach (var translationUnit in TranslationUnits)
         {
             foreach (var translation in translationUnit.Translations.Where(t =>
@@ -134,11 +135,14 @@ public sealed class CsvFormat : IFormat
     {
         var sourceTranslation =
             unit.Translations.FirstOrDefault(t => t.Language == Header.SourceLanguage);
-        writer.WriteRecord(new
+        var record = new CsvRecordFormat
         {
-            id = unit.Id, original = sourceTranslation?.Value, translation = translation.Value,
-            comments = string.Join(", ", translation.Comments)
-        });
+            Id = unit.Id,
+            Original = sourceTranslation?.Value ?? string.Empty,
+            Translation = translation.Value,
+            Comments = string.Join("|", translation.Comments)
+        };
+        writer.WriteRecord(record);
         await writer.NextRecordAsync();
     }
 
@@ -146,7 +150,6 @@ public sealed class CsvFormat : IFormat
     {
         await CsvFormatHeader.WriteHeader(writer);
         await writer.WriteLineAsync();
-        await writer.WriteLineAsync($"id{Delimiter}original{Delimiter}translation{Delimiter}comments");
     }
 
     // TODO: Can this be made Protected in a abstract class to avoid duplicate code?
@@ -188,4 +191,19 @@ public sealed class CsvFormat : IFormat
             CsvFormatHeader.Delimiter = actualDelimiter;
         }
     }
+}
+
+internal record CsvRecordFormat
+{
+    [Name("id")]
+    public string Id { get; init; } = string.Empty;
+
+    [Name("original")]
+    public string Original { get; init; } = string.Empty;
+
+    [Name("translation")]
+    public string Translation { get; init; } = string.Empty;
+
+    [Name("comments")]
+    public string Comments { get; init; } = string.Empty;
 }
