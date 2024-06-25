@@ -45,6 +45,14 @@ public class MessageString : ITranslation
         set => MsgStr = value;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="value"></param>
+    /// <param name="language"></param>
+    /// <param name="comments"></param>
+    /// <param name="msgCtxt"></param>
     public MessageString(string id, string value, Language language, IList<string> comments, string msgCtxt = "")
     {
         MsgId = id;
@@ -54,6 +62,10 @@ public class MessageString : ITranslation
         MsgCtxt = msgCtxt;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="writer"></param>
     public void Write(TextWriter writer)
     {
         WriteAsync(writer).Wait();

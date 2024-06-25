@@ -1,5 +1,6 @@
 using Ashampoo.Translation.Systems.Formats.Abstractions;
 using Ashampoo.Translation.Systems.Formats.AshLang;
+using Ashampoo.Translation.Systems.Formats.CSV;
 using Ashampoo.Translation.Systems.Formats.Gengo;
 using Ashampoo.Translation.Systems.Formats.JavaProperties;
 using Ashampoo.Translation.Systems.Formats.Json;
@@ -39,6 +40,7 @@ public static class DependencyInjection
             .AddNLangFormatFeatures()
             .AddPOFormatFeatures()
             .AddResXFormatFeatures()
+            .AddCsvFormat()
             .AddTsProjFormatFeatures();
         
         return services;

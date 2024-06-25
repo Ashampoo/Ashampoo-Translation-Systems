@@ -29,6 +29,23 @@ public record FormatStringOption(string Name, bool Required = false) : FormatOpt
 }
 
 /// <summary>
+/// Format option for a char value.
+/// </summary>
+/// <param name="Name">
+/// <inheritdoc cref="FormatOption"/>
+/// </param>
+/// <param name="Required">
+/// <inheritdoc cref="FormatOption"/>
+/// </param>
+public record FormatCharacterOption(string Name, bool Required = false) : FormatOption(Name, Required)
+{
+    /// <summary>
+    /// The value of the option.
+    /// </summary>
+    public char Value { get; set; } = ';';
+}
+
+/// <summary>
 /// Configuration object for a <see cref="IFormat"/> containing a list of <see cref="FormatOption">FormatOptions</see>.
 /// </summary>
 public record FormatOptions
