@@ -17,7 +17,7 @@ namespace Ashampoo.Translation.Systems.Formats.CSV;
 public sealed class CsvFormat : IFormat
 {
     /// <inheritdoc />
-    public IFormatHeader Header { get; } = new CsvFormatHeader();
+    public IFormatHeader Header { get; }
 
     /// <inheritdoc />
     public LanguageSupport LanguageSupport => LanguageSupport.SourceAndTarget;
@@ -25,36 +25,51 @@ public sealed class CsvFormat : IFormat
     /// <inheritdoc />
     public ICollection<ITranslationUnit> TranslationUnits { get; } = [];
 
-    private CsvFormatHeader CsvFormatHeader =>
-        Header as CsvFormatHeader ?? throw new InvalidOperationException("Wrong header format");
+    private CsvFormatHeader CsvFormatHeader { get; }
 
-    private string Delimiter => CsvFormatHeader.Delimiter.ToString();
+    private char Delimiter => CsvFormatHeader.Delimiter;
+
+    private const char CommentDelimiter = '|';
+    
+    public CsvFormat()
+    {
+        var csvFormatHeader = new CsvFormatHeader();
+        Header = csvFormatHeader;
+        CsvFormatHeader = csvFormatHeader;
+    }
+
+    internal CsvFormat(CsvFormatHeader header)
+    {
+        Header = header;
+        CsvFormatHeader = header;
+    }
 
     /// <inheritdoc />
     public async Task ReadAsync(Stream stream, FormatReadOptions? options = null)
     {
+        Guard.IsNotNull(options);
+        using StreamReader reader = new(stream);
+        await GetHeaderInformation(reader, options);
+
         if (!await ConfigureOptionsAsync(options))
         {
-            options!.IsCancelled = true;
+            options.IsCancelled = true;
             return;
         }
 
         Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.Value);
         Guard.IsNotNullOrWhiteSpace(Header.SourceLanguage?.Value);
 
-        using StreamReader reader = new(stream);
-        await GetHeaderInformation(reader);
 
         using var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
         {
             TrimOptions = TrimOptions.Trim,
-            DetectDelimiter = string.IsNullOrWhiteSpace(Delimiter),
-            Delimiter = string.IsNullOrWhiteSpace(Delimiter) ? string.Empty : Delimiter
+            Delimiter = Delimiter.ToString()
         });
         await ReadCsv(csv);
     }
 
-    private async Task GetHeaderInformation(StreamReader reader)
+    private async Task GetHeaderInformation(StreamReader reader, FormatReadOptions options)
     {
         var lineReader = new LineReader(reader);
         await lineReader.SkipEmptyLinesAsync();
@@ -63,11 +78,30 @@ public sealed class CsvFormat : IFormat
             var line = await lineReader.ReadLineAsync();
             if (string.IsNullOrWhiteSpace(line) || !line.StartsWith('#')) return;
             var headerLine = line.Split(':');
-            CsvFormatHeader.Delimiter = headerLine[0].Trim() switch
+            switch (headerLine[0].Trim())
             {
-                "#Delimiter" => headerLine[1].Trim().ToCharArray().First(),
-                _ => CsvFormatHeader.Delimiter
-            };
+                case "#Delimiter":
+                    if (char.IsWhiteSpace(Delimiter))
+                    {
+                        CsvFormatHeader.Delimiter = headerLine[1].Trim().ToCharArray().First();
+                    }
+
+                    break;
+                case "#Source Language":
+                    if (string.IsNullOrWhiteSpace(options.SourceLanguage?.Value))
+                    {
+                        Header.SourceLanguage = new Language(headerLine[1].Trim());
+                    }
+
+                    break;
+                case "#Target Language":
+                    if (string.IsNullOrWhiteSpace(options.TargetLanguage.Value))
+                    {
+                        Header.TargetLanguage = new Language(headerLine[1].Trim());
+                    }
+
+                    break;
+            }
         }
     }
 
@@ -95,9 +129,9 @@ public sealed class CsvFormat : IFormat
             }
         };
 
-        if (Header.SourceLanguage is null) return Task.FromResult<ITranslationUnit>(unit);
+        if (!string.IsNullOrWhiteSpace(record.Original)) return Task.FromResult<ITranslationUnit>(unit);
         var sourceTranslationString =
-            new DefaultTranslationString(record.Original, (Language)Header.SourceLanguage,
+            new DefaultTranslationString(record.Original, (Language)Header.SourceLanguage!,
                 record.Comments.Split('|').ToList());
         unit.Translations.Add(sourceTranslationString);
 
@@ -107,12 +141,12 @@ public sealed class CsvFormat : IFormat
     /// <inheritdoc />
     public async Task WriteAsync(Stream stream)
     {
-        ApplyDelimiter();
+        Guard.IsNotNullOrWhiteSpace(Delimiter.ToString());
         await using StreamWriter writer = new(stream, leaveOpen: true, encoding: Encoding.UTF8);
         await WriteHeader(writer);
         var csvWriter = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture)
         {
-            Delimiter = Delimiter,
+            Delimiter = Delimiter.ToString(),
             DetectDelimiter = false,
             TrimOptions = TrimOptions.Trim,
         });
@@ -120,27 +154,25 @@ public sealed class CsvFormat : IFormat
         await csvWriter.NextRecordAsync();
         foreach (var translationUnit in TranslationUnits)
         {
-            foreach (var translation in translationUnit.Translations.Where(t =>
-                         t.Language.Value == Header.TargetLanguage.Value))
-            {
-                await WriteRow(translationUnit, translation, csvWriter);
-            }
+            await WriteRow(translationUnit, csvWriter);
         }
 
         await csvWriter.FlushAsync();
         await writer.FlushAsync();
     }
 
-    private async Task WriteRow(ITranslationUnit unit, ITranslation translation, CsvWriter writer)
+    private async Task WriteRow(ITranslationUnit unit, CsvWriter writer)
     {
         var sourceTranslation =
             unit.Translations.FirstOrDefault(t => t.Language == Header.SourceLanguage);
+        var translation = unit.Translations.FirstOrDefault(t =>
+            t.Language.Value == Header.TargetLanguage.Value);
         var record = new CsvRecordFormat
         {
             Id = unit.Id,
             Original = sourceTranslation?.Value ?? string.Empty,
-            Translation = translation.Value,
-            Comments = string.Join("|", translation.Comments)
+            Translation = translation?.Value ?? string.Empty,
+            Comments = string.Join(CommentDelimiter, translation?.Comments ?? [])
         };
         writer.WriteRecord(record);
         await writer.NextRecordAsync();
@@ -153,57 +185,60 @@ public sealed class CsvFormat : IFormat
     }
 
     // TODO: Can this be made Protected in a abstract class to avoid duplicate code?
-    private async Task<bool> ConfigureOptionsAsync(FormatReadOptions? options)
+    private async Task<bool> ConfigureOptionsAsync(FormatReadOptions options)
     {
-        if (string.IsNullOrWhiteSpace(options?.TargetLanguage.Value))
+        var setTargetLanguage =
+            Header.TargetLanguage.IsNullOrWhitespace();
+        var setSourceLanguage =
+            Header.SourceLanguage.IsNullOrWhitespace();
+        if (setTargetLanguage || setSourceLanguage || char.IsWhiteSpace(Delimiter))
         {
-            Guard.IsNotNull(options?.FormatOptionsCallback);
+            Guard.IsNotNull(options.FormatOptionsCallback);
 
             FormatStringOption targetLanguageOption = new("Target language", true);
+            FormatStringOption sourceLanguageOption = new("Source language", true);
+            FormatCharacterOption delimiterOption = new("Delimiter", true);
+
+            List<FormatOption> optionList = [];
+            if (setTargetLanguage) optionList.Add(targetLanguageOption);
+            if (setSourceLanguage) optionList.Add(sourceLanguageOption);
+            if (char.IsWhiteSpace(Delimiter)) optionList.Add(delimiterOption);
+
             FormatOptions formatOptions = new()
             {
-                Options =
-                [
-                    targetLanguageOption
-                ]
+                Options = optionList.ToArray()
             };
 
             await options.FormatOptionsCallback.Invoke(formatOptions); // Invoke callback
             if (formatOptions.IsCanceled) return false;
 
-            Header.TargetLanguage = Language.Parse(targetLanguageOption.Value);
+            Header.SourceLanguage =
+                setSourceLanguage
+                    ? Language.Parse(sourceLanguageOption.Value)
+                    : Header.SourceLanguage;
+            Header.TargetLanguage =
+                setTargetLanguage
+                    ? Language.Parse(targetLanguageOption.Value)
+                    : Header.TargetLanguage;
+            CsvFormatHeader.Delimiter = char.IsWhiteSpace(Delimiter) ? delimiterOption.Value : Delimiter;
         }
         else
         {
             Header.TargetLanguage = options.TargetLanguage;
+            Header.SourceLanguage = options.SourceLanguage;
         }
 
-        Header.SourceLanguage = options.SourceLanguage;
         return true;
-    }
-
-    private void ApplyDelimiter()
-    {
-        if (!Header.AdditionalHeaders.TryGetValue("delimiter", out var delimiter)) return;
-        var actualDelimiter = delimiter.ToCharArray().FirstOrDefault();
-        if (actualDelimiter is ',' or ';' or '|')
-        {
-            CsvFormatHeader.Delimiter = actualDelimiter;
-        }
     }
 }
 
-internal record CsvRecordFormat
+file record CsvRecordFormat
 {
-    [Name("id")]
-    public string Id { get; init; } = string.Empty;
+    [Name("id")] public string Id { get; init; } = string.Empty;
 
-    [Name("original")]
-    public string Original { get; init; } = string.Empty;
+    [Name("original")] public string Original { get; init; } = string.Empty;
 
-    [Name("translation")]
-    public string Translation { get; init; } = string.Empty;
+    [Name("translation")] public string Translation { get; init; } = string.Empty;
 
-    [Name("comments")]
-    public string Comments { get; init; } = string.Empty;
+    [Name("comments")] public string Comments { get; init; } = string.Empty;
 }
