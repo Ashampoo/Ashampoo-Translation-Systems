@@ -65,4 +65,37 @@ public class FormatTests : FormatTestBase<CsvFormat>
         memoryStream.CanRead.Should().BeTrue();
         memoryStream.CanWrite.Should().BeTrue();
     }
+
+    [Fact]
+    public async Task ReadFormatWithoutOptions()
+    {
+        Func<Task> action = () => CreateAndReadFromFileAsync("testfile_en.csv",
+            new FormatReadOptions());
+        await action.Should().NotThrowAsync();
+    }
+
+    [Fact]
+    public async Task ReadFormatWithOptions()
+    {
+        var format = await CreateAndReadFromFileAsync("testfile_en.csv",
+            new FormatReadOptions { TargetLanguage = new Language("nl-NL"), SourceLanguage = new Language("de-DE")});
+        format.Header.SourceLanguage?.Value.Should().Be("de-DE");
+        format.Header.TargetLanguage.Value.Should().Be("nl-NL");
+    }
+
+    [Fact]
+    public async Task ReadFormatWithoutOptionsAndHeader()
+    {
+        Func<Task> action = () => CreateAndReadFromFileAsync("testfile_en_noHeader.csv",
+            new FormatReadOptions());
+        await action.Should().ThrowAsync<ArgumentNullException>();
+    }
+
+    [Fact]
+    public async Task ReadFormatWithoutOptionsAndEmptyHeader()
+    {
+        Func<Task> action = () => CreateAndReadFromFileAsync("testfile_en_noHeader.csv",
+            new FormatReadOptions());
+        await action.Should().ThrowAsync<ArgumentNullException>();
+    }
 }
