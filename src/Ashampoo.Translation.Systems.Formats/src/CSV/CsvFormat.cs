@@ -30,7 +30,7 @@ public sealed class CsvFormat : IFormat
     private char Delimiter => CsvFormatHeader.Delimiter;
 
     private const char CommentDelimiter = '|';
-    
+
     public CsvFormat()
     {
         var csvFormatHeader = new CsvFormatHeader();
@@ -59,7 +59,6 @@ public sealed class CsvFormat : IFormat
 
         Guard.IsNotNullOrWhiteSpace(Header.TargetLanguage.Value);
         Guard.IsNotNullOrWhiteSpace(Header.SourceLanguage?.Value);
-
 
         using var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
         {
@@ -129,7 +128,7 @@ public sealed class CsvFormat : IFormat
             }
         };
 
-        if (!string.IsNullOrWhiteSpace(record.Original)) return Task.FromResult<ITranslationUnit>(unit);
+        if (string.IsNullOrWhiteSpace(record.Original)) return Task.FromResult<ITranslationUnit>(unit);
         var sourceTranslationString =
             new DefaultTranslationString(record.Original, (Language)Header.SourceLanguage!,
                 record.Comments.Split('|').ToList());
@@ -188,9 +187,9 @@ public sealed class CsvFormat : IFormat
     private async Task<bool> ConfigureOptionsAsync(FormatReadOptions options)
     {
         var setTargetLanguage =
-            Header.TargetLanguage.IsNullOrWhitespace();
+            options.TargetLanguage.IsNullOrWhitespace() && Header.TargetLanguage.IsNullOrWhitespace();
         var setSourceLanguage =
-            Header.SourceLanguage.IsNullOrWhitespace();
+            options.SourceLanguage.IsNullOrWhitespace() && Header.SourceLanguage.IsNullOrWhitespace();
         if (setTargetLanguage || setSourceLanguage || char.IsWhiteSpace(Delimiter))
         {
             Guard.IsNotNull(options.FormatOptionsCallback);
@@ -224,8 +223,12 @@ public sealed class CsvFormat : IFormat
         }
         else
         {
-            Header.TargetLanguage = options.TargetLanguage;
-            Header.SourceLanguage = options.SourceLanguage;
+            Header.TargetLanguage = Header.TargetLanguage.IsNullOrWhitespace()
+                ? options.TargetLanguage
+                : Header.TargetLanguage;
+            Header.SourceLanguage = Header.SourceLanguage.IsNullOrWhitespace()
+                ? options.SourceLanguage
+                : Header.SourceLanguage;
         }
 
         return true;
