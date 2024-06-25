@@ -17,7 +17,7 @@ public sealed class CsvFormatHeader : IFormatHeader
     /// <summary>
     /// The delimiter (separator) to use for the csv file.
     /// </summary>
-    public char Delimiter { get; set; } = ';';
+    public char Delimiter { get; set; }
 
     /// <inheritdoc />
     public Dictionary<string, string> AdditionalHeaders { get; set; } = [];

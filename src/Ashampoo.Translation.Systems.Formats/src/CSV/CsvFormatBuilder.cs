@@ -12,6 +12,7 @@ public sealed class CsvFormatBuilder : IFormatBuilderWithSourceAndTarget<CsvForm
 {
     private Language _targetLanguage = Language.Empty;
     private Language _sourceLanguage = Language.Empty;
+    private char Delimiter { get; set; } = ';';
     private readonly Dictionary<string, (string, string)> _translations = new();
     private Dictionary<string, string> CustomHeaderInformation { get; set; } = new();
 
@@ -20,16 +21,14 @@ public sealed class CsvFormatBuilder : IFormatBuilderWithSourceAndTarget<CsvForm
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage.Value);
 
-        CsvFormat format = new()
+        CsvFormat format = new(new CsvFormatHeader
         {
-            Header =
-            {
-                TargetLanguage = _targetLanguage,
-                SourceLanguage = _sourceLanguage,
-                AdditionalHeaders = CustomHeaderInformation
-            }
-        };
-
+            TargetLanguage = _targetLanguage,
+            SourceLanguage = _sourceLanguage,
+            AdditionalHeaders = CustomHeaderInformation,
+            Delimiter = Delimiter
+        });
+        
         foreach (var translation in _translations)
         {
             DefaultTranslationString sourceTranslationString = new(translation.Value.Item1, _targetLanguage, []);
@@ -51,23 +50,15 @@ public sealed class CsvFormatBuilder : IFormatBuilderWithSourceAndTarget<CsvForm
     /// <inheritdoc />
     public void SetHeaderInformation(IFormatHeader header)
     {
-        _sourceLanguage = header.SourceLanguage ?? new Language("en-US");
-        _targetLanguage = header.TargetLanguage;
         CustomHeaderInformation = header.AdditionalHeaders;
     }
 
     /// <inheritdoc />
     public void AddHeaderInformation(string key, string value)
     {
-        if (key is "delimiter")
+        if (key is "delimiter" && !string.IsNullOrWhiteSpace(value))
         {
-            if (CustomHeaderInformation.TryAdd(key, value)) return;
-            CustomHeaderInformation.Remove(key);
-            CustomHeaderInformation.Add(key, value);
-        }
-        else
-        {
-            throw new ArgumentException("Custom header only supports delimiter as a key!", nameof(key));
+            Delimiter = value.ToCharArray().First();
         }
     }
 
