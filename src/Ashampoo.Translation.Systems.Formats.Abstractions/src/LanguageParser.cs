@@ -7,11 +7,13 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 /// </summary>
 public static class LanguageParser
 {
-    private static readonly Regex LanguageCountryRegex = 
+    private static readonly Regex LanguageCountryRegex =
         new(@".*((?<language>[a-z]{2,3})[-_](?<country>[a-zA-Z]{2,3}))");
 
     private static readonly Regex LanguageScriptTagCountryRegex =
         new(@".*(?<language>[a-z]{2,3})[-_](?<scripttag>[a-zA-Z]{4})[-_](?<country>[a-zA-Z]{2,3})");
+
+    private static readonly Regex TwoLetterIsoCodeRegex = new(".*[._-](?<language>[a-z]{2,3})[.]");
 
     /// <summary>
     /// Try to parse a language from a file path.
@@ -31,6 +33,7 @@ public static class LanguageParser
             var filePathComponent = filePathComponents[i];
             var code = TryParseLanguageCountry(filePathComponent);
             code ??= TryParseLanguageScriptTagCountry(filePathComponent);
+            code ??= TryParseLanguageTwoLetterIsoCode(filePathComponent);
 
             if (code is not null) return code;
         }
@@ -67,6 +70,18 @@ public static class LanguageParser
         var valid = IsValidLanguageCode(code);
 
         return valid ? code : null;
+    }
+
+    private static string? TryParseLanguageTwoLetterIsoCode(string filePath)
+    {
+        var match = TwoLetterIsoCodeRegex.Match(filePath);
+
+        if (!match.Success) return null;
+
+        var targetLanguage = match.Groups["language"].Value;
+
+        var valid = IsValidLanguageCode(targetLanguage);
+        return valid ? targetLanguage : null;
     }
 
     /// <summary>
