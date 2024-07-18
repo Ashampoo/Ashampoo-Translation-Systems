@@ -1,13 +1,13 @@
 # Information and Guidelines for Contributors
-Thank you for contributing to MudBlazor and making it even better. We are happy about every contribution! Issues, bug-fixes, new components...
+Thank you for contributing to the Ashampoo Translations Repository and making it even better. We appreciate every contribution, whether it's reporting issues, fixing bugs, or adding new components.
 
 ## Code of Conduct
 Please make sure that you follow our [code of conduct](CODE_OF_CONDUCT.md)
 
 ## Minimal Prerequisites to Compile from Source
 
-- [.NET 6.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
-
+- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+  
 ## Pull Requests
 - Your Pull Request must only consist of one topic. It is better to split Pull Requests with more than one feature or bug fix in seperate Pull Requests
 - You must choose `develop` as the target branch
