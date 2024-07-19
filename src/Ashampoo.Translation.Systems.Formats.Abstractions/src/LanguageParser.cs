@@ -13,7 +13,7 @@ public static class LanguageParser
     private static readonly Regex LanguageScriptTagCountryRegex =
         new(@".*(?<language>[a-z]{2,3})[-_](?<scripttag>[a-zA-Z]{4})[-_](?<country>[a-zA-Z]{2,3})");
 
-    private static readonly Regex TwoLetterIsoCodeRegex = new(".*[._-](?<language>[a-z]{2,3})[.]");
+    private static readonly Regex TwoLetterIsoCodeRegex = new("(?:.*?[._-]|^)(?<language>[a-z]{2,3})(?=\\.)");
 
     /// <summary>
     /// Try to parse a language from a file path.

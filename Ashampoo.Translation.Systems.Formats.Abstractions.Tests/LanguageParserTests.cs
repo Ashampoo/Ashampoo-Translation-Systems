@@ -11,6 +11,8 @@ public class LanguageParserTests
     [InlineData("App-en.resx", "en")]
     [InlineData("App_en-US.resx", "en-US")]
     [InlineData("App-en-US.resx", "en-US")]
+    [InlineData("en-US.resx", "en-US")]
+    [InlineData("en.resx", "en")]
     public void ShouldParseLanguageFromFileName(string fileName, string expectedLanguage)
     {
         LanguageParser.TryParseLanguageId(fileName).Should().NotBeNullOrWhiteSpace().And.Be(expectedLanguage);
