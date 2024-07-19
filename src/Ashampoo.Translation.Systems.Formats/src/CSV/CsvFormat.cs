@@ -80,21 +80,21 @@ public sealed class CsvFormat : IFormat
             switch (headerLine[0].Trim())
             {
                 case "#Delimiter":
-                    if (char.IsWhiteSpace(Delimiter))
+                    if (char.IsWhiteSpace(Delimiter) && !string.IsNullOrWhiteSpace(headerLine[1]))
                     {
                         CsvFormatHeader.Delimiter = headerLine[1].Trim().ToCharArray().First();
                     }
 
                     break;
                 case "#Source Language":
-                    if (string.IsNullOrWhiteSpace(options.SourceLanguage?.Value))
+                    if (string.IsNullOrWhiteSpace(options.SourceLanguage?.Value) && !string.IsNullOrWhiteSpace(headerLine[1]))
                     {
                         Header.SourceLanguage = new Language(headerLine[1].Trim());
                     }
 
                     break;
                 case "#Target Language":
-                    if (string.IsNullOrWhiteSpace(options.TargetLanguage.Value))
+                    if (string.IsNullOrWhiteSpace(options.TargetLanguage.Value) && !string.IsNullOrWhiteSpace(headerLine[1]))
                     {
                         Header.TargetLanguage = new Language(headerLine[1].Trim());
                     }

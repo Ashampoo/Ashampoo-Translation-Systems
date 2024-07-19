@@ -94,7 +94,7 @@ public class FormatTests : FormatTestBase<CsvFormat>
     [Fact]
     public async Task ReadFormatWithoutOptionsAndEmptyHeader()
     {
-        Func<Task> action = () => CreateAndReadFromFileAsync("testfile_en_noHeader.csv",
+        Func<Task> action = () => CreateAndReadFromFileAsync("testfile_en_emptyHeader.csv",
             new FormatReadOptions());
         await action.Should().ThrowAsync<ArgumentNullException>();
     }
