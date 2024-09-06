@@ -78,7 +78,6 @@ public partial class GengoFormat : IFormat
             await options.FormatOptionsCallback.Invoke(formatOptions); // Invoke the callback to get the options
             if (formatOptions.IsCanceled) return false; // If the options were cancelled, return false
 
-
             Header.SourceLanguage =
                 setSourceLanguage
                     ? Language.Parse(sourceLanguageOption.Value)

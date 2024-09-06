@@ -24,7 +24,7 @@ public class FormatTest : FormatTestBase<JavaPropertiesFormat>
     {
         IFormat format =
             CreateAndReadFromFile("messages_de.properties",
-                new FormatReadOptions() { TargetLanguage = new Language("de-DE") });
+                new FormatReadOptions { TargetLanguage = new Language("de-DE") });
         const string id = "aboutTheApp";
 
         foreach (var unit in format.TranslationUnits)
