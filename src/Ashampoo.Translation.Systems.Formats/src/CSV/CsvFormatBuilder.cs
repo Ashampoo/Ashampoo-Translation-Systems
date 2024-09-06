@@ -31,7 +31,7 @@ public sealed class CsvFormatBuilder : IFormatBuilderWithSourceAndTarget<CsvForm
         
         foreach (var translation in _translations)
         {
-            DefaultTranslationString sourceTranslationString = new(translation.Value.Item1, _targetLanguage, []);
+            DefaultTranslationString sourceTranslationString = new(translation.Value.Item1, _sourceLanguage, []);
             DefaultTranslationString targetTranslationString = new(translation.Value.Item2, _targetLanguage, []);
             DefaultTranslationUnit unit = new(translation.Key)
             {
