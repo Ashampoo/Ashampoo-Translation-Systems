@@ -62,8 +62,9 @@ public sealed class CsvFormat : IFormat
 
         using var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
         {
-            TrimOptions = TrimOptions.Trim,
-            Delimiter = Delimiter.ToString()
+            TrimOptions = TrimOptions.None,
+            Delimiter = Delimiter.ToString(),
+            Mode = CsvMode.RFC4180
         });
         await ReadCsv(csv);
     }
@@ -147,7 +148,8 @@ public sealed class CsvFormat : IFormat
         {
             Delimiter = Delimiter.ToString(),
             DetectDelimiter = false,
-            TrimOptions = TrimOptions.Trim,
+            TrimOptions = TrimOptions.None,
+            Mode = CsvMode.RFC4180
         });
         csvWriter.WriteHeader<CsvRecordFormat>();
         await csvWriter.NextRecordAsync();

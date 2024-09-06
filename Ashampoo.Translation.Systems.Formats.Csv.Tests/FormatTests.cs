@@ -29,7 +29,7 @@ public class FormatTests : FormatTestBase<CsvFormat>
                     { TargetLanguage = new Language("de-DE"), SourceLanguage = new Language("en-US") });
         const string id = "HOME.HOME";
 
-        format.TranslationUnits.Count.Should().Be(2);
+        format.TranslationUnits.Count.Should().Be(4);
 
         var foundById = format.TranslationUnits.GetTranslationUnit(id);
         foundById.Should().NotBeNull();
