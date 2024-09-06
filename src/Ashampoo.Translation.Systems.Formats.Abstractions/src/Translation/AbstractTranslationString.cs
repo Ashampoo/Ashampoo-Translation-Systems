@@ -19,9 +19,6 @@ public abstract class AbstractTranslationString : ITranslation
     /// <summary>
     /// Base constructor for the <see cref="AbstractTranslationString"/> class.
     /// </summary>
-    /// <param name="id">
-    /// The id of the translation string.
-    /// </param>
     /// <param name="value">
     /// The value of the translation string.
     /// </param>
