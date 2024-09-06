@@ -20,6 +20,7 @@
         <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
         <MinVerDefaultPreReleaseIdentifiers>prerelease.0</MinVerDefaultPreReleaseIdentifiers>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Version>9.9.9</Version>
     </PropertyGroup>
 
     <ItemGroup>

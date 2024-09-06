@@ -43,6 +43,27 @@ public class FormatTests : FormatTestBase<CsvFormat>
     }
 
     [Fact]
+    public void TestFormatBuild()
+    {
+        CsvFormatBuilder builder = new();
+        builder.SetSourceLanguage(new Language("en"));
+        builder.SetTargetLanguage(new Language("de"));
+        builder.Add("Home", "Home", "Startseite");
+        builder.Add("LogIn", "Log-in", "Anmelden");
+        builder.Add("LogOut", "Log-out", "Abmelden");
+        var format = builder.Build();
+        format.TranslationUnits.Count.Should().Be(3);
+        var foundById = format.TranslationUnits.GetTranslationUnit("Home");
+        foundById.Should().NotBeNull();
+        var translationString = foundById.Translations.GetTranslation(new Language("de"));
+        translationString.Value.Should().Be("Startseite");
+        translationString.Comments.Should().AllBe(string.Empty);
+        var sourceTranslation = foundById.Translations.GetTranslation(new Language("en"));
+        sourceTranslation.Should().NotBeNull();
+        sourceTranslation.Value.Should().Be("Home");
+    }
+
+    [Fact]
     public void WriteFormatLeavesStreamOpen()
     {
         IFormat format = CreateAndReadFromFile("testfile_en.csv",
@@ -78,7 +99,7 @@ public class FormatTests : FormatTestBase<CsvFormat>
     public async Task ReadFormatWithOptions()
     {
         var format = await CreateAndReadFromFileAsync("testfile_en.csv",
-            new FormatReadOptions { TargetLanguage = new Language("nl-NL"), SourceLanguage = new Language("de-DE")});
+            new FormatReadOptions { TargetLanguage = new Language("nl-NL"), SourceLanguage = new Language("de-DE") });
         format.Header.SourceLanguage?.Value.Should().Be("de-DE");
         format.Header.TargetLanguage.Value.Should().Be("nl-NL");
     }
