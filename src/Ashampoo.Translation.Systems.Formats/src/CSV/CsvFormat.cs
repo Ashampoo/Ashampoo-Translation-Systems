@@ -223,7 +223,7 @@ public sealed class CsvFormat : IFormat
                 setTargetLanguage
                     ? Language.Parse(targetLanguageOption.Value)
                     : Header.TargetLanguage;
-            CsvFormatHeader.Delimiter = char.IsWhiteSpace(Delimiter) ? delimiterOption.Value : Delimiter;
+            CsvFormatHeader.Delimiter = char.IsWhiteSpace(Delimiter) ? delimiterOption.Value[0] : Delimiter;
         }
 
         Header.TargetLanguage = Header.TargetLanguage.IsNullOrWhitespace()
