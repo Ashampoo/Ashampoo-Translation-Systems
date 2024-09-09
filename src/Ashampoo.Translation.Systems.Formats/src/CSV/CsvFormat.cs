@@ -115,10 +115,8 @@ public sealed class CsvFormat : IFormat
     {
         if (char.IsWhiteSpace(Delimiter) && !string.IsNullOrWhiteSpace(headerLine[1]))
         {
-            return;
+            CsvFormatHeader.Delimiter = headerLine[1].Trim()[0];
         }
-
-        CsvFormatHeader.Delimiter = headerLine[1].Trim()[0];
     }
 
     private async Task ReadCsv(CsvReader reader)
