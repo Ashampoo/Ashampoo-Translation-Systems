@@ -81,30 +81,44 @@ public sealed class CsvFormat : IFormat
             switch (headerLine[0].Trim())
             {
                 case "#Delimiter":
-                    if (char.IsWhiteSpace(Delimiter) && !string.IsNullOrWhiteSpace(headerLine[1]))
-                    {
-                        CsvFormatHeader.Delimiter = headerLine[1].Trim().ToCharArray().First();
-                    }
-
+                    TryApplyDelimiter(headerLine);
                     break;
                 case "#Source Language":
-                    if (string.IsNullOrWhiteSpace(options.SourceLanguage?.Value) &&
-                        !string.IsNullOrWhiteSpace(headerLine[1]))
-                    {
-                        Header.SourceLanguage = new Language(headerLine[1].Trim());
-                    }
-
+                    TryApplySourceLanguage(options, headerLine);
                     break;
                 case "#Target Language":
-                    if (string.IsNullOrWhiteSpace(options.TargetLanguage.Value) &&
-                        !string.IsNullOrWhiteSpace(headerLine[1]))
-                    {
-                        Header.TargetLanguage = new Language(headerLine[1].Trim());
-                    }
-
+                    TryApplyTargetLanguage(options, headerLine);
                     break;
             }
         }
+    }
+
+    private void TryApplyTargetLanguage(FormatReadOptions options, string[] headerLine)
+    {
+        if (string.IsNullOrWhiteSpace(options.TargetLanguage.Value) &&
+            !string.IsNullOrWhiteSpace(headerLine[1]))
+        {
+            Header.TargetLanguage = new Language(headerLine[1].Trim());
+        }
+    }
+
+    private void TryApplySourceLanguage(FormatReadOptions options, string[] headerLine)
+    {
+        if (string.IsNullOrWhiteSpace(options.SourceLanguage?.Value) &&
+            !string.IsNullOrWhiteSpace(headerLine[1]))
+        {
+            Header.SourceLanguage = new Language(headerLine[1].Trim());
+        }
+    }
+
+    private void TryApplyDelimiter(string[] headerLine)
+    {
+        if (char.IsWhiteSpace(Delimiter) && !string.IsNullOrWhiteSpace(headerLine[1]))
+        {
+            return;
+        }
+
+        CsvFormatHeader.Delimiter = headerLine[1].Trim()[0];
     }
 
     private async Task ReadCsv(CsvReader reader)
@@ -200,7 +214,7 @@ public sealed class CsvFormat : IFormat
 
             FormatStringOption targetLanguageOption = new("Target language", true);
             FormatStringOption sourceLanguageOption = new("Source language", true);
-            FormatCharacterOption delimiterOption = new("Delimiter", true);
+            FormatStringOption delimiterOption = new("Delimiter", true);
 
             List<FormatOption> optionList = [];
             if (setTargetLanguage) optionList.Add(targetLanguageOption);
@@ -237,7 +251,7 @@ public sealed class CsvFormat : IFormat
     }
 }
 
-file record CsvRecordFormat
+file sealed record CsvRecordFormat
 {
     [Name("id")] public string Id { get; init; } = string.Empty;
 
