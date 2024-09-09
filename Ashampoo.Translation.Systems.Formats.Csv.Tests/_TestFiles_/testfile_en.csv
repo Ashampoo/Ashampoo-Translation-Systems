@@ -5,5 +5,3 @@
 id,original,translation,comments
 HOME.TEST,Test,Test; Testen,
 HOME.HOME,Home,"Haus, Zuhause",
-HOME.SPACING,"Text with Spacing","Ein Text mit Leerzeichen!",
-HOME.STARTSPACING,   Text with start spacing,   Text mit leerzeichen am Anfang,
