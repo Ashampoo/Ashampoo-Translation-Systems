@@ -42,7 +42,7 @@ public record FormatCharacterOption(string Name, bool Required = false) : Format
     /// <summary>
     /// The value of the option.
     /// </summary>
-    public char Value { get; set; } = ';';
+    public string Value { get; set; } = ";";
 }
 
 /// <summary>

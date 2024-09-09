@@ -88,14 +88,16 @@ public sealed class CsvFormat : IFormat
 
                     break;
                 case "#Source Language":
-                    if (string.IsNullOrWhiteSpace(options.SourceLanguage?.Value) && !string.IsNullOrWhiteSpace(headerLine[1]))
+                    if (string.IsNullOrWhiteSpace(options.SourceLanguage?.Value) &&
+                        !string.IsNullOrWhiteSpace(headerLine[1]))
                     {
                         Header.SourceLanguage = new Language(headerLine[1].Trim());
                     }
 
                     break;
                 case "#Target Language":
-                    if (string.IsNullOrWhiteSpace(options.TargetLanguage.Value) && !string.IsNullOrWhiteSpace(headerLine[1]))
+                    if (string.IsNullOrWhiteSpace(options.TargetLanguage.Value) &&
+                        !string.IsNullOrWhiteSpace(headerLine[1]))
                     {
                         Header.TargetLanguage = new Language(headerLine[1].Trim());
                     }
@@ -221,17 +223,15 @@ public sealed class CsvFormat : IFormat
                 setTargetLanguage
                     ? Language.Parse(targetLanguageOption.Value)
                     : Header.TargetLanguage;
-            CsvFormatHeader.Delimiter = char.IsWhiteSpace(Delimiter) ? delimiterOption.Value : Delimiter;
+            CsvFormatHeader.Delimiter = char.IsWhiteSpace(Delimiter) ? delimiterOption.Value[0] : Delimiter;
         }
-        else
-        {
-            Header.TargetLanguage = Header.TargetLanguage.IsNullOrWhitespace()
-                ? options.TargetLanguage
-                : Header.TargetLanguage;
-            Header.SourceLanguage = Header.SourceLanguage.IsNullOrWhitespace()
-                ? options.SourceLanguage
-                : Header.SourceLanguage;
-        }
+
+        Header.TargetLanguage = Header.TargetLanguage.IsNullOrWhitespace()
+            ? options.TargetLanguage
+            : Header.TargetLanguage;
+        Header.SourceLanguage = Header.SourceLanguage.IsNullOrWhitespace()
+            ? options.SourceLanguage
+            : Header.SourceLanguage;
 
         return true;
     }
