@@ -153,7 +153,7 @@ public sealed class CsvFormat : IFormat
     }
 
     /// <inheritdoc />
-    public async Task WriteAsync(Stream stream)
+    public async Task WriteAsync(Stream stream, FormatWriteOptions? options = null)
     {
         Guard.IsNotNullOrWhiteSpace(Delimiter.ToString());
         await using StreamWriter writer = new(stream, leaveOpen: true, encoding: Encoding.UTF8);

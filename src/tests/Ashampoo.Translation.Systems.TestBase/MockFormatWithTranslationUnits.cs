@@ -28,7 +28,7 @@ public class MockFormatWithTranslationUnits : IFormat
         TranslationUnits.Add(translationUnit);
     }
 
-    public Task WriteAsync(Stream stream)
+    public Task WriteAsync(Stream stream, FormatWriteOptions? options = null)
     {
         throw new NotImplementedException();
     }

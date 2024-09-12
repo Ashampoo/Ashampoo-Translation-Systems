@@ -20,7 +20,7 @@ public class JsonFormatBuilder : IFormatBuilderWithTarget<JsonFormat>
     }
 
     /// <inheritdoc />
-    public JsonFormat Build()
+    public JsonFormat Build(IFormatBuilderOptions? options = null)
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage));
 

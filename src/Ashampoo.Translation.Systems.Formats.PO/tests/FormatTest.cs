@@ -41,6 +41,34 @@ public class FormatTest : FormatTestBase<POFormat>
     }
 
     [Fact]
+    public void CreateBuilderWithDisabledPipeSplittingTest()
+    {
+        var format = CreateAndReadFromFile("translation_de.po",
+            new FormatReadOptions { SourceLanguage = new Language("en-US") });
+
+
+        var poHeader = format.Header as POHeader;
+        poHeader.Should().NotBeNull();
+
+        var poBuilder = new POFormatBuilder();
+        foreach (var unit in format.TranslationUnits)
+        {
+            foreach (var translation in unit.Translations)
+            {
+                poBuilder.Add(unit.Id, translation.Value);
+            }
+        }
+        poBuilder.SetTargetLanguage(format.Header.TargetLanguage);
+        var newFormat = poBuilder.Build(new PoBuilderOptions { PipeSplitting = false });
+        var memoryStream = new MemoryStream();
+        newFormat.Write(memoryStream);
+        memoryStream.Seek(0, SeekOrigin.Begin);
+        var streamReader = new StreamReader(memoryStream);
+        var result = streamReader.ReadToEnd();
+        result.Should().NotContain("msgctxt ");
+    }
+
+    [Fact]
     public async Task ReadAndWriteAsync()
     {
         var format = await CreateAndReadFromFileAsync("normalized_translation_de.po",
@@ -66,7 +94,7 @@ public class FormatTest : FormatTestBase<POFormat>
         //fs.MustBeEqualTo(ms);
         File.Delete($"{temp}normalized_translation_de.po");
     }
-    
+
     [Fact]
     public void ReadAndWrite()
     {
@@ -105,7 +133,7 @@ public class FormatTest : FormatTestBase<POFormat>
         memoryStream.CanRead.Should().BeTrue();
         memoryStream.CanWrite.Should().BeTrue();
     }
-    
+
     [Fact]
     public async Task WriteFormatLeavesStreamOpenAsync()
     {

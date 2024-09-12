@@ -47,14 +47,14 @@ public class AshLangFormat : IFormat
     }
 
     /// <inheritdoc />
-    public void Write(Stream stream)
+    public void Write(Stream stream, FormatWriteOptions? options = null)
     {
         var chunkWriter = new ChunkWriter(stream, Chunks);
         chunkWriter.Write();
     }
     
     /// <inheritdoc />
-    public Task WriteAsync(Stream stream)
+    public Task WriteAsync(Stream stream, FormatWriteOptions? options = null)
     {
         Write(stream);
         return Task.CompletedTask;

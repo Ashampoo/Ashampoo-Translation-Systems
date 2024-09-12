@@ -166,7 +166,7 @@ public partial class GengoFormat : IFormat
     }
 
     /// <inheritdoc />
-    public void Write(Stream stream)
+    public void Write(Stream stream, FormatWriteOptions? options = null)
     {
         XSSFWorkbook workbook = new(); // Create a new workbook
         var sheet = workbook.CreateSheet("Sheet 1"); // Create a new sheet
@@ -206,9 +206,9 @@ public partial class GengoFormat : IFormat
     }
 
     /// <inheritdoc />
-    public Task WriteAsync(Stream stream)
+    public Task WriteAsync(Stream stream, FormatWriteOptions? options = null)
     {
-        Write(stream);
+        Write(stream, options);
         return Task.CompletedTask;
     }
 

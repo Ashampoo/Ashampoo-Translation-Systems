@@ -39,9 +39,9 @@ public interface IFormat
     /// </summary>
     /// <param name="stream"></param>
     /// <exception cref="UnsupportedFormatException"></exception>
-    void Write(Stream stream)
+    void Write(Stream stream, FormatWriteOptions? options = null)
     {
-        WriteAsync(stream).Wait();
+        WriteAsync(stream, options).Wait();
     }
 
     /// <summary>
@@ -49,7 +49,7 @@ public interface IFormat
     /// </summary>
     /// <param name="stream"></param>
     /// <exception cref="UnsupportedFormatException"></exception>
-    Task WriteAsync(Stream stream);
+    Task WriteAsync(Stream stream, FormatWriteOptions? options = null);
 
     /// <summary>
     /// The <see cref="IFormatHeader"/> containing the header information for this format.

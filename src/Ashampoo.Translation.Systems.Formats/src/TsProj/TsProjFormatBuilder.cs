@@ -23,7 +23,7 @@ public class TsProjFormatBuilder : IFormatBuilderWithSourceAndTarget<TsProjForma
     }
 
     /// <inheritdoc />
-    public TsProjFormat Build()
+    public TsProjFormat Build(IFormatBuilderOptions? options = null)
     {
         Guard.IsNotNullOrWhiteSpace(_sourceLanguage?.Value, nameof(_sourceLanguage)); // sourceLanguage is required
         Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage)); // targetLanguage is required

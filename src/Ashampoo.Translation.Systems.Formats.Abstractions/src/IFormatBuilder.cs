@@ -13,7 +13,7 @@ public interface IFormatBuilder<out T> where T : class, IFormat
     /// <returns>
     /// The instance of <see cref="IFormat"/>.
     /// </returns>
-    T Build();
+    T Build(IFormatBuilderOptions? options = null);
     
     /// <summary>
     /// Set the header information. All information will be added to the header and will overwrite
