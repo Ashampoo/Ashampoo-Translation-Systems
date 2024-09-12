@@ -83,7 +83,7 @@ public class QtFormat : IFormat
     }
 
     /// <inheritdoc />
-    public async Task WriteAsync(Stream stream)
+    public async Task WriteAsync(Stream stream, FormatWriteOptions? options = null)
     {
         var test = XmlWriter.Create(stream, new XmlWriterSettings
         {

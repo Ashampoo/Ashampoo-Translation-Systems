@@ -101,7 +101,7 @@ public partial class JavaPropertiesFormat : IFormat
     }
 
     /// <inheritdoc/>
-    public void Write(Stream stream)
+    public void Write(Stream stream, FormatWriteOptions? options = null)
     {
         using StreamWriter writer = new(stream, leaveOpen: true);
 
@@ -120,7 +120,7 @@ public partial class JavaPropertiesFormat : IFormat
     /// 
     /// </summary>
     /// <param name="stream"></param>
-    public async Task WriteAsync(Stream stream)
+    public async Task WriteAsync(Stream stream, FormatWriteOptions? options = null)
     {
         await using StreamWriter writer = new(stream, leaveOpen: true);
 

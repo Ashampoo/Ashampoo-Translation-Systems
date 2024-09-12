@@ -118,9 +118,9 @@ public class NLangFormat : IFormat
     }
 
     /// <inheritdoc />
-    public void Write(Stream stream)
+    public void Write(Stream stream, FormatWriteOptions? options = null)
     {
-        WriteAsync(stream).Wait();
+        WriteAsync(stream, options).Wait();
     }
 
     /// <summary>
@@ -132,7 +132,7 @@ public class NLangFormat : IFormat
     /// <exception cref="Exception">
     /// Thrown if the format is invalid.
     /// </exception>
-    public async Task WriteAsync(Stream stream)
+    public async Task WriteAsync(Stream stream, FormatWriteOptions? options = null)
     {
         // NLang is UTF16 LE
         await using var writer = new StreamWriter(stream, Encoding.Unicode, leaveOpen: true);
