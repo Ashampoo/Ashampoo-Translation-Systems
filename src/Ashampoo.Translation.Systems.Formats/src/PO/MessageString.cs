@@ -21,8 +21,10 @@ public class MessageString : ITranslation
     /// <summary>
     /// Provides the id for the ITranslation interface.
     /// </summary>
-    public string Id => !string.IsNullOrWhiteSpace(MsgCtxt) ? $"{MsgCtxt}{POConstants.Divider}{MsgId}" : MsgId;
-    
+    public string Id => !string.IsNullOrWhiteSpace(MsgCtxt)
+        ? $"{MsgCtxt}{POConstants.Divider}{MsgId}"
+        : MsgId;
+
     /// <summary>
     /// Provides the comment for the ITranslation interface.
     /// </summary>
@@ -30,7 +32,7 @@ public class MessageString : ITranslation
 
     /// <inheritdoc />
     public Language Language { get; set; }
-    
+
     /// <summary>
     /// Message string of the po format.
     /// </summary>
@@ -53,6 +55,7 @@ public class MessageString : ITranslation
     /// <param name="language"></param>
     /// <param name="comments"></param>
     /// <param name="msgCtxt"></param>
+    /// <param name="pipeSplitting"></param>
     public MessageString(string id, string value, Language language, IList<string> comments, string msgCtxt = "")
     {
         MsgId = id;
@@ -88,6 +91,7 @@ public class MessageString : ITranslation
                 await writer.WriteLineAsync($"{Escape(comment)}");
             }
         }
+
         if (!string.IsNullOrWhiteSpace(MsgCtxt))
             await writer.WriteLineAsync($"{POConstants.TypeMsgCtxt}\"{Escape(MsgCtxt)}\"");
         await writer.WriteLineAsync($"{POConstants.TypeMsgId}\"{Escape(MsgId)}\"");

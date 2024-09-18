@@ -6,6 +6,7 @@ using Ashampoo.Translation.Systems.Formats.JavaProperties;
 using Ashampoo.Translation.Systems.Formats.Json;
 using Ashampoo.Translation.Systems.Formats.NLang;
 using Ashampoo.Translation.Systems.Formats.PO;
+using Ashampoo.Translation.Systems.Formats.QT;
 using Ashampoo.Translation.Systems.Formats.ResX;
 using Ashampoo.Translation.Systems.Formats.TsProj;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,13 +35,14 @@ public static class DependencyInjection
         services.AddSingleton<IFormatFactory, DefaultFormatFactory>();
         services
             .AddAshLangFormatFeatures()
+            .AddCsvFormat()
             .AddGengoFormatFeatures()
             .AddJavaPropertiesFormatFeatures()
             .AddJsonFormatFeatures()
             .AddNLangFormatFeatures()
             .AddPOFormatFeatures()
+            .AddQtFormat()
             .AddResXFormatFeatures()
-            .AddCsvFormat()
             .AddTsProjFormatFeatures();
         
         return services;

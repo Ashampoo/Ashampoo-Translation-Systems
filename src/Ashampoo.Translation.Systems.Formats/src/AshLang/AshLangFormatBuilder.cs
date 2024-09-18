@@ -17,7 +17,7 @@ public class AshLangFormatBuilder : IFormatBuilderWithSourceAndTarget<AshLangFor
     private Dictionary<string, string> _information = new();
 
     /// <inheritdoc />
-    public AshLangFormat Build()
+    public AshLangFormat Build(IFormatBuilderOptions? options = null)
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage.Value, nameof(_targetLanguage));
 

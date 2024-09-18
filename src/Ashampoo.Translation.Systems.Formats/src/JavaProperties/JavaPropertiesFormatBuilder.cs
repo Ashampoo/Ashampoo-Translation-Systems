@@ -14,7 +14,7 @@ public class JavaPropertiesFormatBuilder : IFormatBuilderWithTarget<JavaProperti
     private readonly Dictionary<string, string> _translations = new();
     
     /// <inheritdoc/>
-    public JavaPropertiesFormat Build()
+    public JavaPropertiesFormat Build(IFormatBuilderOptions? options = null)
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage.Value);
 

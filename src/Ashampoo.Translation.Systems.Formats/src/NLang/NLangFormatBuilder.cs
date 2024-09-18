@@ -19,7 +19,7 @@ public class NLangFormatBuilder : IFormatBuilderWithTarget<NLangFormat>
     }
 
     /// <inheritdoc />
-    public NLangFormat Build()
+    public NLangFormat Build(IFormatBuilderOptions? options = null)
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage));
 

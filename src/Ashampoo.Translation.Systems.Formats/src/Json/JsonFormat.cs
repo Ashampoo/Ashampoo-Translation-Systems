@@ -181,13 +181,13 @@ public class JsonFormat : IFormat
         var root = new JsonObject();
         CreateJsonObjects(root); // Create JSON objects from TranslationUnits
 
-        var options = new JsonSerializerOptions // Create JSON serializer options
+        var serializerOptions = new JsonSerializerOptions // Create JSON serializer options
         {
             WriteIndented = true,
             Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
         };
 
-        await JsonSerializer.SerializeAsync(stream, root, options);
+        await JsonSerializer.SerializeAsync(stream, root, serializerOptions);
         await stream.FlushAsync();
     }
 

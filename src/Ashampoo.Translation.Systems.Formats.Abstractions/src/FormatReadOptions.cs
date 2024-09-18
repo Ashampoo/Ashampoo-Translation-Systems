@@ -5,7 +5,7 @@ namespace Ashampoo.Translation.Systems.Formats.Abstractions;
 /// <summary>
 /// This class is used to provide options for reading a <see cref="IFormat"/> from a file.
 /// </summary>
-public class FormatReadOptions
+public record FormatReadOptions
 {
     /// <summary>
     /// The target language of the format.
