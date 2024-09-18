@@ -59,7 +59,7 @@ public class FormatTest : FormatTestBase<POFormat>
             }
         }
         poBuilder.SetTargetLanguage(format.Header.TargetLanguage);
-        var newFormat = poBuilder.Build(new PoBuilderOptions { PipeSplitting = false });
+        var newFormat = poBuilder.Build(new PoBuilderOptions { SplitContextAndId = false });
         var memoryStream = new MemoryStream();
         newFormat.Write(memoryStream);
         memoryStream.Seek(0, SeekOrigin.Begin);

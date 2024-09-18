@@ -122,7 +122,7 @@ public class ResXFormat : IFormat
     }
 
     /// <inheritdoc />
-    public void Write(Stream stream, FormatWriteOptions? options = null)
+    public void Write(Stream stream)
     {
         //Add an empty namespace and empty value
         var ns = new XmlSerializerNamespaces();
@@ -146,7 +146,7 @@ public class ResXFormat : IFormat
     /// Asynchronously writes the current instance to the given <paramref name="stream"/>.
     /// </summary>
     /// <param name="stream"></param>
-    public async Task WriteAsync(Stream stream, FormatWriteOptions? options = null)
+    public async Task WriteAsync(Stream stream)
     {
         var ns = new XmlSerializerNamespaces();
         ns.Add("", "");

@@ -37,7 +37,7 @@ public class POFormatBuilder : IFormatBuilderWithTarget<POFormat>
         {
             var translationUnit = new TranslationUnit(translation.Key);
             var index = translation.Key.IndexOf(POConstants.Divider, StringComparison.InvariantCulture);
-            if (builderOptions.PipeSplitting && index > 0) // if divider exists, then a message context is used
+            if (builderOptions.SplitContextAndId && index > 0) // if divider exists, then a message context is used
             {
                 var ctxt = translation.Key[..index];
                 var msgId = translation.Key[(index + POConstants.Divider.Length)..];

@@ -165,9 +165,9 @@ public class JsonFormat : IFormat
     }
 
     /// <inheritdoc />
-    public void Write(Stream stream, FormatWriteOptions? options = null)
+    public void Write(Stream stream)
     {
-        WriteAsync(stream, options).Wait();
+        WriteAsync(stream).Wait();
     }
 
     /// <summary>
@@ -176,7 +176,7 @@ public class JsonFormat : IFormat
     /// <param name="stream">
     /// The stream to write to.
     /// </param>
-    public async Task WriteAsync(Stream stream, FormatWriteOptions? options = null)
+    public async Task WriteAsync(Stream stream)
     {
         var root = new JsonObject();
         CreateJsonObjects(root); // Create JSON objects from TranslationUnits

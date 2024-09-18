@@ -199,7 +199,7 @@ public partial class POFormat : IFormat
     }
 
     /// <inheritdoc />
-    public void Write(Stream stream, FormatWriteOptions? options = null)
+    public void Write(Stream stream)
     {
         using var writer = new StreamWriter(stream, Encoding.UTF8, leaveOpen: true);
 
@@ -228,7 +228,7 @@ public partial class POFormat : IFormat
     /// <exception cref="Exception">
     /// Thrown if an error occurs.
     /// </exception>
-    public async Task WriteAsync(Stream stream, FormatWriteOptions? options = null)
+    public async Task WriteAsync(Stream stream)
     {
         await using var writer = new StreamWriter(stream, Encoding.UTF8, leaveOpen: true);
 

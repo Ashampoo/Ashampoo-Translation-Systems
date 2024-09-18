@@ -172,7 +172,7 @@ public class TsProjFormat : IFormat
     }
 
     /// <inheritdoc />
-    public void Write(Stream stream, FormatWriteOptions? options = null)
+    public void Write(Stream stream)
     {
         //Add an empty namespace and empty value
         var ns = new XmlSerializerNamespaces();
@@ -200,7 +200,7 @@ public class TsProjFormat : IFormat
     /// <param name="stream">
     /// The stream to write to.
     /// </param>
-    public async Task WriteAsync(Stream stream, FormatWriteOptions? options = null)
+    public async Task WriteAsync(Stream stream)
     {
         
         //Add an empty namespace and empty value
