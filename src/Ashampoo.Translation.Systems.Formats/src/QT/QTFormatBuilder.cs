@@ -14,7 +14,7 @@ public class QtFormatBuilder : IFormatBuilderWithTarget<QtFormat>
     private readonly Dictionary<string, string> _translations = new();
 
     /// <inheritdoc />
-    public QtFormat Build()
+    public QtFormat Build(IFormatBuilderOptions? options = null)
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage.Value);
         

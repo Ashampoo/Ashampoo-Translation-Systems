@@ -17,7 +17,7 @@ public sealed class CsvFormatBuilder : IFormatBuilderWithSourceAndTarget<CsvForm
     private Dictionary<string, string> CustomHeaderInformation { get; set; } = new();
 
     /// <inheritdoc />
-    public CsvFormat Build()
+    public CsvFormat Build(IFormatBuilderOptions? options = null)
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage.Value);
 

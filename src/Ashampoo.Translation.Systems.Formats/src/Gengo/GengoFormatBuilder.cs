@@ -21,7 +21,7 @@ public class GengoFormatBuilder : IFormatBuilderWithSourceAndTarget<GengoFormat>
     }
 
     /// <inheritdoc />
-    public GengoFormat Build()
+    public GengoFormat Build(IFormatBuilderOptions? options = null)
     {
         Guard.IsNotNullOrWhiteSpace(_sourceLanguage?.Value, nameof(_sourceLanguage));
         Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage));

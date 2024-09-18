@@ -19,7 +19,7 @@ public class POFormatBuilder : IFormatBuilderWithTarget<POFormat>
     }
 
     /// <inheritdoc />
-    public POFormat Build()
+    public POFormat Build(IFormatBuilderOptions? options = null)
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage));
 
@@ -32,11 +32,12 @@ public class POFormatBuilder : IFormatBuilderWithTarget<POFormat>
             }
         };
 
+        var builderOptions = options as PoBuilderOptions ?? new PoBuilderOptions();
         foreach (var translation in _translations)
         {
             var translationUnit = new TranslationUnit(translation.Key);
             var index = translation.Key.IndexOf(POConstants.Divider, StringComparison.InvariantCulture);
-            if (index > 0) // if divider exists, then a message context is used
+            if (builderOptions.SplitContextAndId && index > 0) // if divider exists, then a message context is used
             {
                 var ctxt = translation.Key[..index];
                 var msgId = translation.Key[(index + POConstants.Divider.Length)..];

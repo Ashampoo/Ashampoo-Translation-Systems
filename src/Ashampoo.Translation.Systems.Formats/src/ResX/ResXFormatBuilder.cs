@@ -15,7 +15,7 @@ public class ResXFormatBuilder : IFormatBuilderWithTarget<ResXFormat>
     private readonly Dictionary<string, string> _translations = new();
 
     /// <inheritdoc />
-    public ResXFormat Build()
+    public ResXFormat Build(IFormatBuilderOptions? options = null)
     {
         Guard.IsNotNullOrWhiteSpace(_targetLanguage?.Value, nameof(_targetLanguage));
 
