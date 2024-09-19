@@ -8,7 +8,10 @@ namespace Ashampoo.Translation.Systems.Formats.PO;
 public sealed record PoBuilderOptions : IFormatBuilderOptions
 {
     /// <summary>
-    /// Disables splitting of the id into msgctxt and msgid if a pipe separator is detected.
+    /// Enables splitting of the id into msgctxt and msgid if a pipe separator is detected.
+    /// <remarks>
+    /// Defaults to True.
+    /// </remarks>
     /// </summary>
     public bool SplitContextAndId { get; init; } = true;
 };
