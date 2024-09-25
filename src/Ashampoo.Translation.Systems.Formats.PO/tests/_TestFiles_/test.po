@@ -2,8 +2,12 @@ msgid ""
 msgstr ""
 "Language: de-DE\n"
 
-msgid "testid1"
-msgstr "deutscher testid1 Text"
+msgid "tes\"tid1"
+msgstr "deutscher\\ testid1 Text"
 
 msgid "testid2"
 msgstr "deutscher testid2 Text"
+
+msgctxt "Test Message context \" \" "
+msgid "testid3"
+msgstr "deutscher testid4 Text"
