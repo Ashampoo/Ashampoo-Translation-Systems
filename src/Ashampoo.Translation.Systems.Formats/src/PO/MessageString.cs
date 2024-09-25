@@ -105,6 +105,6 @@ public class MessageString : ITranslation
     /// <returns></returns>
     private static string Escape(string input)
     {
-        return input.Replace("\n", "\\n");
+        return input.Replace("\n", "\\n").Replace("\"", "\\\"").Replace(@"\", @"\\");
     }
 }

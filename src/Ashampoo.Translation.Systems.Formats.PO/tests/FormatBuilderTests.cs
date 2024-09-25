@@ -4,7 +4,7 @@ using Ashampoo.Translation.Systems.Formats.Abstractions.Models;
 using FluentAssertions;
 using Xunit;
 
-namespace Ashampoo.Translation.Systems.Formats.PO.Tests._TestFiles_;
+namespace Ashampoo.Translation.Systems.Formats.PO.Tests;
 
 public sealed class FormatBuilderTests
 {

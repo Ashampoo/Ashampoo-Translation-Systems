@@ -201,11 +201,11 @@ public partial class POFormat : IFormat
     /// <inheritdoc />
     public void Write(Stream stream)
     {
-        using var writer = new StreamWriter(stream, Encoding.UTF8, leaveOpen: true);
+        using var writer = new StreamWriter(stream, new UTF8Encoding(false), leaveOpen: true);
 
         // write header.
         if (Header is not POHeader poHeader) throw new Exception($"Unexpected format header {Header.GetType()}");
-        poHeader.Write(writer);
+        poHeader.Write(writer); 
 
         // write messages.
         foreach (var unit in TranslationUnits)
