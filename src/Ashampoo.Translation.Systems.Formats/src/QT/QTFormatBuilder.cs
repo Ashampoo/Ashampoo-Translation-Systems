@@ -44,7 +44,7 @@ public class QtFormatBuilder : IFormatBuilderWithTarget<QtFormat>
     /// <exception cref="NotImplementedException"></exception>
     public void SetHeaderInformation(IFormatHeader header)
     {
-        throw new NotImplementedException();
+        //QT does not support header infos
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ public class QtFormatBuilder : IFormatBuilderWithTarget<QtFormat>
     /// <exception cref="NotImplementedException"></exception>
     public void AddHeaderInformation(string key, string value)
     {
-        throw new NotImplementedException();
+        //QT does not support header infos
     }
 
     /// <inheritdoc />
