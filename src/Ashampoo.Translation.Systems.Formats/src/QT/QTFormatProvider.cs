@@ -16,7 +16,7 @@ public class QtFormatProvider : IFormatProvider<QtFormat>
     /// <inheritdoc />
     public bool SupportsFileName(string fileName)
     {
-        return SupportedFileExtensions.Any(ext => ext.EndsWith(ext, StringComparison.OrdinalIgnoreCase));
+        return SupportedFileExtensions.Any(ext => ext.EndsWith(fileName, StringComparison.OrdinalIgnoreCase));
     }
 
     /// <inheritdoc />
